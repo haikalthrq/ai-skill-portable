@@ -1,84 +1,69 @@
-# OpenCode global environment: migration / portability implementation brief
+# Implemented migration contract
 
-Implement this **on the original Windows laptop with actual filesystem access**, using this repository as the private backup target:
-`https://github.com/haikalthrq/ai-skill-portable.git`
+This repository contains the real sanitized snapshot and a working migration system. It is an OpenCode-first **environment** backup, not a project/transcript/authentication backup and not an upstream skill installer.
 
-**Do the work**, rather than merely writing instructions. The owner wants a reproducible one-command backup and one-command restore that preserve the existing OpenCode skill environment. This document is a specification, not evidence that a backup exists.
+## Authoritative artifacts
 
-## Priorities
+| Artifact | Purpose |
+|---|---|
+| `snapshot/manifest.json` | Schema/version, content identity, source hashes, installed tool pins, all skill definitions, aliases, declared path adaptations and authentication requirements |
+| `snapshot/blobs/<sha256>` | Deduplicated actual installed content; plain files, not opaque archives hiding scan results |
+| `scripts/portable.py` | Idempotent capture, preview/apply restore, one-command migrate/bootstrap/verify, and guarded rollback |
+| `scripts/bootstrap.py` | Target-home runtime/package setup; no skill installation/update |
+| `scripts/secret_scan.py`, `fetch_gitleaks.py` | Fail-closed local checks plus pinned independent scanner |
+| `scripts/integration_test.py`, `tests/` | Disposable full restore/rollback and adversarial path/credential tests |
+| `scripts/routing_probe.py` | Fresh authenticated native skill calls after restore |
+| `reports/` | Publishable inventory, Windows/Linux validation, routing and secret-scan results |
 
-- OpenCode is the primary daily harness.
-- Preserve the installed, customized, optimized skill sources as they exist; **do not reinstall, rename, simplify, upgrade, or modify** protected skill bodies in the process.
-- Preserve 45 discovered skills as a baseline, but determine the actual current count from the system; include out-of-home definitions and aliases as necessary.
-- Preserve optimized routing, source references, scripts/data, global `AGENTS.md`, dependencies and native variants without introducing duplicate definitions.
-- Context7 and ECC Memory are already configured: capture **non-secret templates and setup instructions only**. Never export their tokens.
-- Do not run a broad refactor of the current OpenCode setup.
+## Preservation rules
 
-## Inventory first
+1. Read the installed files. Preserve their descriptions, bodies, references, scripts, datasets, licenses, local adapters and custom plugins. Never replace them with current upstream downloads merely because upstream exists.
+2. Keep physical variants distinct. Deduplicate identical file content only; reconstruct original directory destinations and explicit aliases from the manifest.
+3. Snapshot all 45 native discovery names, including the built-in supplied by the pinned OpenCode runtime. Retain Graphify and non-primary-harness variants as auxiliary preserved files without adding them to OpenCode's discovery set.
+4. Keep Context7/ECC integration instructions and host-identity/repository-binding behavior. Exclude all authentication, browser/session data, memory vault records and unrelated home/project content.
+5. Never change the original skill installation during backup/testing. The Windows integration evidence rehashes the captured source files to detect mutation.
 
-Detect actual global discovery roots and effective configuration for installed OpenCode version; do not assume a directory is active solely because it exists.
+## Portable path contract
 
-Inspect candidates (only if present): `~/.agents/skills`, `~/.opencode/skills`, `~/.config/opencode/skills`, `~/.claude/skills`, `~/.codex/skills`, `~/.gemini/skills`, `~/.config/opencode/AGENTS.md`, and applicable global routing/agent/command definitions.
+- Destinations are home-relative, allowlisted logical paths. Absolute paths, traversal, duplicate destinations, file/directory collisions and unapproved redirected parents are rejected before mutation.
+- Actual home prefixes become `__PORTABLE_HOME__` in stored text and expand on restore. Source and transformed hashes distinguish intentional portability from accidental content changes.
+- The ECC memory/runtime configuration points to the captured installed memory implementation under `$HOME/.local/share/opencode-portable/ecc-runtime`, rather than the old Windows roaming npm path.
+- MCP uses `node` from PATH; native plugin paths become relocatable file URLs. Explicit global skill paths make the retained native roots discoverable on both platforms.
+- Windows junctions and Linux relative symlinks recreate directory aliases. Windows reparse-point detection does not depend on Python 3.12-only methods.
+- Linux adjusts the copied DCG plugin's PATH delimiter; the original live plugin and stored source identity stay unchanged.
+- RINGKAS-only references map to `$HOME/Projects/RINGKAS`; the private project is not backed up. Animate's preserved upstream reference receives a copied companion RECIPES.md without modifying the source installation.
 
-Inspect the existing optimization manifests and references, e.g. `~/.config/skills-optimization/`, for alias relationships, native variants, and known customizations. Avoid copying large historical backups needlessly.
+## Credential boundary
 
-Record every discovered skill (canonical name, definition path, dependencies, origin repo + revision if known, hashes, alias/symlink relationship, route priority). Follow supported symlinks carefully; do not traverse arbitrary targets or include unrelated private files. Handle user-created skills outside the usual home paths explicitly and safely.
+The exporter uses an explicit root/file allowlist and rejects credential filenames, session storage, unclassified binaries, credential-bearing URLs/command arguments and ambiguous secret structures. Credential-bearing headers/environment/settings become `{env:NAME}` references. Existing references are also recorded as requirements.
 
-## Design the portable layout
+Tokens stay in memory while sanitizing; their values are never printed or put in the manifest. Original source hashes are integrity evidence, not credential storage. OAuth/provider auth, `.env`, registry/Git/SSH/GPG/cloud credentials, browser profiles, user/project memory and raw session logs are excluded.
 
-Use a snapshot layout that mirrors the actual installed locations via logical `$HOME`-relative paths, plus an explicit mapping for approved external locations. Never hard-code an old `C:\\Users\\...` path in restore logic.
+Gitleaks scans the publishable repository including content blobs before staging/push. No blanket exclusion for snapshots or dependency code is permitted. Private scratch/install/journal directories are ignored and never staged. Synthetic local routing QA may temporarily borrow provider authentication into a restricted OS temporary profile; it deletes that file afterward and reports only names/counts.
 
-Keep a machine-readable manifest with at least:
-- snapshot/schema version
-- timestamp (UTC)
-- OS/harness/tool versions
-- source/destination logical path for each backed-up subtree
-- skill inventory and alias relationships
-- hashes/file counts for integrity
-- provenance and dependency/runtime requirements
-- expected native discovery count
-- relative references that must resolve post-restore
+## Restore and rollback semantics
 
-Store optional sanitized config examples separately from live auth/config files.
+1. Verify manifest and every content blob before any target write.
+2. Plan the entire restore, including aliases and competing global configuration. Preview is read-only and repeatable.
+3. Refuse differing user files by default. `--replace` authorizes managed replacements and records exact previous bytes privately.
+4. Create a private journal before mutation. Verify saved pre-change bytes against their planned hashes. Write files atomically; recheck destination state/containment before operations.
+5. Repeated apply produces zero changes. Rollback checks expected current states, restores old content or removes new content, and repeated rollback produces zero changes.
+6. Refuse newer observed changes or redirected aliases/state/parents. Do not overwrite physical skill directories to force an alias. Stop concurrent applications/editors during restore/rollback; this is not an interprocess locking system.
+7. Bootstrap only target-home pinned runtimes, with unrelated lifecycle scripts disabled. Initialize the captured plugin dependencies before native startup so OpenCode does not rewrite absent SDK manifests.
+8. Reauthenticate services on the new device and restart OpenCode. Restore is not proof of credential validity or of availability of every remote model listed in preserved preferences.
 
-## Security: fail closed
+## Verification gates before publication
 
-Default-deny credential-bearing paths and data:
-- `.env*`, `*.pem`, `*.key`, SSH/GPG and cloud credentials
-- `auth.json`, token/session/cookie caches, browser profiles, `.npmrc`, `.pypirc`, Git credentials
-- raw OpenCode/provider/MCP configuration unless individually reviewed and sanitized
-- user projects, logs, build caches and `node_modules`
+- Payload/content-address identity and original-file preservation.
+- Complete Windows and Linux disposable restore, real junction/symlink aliases, repeated previews/apply/bootstrap, complete rollback.
+- Fresh native discovery of exactly 45 names; descriptions and loaded bodies match the restored snapshot; paths remain in the sandbox.
+- Real UI UX Pro Max data search and ECC memory save/read/doctor, custom MCP initialization/tools and handoff helper.
+- Fresh model-driven frontend/debugging/handoff/backend routing tests with no skill names in those prompts.
+- Adversarial tests for corruption, traversal, duplicate/prefix conflicts, redirected parents/state, credentials and preservation of newer work.
+- Independent redacted secret scan before staging and again before pushing; inspect Git status, diff and recent history, then commit only intended files.
 
-Use an allowlist for snapshot roots and file classes, inspect files for embedded secrets and absolute private paths, and run an available secret scanner (e.g. gitleaks) as a separate pre-commit check. Stop with a clear report on suspicious material; do not silently scrub executable instructions. A private GitHub repo is not an acceptable secret vault.
+## Maintenance limits and manual setup
 
-Respect licenses and file size limitations for bundled third-party assets; retain origin information, notices and existing licenses where applicable.
+Python/Git/Node, provider login, Context7 key, browser installation, optional DCG/Graphify/OfficeCLI and private project checkouts remain local setup. OfficeCLI already had a missing .NET assembly on the source host; its skill is preserved without claiming the broken runtime was fixed.
 
-## Implement scripts
-
-Choose the simplest tested approach for Windows (PowerShell plus Python are available), and support portability where practical.
-
-1. `backup`: scan actual environment; stage into a temporary directory; generate snapshot, manifest, hash report; validate; atomically update repo working tree; display diff/summary; scan secrets; only then commit/push. Never push before user-readable verification.
-2. `restore --dry-run`: inspect source backup and destination environment, verify hashes and path mappings, list modifications/conflicts, check dependencies, confirm no secrets; **never** modify current config.
-3. `restore --apply`: idempotently restore files, preserving content; back up existing destination files with a clear rollback plan; protect conflicts (no destructive overwrites by default); re-create aliases or safely materialize them on Windows if symlink permission is unavailable; report required local authentications and missing runtimes.
-4. `verify`: compare recorded hashes, resolve reference/dependency paths, check OpenCode discovery count, run read-only native skill routing probes (including frontend, debugging, handoff and backend-only), report failures.
-
-Do a simulated restore to a **temporary clean HOME** or disposable profile before touching any existing real destination.
-
-Create a concise README explaining:
-- what is and isn't backed up
-- exact commands for daily backup
-- exact commands for first-time new-device restore
-- how to update skill snapshots
-- how to authenticate GitHub, Context7, ECC Memory and other external services safely
-- how to roll back
-- limitations such as Windows/Linux differences
-
-## Done means tested
-
-- Verify the exported snapshot contains **all actual discoverable skills**, not just first-party definitions or top-level `SKILL.md` files.
-- Verify aliases, optimized references, scripts and data files have not been lost.
-- Verify routing/global rules don't duplicate or conflict.
-- Verify restore idempotence, with two clean dry-runs and one sandbox restore.
-- Confirm backup files committed/pushed to `main` only after secret scanning and review.
-- Show final remote commit URL, backed-up skills count, total size, paths, excluded paths, dependencies, verification evidence and any manual login steps.
-- If an essential step can't be verified, report the exact blocker rather than claiming success.
+Capture intentionally fails if this complete environment's required ECC binding or discovered out-of-allowlist skill is missing. Review and explicitly extend mappings before capturing external roots; never traverse arbitrary personal directories. Retain third-party licenses/notices, inspect scripts before bootstrap, and use the tested pinned OpenCode version for equivalent discovery. Different future harness/model versions can choose skills differently even when the file snapshot is identical.

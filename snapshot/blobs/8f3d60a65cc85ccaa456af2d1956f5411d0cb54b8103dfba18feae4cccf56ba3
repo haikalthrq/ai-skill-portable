@@ -1,0 +1,33 @@
+---
+name: imagegen-frontend-mobile
+description: Generate iOS/Android app-screen and flow concept images with coherent device framing. Images only; use for mobile visual concepts, not websites, responsive web coding or native app implementation.
+---
+
+# Mobile screen images and flows
+
+Generate images only, not SwiftUI, React Native, Flutter, HTML or implementation prose. Check the available image-generation capability; disclose missing capability instead of claiming an image was generated.
+
+## Essential contract
+
+1. Decide iOS, Android or cross-platform mode first. Respect safe areas, system regions, native navigation and platform conventions; do not casually mix platforms.
+2. Build one app design bible: palette roles, type scale, spacing/radii, icon/media treatment, navigation, background texture and device framing. Preserve the same system across screens while varying layouts according to each screen's purpose.
+3. Generate the requested number of readable standalone screens and a logical flow. More detail views are justified when extraction/readability requires them; do not substitute a vague compressed idea board. Generate fresh dedicated details rather than cropping an old image.
+4. Default to a subtle premium phone mockup with visible consistent frame and even margins. Content remains the hero; the device must not dominate, clip, warp or shrink screen text. Use a bare-screen exception only when the user requests it.
+5. Keep first screens comprehensible, controls legible, contrast usable, tap/navigation affordances plausible, and short copy meaningful. Do not invent decorative charts, fake system complexity or code output.
+6. Inspect consistency, flow and quality before delivery; regenerate weak screens/details and label the complete set. User-approved style overrides art-direction defaults.
+
+## Selective reference reads
+
+All original rules/examples remain in [references/preserved-guidance.md](references/preserved-guidance.md). Load the relevant heading ranges, not all 1,400+ lines for a single screen.
+
+| Need | Heading / original lines |
+|---|---|
+| Direction, platform, count and design bible | Sections 1–8, 86–348; select platform/count/bible for the request |
+| Mockup/frame, first screen, safe areas, navigation | Sections 9–15, 349–549 |
+| Creative assets, texture, icons and style choices | Sections 16–25, 550–984; select applicable treatments |
+| Media, text sizes, typography, spacing and variations | Sections 26–32, 985–1204 |
+| App category-specific details | Section 33, 1205–1261 |
+| Regeneration, mandatory quality and response | Sections 34–36, 1262–1365; apply before delivery |
+| Examples and final outcome | Sections 37–38, only when useful |
+
+The detailed source's text-readability, screen count, fresh-render, device and platform constraints remain available and govern actual image generation.

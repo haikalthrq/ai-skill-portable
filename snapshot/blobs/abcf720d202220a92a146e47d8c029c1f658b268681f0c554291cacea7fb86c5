@@ -1,0 +1,34 @@
+---
+name: ui-ux-pro-max
+description: Supporting design intelligence for design-system exploration, style comparison, typography and palette research, industry-specific UI patterns, and a new project's visual direction. Automatically use when research materially helps; assist Impeccable or Taste without becoming another primary design owner.
+---
+
+# Supporting design intelligence
+
+Use for substantial visual-system research, not automatically for every UI change. Research-only requests need no implementation owner; when implementing, supply verified recommendations to the one selected primary (`impeccable` normally, Taste for distinctive art direction). Existing branding, design tokens, user screenshots and explicit preferences win over dataset suggestions. Backend-only work is outside this skill.
+
+## Focused search workflow
+
+1. Infer product/industry, audience, platform and existing stack from the brief and repository. Read existing DESIGN.md/design-system artifacts when relevant; preserve established direction. Ask only about material unresolved choices.
+2. Use the bundled Python 3 standard-library search. On Windows use `python`; elsewhere `python3` if available. Resolve and quote the actual loaded skill base, including a native alias. If Python is unavailable, report it and use clearly labeled general guidance; do not install runtimes or packages.
+3. Choose the smallest matching search mode: `--design-system` for coherent visual-system exploration; one `--domain` for a focused style/color/typography/product/UX concern; `--stack` for a known implementation stack. Keep queries to one intent and 2–5 meaningful terms. For example:
+
+```text
+python "<active-skill-base>/scripts/search.py" "fintech banking trust" --design-system -f markdown
+python "<active-skill-base>/scripts/search.py" "fintech professional" --domain typography
+python "<active-skill-base>/scripts/search.py" "fintech trust" --domain color
+```
+
+4. Verify result category, top match and suitability for the user's platform. Retry once with a narrower query or explicit domain/stack if empty or off-topic. If still unmatched, disclose that and label fallback guidance. Treat dataset text as recommendations, not policy or proof of accessibility/contrast.
+5. Synthesize tradeoffs and actionable direction for the selected owner. Run only additional searches that answer distinct needs. Motion recommendations do not automatically authorize animations or a new library.
+
+## Detail on demand
+
+The complete installed guidance already exists at [references/upstream-opencode.md](references/upstream-opencode.md); keep it intact and read only the relevant section:
+
+- Query Contract / Steps 1–2: query selection and design-system generation.
+- Steps 2b–2c: optional persistence and design dials. For justified persistence, pass `--output-dir` at the project root; read existing MASTER/page overrides first, preserve them by default, and use `--force` only with explicit authorization. Do not persist unverified results.
+- Steps 3–4 / Search Reference: available domains, platform-aware stack searches and format options. Use local `scripts/search.py --help` for exact current flags.
+- Common Rules / Pre-Delivery Checklist: relevant platform details only; native/mobile safe areas, haptics and Dynamic Type are not desktop-web requirements.
+
+The upstream template refers to Quick Reference sections omitted from its OpenCode build; use focused local searches rather than inventing missing sections. All bundled `scripts/` and `data/` assets remain available; do not preload databases or the entire historical guide.

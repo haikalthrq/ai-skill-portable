@@ -1,0 +1,7 @@
+---
+description: Write a concise handoff for a fresh session, model, or agent
+---
+
+Load `handoff` with the native `skill` tool and use it for this request.
+
+$ARGUMENTS

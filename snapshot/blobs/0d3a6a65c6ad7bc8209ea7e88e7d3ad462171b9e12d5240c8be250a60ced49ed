@@ -1,0 +1,7 @@
+---
+description: Configure the current repository's tracker and domain-doc conventions
+---
+
+Load `setup-matt-pocock-skills` with the native `skill` tool. Inspect this repository's existing conventions and confirm the proposed setup before editing. This configures the current repository when requested, not the global OpenCode environment.
+
+$ARGUMENTS

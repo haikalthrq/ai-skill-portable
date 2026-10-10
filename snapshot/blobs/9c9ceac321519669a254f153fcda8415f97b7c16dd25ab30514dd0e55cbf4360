@@ -1,0 +1,47 @@
+# Objective
+
+What are we trying to accomplish?
+
+# Current state
+
+What is implemented/investigated? Observed at <UTC timestamp>. Task is <in progress / blocked / complete>.
+
+# Important decisions
+
+Decisions to preserve and their reasons. Cite canonical artifacts rather than copying specs.
+
+# Changed files
+
+Repository-relative paths, with their relevant role.
+
+# Git state
+
+Observed branch, HEAD, relevant commits, staged/unstaged/untracked status. No raw diff or credential-bearing remote URLs.
+
+# Verification
+
+Exact commands, outcomes, and scope. Distinguish tested results from planned checks.
+
+# Current failures/blockers
+
+Known failing tests/errors, missing access, and unresolved human decisions; write none when applicable.
+
+# Constraints / Do not
+
+Scope boundaries and things the next agent must preserve.
+
+# External references
+
+Issue/spec/ADR/doc paths or public URLs without credentials. Earlier memory IDs and explicit follow-up/correction relationships.
+
+# Next exact action
+
+One concrete step, grounded in the current repository and user authorization.
+
+# Potential follow-up
+
+What likely comes immediately afterward.
+
+# Suggested skills
+
+Relevant skill names; no full skill bodies.

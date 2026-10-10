@@ -1,0 +1,12 @@
+---
+description: Analyze the current project with the Understand Anything skill
+agent: build
+---
+
+Use the `understand` skill to analyze the current project.
+
+Pass these user arguments to the skill exactly as written:
+
+$ARGUMENTS
+
+Do not use Graphify for this command. Report the Understand Anything phases, output directory, and any required restart or confirmation step.

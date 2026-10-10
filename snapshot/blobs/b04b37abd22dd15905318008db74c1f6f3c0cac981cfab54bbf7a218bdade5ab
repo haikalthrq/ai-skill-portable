@@ -1,0 +1,10 @@
+---
+name: impeccable
+description: Primary frontend workflow via the shared Impeccable source; this native adapter retains RINGKAS-only brand guidance. Apply RINGKAS tokens only inside that verified project, never globally.
+---
+
+# Project-aware native frontend adapter
+
+The preserved custom RINGKAS design system applies only when the current repository/artifacts actually identify RINGKAS. For that project, read [references/ringkas-design.md](references/ringkas-design.md), then verify its tokens and evidence-state UX against the project's current `.impeccable/design.json` and `DESIGN.md`. Keep Institutional Blue, Statistical Orange, Inter, flat surfaces and the custom critique checklist when those canonical artifacts still prescribe them. Historical absolute links are fallback references, not authority over newer repository state.
+
+For every other frontend project, read the canonical primary workflow at `~/.agents/skills/impeccable/SKILL.md` once, using its base for scripts/references. Do not apply the RINGKAS palette, font or research-card layout to unrelated apps. Expand home paths with the host's conventions. The custom content remains available and was not deleted, replaced with an upstream download, or imposed on all projects.

@@ -1,0 +1,37 @@
+{
+  "platform": "Linux",
+  "python": "3.11.2",
+  "checks": {
+    "two_read_only_previews": true,
+    "idempotent_apply": true,
+    "real_dataset_search": true,
+    "vendored_ecc_save_read_doctor": true,
+    "restored_custom_mcp_adapter": true,
+    "restored_handoff_helper": true,
+    "pinned_runtime_bootstrap_idempotence": true,
+    "fresh_native_discovery_and_bodies": true,
+    "one_command_migration": true,
+    "full_snapshot_rollback_idempotence": true
+  },
+  "ok": true,
+  "restore": {
+    "files": 1146,
+    "aliases": 23,
+    "expected_skills": 45,
+    "unique_blobs": 858,
+    "broken_local_links": []
+  },
+  "runtime_versions": {
+    "opencode": "1.18.35",
+    "agent-browser": "agent-browser 0.38.2",
+    "uipro": "2.15.0"
+  },
+  "native": {
+    "native_discovery_count": 45,
+    "native_names_match": true,
+    "native_descriptions_match": true,
+    "native_all_bodies_loaded": true,
+    "native_bodies_match_snapshot": true,
+    "native_paths_isolated": true
+  }
+}

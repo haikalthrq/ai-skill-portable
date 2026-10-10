@@ -1,0 +1,72 @@
+---
+name: agent-browser
+description: On-demand browser automation and verification when no equivalent functional native browser tool is available, or Agent Browser is explicitly requested. Use for frontend/web UI testing, forms, navigation, authentication-flow tests, screenshots, visual regression investigation, console/network debugging, and exploratory web QA. Prefer existing native browser capabilities, especially Antigravity's Browser Subagent/Chrome DevTools. Not for backend-only work, browser-unrelated C++/C#, documentation-only edits, unrelated Git operations, or trivial changes without browser implications.
+allowed-tools: Bash(agent-browser:*), Bash(npx agent-browser:*)
+license: Apache-2.0
+---
+
+# agent-browser
+
+Fast browser automation CLI for AI agents. Chrome/Chromium via CDP with accessibility-tree snapshots and compact `@eN` element refs.
+
+Install: `npm i -g agent-browser && agent-browser install`
+
+## Local activation and native-tool precedence
+
+This is an optional browser-verification capability, not a development methodology or an exhaustive test gate after every change. Prefer a functional native/equivalent interactive browser capability before this CLI. Inside Antigravity, use the built-in Browser Subagent/Chrome DevTools; Agent Browser must not displace it. On hosts without an equivalent tool, use this skill for relevant browser tasks automatically.
+
+The CLI is already installed globally. Use its detected supported Chrome; download a runtime only if needed. Do not install Playwright CLI/MCP, Chrome DevTools MCP, or register Agent Browser MCP merely because the runtime-served guide documents them.
+
+Launch on demand with a unique task-and-harness session name, passing `--session <unique-name>` on every browser command. Do not use the shared default session. Explicit flags work across PowerShell and POSIX shells; adapt the guide's Bash examples to the host shell. For a short-lived local task, pass `--idle-timeout 5m` consistently on every command, including close, as a cleanup backstop. Changing or omitting daemon-owned flags between commands can restart the daemon and discard transient page state.
+
+Use a fresh isolated browser context by default. Attach to an existing browser or reuse/persist authenticated profiles/state only when relevant and authorized. Close only the session you own with `agent-browser --session <unique-name> close`, including after failures. Confirm it is absent from `agent-browser session list`. Do not run `close --all` when other agents may be active, or start a browser, dashboard, MCP, or daemon at system startup. The daemon may persist between commands within your active task; it must not be left running after the task.
+
+These local scope and lifecycle rules govern the runtime-served examples below.
+
+## Windows captured-output compatibility
+
+On Windows, a freshly spawned daemon can retain captured pipe handles after the foreground CLI exits. For a complete known smoke-test flow, prefer the upstream `batch` command with `close` as the final command, so all steps run in one invocation and the output stream closes. Leave batch's default continue-on-error behavior enabled so cleanup is still attempted. Use string-command arguments or the documented stdin format, adapting quoting to the host shell. For incremental flows, capture the foreground CLI to real log files and wait for its PID rather than waiting for inherited pipe EOF; use the host's existing shell/process facilities, not a new wrapper, plugin, or MCP. Close your named session even after a failed check.
+
+```text
+agent-browser --session harness-task-unique --idle-timeout 5m batch "open https://example.com" "snapshot -i" "close"
+```
+
+## Start here
+
+This file is a discovery stub, not the usage guide. Before running any `agent-browser` command, load the actual workflow content from the CLI:
+
+```bash
+agent-browser skills get core             # start here — workflows, common patterns, troubleshooting
+agent-browser skills get core --full      # include full command reference and templates
+```
+
+The CLI serves skill content that always matches the installed version, so instructions never go stale. The content in this stub cannot change between releases, which is why it just points at `skills get core`.
+
+## Specialized skills
+
+Load a specialized skill when the task falls outside browser web pages:
+
+```bash
+agent-browser skills get electron          # Electron desktop apps (VS Code, Slack, Discord, Figma, ...)
+agent-browser skills get slack             # Slack workspace automation
+agent-browser skills get dogfood           # Exploratory testing / QA / bug hunts
+agent-browser skills get derive-client     # Record a HAR, derive a standalone API client for a site
+agent-browser skills get vercel-sandbox    # agent-browser inside Vercel Sandbox microVMs
+agent-browser skills get protected-vercel-deployments  # Access protected Vercel deployments
+agent-browser skills get agentcore         # AWS Bedrock AgentCore cloud browsers
+```
+
+Run `agent-browser skills list` to see everything available on the installed version.
+
+## Why agent-browser
+
+- Fast native Rust CLI, not a Node.js wrapper
+- Works with any AI agent (Cursor, Claude Code, Codex, Continue, Windsurf, etc.)
+- Chrome/Chromium via CDP with no Playwright or Puppeteer dependency
+- Accessibility-tree snapshots with element refs for reliable interaction
+- Sessions, authentication vault, state persistence, video recording
+- Specialized skills for Electron apps, Slack, exploratory testing, cloud providers
+
+## Observability Dashboard
+
+The dashboard runs independently of browser sessions on port 4848 and can also be opened through a proxied or forwarded URL such as `https://dashboard.agent-browser.localhost`. Agents should stay on the dashboard origin: session tabs, status, and stream traffic are proxied internally, so session ports do not need to be exposed.

@@ -1,0 +1,210 @@
+{
+  "version": 3,
+  "skills": {
+    "caveman": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
+      "skillPath": "caveman/SKILL.md",
+      "skillFolderHash": "3e5091e2f32acef06ba3540770ecf7f87e5db25c",
+      "installedAt": "2026-04-08T12:42:58.534Z",
+      "updatedAt": "2026-04-08T12:42:58.534Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "installedAt": "2026-04-08T12:46:00.449Z",
+      "updatedAt": "2026-04-08T12:46:00.449Z"
+    },
+    "brandkit": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/brandkit/SKILL.md",
+      "skillFolderHash": "d278ff748cafab01e4ae5dd7758fc0b53258621c",
+      "installedAt": "2026-07-12T10:35:47.180Z",
+      "updatedAt": "2026-07-12T10:42:37.742Z"
+    },
+    "industrial-brutalist-ui": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/brutalist-skill/SKILL.md",
+      "skillFolderHash": "f812ede7e5c34cf680f629911e9f9ac05e416cf4",
+      "installedAt": "2026-07-12T10:35:47.184Z",
+      "updatedAt": "2026-07-12T10:42:37.747Z"
+    },
+    "gpt-taste": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/gpt-tasteskill/SKILL.md",
+      "skillFolderHash": "c87d529ad945cd35985b19475bf53f41682d4f69",
+      "installedAt": "2026-07-12T10:35:47.186Z",
+      "updatedAt": "2026-07-12T10:42:37.749Z"
+    },
+    "image-to-code": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/image-to-code-skill/SKILL.md",
+      "skillFolderHash": "701b3cb89c061fcf98a98f639e0b0b5c0b492479",
+      "installedAt": "2026-07-12T10:35:47.189Z",
+      "updatedAt": "2026-07-12T10:42:37.751Z"
+    },
+    "imagegen-frontend-mobile": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/imagegen-frontend-mobile/SKILL.md",
+      "skillFolderHash": "9901fcde67e9506a706912107825fdfb72e01f30",
+      "installedAt": "2026-07-12T10:35:47.191Z",
+      "updatedAt": "2026-07-12T10:42:37.754Z"
+    },
+    "imagegen-frontend-web": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/imagegen-frontend-web/SKILL.md",
+      "skillFolderHash": "3b5117d349200e33f9c3399344681620079dcc18",
+      "installedAt": "2026-07-12T10:35:47.193Z",
+      "updatedAt": "2026-07-12T10:42:37.756Z"
+    },
+    "minimalist-ui": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/minimalist-skill/SKILL.md",
+      "skillFolderHash": "5509c012862cda27e2ed7efae89ed940ecc53add",
+      "installedAt": "2026-07-12T10:35:47.196Z",
+      "updatedAt": "2026-07-12T10:42:37.758Z"
+    },
+    "full-output-enforcement": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/output-skill/SKILL.md",
+      "skillFolderHash": "3dd6ad49b667d15182acddc9d3e4f7763ae33c9c",
+      "installedAt": "2026-07-12T10:35:47.197Z",
+      "updatedAt": "2026-07-12T10:42:37.760Z"
+    },
+    "redesign-existing-projects": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/redesign-skill/SKILL.md",
+      "skillFolderHash": "d9cffe56d26d4af7687299e391a7be1cfaf46c1b",
+      "installedAt": "2026-07-12T10:35:47.199Z",
+      "updatedAt": "2026-07-12T10:42:37.762Z"
+    },
+    "high-end-visual-design": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/soft-skill/SKILL.md",
+      "skillFolderHash": "1b5943432ddd1b980206968c529a323cc992dbec",
+      "installedAt": "2026-07-12T10:35:47.201Z",
+      "updatedAt": "2026-07-12T10:42:37.764Z"
+    },
+    "stitch-design-taste": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/stitch-skill/SKILL.md",
+      "skillFolderHash": "de2038cf286b31f33b397c1308455dbc17ef26f3",
+      "installedAt": "2026-07-12T10:35:47.204Z",
+      "updatedAt": "2026-07-12T10:42:37.766Z"
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "skillFolderHash": "a6d128e53b4ec0238baee751dde33bf707adb5ec",
+      "installedAt": "2026-07-12T10:35:47.206Z",
+      "updatedAt": "2026-07-12T10:42:37.769Z"
+    },
+    "design-taste-frontend-v1": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/taste-skill-v1/SKILL.md",
+      "skillFolderHash": "3642ecef471a6ee4d9d485feea6df8ba92616b78",
+      "installedAt": "2026-07-12T10:35:47.209Z",
+      "updatedAt": "2026-07-12T10:42:37.771Z"
+    },
+    "no-ai-slop": {
+      "source": "petergyang/no-ai-slop",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/petergyang/no-ai-slop.git",
+      "skillPath": "skills/no-ai-slop/SKILL.md",
+      "skillFolderHash": "3d8be37cd59f6601cbc33676ecaf5b42865daf63",
+      "installedAt": "2026-09-03T16:16:11.373Z",
+      "updatedAt": "2026-09-03T16:16:11.373Z"
+    },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "skillFolderHash": "82def67855a0d2aad7794207951820fa5422fdb0",
+      "installedAt": "2026-10-08T12:29:06.932Z",
+      "updatedAt": "2026-10-08T12:29:06.932Z"
+    },
+    "animate": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/emilkowalski/skills.git",
+      "ref": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "skillPath": "skills/animate/SKILL.md",
+      "skillFolderHash": "a92e36f28d741aee4ff77d1a001300d7e86e07fe",
+      "installedAt": "2026-10-10T05:37:06.351Z",
+      "updatedAt": "2026-10-10T05:37:06.351Z"
+    },
+    "emil-design-eng": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/emilkowalski/skills.git",
+      "ref": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "skillPath": "skills/emil-design-eng/SKILL.md",
+      "skillFolderHash": "db7a20dc1d8ad26a0307dcb45ebc79fc372f5c69",
+      "installedAt": "2026-10-10T05:37:06.353Z",
+      "updatedAt": "2026-10-10T05:37:06.353Z"
+    },
+    "pick-ui-library": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/emilkowalski/skills.git",
+      "ref": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "skillPath": "skills/pick-ui-library/SKILL.md",
+      "skillFolderHash": "370e19776f0aa2403a2edeed78266bd6a5d78036",
+      "installedAt": "2026-10-10T05:37:06.355Z",
+      "updatedAt": "2026-10-10T05:37:06.355Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "firebender",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode",
+    "warp",
+    "windsurf",
+    "trae",
+    "qwen-code",
+    "openclaw",
+    "claude-code"
+  ]
+}

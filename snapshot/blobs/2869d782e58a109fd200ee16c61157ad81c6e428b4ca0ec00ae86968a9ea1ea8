@@ -1,0 +1,7 @@
+# Cross-harness continuation
+
+When resuming existing repository work, use `cross-harness-handoff` to check shared ECC project memory before asking the user to repeat context. Verify recalled state against current Git/source/spec/ADR; the repository is authoritative. Pass its absolute Git root as `workspaceRoot` to ECC MCP calls. For a harness/session transfer, save a concise durable handoff through that skill. Details stay on-demand at `~/.agents/skills/cross-harness-handoff/SKILL.md`.
+
+# Browser verification
+
+Inside Antigravity, prefer its native Browser Subagent/Chrome DevTools; do not replace it with Agent Browser or a browser MCP. Other compatible hosts may load `agent-browser` on demand for relevant interactive browser/frontend QA when no equivalent native tool is functional. Use uniquely named isolated sessions and close your own session afterward. Backend-only, browser-unrelated C++/C#, documentation-only, unrelated Git, and trivial non-browser work need no browser launch. Choose one frontend owner: `impeccable` normally, `redesign-existing-projects` for requested whole-app redesign; differentiated image/style requests use their specialist. User/project brand and supplied references win.

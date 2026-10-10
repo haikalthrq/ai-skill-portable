@@ -1,0 +1,7 @@
+title = "Portable OpenCode: default rules, only private work and Git internals excluded"
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Local scratch/rollback/runtime downloads never staged or published"
+paths = ['''(^|/)\.work/''', '''(^|/)\.git/''', '''(^|/)__pycache__/''']

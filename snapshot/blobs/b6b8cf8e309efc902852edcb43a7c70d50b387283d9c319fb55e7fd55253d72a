@@ -1,0 +1,45 @@
+# Global coding behavior
+
+## Karpathy baseline
+
+Inspect the repository and relevant context before changing code. Investigate facts you can discover safely yourself; ask only about unresolved choices that materially change the result. State consequential assumptions and tradeoffs. Prefer the simplest sufficient solution, match existing style, and keep every change tied to the request. Define observable success criteria and work until appropriate checks support them. Load `karpathy-guidelines` when useful for deeper guidance; trivial changes need no ceremony.
+
+## Documentation
+
+Use the existing Context7 MCP when an answer or implementation depends on current or version-specific third-party library/framework/SDK/API/CLI/cloud documentation. Resolve the official library name first unless an exact Context7 ID is supplied, select a relevant authoritative/versioned match, then query a specific concept. Prefer its documentation to memory or general web search. Pure project-internal logic needs no external-doc lookup.
+
+Call the connected MCP directly; `context7-mcp` and `find-docs` are optional documentation helpers, not additional mandatory stages. Do not install/update a Context7 CLI or regenerate configuration/credentials merely to fetch docs. Report unavailable documentation access and use primary sources where appropriate.
+
+## Skill routing
+
+Load relevant skills through OpenCode's native `skill` tool automatically from task intent; slash commands or skill names are not required. Keep bodies/references on-demand. The following OpenCode frontend policy overrides older shared/provider routing defaults: choose one primary design owner, `impeccable` for general frontend, dashboards/SaaS, forms/components/navigation, responsive layouts, existing-UI redesign/refinement and accessibility; select `design-taste-frontend` instead for clearly experimental/distinctive art direction, creative portfolios, expressive/cinematic marketing or unconventional composition/typography. An ordinary landing page alone does not require Taste. Preserve user screenshots, project branding/design systems and explicit aesthetic preferences; fixed screenshot reconstruction retains the existing `impeccable` route. Other image/style workflows retain their differentiated intents. Backend-only and unrelated tasks do not load frontend skills. These scope/authorization rules govern broader upstream defaults.
+
+- For automatic existing-UI redesign, load `impeccable` only; its legacy pointers to `redesign-existing-projects` do not select that skill. The separate redesign workflow remains available when the user specifically requests that workflow.
+- `ui-ux-pro-max`: supporting design intelligence for substantial design-system exploration, style comparison, typography/palette research, industry patterns or establishing a new visual direction; assist the chosen owner without competing as another primary. Research-only work can use it alone; ordinary implementation does not require research.
+- Emil motion specialists: `animate` for new animation implementation; `emil-design-eng` for existing easing/transitions, micro-interactions and interaction-quality refinement. Motion-only work can use the matching specialist alone; load both only for distinct relevant needs. Preserve existing motion tokens, use purposeful motion and reduced-motion behavior, and avoid adding animations without a task benefit.
+
+- `incremental-implementation`: substantial or multi-file implementation, in small reviewable slices: implement, verify, continue. Scale checks to the change; one-line edits need no artificial slicing.
+- `systematic-debugging`: non-trivial bugs, unexplained failures, regressions, flaky behavior, or unclear root causes; reproduce and investigate before fixing. Its `test-driven-development` dependency is for failing regression tests or explicitly requested TDD, not an always-on workflow.
+- `verification-before-completion`: before claiming a coding task fixed, complete, or passing. Run appropriate current tests/build/runtime/lint/typecheck/config checks, inspect results, and state exactly what they prove or leave unverified. Evidence stays current until relevant files or environment change; avoid redundant unchanged runs.
+- `no-ai-slop`: prose editing/detection and writing documentation, explanations, messages, or comments when appropriate. Preserve meaning and voice; prose rules do not constrain code/API identifiers or require a draft interview during ordinary coding explanations.
+- `grill-with-docs`: explicitly requested interviews, or substantial ambiguous work needing shared requirements, terminology, ADRs, or a glossary; simple fixes do not need grilling.
+- `handoff`: Matt Pocock's generic conversation/session summary remains available. Use `cross-harness-handoff` for durable repository continuation across harnesses; it incorporates concise summarization without requiring both workflows.
+- `code-review`: requested review, pre-merge/PR, or completion of significant implementation; not every tiny edit.
+- `retro`: requested retrospectives or unusually difficult/inefficient sessions. Present environment improvements before making them; apply them only with user authorization.
+- `wayfinder`: explicitly requested decision maps for large multi-session projects with unresolved major architectural/product decisions; ordinary features and bugs do not need it.
+- `doubt-driven-development`: non-trivial high-risk/uncertain decisions involving auth/security, payments, destructive migrations/data loss, concurrency/correctness, difficult architecture, or unfamiliar high-impact code. Use a bounded fresh-context review. Ask before every cross-model escalation; authorize the exact external invocation separately.
+- Supporting Matt Pocock skills are reached by their parent workflows or explicit request. `setup-matt-pocock-skills` is per-repo setup on demand; respect existing tracker/doc conventions and confirm changes.
+
+## Host compatibility and authorization
+
+Map upstream “Skill tool” to `skill`, “general-purpose agent” to `task` with `subagent_type: "general"` (or `"explore"` for read-only exploration), and “TodoWrite” to `todowrite`. Where background execution is unavailable, use independent parallel task calls and collect their returned results honestly. `superpowers:<name>` references mean the installed unprefixed skill, not a plugin requirement.
+
+Commit, push, create PRs, or deploy only when explicitly requested, even if an upstream workflow includes those steps. Use repository verification commands and existing project standards; upstream supplementary checklists do not mandate unrelated pack skills, tools, or infrastructure. Preserve unrelated work. Back up global rules/config before editing them. Selected skills do not enable full Superpowers/ECC lifecycle hooks or bootstraps.
+
+## Cross-harness continuation
+
+When resuming existing repository work, use `cross-harness-handoff` to check shared ECC project memory before asking the user to repeat context. Verify recalled state against current Git/source/spec/ADR; the repository is authoritative. Pass its absolute Git root as `workspaceRoot` to ECC MCP calls. For a harness/session transfer, save a concise durable handoff through that skill. Details remain on-demand at `~/.agents/skills/cross-harness-handoff/SKILL.md`; `/handoff` remains Matt's generic tool.
+
+## Browser verification
+
+For relevant interactive browser/frontend QA, use a functional native browser tool first; otherwise load `agent-browser` on demand. Inside Antigravity, prefer its native Browser Subagent/Chrome DevTools. Use uniquely named isolated sessions and close your own session after use. Scale browser checks to the change; backend-only, browser-unrelated C++/C#, documentation-only, unrelated Git, and trivial non-browser work need no browser launch. This adds no mandatory methodology or browser MCP.

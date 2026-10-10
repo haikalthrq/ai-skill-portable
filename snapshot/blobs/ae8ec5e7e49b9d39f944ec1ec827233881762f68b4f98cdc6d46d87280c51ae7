@@ -1,0 +1,7 @@
+---
+description: Save or resume durable repository state across coding harnesses
+---
+
+Load `cross-harness-handoff` and follow the requested mode. Infer handoff versus resume from these arguments; use ECC shared project memory and verify against current Git/project artifacts.
+
+$ARGUMENTS

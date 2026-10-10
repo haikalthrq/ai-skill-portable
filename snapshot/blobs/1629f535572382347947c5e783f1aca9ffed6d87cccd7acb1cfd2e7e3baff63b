@@ -1,0 +1,7 @@
+---
+name: grill-with-docs
+description: Use for explicitly requested interviews or substantial ambiguous work with unresolved requirements, terminology, or design decisions worth preserving in ADRs or a glossary. Simple fixes do not need grilling.
+disable-model-invocation: true
+---
+
+Call the Skill tool twice, for "grilling" and "domain-modeling".

@@ -1,0 +1,32 @@
+---
+name: imagegen-frontend-web
+description: Generate website design-reference images, one horizontal image per section. Use for requested web comps/visual references, not ordinary UI coding or faithful reconstruction of an existing screenshot.
+---
+
+# Website reference image generation
+
+This specialist generates website design comps. It is not the default frontend coding workflow. Confirm that an image-generation capability actually exists; if unavailable, disclose it rather than pretending that text or code is an image.
+
+## Essential output contract
+
+- **One separate horizontal image per section, generated in its own call.** Never combine sections into one tall board/collage or omit the rest after one image. For sequential-only tools, deliver and label every section in order.
+- Preserve the source's scope defaults: hero = 1; landing/site template/product/portfolio = 6; full website/marketing site = 8 when the brief provides no count. Read the detailed count guidance for a multi-section request.
+- The user brief overrides aesthetic defaults. Pick audience, narrative/conversion purpose, hero scale and composition intentionally; avoid repeatedly defaulting to text-left/image-right. Maintain one palette/type/CTA/radius/media world across the entire set.
+- Images must be readable and implementation-friendly: genuine hierarchy, scale, spacing, controls and media treatment, not abstract mood art. Clear text and contrast, restrained first viewport, varied section rhythm and real visual assets are essential.
+- Create a consistent plan before rendering, honor requested counts and brand, inspect output quality, and regenerate unclear sections. Do not switch into application implementation unless the user separately requests that stage.
+
+## Read only the relevant detailed rules
+
+Original content and examples remain intact in [references/preserved-guidance.md](references/preserved-guidance.md). Use heading-scoped reads, not a full-file load on every request.
+
+| Task detail | Heading / original lines |
+|---|---|
+| Brief-to-direction, creative options | Baseline/variation, 78–314 |
+| Hero composition, text and negative space | Hero rules, 333–396 |
+| Counts, horizontal formats, continuity | Page slicing, 397–450; mandatory for a multi-section set |
+| Imagery, anti-patterns, typography, component rhythm | Sections 6–12, 451–705; select what the section needs |
+| Palette/material/media and site packs | Sections 13–15, 706–822 |
+| Consistency and final quality/response | Sections 16–19, 823–936; apply before delivery |
+| Examples or additional art-direction techniques | Sections 20–21 and 18, only when useful |
+
+Explicit style choices are preserved; they must not silently become the aesthetic of every coding task.

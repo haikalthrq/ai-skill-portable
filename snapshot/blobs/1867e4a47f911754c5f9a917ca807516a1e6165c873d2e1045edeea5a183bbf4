@@ -1,0 +1,13 @@
+---
+name: impeccable
+description: Primary frontend engineering for ordinary UI/components, UX quality review and faithful supplied-screenshot reconstruction. Preserve project stack/brand; whole-app redesign and image-generation workflows have dedicated specialists.
+version: 3.9.1
+---
+
+# Native frontend adapter
+
+Read the shared primary workflow at `~/.agents/skills/impeccable/SKILL.md` once for an applicable task. Expand the user's home with the host's path conventions; this is the canonical workflow, not a second design skill to invoke.
+
+Bind `<active-skill-base>` to this loaded native directory. Resolve `scripts/` and `reference/` from here, preserving this provider's macros, scripts and platform references. Do not stack style philosophies for ordinary UI. User/project brand and supplied screenshot contracts win.
+
+This provider's complete original instructions remain at [references/preserved-provider-guidance.md](references/preserved-provider-guidance.md). Read a relevant heading only for provider-specific detail or explicit management/full-menu requests. Do not load the entire old body by default. Names, native paths, command capabilities and dependencies remain intact.

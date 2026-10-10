@@ -1,0 +1,543 @@
+{
+  "snapshot_id": "c4e8d377987485a4b748d8d21da65d4a60f5ca8fb2ddb8567eebfc3b1b204625",
+  "created_utc": "2026-10-10T07:25:05.286395+00:00",
+  "discoverable_skills": 45,
+  "builtin_skills": [
+    "customize-opencode"
+  ],
+  "skills": [
+    {
+      "name": "agent-browser",
+      "description": "On-demand functional browser/UI testing, forms, screenshots and console/network investigation. Use when no equivalent native browser works or explicitly requested; native Antigravity/Codex tools take precedence.",
+      "definition_paths": [
+        ".agents/skills/agent-browser/SKILL.md",
+        ".claude/skills/agent-browser/SKILL.md"
+      ]
+    },
+    {
+      "name": "animate",
+      "description": "Emil animation implementation specialist. Automatically use to build new purposeful animations, motion or transitions with appropriate tools, properties, easing, duration, interruption, exit and reduced-motion behavior. Existing easing or interaction refinement uses emil-design-eng.",
+      "definition_paths": [
+        ".agents/skills/animate/SKILL.md"
+      ]
+    },
+    {
+      "name": "brandkit",
+      "description": "Generate brand identity/logo systems and guideline boards. Use for requested branding/identity visual assets, not general UI coding or website reconstruction.",
+      "definition_paths": [
+        ".agents/skills/brandkit/SKILL.md",
+        ".claude/skills/brandkit/SKILL.md"
+      ]
+    },
+    {
+      "name": "caveman",
+      "description": "Ultra-terse caveman communication mode. Use only when the user explicitly requests caveman/very terse replies, not merely technical context optimization.",
+      "definition_paths": [
+        ".agents/skills/caveman/SKILL.md",
+        ".claude/skills/caveman/SKILL.md"
+      ]
+    },
+    {
+      "name": "code-review",
+      "description": "Use for requested reviews, pre-merge/PR, or completion of significant implementation. Review against repository standards and the originating spec in separate subagents. Not after every tiny modification.",
+      "definition_paths": [
+        ".config/opencode/skills/code-review/SKILL.md"
+      ]
+    },
+    {
+      "name": "context7-mcp",
+      "description": "Optional Context7 MCP reference for external library/API docs. Use when requested; normal documentation-dependent work calls the existing MCP directly.",
+      "definition_paths": [
+        ".agents/skills/context7-mcp/SKILL.md"
+      ]
+    },
+    {
+      "name": "cross-harness-handoff",
+      "description": "Persist or resume repository work across coding harnesses. Use for switch harness, handoff, move to another agent/session, continue, resume, lanjut, or lanjutkan task sebelumnya; also check for a relevant handoff at the start of existing repository work. Verify shared ECC memory against current Git state before continuing.",
+      "definition_paths": [
+        ".agents/skills/cross-harness-handoff/SKILL.md",
+        ".claude/skills/cross-harness-handoff/SKILL.md",
+        ".cline/skills/cross-harness-handoff/SKILL.md",
+        ".gemini/config/skills/cross-harness-handoff/SKILL.md"
+      ]
+    },
+    {
+      "name": "customize-opencode",
+      "description": "Use ONLY when the user is editing or creating opencode's own configuration: opencode.json, opencode.jsonc, files under .opencode/, or files under ~/.config/opencode/. Also use when creating or fixing opencode agents, subagents, skills, plugins, MCP servers, or permission rules. Do not use for the user's own application code, or for any project that is not configuring opencode itself.",
+      "definition_paths": []
+    },
+    {
+      "name": "design-taste-frontend",
+      "description": "Alternative frontend design owner for clearly experimental, distinctive art direction, creative portfolios, cinematic or expressive marketing sites, and unconventional composition or typography. Select automatically from that intent; ordinary UI and neutral landing pages use Impeccable.",
+      "definition_paths": [
+        ".agents/skills/design-taste-frontend/SKILL.md",
+        ".claude/skills/design-taste-frontend/SKILL.md"
+      ]
+    },
+    {
+      "name": "design-taste-frontend-v1",
+      "description": "Legacy v1 taste workflow. Use only when explicitly requested or a project requires its exact prior behavior; not the ordinary frontend default.",
+      "definition_paths": [
+        ".agents/skills/design-taste-frontend-v1/SKILL.md",
+        ".claude/skills/design-taste-frontend-v1/SKILL.md"
+      ]
+    },
+    {
+      "name": "domain-modeling",
+      "description": "Supporting domain-model discipline for grill-with-docs or wayfinder. Use when called by those workflows or explicitly requested to sharpen terminology, edit a glossary, or record a meaningful ADR.",
+      "definition_paths": [
+        ".config/opencode/skills/domain-modeling/SKILL.md"
+      ]
+    },
+    {
+      "name": "doubt-driven-development",
+      "description": "Use ONLY for non-trivial high-risk or uncertain decisions involving auth/security, payments, destructive migrations/data loss, concurrency/correctness, difficult architecture, or unfamiliar high-impact code. Bounded fresh-context adversarial review. Ask the user before each cross-model escalation.",
+      "definition_paths": [
+        ".config/opencode/skills/doubt-driven-development/SKILL.md"
+      ]
+    },
+    {
+      "name": "emil-design-eng",
+      "description": "Emil Kowalski's motion and interaction-quality specialist. Automatically use to improve existing modal easing, transitions, micro-interactions, animation decisions or interaction polish. Supports the frontend owner; new animation construction uses animate.",
+      "definition_paths": [
+        ".agents/skills/emil-design-eng/SKILL.md"
+      ]
+    },
+    {
+      "name": "find-docs",
+      "description": "Optional external-library documentation helper. Prefer the existing Context7 MCP directly; use this helper when explicitly requested, without reinstalling its CLI.",
+      "definition_paths": [
+        ".agents/skills/find-docs/SKILL.md"
+      ]
+    },
+    {
+      "name": "find-skills",
+      "description": "Find/install agent skills when the user asks to extend capabilities. Not a routine prerequisite for coding, verification or optimizing already installed skills.",
+      "definition_paths": [
+        ".agents/skills/find-skills/SKILL.md",
+        ".claude/skills/find-skills/SKILL.md"
+      ]
+    },
+    {
+      "name": "full-output-enforcement",
+      "description": "Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.",
+      "definition_paths": [
+        ".agents/skills/full-output-enforcement/SKILL.md",
+        ".claude/skills/full-output-enforcement/SKILL.md"
+      ]
+    },
+    {
+      "name": "gpt-taste",
+      "description": "Cinematic GSAP/AIDA scrolltelling and gapless bento design. Use for an explicit motion-heavy/Awwwards request or this named style, not ordinary product UI.",
+      "definition_paths": [
+        ".agents/skills/gpt-taste/SKILL.md",
+        ".claude/skills/gpt-taste/SKILL.md"
+      ]
+    },
+    {
+      "name": "grill-with-docs",
+      "description": "Use for explicitly requested interviews or substantial ambiguous work with unresolved requirements, terminology, or design decisions worth preserving in ADRs or a glossary. Simple fixes do not need grilling.",
+      "definition_paths": [
+        ".config/opencode/skills/grill-with-docs/SKILL.md"
+      ]
+    },
+    {
+      "name": "grilling",
+      "description": "Supporting interview primitive. Use when called by grill-with-docs or wayfinder, or explicitly requested to stress-test a plan or decision. Investigate discoverable facts yourself; interview for unresolved human decisions.",
+      "definition_paths": [
+        ".config/opencode/skills/grilling/SKILL.md"
+      ]
+    },
+    {
+      "name": "handoff",
+      "description": "Use when moving to a fresh session, switching models, context has become long/noisy, or another agent must continue. Preserve decisions, status, changed files, verification, unresolved issues, and artifact pointers.",
+      "definition_paths": [
+        ".config/opencode/skills/handoff/SKILL.md"
+      ]
+    },
+    {
+      "name": "high-end-visual-design",
+      "description": "Agency-style glass, double-bezel components and fluid motion. Use only for that explicitly requested visual language; not a default aesthetic for all frontends.",
+      "definition_paths": [
+        ".agents/skills/high-end-visual-design/SKILL.md",
+        ".claude/skills/high-end-visual-design/SKILL.md"
+      ]
+    },
+    {
+      "name": "image-to-code",
+      "description": "Image-generation-first website implementation: generate references, analyze them, then build faithful code. Use for that explicit art-first workflow; supplied screenshot reconstruction belongs to the primary frontend workflow.",
+      "definition_paths": [
+        ".agents/skills/image-to-code/SKILL.md",
+        ".claude/skills/image-to-code/SKILL.md"
+      ]
+    },
+    {
+      "name": "imagegen-frontend-mobile",
+      "description": "Generate iOS/Android app-screen and flow concept images with coherent device framing. Images only; use for mobile visual concepts, not websites, responsive web coding or native app implementation.",
+      "definition_paths": [
+        ".agents/skills/imagegen-frontend-mobile/SKILL.md",
+        ".claude/skills/imagegen-frontend-mobile/SKILL.md"
+      ]
+    },
+    {
+      "name": "imagegen-frontend-web",
+      "description": "Generate website design-reference images, one horizontal image per section. Use for requested web comps/visual references, not ordinary UI coding or faithful reconstruction of an existing screenshot.",
+      "definition_paths": [
+        ".agents/skills/imagegen-frontend-web/SKILL.md",
+        ".claude/skills/imagegen-frontend-web/SKILL.md"
+      ]
+    },
+    {
+      "name": "impeccable",
+      "description": "Primary frontend engineering for ordinary UI/components, UX quality review and faithful supplied-screenshot reconstruction. Preserve project stack/brand; whole-app redesign and image-generation workflows have dedicated specialists.",
+      "definition_paths": [
+        ".agents/skills/impeccable/SKILL.md",
+        ".claude/skills/impeccable/SKILL.md",
+        ".gemini/config/skills/impeccable/SKILL.md",
+        ".gemini/skills/impeccable/SKILL.md",
+        ".opencode/skills/impeccable/SKILL.md"
+      ]
+    },
+    {
+      "name": "incremental-implementation",
+      "description": "Use for substantial or multi-file implementation in small reviewable slices: implement, verify, then continue. Avoid giant speculative changes. Trivial one-line changes need no artificial slicing or extra process.",
+      "definition_paths": [
+        ".config/opencode/skills/incremental-implementation/SKILL.md"
+      ]
+    },
+    {
+      "name": "industrial-brutalist-ui",
+      "description": "Swiss industrial/blueprint or tactical CRT interface styling. Use for an explicitly requested brutalist/telemetry aesthetic, not all dashboards.",
+      "definition_paths": [
+        ".agents/skills/industrial-brutalist-ui/SKILL.md",
+        ".claude/skills/industrial-brutalist-ui/SKILL.md"
+      ]
+    },
+    {
+      "name": "karpathy-guidelines",
+      "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.",
+      "definition_paths": [
+        ".config/opencode/skills/karpathy-guidelines/SKILL.md"
+      ]
+    },
+    {
+      "name": "minimalist-ui",
+      "description": "Warm editorial, monochrome/pastel and flat UI styling. Use for that explicitly requested aesthetic or this named skill, not every minimalist product task.",
+      "definition_paths": [
+        ".agents/skills/minimalist-ui/SKILL.md",
+        ".claude/skills/minimalist-ui/SKILL.md"
+      ]
+    },
+    {
+      "name": "no-ai-slop",
+      "description": "Edit drafts into sharper, more human writing while preserving the writer's personal voice, or detect AI-slop patterns without rewriting. Use when the user wants a draft clearer, more direct, more opinionated, or less AI-sounding, or asks whether writing reads as AI.",
+      "definition_paths": [
+        ".agents/skills/no-ai-slop/SKILL.md",
+        ".claude/skills/no-ai-slop/SKILL.md",
+        ".gemini/config/skills/no-ai-slop/SKILL.md",
+        ".gemini/skills/no-ai-slop/SKILL.md"
+      ]
+    },
+    {
+      "name": "officecli",
+      "description": "Create, analyze, proofread, and modify Office documents (.docx, .xlsx, .pptx) using the officecli CLI tool. Use when the user wants to create, inspect, check formatting, find issues, add charts, or modify Office documents.",
+      "definition_paths": [
+        ".agents/skills/officecli/SKILL.md",
+        ".claude/skills/officecli/SKILL.md"
+      ]
+    },
+    {
+      "name": "pick-ui-library",
+      "description": "Pick the right library for a given frontend task from a curated, opinionated list — numbers, OTP inputs, charts, command menus, virtualization, drag and drop, toasts, state, styling, and more. Only runs when explicitly invoked; it does not trigger on its own.",
+      "definition_paths": [
+        ".agents/skills/pick-ui-library/SKILL.md"
+      ]
+    },
+    {
+      "name": "prototype",
+      "description": "Supporting prototype workflow for wayfinder tickets, or explicitly requested throwaway logic/state or UI exploration. Answer a specific design question with a cheap runnable artifact.",
+      "definition_paths": [
+        ".config/opencode/skills/prototype/SKILL.md"
+      ]
+    },
+    {
+      "name": "redesign-existing-projects",
+      "description": "Audit and visually redesign an existing website/app while preserving stack, brand and functionality. Use for a requested redesign, not a small routine component change.",
+      "definition_paths": [
+        ".agents/skills/redesign-existing-projects/SKILL.md",
+        ".claude/skills/redesign-existing-projects/SKILL.md"
+      ]
+    },
+    {
+      "name": "research",
+      "description": "Supporting research workflow for wayfinder research tickets, or explicitly requested delegated primary-source research. Capture cited findings using the repository's existing note conventions.",
+      "definition_paths": [
+        ".config/opencode/skills/research/SKILL.md"
+      ]
+    },
+    {
+      "name": "retro",
+      "description": "Use for requested retrospectives or unusually difficult/inefficient sessions. Suggest improvements to rules, navigation, checks, tooling, and MCP access; present findings before making environment changes.",
+      "definition_paths": [
+        ".config/opencode/skills/retro/SKILL.md"
+      ]
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "description": "Use ONLY when explicitly requested, or when code-review/wayfinder needs missing per-repo tracker/doc configuration. Inspect existing conventions, propose setup, and confirm before editing. Not a global bootstrap.",
+      "definition_paths": [
+        ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md"
+      ]
+    },
+    {
+      "name": "stitch-design-taste",
+      "description": "Create semantic DESIGN.md guidance for Google Stitch handoff. Use for a Stitch/design-system export request, not ordinary frontend implementation.",
+      "definition_paths": [
+        ".agents/skills/stitch-design-taste/SKILL.md",
+        ".claude/skills/stitch-design-taste/SKILL.md"
+      ]
+    },
+    {
+      "name": "systematic-debugging",
+      "description": "Use for non-trivial bugs, unexplained failures, regressions, flaky behavior, or unclear root causes. Reproduce and investigate systematically before proposing fixes.",
+      "definition_paths": [
+        ".config/opencode/skills/systematic-debugging/SKILL.md"
+      ]
+    },
+    {
+      "name": "test-driven-development",
+      "description": "Use ONLY when systematic-debugging calls for a failing regression test, or when the user explicitly requests test-driven development. On-demand dependency; not an automatic workflow for every feature or edit.",
+      "definition_paths": [
+        ".config/opencode/skills/test-driven-development/SKILL.md"
+      ]
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "description": "Supporting design intelligence for design-system exploration, style comparison, typography and palette research, industry-specific UI patterns, and a new project's visual direction. Automatically use when research materially helps; assist Impeccable or Taste without becoming another primary design owner.",
+      "definition_paths": [
+        ".opencode/skills/ui-ux-pro-max/SKILL.md"
+      ]
+    },
+    {
+      "name": "unified-memory",
+      "description": "Share durable, inspectable context and handoffs between Claude, Codex, Hermes, Cursor, OpenCode, and other agents through the local ECC Memory Vault. Use when an agent must save work state, transfer context, resume another agent's task, or search shared project knowledge.",
+      "definition_paths": [
+        ".agents/skills/unified-memory/SKILL.md",
+        ".claude/skills/unified-memory/SKILL.md",
+        ".cline/skills/unified-memory/SKILL.md",
+        ".gemini/config/skills/unified-memory/SKILL.md"
+      ]
+    },
+    {
+      "name": "verification-before-completion",
+      "description": "Use before claiming a coding task fixed, complete, or passing. Run appropriate current tests, build, runtime, lint, typecheck, or configuration checks; inspect results and state exactly what they prove.",
+      "definition_paths": [
+        ".config/opencode/skills/verification-before-completion/SKILL.md"
+      ]
+    },
+    {
+      "name": "wayfinder",
+      "description": "Use ONLY for explicitly requested decision maps for large multi-session projects with unclear major architectural/product decisions. Resolve decisions before implementation. Not for ordinary features or bug fixes.",
+      "definition_paths": [
+        ".config/opencode/skills/wayfinder/SKILL.md"
+      ]
+    },
+    {
+      "name": "writing-for-agents",
+      "description": "Supporting writing reference called by retro. Use when that workflow calls it, or when explicitly requested for agent-facing skills, rules, or documentation. Keep routine work free of extra workflow stages.",
+      "definition_paths": [
+        ".config/opencode/skills/writing-for-agents/SKILL.md"
+      ]
+    }
+  ],
+  "definition_paths": 75,
+  "directory_aliases": 23,
+  "logical_files": 1146,
+  "unique_content_blobs": 858,
+  "logical_bytes": 14452745,
+  "stored_blob_bytes": 8804835,
+  "portability_transform_counts": {
+    "reference-companion": 1,
+    "vendored-runtime-path": 1,
+    "explicit-global-discovery": 1,
+    "merged-native-plugins": 1,
+    "portable-mcp-command": 1,
+    "sanitized-config": 2,
+    "home-rebase": 1,
+    "project-rebase:ringkas": 1,
+    "portable-plugin-paths": 1
+  },
+  "dependencies": {
+    "installed_tools": {
+      "opencode-ai": "1.18.35",
+      "agent-browser": "0.38.2",
+      "ui-ux-pro-max-cli": "2.15.0",
+      "ecc-universal": "2.2.3"
+    },
+    "vendored_ecc_dependencies": {
+      "ajv": "8.20.0",
+      "require-from-string": "2.0.2",
+      "json-schema-traverse": "1.0.0",
+      "fast-uri": "3.1.8",
+      "fast-deep-equal": "3.1.3"
+    },
+    "plugin_api": "1.17.11",
+    "python": ">=3.10",
+    "node": ">=22",
+    "optional_tools": {
+      "dcg": "0.6.7",
+      "graphify": "0.9.5",
+      "officecli": "source installation currently has a missing .NET assembly"
+    }
+  },
+  "observed_prerequisites": {
+    "node": "v24.18.0",
+    "python": "3.14.6",
+    "git": "git version 2.55.0.windows.1"
+  },
+  "required_environment": [
+    "CONTEXT7_API_KEY"
+  ],
+  "optional_projects": {
+    "ringkas": "$HOME/Projects/RINGKAS; project source/data are not included"
+  },
+  "excluded": [
+    {
+      "path": ".opencode/skills/ui-ux-pro-max/scripts/__pycache__",
+      "reason": "cache or unrelated dependency tree"
+    },
+    {
+      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/json-schema-traverse/.github",
+      "reason": "non-runtime package tests/examples"
+    },
+    {
+      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/json-schema-traverse/spec/fixtures",
+      "reason": "non-runtime package tests/examples"
+    },
+    {
+      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/fast-uri/.github",
+      "reason": "non-runtime package tests/examples"
+    },
+    {
+      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/fast-uri/test",
+      "reason": "non-runtime package tests/examples"
+    }
+  ],
+  "aliases": [
+    {
+      "path": ".claude/skills/agent-browser",
+      "target": ".agents/skills/agent-browser",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/brandkit",
+      "target": ".agents/skills/brandkit",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/caveman",
+      "target": ".agents/skills/caveman",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/cross-harness-handoff",
+      "target": ".agents/skills/cross-harness-handoff",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/design-taste-frontend",
+      "target": ".agents/skills/design-taste-frontend",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/design-taste-frontend-v1",
+      "target": ".agents/skills/design-taste-frontend-v1",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/find-skills",
+      "target": ".agents/skills/find-skills",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/full-output-enforcement",
+      "target": ".agents/skills/full-output-enforcement",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/gpt-taste",
+      "target": ".agents/skills/gpt-taste",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/high-end-visual-design",
+      "target": ".agents/skills/high-end-visual-design",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/image-to-code",
+      "target": ".agents/skills/image-to-code",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/imagegen-frontend-mobile",
+      "target": ".agents/skills/imagegen-frontend-mobile",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/imagegen-frontend-web",
+      "target": ".agents/skills/imagegen-frontend-web",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/industrial-brutalist-ui",
+      "target": ".agents/skills/industrial-brutalist-ui",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/minimalist-ui",
+      "target": ".agents/skills/minimalist-ui",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/no-ai-slop",
+      "target": ".agents/skills/no-ai-slop",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/redesign-existing-projects",
+      "target": ".agents/skills/redesign-existing-projects",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/stitch-design-taste",
+      "target": ".agents/skills/stitch-design-taste",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".claude/skills/unified-memory",
+      "target": ".agents/skills/unified-memory",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".cline/skills/cross-harness-handoff",
+      "target": ".agents/skills/cross-harness-handoff",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".cline/skills/unified-memory",
+      "target": ".agents/skills/unified-memory",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".gemini/config/skills/cross-harness-handoff",
+      "target": ".agents/skills/cross-harness-handoff",
+      "source_kind": "junction"
+    },
+    {
+      "path": ".gemini/config/skills/unified-memory",
+      "target": ".agents/skills/unified-memory",
+      "source_kind": "junction"
+    }
+  ]
+}

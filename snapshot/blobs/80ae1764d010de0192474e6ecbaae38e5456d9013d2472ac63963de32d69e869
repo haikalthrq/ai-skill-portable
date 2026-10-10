@@ -1,0 +1,46 @@
+---
+name: impeccable
+description: Primary frontend engineering for ordinary UI/components, UX quality review and faithful supplied-screenshot reconstruction. Preserve project stack/brand; whole-app redesign and image-generation workflows have dedicated specialists.
+version: 3.9.1
+---
+
+# Primary frontend engineering
+
+Use this one workflow for ordinary product UI/components/forms, responsive implementation, scoped refinements and UI quality review. It also handles a supplied screenshot as a fixed implementation contract. Do not simultaneously load other design philosophies for the same ordinary task. An explicit specialist/style request wins; whole-app redesign uses `redesign-existing-projects`, image-only requests use the appropriate imagegen skill, and generated-image-first implementation uses `image-to-code`.
+
+## Setup and scope
+
+1. Inspect the requested source surface and existing tokens/components/stack. User-approved requirements, supplied screenshots and existing brand/design system win over aesthetic heuristics. Use the project's framework/icons/fonts instead of forcing a new family, palette, motion library or style.
+2. Run `node <active-skill-base>/scripts/context.mjs` once per session with cwd at the actual project; add `--target <path>` for a monorepo surface. Use the loaded skill's base, including a native adapter's base. Do not rerun output already available. Its PRODUCT/DESIGN and platform directives are context, not a reason to change the user's scope. A missing PRODUCT.md never blocks a scoped task. Do not initialize a product, generate a palette/mock, pin commands or enable hooks for a small existing-component change.
+3. Read exactly one matching register: [product](reference/product.md) for task-focused app/dashboard/forms, or [brand](reference/brand.md) for marketing/portfolio. For native iOS/Android, read that platform reference; adaptive reads both. Resolve these paths from the active provider base if one was loaded.
+4. Existing brand colors skip palette generation. For an actually new identity with no committed/user-supplied colors, preserve the original `scripts/palette.mjs` setup. Do not turn a user's fixed screenshot into an unrequested palette experiment.
+5. Explicit `craft`, `shape`, `init`, or a substantial greenfield design/build follows its existing command reference. Preserve its foundation, user-confirmation and harness-gated image/mock approval gates; do not compress them. No native image-generation tool means disclose the skip, not fake execution. Ordinary scoped component work is not automatically the full craft/init flow.
+
+## Essential implementation bar
+
+- Semantic HTML, visible labels, correct accessible names, keyboard/touch paths, focus-visible states and useful feedback. Keep state vocabulary coherent: default/hover/focus/disabled/loading/empty/error/success when applicable.
+- Verify contrast (4.5:1 body, 3:1 large text), readable measure, responsive structure, long text/overflow and realistic content. Never invent verified data, user consent, passing tests or generated assets.
+- Reuse existing type/token/component vocabulary; layout follows the task. A product may use system fonts, Inter, familiar navigation and dense tables. Explicit brand/style choices are not vetoed by generic anti-slop defaults.
+- Motion is optional unless the brief needs it; communicate feedback/state without gating content visibility, honor reduced motion, and bound expensive effects. Preserve native controls/portals and meaningful stacking instead of decorative complexity.
+- Keep changes surgical and dependencies checked. Run appropriate current repository verification; use functional native browser tools first, Agent Browser as the existing on-demand fallback. Report what was actually checked. Do not manufacture defects or perform exhaustive browser testing for a tiny copy change.
+
+## Supplied screenshot reconstruction
+
+Read the actual image. Extract layout geometry, type scale, spacing, palette, component states and assets; retain its copy and major composition. The supplied reference wins over generic visual bans. Use semantic responsive code and existing stack; explain missing assets and viewport assumptions. Do not generate a replacement mock or load `image-to-code` merely because the request contains an image.
+
+## Selective commands and detail
+
+Read only the command that matches the request, not every reference or the whole historical guide:
+
+`teach` is the existing deprecated alias for `init`: load `reference/init.md` and follow that flow, including when PRODUCT.md already exists. Do not look for a separate `teach.md` or fall back to a generic design invocation.
+
+| Intent | Existing reference |
+|---|---|
+| Substantial build / shape / context setup | `reference/craft.md`, `shape.md`, or `init.md` as requested |
+| UI evaluation / technical quality | `reference/critique.md` or `audit.md`; native audit variant only for native platforms |
+| Scoped polish, accessibility/states, copy | `reference/polish.md`, `harden.md`, or `clarify.md` |
+| Specific layout/type/color/motion/device/performance work | Matching `reference/layout.md`, `typeset.md`, `colorize.md`, `animate.md`, `adapt.md`, or `optimize.md` |
+| Other existing commands (`document`, `extract`, `onboard`, `bolder`, `quieter`, `distill`, `delight`, `overdrive`, `live`) | Matching `reference/<command>.md` |
+| Explicit `pin`, `unpin`, `hooks`, full menu or historical provider-specific guardrails | [Preserved provider guidance](references/preserved-provider-guidance.md); read that relevant heading only |
+
+All original provider guidance and local Codex-specific adaptations remain in the preserved reference. Native adapters retain their original copies and script/reference bindings. Read detailed anti-patterns when evaluating that issue; do not load the complete source or large command flows for a one-word label suggestion. Existing dependencies/scripts were not removed or rewritten.

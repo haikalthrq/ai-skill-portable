@@ -1,0 +1,7 @@
+* -text
+*.py text eol=lf
+*.json text eol=lf
+README.md text eol=lf
+MIGRATION-BRIEF.md text eol=lf
+# Preserve installed byte identities, including original whitespace and CRLF.
+snapshot/blobs/* -text -whitespace

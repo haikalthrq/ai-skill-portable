@@ -1,0 +1,119 @@
+#!/usr/bin/env node
+// Thin workspace-binding adapter; ECC owns all memory operations and validation.
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
+import { once } from 'node:events';
+
+const config = JSON.parse(fs.readFileSync(path.join(os.homedir(), '.config/cross-harness-memory/runtime.json'), 'utf8'));
+const { createMemoryMcpService } = await import(pathToFileURL(path.join(config.runtimeRoot, 'scripts/memory-mcp.mjs')));
+const service = createMemoryMcpService();
+const MAX_FRAME = 1024 * 1024;
+const MAX_PENDING = 2 * MAX_FRAME;
+const MAX_MESSAGES = 64;
+
+function gitRoot(directory) {
+  if (typeof directory !== 'string' || !directory.trim() || !path.isAbsolute(directory)) {
+    throw new Error('workspaceRoot must be the absolute path of the current repository.');
+  }
+  return fs.realpathSync(execFileSync('git', ['-C', directory, 'rev-parse', '--show-toplevel'], {
+    encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 10000,
+  }).trim());
+}
+
+let boundRoot;
+try { boundRoot = gitRoot(process.cwd()); } catch { /* IDEs may start from home. */ }
+
+async function handle(message) {
+  if (!message || typeof message !== 'object' || Array.isArray(message)) return service.handle(message);
+  if (message.method === 'tools/call' && message.params && typeof message.params === 'object') {
+    const supplied = message.params.arguments;
+    if (supplied !== undefined && (supplied === null || typeof supplied !== 'object' || Array.isArray(supplied))) {
+      return service.handle(message); // Preserve upstream schema rejection.
+    }
+    const args = { ...(supplied || {}) };
+    const requested = args.workspaceRoot;
+    delete args.workspaceRoot;
+    try {
+      const root = requested !== undefined ? gitRoot(requested) : boundRoot;
+      if (!root) throw new Error('Workspace unavailable. Pass the current Git root as workspaceRoot or use ecc memory from that repository.');
+      if (boundRoot && root !== boundRoot) throw new Error('This MCP process is bound to a different repository. Restart it for the new workspace.');
+      boundRoot = root;
+      // Use ECC's normal Git-root resolver and repository trust boundary.
+      // A vault override would rebase that boundary onto a redirected junction.
+      process.chdir(root);
+      delete process.env.ECC_MEMORY_PROJECT_ROOT;
+      process.env.ECC_MEMORY_USER_ROOT = path.join(os.homedir(), '.ecc/memory');
+      message = { ...message, params: { ...message.params, arguments: args } };
+    } catch (error) {
+      return { jsonrpc: '2.0', id: message.id ?? null, result: { isError: true, content: [{ type: 'text', text: JSON.stringify({ error: { code: 'WORKSPACE_BINDING_REQUIRED', message: error.message.startsWith('workspaceRoot') || error.message.startsWith('Workspace') || error.message.startsWith('This MCP') ? error.message : 'workspaceRoot must identify an accessible Git repository.' } }) }] } };
+    }
+  }
+  const response = await service.handle(message);
+  if (message.method === 'tools/list' && response?.result?.tools) {
+    response.result.tools = response.result.tools.map(tool => ({
+      ...tool,
+      description: tool.description + ' Pass workspaceRoot as the current absolute Git root; the process pins to that repository.',
+      inputSchema: { ...tool.inputSchema, properties: { ...tool.inputSchema.properties, workspaceRoot: { type: 'string', minLength: 1, description: 'Absolute current Git checkout root. Required when the IDE launches MCP outside a repository.' } } },
+    }));
+  }
+  return response;
+}
+
+async function send(message) {
+  if (message && !process.stdout.write(JSON.stringify(message) + '\n')) await once(process.stdout, 'drain');
+}
+
+let pending = Buffer.alloc(0);
+let discarding = false;
+let queuedBytes = 0;
+let queuedMessages = 0;
+let overloaded = false;
+let queue = Promise.resolve();
+function enqueue(line, failure) {
+  if (overloaded || queuedMessages >= MAX_MESSAGES || queuedBytes + line.length > MAX_PENDING) {
+    overloaded = true;
+    process.stdin.pause();
+    return;
+  }
+  queuedBytes += line.length;
+  queuedMessages++;
+  queue = queue.then(async () => {
+    try {
+      if (failure) await send(failure);
+      else await send(await handle(JSON.parse(line.toString('utf8'))));
+    } catch (error) {
+      await send({ jsonrpc: '2.0', id: null, error: { code: error instanceof SyntaxError ? -32700 : -32603, message: error instanceof SyntaxError ? 'Invalid JSON.' : 'Memory adapter request failed.' } });
+    } finally {
+      queuedBytes -= line.length;
+      queuedMessages--;
+      if (queuedMessages === 0 && overloaded) {
+        overloaded = false;
+        await send({ jsonrpc: '2.0', id: null, error: { code: -32000, message: 'MCP transport queue limit exceeded.' } });
+        process.stdin.resume();
+      }
+    }
+  });
+}
+process.stdin.on('data', chunk => {
+  for (let cursor = 0; cursor < chunk.length;) {
+    const newline = chunk.indexOf(10, cursor);
+    const end = newline < 0 ? chunk.length : newline;
+    const segment = chunk.subarray(cursor, end);
+    if (!discarding) {
+      if (pending.length + segment.length > MAX_FRAME) {
+        pending = Buffer.alloc(0);
+        discarding = true;
+        enqueue(Buffer.alloc(0), { jsonrpc: '2.0', id: null, error: { code: -32700, message: 'JSON-RPC message is too large.' } });
+      } else { pending = Buffer.concat([pending, segment]); }
+    }
+    if (newline < 0) break;
+    if (!discarding) enqueue(pending);
+    pending = Buffer.alloc(0);
+    discarding = false;
+    cursor = newline + 1;
+  }
+});
+process.stdin.on('end', () => { if (pending.length && !discarding) enqueue(pending); });

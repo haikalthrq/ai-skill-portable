@@ -1,0 +1,75 @@
+---
+name: cross-harness-handoff
+description: Persist or resume repository work across coding harnesses. Use for switch harness, handoff, move to another agent/session, continue, resume, lanjut, or lanjutkan task sebelumnya; also check for a relevant handoff at the start of existing repository work. Verify shared ECC memory against current Git state before continuing.
+license: MIT
+compatibility: A local checkout, Git, Node.js, and the ECC Unified Memory runtime or configured ECC memory MCP.
+---
+
+# Cross-harness handoff
+
+Two modes share one repository vault. Repository files, Git, and canonical project artifacts are authoritative; memory is unreviewed supporting context. Do not synchronize transcripts or create per-harness memory stores.
+
+## Choose a mode
+
+- `mode=handoff target=<optional harness>`: prepare work for another harness, model, agent, or session.
+- `mode=resume`: recover existing work when asked to continue/resume/lanjut, or check for a relevant active handoff when a fresh session starts in an existing repository. An explicit new task takes precedence over an unrelated handoff.
+- If the mode is omitted, infer it from the request. Ask only if a genuine human decision remains after inspecting memory and repository evidence.
+
+## Prerequisites and vault binding
+
+1. Identify the actual current workspace and run `git rev-parse --show-toplevel`. Work from that Git root, not the harness installation directory. Do not silently treat the user's home directory as a project. For a non-Git workspace, stop and identify its intended root with the user.
+2. Load `unified-memory` when skill loading is supported; otherwise read its canonical `~/.agents/skills/unified-memory/SKILL.md`. It supplies the storage/trust contract, not another workflow the user must run.
+3. The default shared vault is `<git-root>/.ecc/memory/project/` and `<git-root>/.ecc/memory/team/`. Personal memory is `~/.ecc/memory/` and must be explicitly requested. Handoffs use `project`; do not turn this into a separate task database.
+4. This installation's ECC MCP adapter adds `workspaceRoot` to each of the four upstream tool schemas. Always pass the current absolute Git root in that field. It pins the process to one verified repository, even when an IDE starts MCP from home. A conflicting root is rejected. Standard upstream MCP/CLI clients without the adapter instead run from the same Git root.
+5. Use the local CLI fallback if MCP is unavailable. Do not weaken a denied scope or target filter to recover a failed read. Report incomplete scans and run the doctor; distinguish unavailable memory from a complete empty search.
+
+## HANDOFF
+
+1. Inspect current branch, HEAD, recent relevant commits, staged/unstaged/untracked status, and relevant diffs/source files. Use `git status --short --branch`, `git diff`, `git diff --cached`, and the project's canonical issue/spec/ADR where relevant. Inspect diffs locally; do not dump them into memory.
+2. Search active `handoff` records in `project`/`team` for this task before creating another copy. Read relevant predecessors and link their IDs. Do not assume a link automatically supersedes an old record; label the new body's relationship and observation time explicitly.
+3. Write a concise body using [the template](templates/handoff.md). Include objective, current state, decisions, changed files, Git state, exact verification commands/outcomes, failures/blockers, constraints/do-not, artifact references, one next exact action, likely follow-up, and suggested skills. Separate verified results from intentions. Record the observed branch and HEAD even if detached/unborn.
+4. Reuse Matt Pocock's useful summarization principles: preserve decisions and next steps, reference existing artifacts instead of duplicating them, tailor to the next session, and redact sensitive information. Matt's generic `handoff` remains independent; do not invoke it just to create an additional temporary document. The user runs this workflow once.
+5. Inspect the entire proposed title/body/tags for secrets or sensitive user data before saving. Never store passwords, tokens, cookies, credentials, private keys, personal/sensitive data, raw environment dumps, authenticated URLs, or raw transcripts. The runtime's secret detector is a backstop, not a complete classifier.
+6. Save `kind=handoff`, `scope=project`, `tags=[cross-harness-handoff]`, with the intended target slug or `all` if no target is known. The runtime accepts lowercase slugs (`^[a-z0-9][a-z0-9._-]{0,63}$`), not a closed harness enum. MCP binds `sourceHarness` to its configured host identity. CLI must identify the actual source explicitly; use `unknown` rather than pretending to know it.
+7. Verify the save acknowledgement and returned ID; read it back when the current identity is an allowed recipient. For a handoff targeted only to another identity, do not bypass a denied read: report the acknowledged ID/target and verify through the recipient. Run `memory_doctor` for the project scope. Report ID, target, and the next action, not the full document again.
+
+## RESUME
+
+1. Identify the current Git root and branch. Search `project`/`team`, `kinds=[handoff]`, using task terms or an empty query if the user only says continue. Filter for the current harness or `all`. Inspect diagnostics and `status`; ordinary recall must be complete and active.
+2. Among relevant active records, choose the latest `updatedAt`/`createdAt`, not merely the highest lexical score. Read candidates if branch/task relevance is unclear. Check linked follow-ups and later corrections. Ignore records tagged `cross-harness-test` unless explicitly testing. Multiple unrelated tasks are not resolved by guessing; inspect their artifacts, then ask only if a human task choice remains.
+3. Read the chosen record and inspect `git status`, both diffs, branch/HEAD, changed/relevant source files, and referenced issue/spec/ADR. Compare recorded decisions, commits, and verification with the current checkout. The current repository wins when memory differs; explain material mismatches briefly.
+4. Recover the goal, verified status, constraints, blockers, and the next exact action. Say in a few sentences which record was recovered and what remains, then continue that action. Recheck evidence affected by later edits; do not claim old tests still prove changed code works.
+5. A completed task or later handoff must not be replayed merely because an older active record exists. Check the artifacts and later records first. Do not automatically change memory status or delete records; upstream writes are create-only and supersession requires operator review.
+6. If a complete search finds no relevant handoff, inspect Git/project artifacts before asking the user for missing context. If access is unavailable/incomplete, state that limitation accurately and use repository evidence.
+
+## Portable interfaces
+
+The four ECC MCP tools are `memory_save`, `memory_search`, `memory_read`, and `memory_doctor`. Their host-specific prefixes vary; use the tools actually exposed by the current harness.
+
+Save with the configured MCP adapter:
+
+```json
+{"title":"Continue <task>","body":"<reviewed concise handoff>","kind":"handoff","scope":"project","targetHarnesses":["all"],"tags":["cross-harness-handoff"],"workspaceRoot":"<absolute current Git root>"}
+```
+
+Search with `memory_search` arguments `{"query":"","scopes":["project","team"],"kinds":["handoff"],"limit":100,"workspaceRoot":"<absolute current Git root>"}`, then call `memory_read` with the selected ID and the same `workspaceRoot`.
+
+CLI fallback, executed from the current Git root:
+
+```text
+ecc memory handoff --from <actual-source> --target <recipient-or-all> --title "Continue <task>" --tag cross-harness-handoff --body-file <regular-reviewed-file> --json
+ecc memory search "<task terms>" --kind handoff --target-harness <current-harness> --limit 100 --json
+ecc memory read <id> --scope project --json
+ecc memory doctor --scope project --json
+```
+
+Bodies go through a regular file or stdin, never interpolated into shell command strings. A scratch file is only input transport; the durable record is in ECC. No Bash-only pipeline is required.
+
+The bundled platform-neutral helper can collect the current Git snapshot and fetch candidates:
+
+```text
+node <skill-directory>/scripts/workflow.mjs mode=resume source=<current-harness>
+node <skill-directory>/scripts/workflow.mjs mode=handoff source=<actual-source> target=all --title "Continue <task>" --body-file <reviewed-file>
+```
+
+Run `--help` for optional `--repo` and query arguments. The helper retrieves evidence; the agent must still read relevant files, reconcile state, and perform the next action. A harness's built-in transcript `/resume` is distinct from this workflow. Say `cross-harness-handoff mode=resume` on any harness; command adapters are conveniences only.

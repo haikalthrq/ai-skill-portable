@@ -1,0 +1,11 @@
+# Local-only state. Published snapshots and sanitized reports are explicit.
+.work/
+__pycache__/
+*.pyc
+.env
+.env.*
+auth.json
+*.pem
+*.key
+node_modules/
+.ecc/memory/project/

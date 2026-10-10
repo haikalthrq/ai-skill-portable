@@ -1,0 +1,17 @@
+# Windows browser session and process handling
+
+These are the tested local compatibility rules, not an additional methodology or installed wrapper.
+
+1. A newly spawned Agent Browser daemon can retain captured pipe handles after the foreground CLI exits. For a complete known smoke-test flow, use the official `batch` command with `close` last so the output stream can finish. Keep batch's default continue-on-error behavior enabled so cleanup is attempted after a failed step.
+2. For incremental flows, capture the foreground CLI to real log files and wait for its PID rather than inherited pipe EOF, using the host's existing shell/process facilities. Do not add a wrapper, plugin or MCP merely to automate this.
+3. Always use your own unique `--session`. Keep `--idle-timeout 5m` and other daemon-owned flags identical on every command, including close. Changing/omitting those flags can restart the daemon and discard transient page state.
+4. Adapt quoting to PowerShell/native Windows argument handling. String-command batch arguments avoid complex JSON quoting; labels and paths with spaces must retain their quotes through native argument parsing. Read actual failure output and verify the resulting field value/screenshot, not the intended command.
+5. Close your named session even after failure. Close acknowledgement is asynchronous; allow a short bounded grace period and verify absence from `session list`. Never close other agents' sessions with `close --all`. The daemon owns its launched Chrome tree; external/personal browsers remain separately owned.
+
+Example of a complete short pass:
+
+```text
+agent-browser --session harness-task-unique --idle-timeout 5m batch "open https://example.com" "snapshot -i" "close"
+```
+
+The working runtime reuses a supported Chrome executable with a fresh isolated context; it does not need personal profiles or an authenticated browser attachment. No browser/dashboard/MCP is started at system startup. The idle timeout is a backstop, not a substitute for explicit cleanup.

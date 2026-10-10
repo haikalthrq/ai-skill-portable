@@ -1,0 +1,7 @@
+---
+description: Remove AI slop while preserving personal voice, or detect AI-slop patterns
+---
+
+Use the `no-ai-slop` skill to edit drafts or detect AI slop patterns.
+
+$ARGUMENTS

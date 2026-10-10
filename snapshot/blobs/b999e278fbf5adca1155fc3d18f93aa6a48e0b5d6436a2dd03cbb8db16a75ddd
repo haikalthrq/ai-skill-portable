@@ -1,0 +1,7 @@
+---
+description: Resume the latest relevant cross-harness handoff and reconcile Git state
+---
+
+Load `cross-harness-handoff` in mode=resume. Recover relevant shared ECC memory, verify it against current Git/source/spec/ADR, briefly report recovered state, and continue the next exact action.
+
+$ARGUMENTS

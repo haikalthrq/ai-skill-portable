@@ -1,0 +1,35 @@
+---
+name: design-taste-frontend
+description: Alternative frontend design owner for clearly experimental, distinctive art direction, creative portfolios, cinematic or expressive marketing sites, and unconventional composition or typography. Select automatically from that intent; ordinary UI and neutral landing pages use Impeccable.
+---
+
+# Art-directed marketing frontend
+
+Use this alternative primary when a marketing/portfolio brief clearly calls for distinctive, experimental or expressive art direction, or explicitly requests this workflow. Ordinary frontend, neutral landing pages and existing-UI redesign/refinement default to `impeccable` under the OpenCode routing policy. Select one design owner, not a stack of competing philosophies; relevant research/motion specialists may assist. User-approved direction and existing brand/stack take precedence over defaults.
+
+## Essential workflow
+
+1. Infer page kind, audience, assets, references, accessibility constraints and preservation mode. State a one-line design read. Investigate discoverable facts first; ask only if a consequential visual choice genuinely diverges.
+2. Set design variance, motion and density from the brief; they are contextual, not a universal aesthetic. Read the relevant detailed rules below before applying a technique.
+3. Inspect installed dependencies, existing design system and source. Preserve the stack/version and one coherent token/icon system. Never invent an official design-system package or silently install a new framework.
+4. Preserve visual assets/content/IA/SEO/analytics in a redesign. Image generation, if available and appropriate to the approved brief, precedes fallback photography; never invent a screenshot or fake production metrics. Disclose missing asset/tool capability.
+5. Build semantic responsive source with legible contrast, keyboard/focus states, real interactions, loading/empty/error states, and explicit mobile behavior. Motion must communicate something, respect reduced motion, avoid render-loop state updates, and clean up listeners/GSAP contexts. Keep content visible without a successful animation.
+6. Before completion, read and apply the detailed pre-flight matrix to the applicable surface, verify actual build/runtime/browser evidence at appropriate scope, and report unverified limitations. A plausible layout or a checklist alone is not proof.
+
+## Selective detailed guidance
+
+The original complete guidance is preserved at [references/preserved-guidance.md](references/preserved-guidance.md). Read only relevant heading ranges with the host file tools; do not load the entire file for a small task. Line ranges are navigation aids in this unchanged source reference, not additional workflows.
+
+| Need | Original heading / lines |
+|---|---|
+| Brief, dials, foundation, dependencies | Sections 0–3, lines 13–160 |
+| Typography, palette, layouts, CTA/state rules | Section 4, lines 161–351; select its relevant subsection |
+| GSAP pin/stack/pan or lighter reveals | Section 5, lines 352–518; read the chosen skeleton only |
+| Accessibility, performance, themes | Sections 6–8, lines 519–594 |
+| Anti-pattern or copy investigation | Section 9, lines 595–704; select the applicable category |
+| Pattern vocabulary and block contract | Sections 10/12, lines 705–782 and 835–895 |
+| Brand-preserving redesign | Section 11, lines 783–834 |
+| Scope exclusions and mandatory pre-flight | Sections 13–14, lines 896–982 |
+| Specific official design system / Liquid Glass approximation | Appendices, lines 983–1206; read only that system |
+
+The detailed source preserves its original technical constraints, override paths, examples and canonical links. Its marketing-specific rules are not instructions for dense dashboards, data tables, native mobile, multi-step product flows, or unrelated backend work.

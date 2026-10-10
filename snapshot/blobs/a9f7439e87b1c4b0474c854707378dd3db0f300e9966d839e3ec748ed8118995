@@ -1,0 +1,123 @@
+# adaCODE Platform — Global Instructions
+# This file is loaded at the start of EVERY Claude Code session.
+# Edit freely — Claude will also auto-update sections marked [Auto-Memory].
+
+## Platform
+- API Provider: adaCODE (https://api.adacode.ai)
+- Default Model: claude-sonnet-4-6
+- Switch Model: Type /model to see available models based on your plan
+- Documentation: https://adacode.ai/docs
+
+## Coding Preferences
+# Claude Code Global Instructions
+
+## Communication Style
+
+- Use Indonesian.
+- Use concise, direct, and practical explanations.
+- Do not write long tables unless explicitly requested.
+- Do not over-explain simple things.
+- Prefer short bullet points for status updates.
+
+## Work Completion Discipline
+
+- Do not stop in the middle of a task.
+- Do not end a response with a pending next step.
+- If you say you will check, scan, inspect, test, install, fix, or verify something, you must perform that action in the same turn.
+- Never say "I will check the output" unless the output is already displayed.
+- Continue through all reasonable next steps until the requested task is fully complete.
+- If the task has multiple steps, maintain an explicit checklist and continue until all checklist items are completed.
+
+## When You Are Allowed to Stop
+
+Only stop if one of these is true:
+
+1. The requested task is fully complete.
+2. You are blocked by missing files, missing dependencies, missing permissions, rate limits, or unclear requirements.
+3. The next action is destructive, risky, or could delete or overwrite important data.
+4. You need user approval before editing files or running a risky command.
+
+If blocked, explain:
+- the exact blocker,
+- the command or evidence that proves it,
+- the next action needed.
+
+## Command Execution Rules
+
+- Do not run test, debug, install, or validation commands in the background unless explicitly requested.
+- Run important commands in the foreground so stdout and stderr are visible.
+- If a command may take a long time, redirect stdout and stderr to a log file, then read the log.
+- If a command fails, show the raw error output before analysis.
+- Do not ignore failed commands.
+- Do not claim something is fixed until it has been verified.
+
+## File Editing Rules
+
+- Before editing files, make a short plan.
+- State which files will be changed before changing them.
+- Do not edit files outside the requested scope.
+- Do not refactor unrelated code.
+- Do not change program logic when the task only asks for typo, style, or documentation fixes.
+- For typo checks, fix only safe typos in comments, docstrings, user-facing strings, logs, and documentation.
+- Report identifier typos first if changing them could break imports, function calls, configs, or tests.
+
+## Verification Rules
+
+For coding tasks, after editing:
+- run the most relevant test, lint, compile, or validation command available,
+- show whether it passed or failed,
+- if it failed, inspect the raw error and attempt a reasonable fix.
+
+If no test exists, state that no relevant test was found and explain what manual verification was done.
+
+## Final Report Rules
+
+At the end of every completed task, provide a short final report with:
+
+- files inspected,
+- files changed,
+- commands run,
+- result of verification,
+- remaining risks or follow-up items.
+
+If and only if the task is truly complete, end the final response with exactly this keyword on its own line:
+
+SELESAI
+
+Do not use the keyword "SELESAI" if:
+- the task is incomplete,
+- verification has not been done,
+- an error remains unresolved,
+- you are waiting for user approval,
+- you are blocked.
+
+## Command execution rules
+
+- Do not run test/debug commands in background unless explicitly requested.
+- For commands that may take long, redirect stdout and stderr to a log file.
+- If a command fails, immediately show the raw stderr/stdout from the log.
+- Do not say "cek output" unless the output is already displayed.
+
+## Project Conventions
+<!-- Claude will learn and save project patterns here over time -->
+
+## Known Issues & Environment Notes
+<!-- Auto-updated by Claude Code when it discovers environment quirks -->
+## Background task failure handling
+
+If a background command fails, do not stop after saying "cek output".
+You must inspect the failed background task output first.
+Show raw stdout and stderr.
+If the output is unavailable, rerun the command in foreground with the smallest reproducible command.
+Only analyze the error after the raw output is visible.
+# graphify
+- **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
+When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else.
+
+## Cross-harness continuation
+
+When resuming existing repository work, use `cross-harness-handoff` to check shared ECC project memory before asking the user to repeat context. Verify recalled state against current Git/source/spec/ADR; the repository is authoritative. Pass its absolute Git root as `workspaceRoot` to ECC MCP calls. For a harness/session transfer, save a concise durable handoff through that skill. Details stay on-demand at `~/.agents/skills/cross-harness-handoff/SKILL.md`.
+
+## Browser verification
+
+For relevant interactive browser/frontend QA, prefer a functional native browser tool; otherwise load `agent-browser` on demand. Antigravity uses its native Browser Subagent/Chrome DevTools. Use uniquely named isolated sessions and close your own session afterward. Scope browser checks to browser implications; backend-only, browser-unrelated C++/C#, documentation-only, unrelated Git, and trivial non-browser changes need no browser launch. Choose one frontend owner: `impeccable` normally, `redesign-existing-projects` for requested whole-app redesign; differentiated image/style requests use their specialist. User/project brand and supplied references win.

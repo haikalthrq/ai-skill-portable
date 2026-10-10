@@ -1,0 +1,7 @@
+---
+description: Save a durable handoff for another harness or session
+---
+
+Load `cross-harness-handoff` in mode=handoff. Save a concise verified repository-state handoff to ECC; use the requested target or all. Preserve /handoff as Matt Pocock's generic summary command.
+
+$ARGUMENTS

@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+
+const args = process.argv.slice(2);
+if (args.includes('--help')) {
+  console.log('Usage: node workflow.mjs mode=resume source=<harness> [--repo <path>] [--query <text>]\n       node workflow.mjs mode=handoff source=<harness> [target=all] --title <text> --body-file <regular-file> [--repo <path>] [--tag <slug>]\nResume returns current Git evidence and active handoff candidates; the agent reconciles them and continues. Handoff saves only the fully reviewed template-complete body, without appending unreviewed content. Git evidence is returned separately. Recipient-only handoffs report acknowledgement and pending recipient read-back.');
+  process.exit(0);
+}
+const options = {};
+for (let i = 0; i < args.length; i++) {
+  const argument = args[i];
+  if (/^(mode|source|target)=/.test(argument)) {
+    const split = argument.indexOf('=');
+    options[argument.slice(0, split)] = argument.slice(split + 1);
+  } else if (argument === '--tag' && args[i + 1]) {
+    options.tags = [...(options.tags || []), args[++i]];
+  } else if (['--repo', '--query', '--title', '--body-file'].includes(argument) && args[i + 1]) {
+    options[argument.slice(2)] = args[++i];
+  } else { throw new Error('Unknown or missing argument: ' + argument); }
+}
+if (!['handoff', 'resume'].includes(options.mode)) throw new Error('Set mode=handoff or mode=resume.');
+const source = options.source || 'unknown';
+const target = options.target || 'all';
+for (const slug of [source, target]) if (!/^[a-z0-9][a-z0-9._-]{0,63}$/.test(slug)) throw new Error('Harness identities must be valid lowercase ECC slugs.');
+const launchedFrom = path.resolve(options.repo || process.cwd());
+const git = (...arguments_) => execFileSync('git', ['-C', launchedFrom, ...arguments_], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 10000 }).trim();
+const root = fs.realpathSync(git('rev-parse', '--show-toplevel'));
+let head;
+try { head = git('rev-parse', '--verify', 'HEAD'); } catch { head = 'unborn'; }
+const snapshot = { observedAt: new Date().toISOString(), branch: git('branch', '--show-current') || 'detached', head, status: git('status', '--short', '--branch'), changedFiles: git('diff', '--name-only'), stagedFiles: git('diff', '--cached', '--name-only') };
+const runtime = JSON.parse(fs.readFileSync(path.join(os.homedir(), '.config/cross-harness-memory/runtime.json'), 'utf8'));
+const env = { ...process.env, ECC_MEMORY_HARNESS: source, ECC_MEMORY_USER_ROOT: path.join(os.homedir(), '.ecc/memory') };
+delete env.ECC_MEMORY_PROJECT_ROOT; // Retain ECC's Git-root containment policy.
+const vault = path.join(root, '.ecc/memory');
+const memory = (arguments_, input) => JSON.parse(execFileSync(process.execPath, [path.join(runtime.runtimeRoot, 'scripts/memory.js'), ...arguments_, '--json'], { cwd: root, env, input, encoding: 'utf8', maxBuffer: 2 * 1024 * 1024, timeout: 20000 }));
+const query = memory(['search', options.query || '', '--kind', 'handoff', '--target-harness', source, '--limit', '100']);
+const diagnostics = query.diagnostics;
+if (!diagnostics || diagnostics.truncated || diagnostics.diagnosticsTruncated || diagnostics.invalidFileCount || diagnostics.skippedSymlinkCount) throw new Error('Memory recall is incomplete or unhealthy; inspect ecc memory doctor before continuing.');
+const candidates = query.results.filter(item => !item.memory.tags.includes('cross-harness-test')).sort((a, b) => b.memory.updatedAt.localeCompare(a.memory.updatedAt));
+if (options.mode === 'resume') {
+  const records = candidates.slice(0, 5).map(item => memory(['read', item.memory.id, '--scope', item.memory.scope]).memory);
+  console.log(JSON.stringify({ mode: 'resume', repository: root, vault, git: snapshot, candidates: records, note: 'Select by current task/branch relevance, verify source/artifacts, and continue the next exact action. A complete empty list means no active handoff for this identity; inspect the repository before asking for context.' }, null, 2));
+} else {
+  if (!options.title || !options['body-file']) throw new Error('Handoff requires --title and --body-file.');
+  const bodyFile = path.resolve(options['body-file']);
+  if (!fs.lstatSync(bodyFile).isFile() || fs.lstatSync(bodyFile).isSymbolicLink()) throw new Error('Body input must be a regular non-symlink file.');
+  let body = fs.readFileSync(bodyFile, 'utf8');
+  for (const heading of ['Objective', 'Current state', 'Important decisions', 'Changed files', 'Git state', 'Verification', 'Current failures/blockers', 'Constraints / Do not', 'External references', 'Next exact action', 'Potential follow-up']) {
+    if (!body.includes('# ' + heading)) throw new Error('Handoff body is missing section: ' + heading);
+  }
+  const saved = memory(['handoff', '--from', source, '--target', target, '--title', options.title, '--tag', 'cross-harness-handoff', ...(options.tags || []).flatMap(tag => ['--tag', tag]), '--stdin'], body);
+  const readableBySource = target === 'all' || target === source;
+  if (readableBySource) {
+    const read = memory(['read', saved.memory.id, '--scope', 'project']);
+    if (read.memory.body !== body.trim()) throw new Error('Saved handoff read-back differs from the supplied body.');
+  }
+  const doctor = memory(['doctor', '--scope', 'project']);
+  if (!doctor.ok) throw new Error('Saved handoff exists, but the project vault doctor reports issues.');
+  console.log(JSON.stringify({ mode: 'handoff', repository: root, vault, memory: saved.memory, saved: true, verified: readableBySource, verification: readableBySource ? 'Exact body read-back and doctor passed.' : 'Write acknowledged and doctor passed; intended recipient must verify read-back.', currentGit: snapshot, doctor: { ok: doctor.ok, memoryCount: doctor.memoryCount } }, null, 2));
+}

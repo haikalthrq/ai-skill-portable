@@ -1,0 +1,202 @@
+{
+  "backup": "__PORTABLE_HOME__/.local/state/opencode/global-skills-backup-20261007-212549",
+  "installation_mechanism": "Selected directories copied from shallow clones of the five original GitHub repositories into native OpenCode global discovery paths; no full-pack plugins or hooks installed. Existing shared no-ai-slop retained after verifying all upstream files.",
+  "local_adaptations": [
+    "Narrowed skill descriptions to the requested automatic/manual scope; OpenCode 1.x ignores Claude-specific disable-model-invocation frontmatter.",
+    "Mapped Superpowers dependency calls to native unprefixed skill names.",
+    "Scoped Superpowers TDD to debugging regression tests or explicit TDD requests, as approved by user.",
+    "Clarified current verification evidence, appropriate checks, and git-operation authorization.",
+    "Copied only definition-of-done.md and orchestration-patterns.md into the respective Addy skill reference folders and repaired their links.",
+    "Added an explicit handoff content checklist and seven thin global slash-command wrappers."
+  ],
+  "modified_existing_rules": "__PORTABLE_HOME__/.config/opencode/AGENTS.md",
+  "verification_artifacts": "__PORTABLE_HOME__/.local/state/opencode/global-skills-backup-20261007-212549/verification",
+  "invocation_smoke_test": {
+    "session": "ses_ee93884b3ffesKzXwQzBvYzj1V",
+    "loaded": 18,
+    "failures": 0,
+    "other_tools_executed": 0
+  },
+  "repositories": {
+    "karpathy": {
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "commit": "2c606141936f1eeef17fa3043a72095b4765b9c2"
+    },
+    "slop": {
+      "url": "https://github.com/petergyang/no-ai-slop",
+      "commit": "000650b156983f5159695b441477f4e63b25dc85"
+    },
+    "superpowers": {
+      "url": "https://github.com/obra/superpowers",
+      "commit": "8ca22dba9a94f28898bbce59f2537ff4d87c747d"
+    },
+    "addy": {
+      "url": "https://github.com/addyosmani/agent-skills",
+      "commit": "1401c8b8030e023baeebb31781a6653fe8e93026"
+    },
+    "matt": {
+      "url": "https://github.com/mattpocock/skills",
+      "commit": "f3fc5632f401156837ee3872f14fe33ccf1024ea"
+    }
+  },
+  "skills": [
+    {
+      "name": "no-ai-slop",
+      "repository": "slop",
+      "source": "skills/no-ai-slop",
+      "path": "__PORTABLE_HOME__/.agents/skills/no-ai-slop",
+      "dependency": null,
+      "action": "retained; all upstream files verified identical"
+    },
+    {
+      "name": "karpathy-guidelines",
+      "repository": "karpathy",
+      "source": "skills/karpathy-guidelines",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/karpathy-guidelines",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "systematic-debugging",
+      "repository": "superpowers",
+      "source": "skills/systematic-debugging",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/systematic-debugging",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "verification-before-completion",
+      "repository": "superpowers",
+      "source": "skills/verification-before-completion",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/verification-before-completion",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "test-driven-development",
+      "repository": "superpowers",
+      "source": "skills/test-driven-development",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/test-driven-development",
+      "dependency": "Required by systematic-debugging; explicitly approved by user",
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "incremental-implementation",
+      "repository": "addy",
+      "source": "skills/incremental-implementation",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/incremental-implementation",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "doubt-driven-development",
+      "repository": "addy",
+      "source": "skills/doubt-driven-development",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/doubt-driven-development",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "grill-with-docs",
+      "repository": "matt",
+      "source": "skills/engineering/grill-with-docs",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/grill-with-docs",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "handoff",
+      "repository": "matt",
+      "source": "skills/productivity/handoff",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/handoff",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "code-review",
+      "repository": "matt",
+      "source": "skills/engineering/code-review",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/code-review",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "retro",
+      "repository": "matt",
+      "source": "skills/engineering/retro",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/retro",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "wayfinder",
+      "repository": "matt",
+      "source": "skills/engineering/wayfinder",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/wayfinder",
+      "dependency": null,
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "grilling",
+      "repository": "matt",
+      "source": "skills/productivity/grilling",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/grilling",
+      "dependency": "Called by grill-with-docs and wayfinder",
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "domain-modeling",
+      "repository": "matt",
+      "source": "skills/engineering/domain-modeling",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/domain-modeling",
+      "dependency": "Called by grill-with-docs and wayfinder",
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "writing-for-agents",
+      "repository": "matt",
+      "source": "skills/productivity/writing-for-agents",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/writing-for-agents",
+      "dependency": "Called by retro",
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "research",
+      "repository": "matt",
+      "source": "skills/engineering/research",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/research",
+      "dependency": "Called by wayfinder research tickets",
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "prototype",
+      "repository": "matt",
+      "source": "skills/engineering/prototype",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/prototype",
+      "dependency": "Called by wayfinder prototype tickets",
+      "action": "installed selected directory with all supporting files"
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "repository": "matt",
+      "source": "skills/engineering/setup-matt-pocock-skills",
+      "path": "__PORTABLE_HOME__/.config/opencode/skills/setup-matt-pocock-skills",
+      "dependency": "Required per-repo tracker/doc setup for code-review and wayfinder; README prerequisite",
+      "action": "installed selected directory with all supporting files"
+    }
+  ],
+  "archived_duplicates": [
+    {
+      "old": "__PORTABLE_HOME__/.config/opencode/skills/no-ai-slop",
+      "backup": "__PORTABLE_HOME__/.local/state/opencode/global-skills-backup-20261007-212549/no-ai-slop-copy-1"
+    },
+    {
+      "old": "__PORTABLE_HOME__/.opencode/skills/no-ai-slop",
+      "backup": "__PORTABLE_HOME__/.local/state/opencode/global-skills-backup-20261007-212549/no-ai-slop-copy-2"
+    }
+  ],
+  "unchanged_config_hashes": {
+    "__PORTABLE_HOME__/.config/opencode/opencode.jsonc": "8f569c063c145064b7db709449a751b0ef77a70d37c71aec272706063c750f48",
+    "__PORTABLE_HOME__/.opencode/opencode.json": "8a9a2eb8852f645bfb74021c2881a9ceed5d221497e8a46cc718adf1bc6da9c1"
+  }
+}

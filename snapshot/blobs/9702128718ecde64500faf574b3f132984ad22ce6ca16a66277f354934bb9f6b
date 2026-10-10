@@ -1,0 +1,32 @@
+---
+name: image-to-code
+description: "Image-generation-first website implementation: generate references, analyze them, then build faithful code. Use for that explicit art-first workflow; supplied screenshot reconstruction belongs to the primary frontend workflow."
+---
+
+# Generated design references to frontend code
+
+This skill retains its image-generation-first website workflow. It is not the default for a supplied screenshot that the user wants reproduced unchanged; use `impeccable` for that fixed-contract reconstruction rather than replacing the reference or stacking design philosophies.
+
+## Essential workflow and constraints
+
+1. **Generate design images → deeply analyze them → implement the extracted design.** For a visual design request in this workflow, generation precedes freeform code when the capability is available. If it is unavailable, report the limitation and resolve the intended reference source; do not pretend images were generated.
+2. Generate enough clear, large standalone section images. In Codex, prefer one image per requested section; never compress many sections until typography/components become unreadable. Fresh section/detail rendering is preferred to cropping/zooming an old board.
+3. Extract composition, hierarchy, typography, palette, spacing, radii, assets, buttons, alignment, responsive intent and section rhythm. Resolve unclear details with a fresh view/render, not invented approximation.
+4. Treat the approved generated references as the visual implementation contract. Preserve copy, proportions, layout and imagery instead of coding a generic reinterpretation. Identify accepted deviations explicitly.
+5. Keep first view clean and readable on a small laptop: short headline, visible CTA, coherent navigation and a legible visual. Avoid nested containers/cards, tiny pills, micro-label clutter and fake dashboard decoration.
+6. Use the existing project stack and installed dependencies, semantic accessible components, responsive behavior and appropriate current verification. User requirements/approved direction outrank generic aesthetic defaults.
+
+## Read only applicable detail
+
+The complete original workflow is preserved in [references/preserved-guidance.md](references/preserved-guidance.md).
+
+| Stage | Original headings / lines |
+|---|---|
+| Baseline, generation/count/fresh-detail rules | Sections 1–7, 73–288 |
+| Image analysis and image-first workflow | Sections 8–11, 289–414; required before implementation |
+| Art direction, hero, first-view and clutter | Sections 12–18, 415–665; select requested surface |
+| Media system and extraction disciplines | Sections 19–28, 666–896; load applicable extraction topics |
+| Anti-patterns, typography and section rhythm | Sections 29–34, 897–1082 |
+| Mandatory clarity/response and examples | Sections 35–38, 1083–1228; apply relevant quality/response before delivery |
+
+Read the needed ranges with host file tools. Do not load the entire source merely because a task contains a screenshot or says “frontend”.

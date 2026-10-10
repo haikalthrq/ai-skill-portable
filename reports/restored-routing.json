@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "model": "openai/gpt-6.1-sol",
+  "results": [
+    {
+      "scenario": "frontend",
+      "passed": true,
+      "skills": [
+        "impeccable"
+      ],
+      "session_count": 1,
+      "tool_error_names": []
+    },
+    {
+      "scenario": "debugging",
+      "passed": true,
+      "skills": [
+        "systematic-debugging"
+      ],
+      "session_count": 1,
+      "tool_error_names": []
+    },
+    {
+      "scenario": "handoff",
+      "passed": true,
+      "skills": [
+        "cross-harness-handoff",
+        "unified-memory"
+      ],
+      "session_count": 1,
+      "tool_error_names": []
+    },
+    {
+      "scenario": "backend",
+      "passed": true,
+      "skills": [
+        "karpathy-guidelines"
+      ],
+      "session_count": 1,
+      "tool_error_names": []
+    }
+  ],
+  "authentication_exported": false,
+  "source_skills_modified": false
+}

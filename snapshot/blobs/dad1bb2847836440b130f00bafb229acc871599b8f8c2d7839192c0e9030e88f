@@ -1,0 +1,7 @@
+---
+description: Map major unresolved decisions for a large multi-session project
+---
+
+Load `wayfinder` with the native `skill` tool and use it for this request. Commit or push research artifacts only if the user explicitly authorizes those operations.
+
+$ARGUMENTS

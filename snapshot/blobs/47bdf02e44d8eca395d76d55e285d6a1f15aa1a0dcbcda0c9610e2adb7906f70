@@ -1,0 +1,7 @@
+---
+description: Stress-test a high-risk decision with bounded fresh-context review
+---
+
+Load `doubt-driven-development` with the native `skill` tool and use it for this request. Ask before cross-model escalation and obtain authorization for each exact external invocation.
+
+$ARGUMENTS
