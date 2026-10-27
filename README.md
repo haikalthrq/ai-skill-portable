@@ -12,10 +12,7 @@ Give this prompt to a coding agent with terminal and network access:
 Install https://github.com/haikalthrq/ai-skill-portable for Codex and OpenCode
 on this machine. Clone the repository, read AGENTS.md and INSTALL.md, and
 complete the installation and verification. Install missing prerequisites,
-MCP runtimes, Chromium and browser dependencies. Preserve existing config,
-sessions and data. Keep secrets out of the repository and logs.
-Ask me only for required login, secret entry, hook approval, unavailable
-administrator access, or a decision about conflicting files.
+MCP runtimes, Chromium and browser dependencies.
 Report what passed and what remains blocked.
 ```
 
