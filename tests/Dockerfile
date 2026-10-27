@@ -5,4 +5,4 @@ RUN npm install --global --ignore-scripts opencode-ai@1.18.35 \
     && node /usr/local/lib/node_modules/opencode-ai/postinstall.mjs
 ENV PYTHONDONTWRITEBYTECODE=1
 WORKDIR /repo
-CMD ["python3", "scripts/integration_test.py", "--native", "--report", "/results/linux-integration.json"]
+CMD ["python3", "scripts/integration_test.py", "--native", "--bootstrap", "--report", "/results/linux-integration.json"]

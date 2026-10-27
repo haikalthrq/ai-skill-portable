@@ -1,9 +1,9 @@
 {
   "schema": "opencode-portable/v1",
-  "created_utc": "2026-10-10T07:25:05.286395+00:00",
-  "source_platform": "nt",
+  "created_utc": "2026-10-27T07:43:44.140352+00:00",
+  "source_platform": "posix",
   "opencode_version": "1.18.35",
-  "expected_discovery_count": 45,
+  "expected_discovery_count": 51,
   "skills": [
     {
       "name": "agent-browser",
@@ -45,6 +45,7 @@
       "description": "Use for requested reviews, pre-merge/PR, or completion of significant implementation. Review against repository standards and the originating spec in separate subagents. Not after every tiny modification.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/code-review/SKILL.md",
         ".config/opencode/skills/code-review/SKILL.md"
       ]
     },
@@ -96,6 +97,7 @@
       "description": "Supporting domain-model discipline for grill-with-docs or wayfinder. Use when called by those workflows or explicitly requested to sharpen terminology, edit a glossary, or record a meaningful ADR.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/domain-modeling/SKILL.md",
         ".config/opencode/skills/domain-modeling/SKILL.md"
       ]
     },
@@ -104,6 +106,7 @@
       "description": "Use ONLY for non-trivial high-risk or uncertain decisions involving auth/security, payments, destructive migrations/data loss, concurrency/correctness, difficult architecture, or unfamiliar high-impact code. Bounded fresh-context adversarial review. Ask the user before each cross-model escalation.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/doubt-driven-development/SKILL.md",
         ".config/opencode/skills/doubt-driven-development/SKILL.md"
       ]
     },
@@ -155,6 +158,7 @@
       "description": "Use for explicitly requested interviews or substantial ambiguous work with unresolved requirements, terminology, or design decisions worth preserving in ADRs or a glossary. Simple fixes do not need grilling.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/grill-with-docs/SKILL.md",
         ".config/opencode/skills/grill-with-docs/SKILL.md"
       ]
     },
@@ -163,6 +167,7 @@
       "description": "Supporting interview primitive. Use when called by grill-with-docs or wayfinder, or explicitly requested to stress-test a plan or decision. Investigate discoverable facts yourself; interview for unresolved human decisions.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/grilling/SKILL.md",
         ".config/opencode/skills/grilling/SKILL.md"
       ]
     },
@@ -171,6 +176,7 @@
       "description": "Use when moving to a fresh session, switching models, context has become long/noisy, or another agent must continue. Preserve decisions, status, changed files, verification, unresolved issues, and artifact pointers.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/handoff/SKILL.md",
         ".config/opencode/skills/handoff/SKILL.md"
       ]
     },
@@ -227,6 +233,7 @@
       "description": "Use for substantial or multi-file implementation in small reviewable slices: implement, verify, then continue. Avoid giant speculative changes. Trivial one-line changes need no artificial slicing or extra process.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/incremental-implementation/SKILL.md",
         ".config/opencode/skills/incremental-implementation/SKILL.md"
       ]
     },
@@ -244,6 +251,7 @@
       "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/karpathy-guidelines/SKILL.md",
         ".config/opencode/skills/karpathy-guidelines/SKILL.md"
       ]
     },
@@ -285,10 +293,59 @@
       ]
     },
     {
+      "name": "ponytail",
+      "description": "Lazy senior dev mode: the smallest change that fully solves the task, and a reply a busy human understands in one read. Use on any coding task (writing, fixing, refactoring, reviewing, choosing dependencies) and when the user says \"ponytail\", \"be lazy\", \"simplest solution\", \"yagni\", or complains about over-engineering or bloat. Levels: lite, full (default), ultra.\n",
+      "builtin": false,
+      "definition_candidates": [
+        ".local/share/ponytail/skills/ponytail/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-audit",
+      "description": "Quality audit of a whole repo: bugs, security holes, what breaks under real load, risky code without tests, slow paths, and what to delete, merge or split. Ranked, each finding explained in plain English. One-shot report, changes nothing. Use for \"audit this codebase\", \"review the whole repo\", \"find bloat\", \"what can I delete\", /ponytail-audit.\n",
+      "builtin": false,
+      "definition_candidates": [
+        ".local/share/ponytail/skills/ponytail-audit/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-debt",
+      "description": "List every `shortcut:` comment (and older `ponytail:` ones) as a debt ledger. One-shot report, changes nothing. Use for \"ponytail debt\", \"what did ponytail defer\", \"list the shortcuts\", /ponytail-debt.\n",
+      "builtin": false,
+      "definition_candidates": [
+        ".local/share/ponytail/skills/ponytail-debt/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-gain",
+      "description": "Show ponytail's measured savings (code, cost, speed) from the benchmark. One-shot display. Use for /ponytail-gain, \"what does ponytail save\", \"ponytail impact\".\n",
+      "builtin": false,
+      "definition_candidates": [
+        ".local/share/ponytail/skills/ponytail-gain/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-help",
+      "description": "Quick reference for ponytail levels, skills and commands. One-shot display. Use for /ponytail-help, \"ponytail help\", \"how do I use ponytail\".\n",
+      "builtin": false,
+      "definition_candidates": [
+        ".local/share/ponytail/skills/ponytail-help/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-review",
+      "description": "Quality review of a change: is the logic right, is it safe, does it hold under real load, is risky code tested, is it fast enough, and is every line needed. Reads the connected code, not only the diff. Each finding is explained in plain English. Use for \"review this\", \"code review\", \"review the last commit\", \"review my PR\", \"is this over-engineered\", /ponytail-review.\n",
+      "builtin": false,
+      "definition_candidates": [
+        ".local/share/ponytail/skills/ponytail-review/SKILL.md"
+      ]
+    },
+    {
       "name": "prototype",
       "description": "Supporting prototype workflow for wayfinder tickets, or explicitly requested throwaway logic/state or UI exploration. Answer a specific design question with a cheap runnable artifact.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/prototype/SKILL.md",
         ".config/opencode/skills/prototype/SKILL.md"
       ]
     },
@@ -306,6 +363,7 @@
       "description": "Supporting research workflow for wayfinder research tickets, or explicitly requested delegated primary-source research. Capture cited findings using the repository's existing note conventions.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/research/SKILL.md",
         ".config/opencode/skills/research/SKILL.md"
       ]
     },
@@ -314,6 +372,7 @@
       "description": "Use for requested retrospectives or unusually difficult/inefficient sessions. Suggest improvements to rules, navigation, checks, tooling, and MCP access; present findings before making environment changes.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/retro/SKILL.md",
         ".config/opencode/skills/retro/SKILL.md"
       ]
     },
@@ -322,6 +381,7 @@
       "description": "Use ONLY when explicitly requested, or when code-review/wayfinder needs missing per-repo tracker/doc configuration. Inspect existing conventions, propose setup, and confirm before editing. Not a global bootstrap.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/setup-matt-pocock-skills/SKILL.md",
         ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md"
       ]
     },
@@ -339,6 +399,7 @@
       "description": "Use for non-trivial bugs, unexplained failures, regressions, flaky behavior, or unclear root causes. Reproduce and investigate systematically before proposing fixes.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/systematic-debugging/SKILL.md",
         ".config/opencode/skills/systematic-debugging/SKILL.md"
       ]
     },
@@ -347,6 +408,7 @@
       "description": "Use ONLY when systematic-debugging calls for a failing regression test, or when the user explicitly requests test-driven development. On-demand dependency; not an automatic workflow for every feature or edit.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/test-driven-development/SKILL.md",
         ".config/opencode/skills/test-driven-development/SKILL.md"
       ]
     },
@@ -355,6 +417,7 @@
       "description": "Supporting design intelligence for design-system exploration, style comparison, typography and palette research, industry-specific UI patterns, and a new project's visual direction. Automatically use when research materially helps; assist Impeccable or Taste without becoming another primary design owner.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/ui-ux-pro-max/SKILL.md",
         ".opencode/skills/ui-ux-pro-max/SKILL.md"
       ]
     },
@@ -374,6 +437,7 @@
       "description": "Use before claiming a coding task fixed, complete, or passing. Run appropriate current tests, build, runtime, lint, typecheck, or configuration checks; inspect results and state exactly what they prove.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/verification-before-completion/SKILL.md",
         ".config/opencode/skills/verification-before-completion/SKILL.md"
       ]
     },
@@ -382,6 +446,7 @@
       "description": "Use ONLY for explicitly requested decision maps for large multi-session projects with unclear major architectural/product decisions. Resolve decisions before implementation. Not for ordinary features or bug fixes.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/wayfinder/SKILL.md",
         ".config/opencode/skills/wayfinder/SKILL.md"
       ]
     },
@@ -390,6 +455,7 @@
       "description": "Supporting writing reference called by retro. Use when that workflow calls it, or when explicitly requested for agent-facing skills, rules, or documentation. Keep routine work free of extra workflow stages.",
       "builtin": false,
       "definition_candidates": [
+        ".codex/skills/writing-for-agents/SKILL.md",
         ".config/opencode/skills/writing-for-agents/SKILL.md"
       ]
     }
@@ -792,10 +858,118 @@
       "alias": false
     },
     {
+      "name": "code-review",
+      "path": ".codex/skills/code-review/SKILL.md",
+      "canonical": ".config/opencode/skills/code-review/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "domain-modeling",
+      "path": ".codex/skills/domain-modeling/SKILL.md",
+      "canonical": ".config/opencode/skills/domain-modeling/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "doubt-driven-development",
+      "path": ".codex/skills/doubt-driven-development/SKILL.md",
+      "canonical": ".config/opencode/skills/doubt-driven-development/SKILL.md",
+      "alias": true
+    },
+    {
       "name": "graphify",
       "path": ".codex/skills/graphify/SKILL.md",
       "canonical": ".codex/skills/graphify/SKILL.md",
       "alias": false
+    },
+    {
+      "name": "grill-with-docs",
+      "path": ".codex/skills/grill-with-docs/SKILL.md",
+      "canonical": ".config/opencode/skills/grill-with-docs/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "grilling",
+      "path": ".codex/skills/grilling/SKILL.md",
+      "canonical": ".config/opencode/skills/grilling/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "handoff",
+      "path": ".codex/skills/handoff/SKILL.md",
+      "canonical": ".config/opencode/skills/handoff/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "incremental-implementation",
+      "path": ".codex/skills/incremental-implementation/SKILL.md",
+      "canonical": ".config/opencode/skills/incremental-implementation/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "karpathy-guidelines",
+      "path": ".codex/skills/karpathy-guidelines/SKILL.md",
+      "canonical": ".config/opencode/skills/karpathy-guidelines/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "prototype",
+      "path": ".codex/skills/prototype/SKILL.md",
+      "canonical": ".config/opencode/skills/prototype/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "research",
+      "path": ".codex/skills/research/SKILL.md",
+      "canonical": ".config/opencode/skills/research/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "retro",
+      "path": ".codex/skills/retro/SKILL.md",
+      "canonical": ".config/opencode/skills/retro/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "path": ".codex/skills/setup-matt-pocock-skills/SKILL.md",
+      "canonical": ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "systematic-debugging",
+      "path": ".codex/skills/systematic-debugging/SKILL.md",
+      "canonical": ".config/opencode/skills/systematic-debugging/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "test-driven-development",
+      "path": ".codex/skills/test-driven-development/SKILL.md",
+      "canonical": ".config/opencode/skills/test-driven-development/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "path": ".codex/skills/ui-ux-pro-max/SKILL.md",
+      "canonical": ".opencode/skills/ui-ux-pro-max/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "verification-before-completion",
+      "path": ".codex/skills/verification-before-completion/SKILL.md",
+      "canonical": ".config/opencode/skills/verification-before-completion/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "wayfinder",
+      "path": ".codex/skills/wayfinder/SKILL.md",
+      "canonical": ".config/opencode/skills/wayfinder/SKILL.md",
+      "alias": true
+    },
+    {
+      "name": "writing-for-agents",
+      "path": ".codex/skills/writing-for-agents/SKILL.md",
+      "canonical": ".config/opencode/skills/writing-for-agents/SKILL.md",
+      "alias": true
     },
     {
       "name": "impeccable",
@@ -844,123 +1018,249 @@
       "path": ".cline/skills/unified-memory/SKILL.md",
       "canonical": ".agents/skills/unified-memory/SKILL.md",
       "alias": true
+    },
+    {
+      "name": "ponytail",
+      "path": ".local/share/ponytail/skills/ponytail/SKILL.md",
+      "canonical": ".local/share/ponytail/skills/ponytail/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "ponytail-audit",
+      "path": ".local/share/ponytail/skills/ponytail-audit/SKILL.md",
+      "canonical": ".local/share/ponytail/skills/ponytail-audit/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "ponytail-debt",
+      "path": ".local/share/ponytail/skills/ponytail-debt/SKILL.md",
+      "canonical": ".local/share/ponytail/skills/ponytail-debt/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "ponytail-gain",
+      "path": ".local/share/ponytail/skills/ponytail-gain/SKILL.md",
+      "canonical": ".local/share/ponytail/skills/ponytail-gain/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "ponytail-help",
+      "path": ".local/share/ponytail/skills/ponytail-help/SKILL.md",
+      "canonical": ".local/share/ponytail/skills/ponytail-help/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "ponytail-review",
+      "path": ".local/share/ponytail/skills/ponytail-review/SKILL.md",
+      "canonical": ".local/share/ponytail/skills/ponytail-review/SKILL.md",
+      "alias": false
     }
   ],
   "aliases": [
     {
       "path": ".claude/skills/agent-browser",
       "target": ".agents/skills/agent-browser",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/brandkit",
       "target": ".agents/skills/brandkit",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/caveman",
       "target": ".agents/skills/caveman",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/cross-harness-handoff",
       "target": ".agents/skills/cross-harness-handoff",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/design-taste-frontend",
       "target": ".agents/skills/design-taste-frontend",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/design-taste-frontend-v1",
       "target": ".agents/skills/design-taste-frontend-v1",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/find-skills",
       "target": ".agents/skills/find-skills",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/full-output-enforcement",
       "target": ".agents/skills/full-output-enforcement",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/gpt-taste",
       "target": ".agents/skills/gpt-taste",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/high-end-visual-design",
       "target": ".agents/skills/high-end-visual-design",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/image-to-code",
       "target": ".agents/skills/image-to-code",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/imagegen-frontend-mobile",
       "target": ".agents/skills/imagegen-frontend-mobile",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/imagegen-frontend-web",
       "target": ".agents/skills/imagegen-frontend-web",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/industrial-brutalist-ui",
       "target": ".agents/skills/industrial-brutalist-ui",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/minimalist-ui",
       "target": ".agents/skills/minimalist-ui",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/no-ai-slop",
       "target": ".agents/skills/no-ai-slop",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/redesign-existing-projects",
       "target": ".agents/skills/redesign-existing-projects",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/stitch-design-taste",
       "target": ".agents/skills/stitch-design-taste",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/unified-memory",
       "target": ".agents/skills/unified-memory",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".cline/skills/cross-harness-handoff",
       "target": ".agents/skills/cross-harness-handoff",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".cline/skills/unified-memory",
       "target": ".agents/skills/unified-memory",
-      "source_kind": "junction"
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/code-review",
+      "target": ".config/opencode/skills/code-review",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/domain-modeling",
+      "target": ".config/opencode/skills/domain-modeling",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/doubt-driven-development",
+      "target": ".config/opencode/skills/doubt-driven-development",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/grill-with-docs",
+      "target": ".config/opencode/skills/grill-with-docs",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/grilling",
+      "target": ".config/opencode/skills/grilling",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/handoff",
+      "target": ".config/opencode/skills/handoff",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/incremental-implementation",
+      "target": ".config/opencode/skills/incremental-implementation",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/karpathy-guidelines",
+      "target": ".config/opencode/skills/karpathy-guidelines",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/prototype",
+      "target": ".config/opencode/skills/prototype",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/research",
+      "target": ".config/opencode/skills/research",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/retro",
+      "target": ".config/opencode/skills/retro",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/setup-matt-pocock-skills",
+      "target": ".config/opencode/skills/setup-matt-pocock-skills",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/systematic-debugging",
+      "target": ".config/opencode/skills/systematic-debugging",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/test-driven-development",
+      "target": ".config/opencode/skills/test-driven-development",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/ui-ux-pro-max",
+      "target": ".opencode/skills/ui-ux-pro-max",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/verification-before-completion",
+      "target": ".config/opencode/skills/verification-before-completion",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/wayfinder",
+      "target": ".config/opencode/skills/wayfinder",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/writing-for-agents",
+      "target": ".config/opencode/skills/writing-for-agents",
+      "source_kind": "symlink"
     },
     {
       "path": ".gemini/config/skills/cross-harness-handoff",
       "target": ".agents/skills/cross-harness-handoff",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".gemini/config/skills/unified-memory",
       "target": ".agents/skills/unified-memory",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     }
   ],
   "files": [
@@ -1034,9 +1334,7 @@
       "source_sha256": "7b835d46748f13e05048ef1a7f3b49587a1b7fee4a72854c788992e184af9cf5",
       "bytes": 8281,
       "executable": false,
-      "transforms": [
-        "reference-companion"
-      ]
+      "transforms": []
     },
     {
       "path": ".agents/skills/animate/references/upstream.md",
@@ -3271,6 +3569,19 @@
       "transforms": []
     },
     {
+      "path": ".codex/portable.config.toml",
+      "blob": "389ad0611ec4bb18301001cab5ecc1367adb0693b856413a7af3c8475d9a6d53",
+      "sha256": "389ad0611ec4bb18301001cab5ecc1367adb0693b856413a7af3c8475d9a6d53",
+      "source_sha256": "9668b427981db1673c5d285385c3a47c3dd66813793aaedaa0e82c46df29d9ff",
+      "bytes": 761,
+      "executable": false,
+      "transforms": [
+        "codex-portable-profile",
+        "portable-mcp-command",
+        "sanitized-config"
+      ]
+    },
+    {
       "path": ".codex/skills/graphify/.graphify_version",
       "blob": "3c7b74121359a4cfb55fd08f7e6c43df45ab81b271d5423289586cccb383c78b",
       "sha256": "3c7b74121359a4cfb55fd08f7e6c43df45ab81b271d5423289586cccb383c78b",
@@ -3364,7 +3675,7 @@
       "path": ".config/cross-harness-memory/runtime.json",
       "blob": "e915d4af58e708b07a9634d6cc3c62e1e20b976da0a21c2a788d394799dc8f5c",
       "sha256": "e915d4af58e708b07a9634d6cc3c62e1e20b976da0a21c2a788d394799dc8f5c",
-      "source_sha256": "60735485a1874f24e20c86dd03b72d5295fda9f9e3aa772cdb615c57bf4dea26",
+      "source_sha256": "f87b47bf77a142194bdec1567a3eb1d8455d2cf7284aea7683b700f50830e316",
       "bytes": 175,
       "executable": false,
       "transforms": [
@@ -3490,13 +3801,14 @@
     },
     {
       "path": ".config/opencode/opencode.jsonc",
-      "blob": "c898195d55dac7d2c4e3034e8035cd289310140e1124e9a0eb6183d6944884d5",
-      "sha256": "c898195d55dac7d2c4e3034e8035cd289310140e1124e9a0eb6183d6944884d5",
-      "source_sha256": "c66d5d90f4f93a454c0efa413c6b4967f22b635385164f33347eff80da5742b6",
-      "bytes": 1724,
+      "blob": "31a9c3f7424b4b226692c0af8c23c747ce73fd6c33ab01824f795735ccab6a03",
+      "sha256": "31a9c3f7424b4b226692c0af8c23c747ce73fd6c33ab01824f795735ccab6a03",
+      "source_sha256": "2edf4d9a9f351e5a7db3ef156b4f517c7ccb23d9f1f68886195c4755e4d77b9d",
+      "bytes": 1989,
       "executable": false,
       "transforms": [
         "explicit-global-discovery",
+        "home-rebase",
         "merged-native-plugins",
         "portable-mcp-command",
         "sanitized-config"
@@ -3524,7 +3836,7 @@
       "path": ".config/opencode/selected-skills-installation.json",
       "blob": "40c034a00c411313e6f592af63bebec1a949a872bfd0531c29ff78fd8a5cc902",
       "sha256": "40c034a00c411313e6f592af63bebec1a949a872bfd0531c29ff78fd8a5cc902",
-      "source_sha256": "63b41295683948e28bf1f12ad8920f8aa5286c64cf5ff2ad003ab481b96a099d",
+      "source_sha256": "09c3bc7aabcd3c6c92d477e84e70e57f216d34007fab0903eeba7d29d3d28c91",
       "bytes": 8743,
       "executable": false,
       "transforms": [
@@ -4048,11 +4360,11 @@
       "path": ".gemini/config/skills/impeccable/references/ringkas-design.md",
       "blob": "5771fe55e62ac59d2a28e7c94838518845edef86ffafe20b0d23cc249a05c495",
       "sha256": "5771fe55e62ac59d2a28e7c94838518845edef86ffafe20b0d23cc249a05c495",
-      "source_sha256": "4e11fe63ce0b8ea11c92b0880a6b2662857ffe6f92644a131480c7c721fbe14f",
+      "source_sha256": "6ec01db0e6b5704d104660b6f2d5858f149ba65de33c980e9476173d03cc98e7",
       "bytes": 4697,
       "executable": false,
       "transforms": [
-        "project-rebase:ringkas"
+        "home-rebase"
       ]
     },
     {
@@ -5033,6 +5345,24 @@
       "sha256": "e0531d9a9ff84abb5cf1a33f21b2dc41204b2d2423d51a8700ab8456705047d8",
       "source_sha256": "e0531d9a9ff84abb5cf1a33f21b2dc41204b2d2423d51a8700ab8456705047d8",
       "bytes": 3257,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/codex-mcp/package-lock.json",
+      "blob": "082a56e0be551d9848f9079331eeea712286d8d2180050ee23317d51ad6e6e3c",
+      "sha256": "082a56e0be551d9848f9079331eeea712286d8d2180050ee23317d51ad6e6e3c",
+      "source_sha256": "082a56e0be551d9848f9079331eeea712286d8d2180050ee23317d51ad6e6e3c",
+      "bytes": 46724,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/codex-mcp/package.json",
+      "blob": "aacab30280c3e0fa67d41b32ea5074964bfd36caba6a2ab62ea186946c1b916c",
+      "sha256": "aacab30280c3e0fa67d41b32ea5074964bfd36caba6a2ab62ea186946c1b916c",
+      "source_sha256": "aacab30280c3e0fa67d41b32ea5074964bfd36caba6a2ab62ea186946c1b916c",
+      "bytes": 98,
       "executable": false,
       "transforms": []
     },
@@ -9663,6 +9993,393 @@
       "transforms": []
     },
     {
+      "path": ".local/share/ponytail/.claude-plugin/marketplace.json",
+      "blob": "5c17acc0d30732735a7bf725214b8db9f8a1bb3485233744c7a5e0ca1d7434e8",
+      "sha256": "5c17acc0d30732735a7bf725214b8db9f8a1bb3485233744c7a5e0ca1d7434e8",
+      "source_sha256": "5c17acc0d30732735a7bf725214b8db9f8a1bb3485233744c7a5e0ca1d7434e8",
+      "bytes": 513,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.codex-plugin/plugin.json",
+      "blob": "9fb17fcd69adcfde927a3c821c8735677e778e5bf6a2ede431e482ef1678dab6",
+      "sha256": "9fb17fcd69adcfde927a3c821c8735677e778e5bf6a2ede431e482ef1678dab6",
+      "source_sha256": "9fb17fcd69adcfde927a3c821c8735677e778e5bf6a2ede431e482ef1678dab6",
+      "bytes": 1286,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/command/ponytail-audit.md",
+      "blob": "f40cb014b74bf5e944b4d21b2e300c0aa818e1b9cd8d6cf829ee4f7feaa37bfd",
+      "sha256": "f40cb014b74bf5e944b4d21b2e300c0aa818e1b9cd8d6cf829ee4f7feaa37bfd",
+      "source_sha256": "f40cb014b74bf5e944b4d21b2e300c0aa818e1b9cd8d6cf829ee4f7feaa37bfd",
+      "bytes": 1680,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/command/ponytail-debt.md",
+      "blob": "349b857a8435b22aa0f612e098835d8d67dd8f82842a1dbdc29261b0483f6a36",
+      "sha256": "349b857a8435b22aa0f612e098835d8d67dd8f82842a1dbdc29261b0483f6a36",
+      "source_sha256": "349b857a8435b22aa0f612e098835d8d67dd8f82842a1dbdc29261b0483f6a36",
+      "bytes": 902,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/command/ponytail-gain.md",
+      "blob": "fb3eae02ae264cfdde78a132bab60f7b92f4d16a60812a8dddc5278a8dd92165",
+      "sha256": "fb3eae02ae264cfdde78a132bab60f7b92f4d16a60812a8dddc5278a8dd92165",
+      "source_sha256": "fb3eae02ae264cfdde78a132bab60f7b92f4d16a60812a8dddc5278a8dd92165",
+      "bytes": 1252,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/command/ponytail-help.md",
+      "blob": "8d29017fc8634459843fa25f73aa727caa0c5f3c76d5a9bb202a943b162cb7f6",
+      "sha256": "8d29017fc8634459843fa25f73aa727caa0c5f3c76d5a9bb202a943b162cb7f6",
+      "source_sha256": "8d29017fc8634459843fa25f73aa727caa0c5f3c76d5a9bb202a943b162cb7f6",
+      "bytes": 1141,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/command/ponytail-review.md",
+      "blob": "444d0b0a94e7a7d312a2c7ef906adbc3009ef0d00927d25d4e7ad4e944555e3d",
+      "sha256": "444d0b0a94e7a7d312a2c7ef906adbc3009ef0d00927d25d4e7ad4e944555e3d",
+      "source_sha256": "444d0b0a94e7a7d312a2c7ef906adbc3009ef0d00927d25d4e7ad4e944555e3d",
+      "bytes": 2064,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/command/ponytail.md",
+      "blob": "0024380fdac3c40a0fc4d185a745074117262feb03297ad1facbc7df43201969",
+      "sha256": "0024380fdac3c40a0fc4d185a745074117262feb03297ad1facbc7df43201969",
+      "source_sha256": "0024380fdac3c40a0fc4d185a745074117262feb03297ad1facbc7df43201969",
+      "bytes": 608,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/plugins/index.js",
+      "blob": "9ed0323f55125768faccf5be77d49b2dd2769783d7b3224f8ac095ba8b71534d",
+      "sha256": "9ed0323f55125768faccf5be77d49b2dd2769783d7b3224f8ac095ba8b71534d",
+      "source_sha256": "9ed0323f55125768faccf5be77d49b2dd2769783d7b3224f8ac095ba8b71534d",
+      "bytes": 274,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/plugins/ponytail-frontmatter.cjs",
+      "blob": "9a4710a151fda97e7fe5507001552ca753b67fb4fb61536d41aab0f1a08da26b",
+      "sha256": "9a4710a151fda97e7fe5507001552ca753b67fb4fb61536d41aab0f1a08da26b",
+      "source_sha256": "9a4710a151fda97e7fe5507001552ca753b67fb4fb61536d41aab0f1a08da26b",
+      "bytes": 2848,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/.opencode/plugins/ponytail.mjs",
+      "blob": "a7f9d48eddff1c90ad2a06c4bba9a8cf48434bf4bc54ec5a00c4c136093a32ec",
+      "sha256": "a7f9d48eddff1c90ad2a06c4bba9a8cf48434bf4bc54ec5a00c4c136093a32ec",
+      "source_sha256": "a7f9d48eddff1c90ad2a06c4bba9a8cf48434bf4bc54ec5a00c4c136093a32ec",
+      "bytes": 7653,
+      "executable": true,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/AGENTS.md",
+      "blob": "b98b15e1d683ee205e124b52b8d330128593f4a87b545cf8185e2712cd1bb25f",
+      "sha256": "b98b15e1d683ee205e124b52b8d330128593f4a87b545cf8185e2712cd1bb25f",
+      "source_sha256": "b98b15e1d683ee205e124b52b8d330128593f4a87b545cf8185e2712cd1bb25f",
+      "bytes": 2721,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/LICENSE",
+      "blob": "fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab",
+      "sha256": "fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab",
+      "source_sha256": "fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab",
+      "bytes": 1071,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/assets/codex-icon.png",
+      "blob": "65e5626c97d5e5b5395f5eff068fdf35a39f5d7961d8a12a24b836609a1a6f9d",
+      "sha256": "65e5626c97d5e5b5395f5eff068fdf35a39f5d7961d8a12a24b836609a1a6f9d",
+      "source_sha256": "65e5626c97d5e5b5395f5eff068fdf35a39f5d7961d8a12a24b836609a1a6f9d",
+      "bytes": 8890,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/assets/logo.png",
+      "blob": "818905aa5c99519b4e648fee82828c97dbeb471603335c990605dfe29b966121",
+      "sha256": "818905aa5c99519b4e648fee82828c97dbeb471603335c990605dfe29b966121",
+      "source_sha256": "818905aa5c99519b4e648fee82828c97dbeb471603335c990605dfe29b966121",
+      "bytes": 567655,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/band/board.ts",
+      "blob": "c697da70dabdf9810361886f07ed6133610746ba31e7dc68bdab8384118c00ce",
+      "sha256": "c697da70dabdf9810361886f07ed6133610746ba31e7dc68bdab8384118c00ce",
+      "source_sha256": "c697da70dabdf9810361886f07ed6133610746ba31e7dc68bdab8384118c00ce",
+      "bytes": 45260,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/band/logo.ts",
+      "blob": "187c17a751140e0a8b030dea9d4436ce818f287efbc6f7d899e48064ecfd309a",
+      "sha256": "187c17a751140e0a8b030dea9d4436ce818f287efbc6f7d899e48064ecfd309a",
+      "source_sha256": "187c17a751140e0a8b030dea9d4436ce818f287efbc6f7d899e48064ecfd309a",
+      "bytes": 49871,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/band/metrics.ts",
+      "blob": "332a2a56458e059f8d56d0a0388396a9b63ba5ded0c90d8788d235ac8c452a41",
+      "sha256": "332a2a56458e059f8d56d0a0388396a9b63ba5ded0c90d8788d235ac8c452a41",
+      "source_sha256": "332a2a56458e059f8d56d0a0388396a9b63ba5ded0c90d8788d235ac8c452a41",
+      "bytes": 15101,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/band/register.tsx",
+      "blob": "b9580f464c70cc09901bf983a58370eed2de87d39aa336a88c5fccfd751a3c4d",
+      "sha256": "b9580f464c70cc09901bf983a58370eed2de87d39aa336a88c5fccfd751a3c4d",
+      "source_sha256": "b9580f464c70cc09901bf983a58370eed2de87d39aa336a88c5fccfd751a3c4d",
+      "bytes": 20549,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/band/types.d.ts",
+      "blob": "b605a330639f508d044e01dd5e8ff7c3324f55790fe0514edc28c0ede0ebf09b",
+      "sha256": "b605a330639f508d044e01dd5e8ff7c3324f55790fe0514edc28c0ede0ebf09b",
+      "source_sha256": "b605a330639f508d044e01dd5e8ff7c3324f55790fe0514edc28c0ede0ebf09b",
+      "bytes": 682,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/claude-band.json",
+      "blob": "8316581f357f5481dbf26077d118ca9ee03bcd14166e4da1bcd878ab723884c3",
+      "sha256": "8316581f357f5481dbf26077d118ca9ee03bcd14166e4da1bcd878ab723884c3",
+      "source_sha256": "8316581f357f5481dbf26077d118ca9ee03bcd14166e4da1bcd878ab723884c3",
+      "bytes": 64,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/claude-codex-hooks.json",
+      "blob": "3320ac7fae9bdded7fab83b62017db55c01b25af3f5896a518a5cf911072f54a",
+      "sha256": "3320ac7fae9bdded7fab83b62017db55c01b25af3f5896a518a5cf911072f54a",
+      "source_sha256": "3320ac7fae9bdded7fab83b62017db55c01b25af3f5896a518a5cf911072f54a",
+      "bytes": 1230,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/copilot-hooks.json",
+      "blob": "692b5148c3605d2ece2f081834b650c3c43d75cb272a7884dc40e9ce4425ef79",
+      "sha256": "692b5148c3605d2ece2f081834b650c3c43d75cb272a7884dc40e9ce4425ef79",
+      "source_sha256": "692b5148c3605d2ece2f081834b650c3c43d75cb272a7884dc40e9ce4425ef79",
+      "bytes": 1017,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/cursor-hooks.json",
+      "blob": "0b9f026058ad3209fd27a212881fd43a7d824a3a3405fdecf446e2f8c8647c65",
+      "sha256": "0b9f026058ad3209fd27a212881fd43a7d824a3a3405fdecf446e2f8c8647c65",
+      "source_sha256": "0b9f026058ad3209fd27a212881fd43a7d824a3a3405fdecf446e2f8c8647c65",
+      "bytes": 322,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-activate.js",
+      "blob": "6e492e997aa3e01560046daaed288b1cf68c596cc2b227744ec8b9fbdb5a230a",
+      "sha256": "6e492e997aa3e01560046daaed288b1cf68c596cc2b227744ec8b9fbdb5a230a",
+      "source_sha256": "6e492e997aa3e01560046daaed288b1cf68c596cc2b227744ec8b9fbdb5a230a",
+      "bytes": 9347,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-band-import.js",
+      "blob": "2d9dda3a6b77b46d5f46f6bc9a9ff2fa624d4f5dee77217c642f6926ab159edc",
+      "sha256": "2d9dda3a6b77b46d5f46f6bc9a9ff2fa624d4f5dee77217c642f6926ab159edc",
+      "source_sha256": "2d9dda3a6b77b46d5f46f6bc9a9ff2fa624d4f5dee77217c642f6926ab159edc",
+      "bytes": 14078,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-config.js",
+      "blob": "ae81c3552064c9a9f0b9c0e8ec8a959af56f5599f0c899dd79659ea9a101dfc4",
+      "sha256": "ae81c3552064c9a9f0b9c0e8ec8a959af56f5599f0c899dd79659ea9a101dfc4",
+      "source_sha256": "ae81c3552064c9a9f0b9c0e8ec8a959af56f5599f0c899dd79659ea9a101dfc4",
+      "bytes": 5911,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-instructions.js",
+      "blob": "36521752b3444ef8daa823edaa996170e6af2cd45c82193644acb3a42f3395f4",
+      "sha256": "36521752b3444ef8daa823edaa996170e6af2cd45c82193644acb3a42f3395f4",
+      "source_sha256": "36521752b3444ef8daa823edaa996170e6af2cd45c82193644acb3a42f3395f4",
+      "bytes": 5565,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-map.js",
+      "blob": "c876b087accb6655d04f7f48bda85d8304941d0ac0fb78c0c164eb9ec7d35e69",
+      "sha256": "c876b087accb6655d04f7f48bda85d8304941d0ac0fb78c0c164eb9ec7d35e69",
+      "source_sha256": "c876b087accb6655d04f7f48bda85d8304941d0ac0fb78c0c164eb9ec7d35e69",
+      "bytes": 5439,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-mode-tracker.js",
+      "blob": "ab2a7d89a71fdbecd5ea4d12ffe980c2213b80fe112d623ca13ceac0258307e7",
+      "sha256": "ab2a7d89a71fdbecd5ea4d12ffe980c2213b80fe112d623ca13ceac0258307e7",
+      "source_sha256": "ab2a7d89a71fdbecd5ea4d12ffe980c2213b80fe112d623ca13ceac0258307e7",
+      "bytes": 9912,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-runtime.js",
+      "blob": "52d8e66d542d49217a9eb721942e7bd9f4ee46a56615fb3f53430276cfe3a592",
+      "sha256": "52d8e66d542d49217a9eb721942e7bd9f4ee46a56615fb3f53430276cfe3a592",
+      "source_sha256": "52d8e66d542d49217a9eb721942e7bd9f4ee46a56615fb3f53430276cfe3a592",
+      "bytes": 7751,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-statusline.ps1",
+      "blob": "6138f15bc7651ee7e5ced2a2a2280f5c810d58cad3e9f3252c628f4c923e48c9",
+      "sha256": "6138f15bc7651ee7e5ced2a2a2280f5c810d58cad3e9f3252c628f4c923e48c9",
+      "source_sha256": "6138f15bc7651ee7e5ced2a2a2280f5c810d58cad3e9f3252c628f4c923e48c9",
+      "bytes": 885,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-statusline.sh",
+      "blob": "f1dbfa5997a5d4b5339619709053eff557ab16d71af75eb3041c3d3e3dca42ec",
+      "sha256": "f1dbfa5997a5d4b5339619709053eff557ab16d71af75eb3041c3d3e3dca42ec",
+      "source_sha256": "f1dbfa5997a5d4b5339619709053eff557ab16d71af75eb3041c3d3e3dca42ec",
+      "bytes": 696,
+      "executable": true,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/ponytail-subagent.js",
+      "blob": "8da045eb96b5b919655bf4c12abfc7e5163af29b62b97ccaf633b75099390315",
+      "sha256": "8da045eb96b5b919655bf4c12abfc7e5163af29b62b97ccaf633b75099390315",
+      "source_sha256": "8da045eb96b5b919655bf4c12abfc7e5163af29b62b97ccaf633b75099390315",
+      "bytes": 3462,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/hooks/qoder-hooks.json",
+      "blob": "3831c8e496b2c6f85bbe0ee36482e34855905d03bfb39e027562dfbe3d4ed0d8",
+      "sha256": "3831c8e496b2c6f85bbe0ee36482e34855905d03bfb39e027562dfbe3d4ed0d8",
+      "source_sha256": "3831c8e496b2c6f85bbe0ee36482e34855905d03bfb39e027562dfbe3d4ed0d8",
+      "bytes": 718,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/package.json",
+      "blob": "f062af314f6031fe88fcc63bdf1c42fbae9e4acb28b7ac94c1f8acc22d204562",
+      "sha256": "f062af314f6031fe88fcc63bdf1c42fbae9e4acb28b7ac94c1f8acc22d204562",
+      "source_sha256": "f062af314f6031fe88fcc63bdf1c42fbae9e4acb28b7ac94c1f8acc22d204562",
+      "bytes": 1260,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/skills/plugin.json",
+      "blob": "b1db7be1404a84ebf992a2fb7a5a9296adb17b0fc63a14856e2028f0d1d16051",
+      "sha256": "b1db7be1404a84ebf992a2fb7a5a9296adb17b0fc63a14856e2028f0d1d16051",
+      "source_sha256": "b1db7be1404a84ebf992a2fb7a5a9296adb17b0fc63a14856e2028f0d1d16051",
+      "bytes": 167,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/skills/ponytail-audit/SKILL.md",
+      "blob": "2b3223a02c386d1263e1b08343cb8eb3a53e444cdafb1d79e26c8ec2a8fcad28",
+      "sha256": "2b3223a02c386d1263e1b08343cb8eb3a53e444cdafb1d79e26c8ec2a8fcad28",
+      "source_sha256": "2b3223a02c386d1263e1b08343cb8eb3a53e444cdafb1d79e26c8ec2a8fcad28",
+      "bytes": 5417,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/skills/ponytail-debt/SKILL.md",
+      "blob": "b5ec2762f6ba8c4af9ea7173aa6c9f91b88655a25e43f9de0264f6ce8722b25f",
+      "sha256": "b5ec2762f6ba8c4af9ea7173aa6c9f91b88655a25e43f9de0264f6ce8722b25f",
+      "source_sha256": "b5ec2762f6ba8c4af9ea7173aa6c9f91b88655a25e43f9de0264f6ce8722b25f",
+      "bytes": 1769,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/skills/ponytail-gain/SKILL.md",
+      "blob": "231034a896d6762e4b5c8468287083422c56b499119976ec9f76821f7d083090",
+      "sha256": "231034a896d6762e4b5c8468287083422c56b499119976ec9f76821f7d083090",
+      "source_sha256": "231034a896d6762e4b5c8468287083422c56b499119976ec9f76821f7d083090",
+      "bytes": 2164,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/skills/ponytail-help/SKILL.md",
+      "blob": "86ab0ce0af70cbeeeef499d5c884873b393f87f86401dcc45553662ce2c1eff9",
+      "sha256": "86ab0ce0af70cbeeeef499d5c884873b393f87f86401dcc45553662ce2c1eff9",
+      "source_sha256": "86ab0ce0af70cbeeeef499d5c884873b393f87f86401dcc45553662ce2c1eff9",
+      "bytes": 3188,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/skills/ponytail-review/SKILL.md",
+      "blob": "33fe4ebe22a460924e5d4a261e223df22e409cc94ab76182bee9fb91a3ef022e",
+      "sha256": "33fe4ebe22a460924e5d4a261e223df22e409cc94ab76182bee9fb91a3ef022e",
+      "source_sha256": "33fe4ebe22a460924e5d4a261e223df22e409cc94ab76182bee9fb91a3ef022e",
+      "bytes": 5143,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".local/share/ponytail/skills/ponytail/SKILL.md",
+      "blob": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+      "sha256": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+      "source_sha256": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509",
+      "bytes": 3496,
+      "executable": false,
+      "transforms": []
+    },
+    {
       "path": ".local/state/opencode/model.json",
       "blob": "4c8a3592ee7405e2d893e416eb1fb2c718c8ec893a43739d48698c84e2a0be70",
       "sha256": "4c8a3592ee7405e2d893e416eb1fb2c718c8ec893a43739d48698c84e2a0be70",
@@ -9702,10 +10419,11 @@
       "path": ".opencode/opencode.json",
       "blob": "1a1d47329b1308cf1100dad3d074a05ac1d4ab9f5d05bee4dc2706c44eae2aa8",
       "sha256": "1a1d47329b1308cf1100dad3d074a05ac1d4ab9f5d05bee4dc2706c44eae2aa8",
-      "source_sha256": "8a9a2eb8852f645bfb74021c2881a9ceed5d221497e8a46cc718adf1bc6da9c1",
+      "source_sha256": "9af88b764f4632bc945d47e4e204f81c95580f90a71e432aa51f9199b4929b55",
       "bytes": 283,
       "executable": false,
       "transforms": [
+        "home-rebase",
         "portable-plugin-paths",
         "sanitized-config"
       ]
@@ -9730,10 +10448,10 @@
     },
     {
       "path": ".opencode/plugins/dcg-guard.js",
-      "blob": "70cbb26770d374b6d38ffa389b7d58fe132c8e10bf80491ed020e3be101220e5",
-      "sha256": "70cbb26770d374b6d38ffa389b7d58fe132c8e10bf80491ed020e3be101220e5",
-      "source_sha256": "70cbb26770d374b6d38ffa389b7d58fe132c8e10bf80491ed020e3be101220e5",
-      "bytes": 1803,
+      "blob": "1ac79839424b610fa82c067045238ec0254b5d981d07fcfd0b44b633e47b30ce",
+      "sha256": "1ac79839424b610fa82c067045238ec0254b5d981d07fcfd0b44b633e47b30ce",
+      "source_sha256": "1ac79839424b610fa82c067045238ec0254b5d981d07fcfd0b44b633e47b30ce",
+      "bytes": 1840,
       "executable": false,
       "transforms": []
     },
@@ -11295,28 +12013,7 @@
       "transforms": []
     }
   ],
-  "excluded": [
-    {
-      "path": ".opencode/skills/ui-ux-pro-max/scripts/__pycache__",
-      "reason": "cache or unrelated dependency tree"
-    },
-    {
-      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/json-schema-traverse/.github",
-      "reason": "non-runtime package tests/examples"
-    },
-    {
-      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/json-schema-traverse/spec/fixtures",
-      "reason": "non-runtime package tests/examples"
-    },
-    {
-      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/fast-uri/.github",
-      "reason": "non-runtime package tests/examples"
-    },
-    {
-      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/fast-uri/test",
-      "reason": "non-runtime package tests/examples"
-    }
-  ],
+  "excluded": [],
   "required_environment": [
     "CONTEXT7_API_KEY"
   ],
@@ -11334,8 +12031,13 @@
       "fast-uri": "3.1.8",
       "fast-deep-equal": "3.1.3"
     },
+    "codex_mcp": {
+      "@playwright/mcp": "0.0.83",
+      "@upstash/context7-mcp": "4.4.4"
+    },
+    "ponytail": "5.3.2",
     "plugin_api": "1.17.11",
-    "python": ">=3.10",
+    "python": ">=3.11",
     "node": ">=22",
     "optional_tools": {
       "dcg": "0.6.7",
@@ -11351,13 +12053,24 @@
     "Linux DCG PATH delimiter corrected only in restored copy"
   ],
   "authentication": "Provider and remote MCP credentials/sessions must be created locally; ECC itself uses local harness identity and repository binding.",
+  "codex": {
+    "profile": "portable",
+    "mcp_servers": [
+      "ecc-memory-vault",
+      "context7",
+      "playwright"
+    ],
+    "expected_portable_skills": 51,
+    "ponytail_skills": 6,
+    "hooks_trust": "Review and trust locally in Codex /hooks; trust decisions are not backed up."
+  },
   "observed_prerequisites": {
-    "node": "v24.18.0",
-    "python": "3.14.6",
-    "git": "git version 2.55.0.windows.1"
+    "node": "v22.23.4",
+    "python": "3.13.5",
+    "git": "git version 2.47.3"
   },
   "optional_project_checkouts": {
     "ringkas": "$HOME/Projects/RINGKAS; project source/data are not included"
   },
-  "snapshot_id": "c4e8d377987485a4b748d8d21da65d4a60f5ca8fb2ddb8567eebfc3b1b204625"
+  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0"
 }

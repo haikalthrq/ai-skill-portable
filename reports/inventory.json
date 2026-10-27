@@ -1,7 +1,18 @@
 {
-  "snapshot_id": "c4e8d377987485a4b748d8d21da65d4a60f5ca8fb2ddb8567eebfc3b1b204625",
-  "created_utc": "2026-10-10T07:25:05.286395+00:00",
-  "discoverable_skills": 45,
+  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0",
+  "created_utc": "2026-10-27T07:43:44.140352+00:00",
+  "codex": {
+    "profile": "portable",
+    "mcp_servers": [
+      "ecc-memory-vault",
+      "context7",
+      "playwright"
+    ],
+    "expected_portable_skills": 51,
+    "ponytail_skills": 6,
+    "hooks_trust": "Review and trust locally in Codex /hooks; trust decisions are not backed up."
+  },
+  "discoverable_skills": 51,
   "builtin_skills": [
     "customize-opencode"
   ],
@@ -41,6 +52,7 @@
       "name": "code-review",
       "description": "Use for requested reviews, pre-merge/PR, or completion of significant implementation. Review against repository standards and the originating spec in separate subagents. Not after every tiny modification.",
       "definition_paths": [
+        ".codex/skills/code-review/SKILL.md",
         ".config/opencode/skills/code-review/SKILL.md"
       ]
     },
@@ -86,6 +98,7 @@
       "name": "domain-modeling",
       "description": "Supporting domain-model discipline for grill-with-docs or wayfinder. Use when called by those workflows or explicitly requested to sharpen terminology, edit a glossary, or record a meaningful ADR.",
       "definition_paths": [
+        ".codex/skills/domain-modeling/SKILL.md",
         ".config/opencode/skills/domain-modeling/SKILL.md"
       ]
     },
@@ -93,6 +106,7 @@
       "name": "doubt-driven-development",
       "description": "Use ONLY for non-trivial high-risk or uncertain decisions involving auth/security, payments, destructive migrations/data loss, concurrency/correctness, difficult architecture, or unfamiliar high-impact code. Bounded fresh-context adversarial review. Ask the user before each cross-model escalation.",
       "definition_paths": [
+        ".codex/skills/doubt-driven-development/SKILL.md",
         ".config/opencode/skills/doubt-driven-development/SKILL.md"
       ]
     },
@@ -138,6 +152,7 @@
       "name": "grill-with-docs",
       "description": "Use for explicitly requested interviews or substantial ambiguous work with unresolved requirements, terminology, or design decisions worth preserving in ADRs or a glossary. Simple fixes do not need grilling.",
       "definition_paths": [
+        ".codex/skills/grill-with-docs/SKILL.md",
         ".config/opencode/skills/grill-with-docs/SKILL.md"
       ]
     },
@@ -145,6 +160,7 @@
       "name": "grilling",
       "description": "Supporting interview primitive. Use when called by grill-with-docs or wayfinder, or explicitly requested to stress-test a plan or decision. Investigate discoverable facts yourself; interview for unresolved human decisions.",
       "definition_paths": [
+        ".codex/skills/grilling/SKILL.md",
         ".config/opencode/skills/grilling/SKILL.md"
       ]
     },
@@ -152,6 +168,7 @@
       "name": "handoff",
       "description": "Use when moving to a fresh session, switching models, context has become long/noisy, or another agent must continue. Preserve decisions, status, changed files, verification, unresolved issues, and artifact pointers.",
       "definition_paths": [
+        ".codex/skills/handoff/SKILL.md",
         ".config/opencode/skills/handoff/SKILL.md"
       ]
     },
@@ -202,6 +219,7 @@
       "name": "incremental-implementation",
       "description": "Use for substantial or multi-file implementation in small reviewable slices: implement, verify, then continue. Avoid giant speculative changes. Trivial one-line changes need no artificial slicing or extra process.",
       "definition_paths": [
+        ".codex/skills/incremental-implementation/SKILL.md",
         ".config/opencode/skills/incremental-implementation/SKILL.md"
       ]
     },
@@ -217,6 +235,7 @@
       "name": "karpathy-guidelines",
       "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.",
       "definition_paths": [
+        ".codex/skills/karpathy-guidelines/SKILL.md",
         ".config/opencode/skills/karpathy-guidelines/SKILL.md"
       ]
     },
@@ -254,9 +273,52 @@
       ]
     },
     {
+      "name": "ponytail",
+      "description": "Lazy senior dev mode: the smallest change that fully solves the task, and a reply a busy human understands in one read. Use on any coding task (writing, fixing, refactoring, reviewing, choosing dependencies) and when the user says \"ponytail\", \"be lazy\", \"simplest solution\", \"yagni\", or complains about over-engineering or bloat. Levels: lite, full (default), ultra.\n",
+      "definition_paths": [
+        ".local/share/ponytail/skills/ponytail/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-audit",
+      "description": "Quality audit of a whole repo: bugs, security holes, what breaks under real load, risky code without tests, slow paths, and what to delete, merge or split. Ranked, each finding explained in plain English. One-shot report, changes nothing. Use for \"audit this codebase\", \"review the whole repo\", \"find bloat\", \"what can I delete\", /ponytail-audit.\n",
+      "definition_paths": [
+        ".local/share/ponytail/skills/ponytail-audit/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-debt",
+      "description": "List every `shortcut:` comment (and older `ponytail:` ones) as a debt ledger. One-shot report, changes nothing. Use for \"ponytail debt\", \"what did ponytail defer\", \"list the shortcuts\", /ponytail-debt.\n",
+      "definition_paths": [
+        ".local/share/ponytail/skills/ponytail-debt/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-gain",
+      "description": "Show ponytail's measured savings (code, cost, speed) from the benchmark. One-shot display. Use for /ponytail-gain, \"what does ponytail save\", \"ponytail impact\".\n",
+      "definition_paths": [
+        ".local/share/ponytail/skills/ponytail-gain/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-help",
+      "description": "Quick reference for ponytail levels, skills and commands. One-shot display. Use for /ponytail-help, \"ponytail help\", \"how do I use ponytail\".\n",
+      "definition_paths": [
+        ".local/share/ponytail/skills/ponytail-help/SKILL.md"
+      ]
+    },
+    {
+      "name": "ponytail-review",
+      "description": "Quality review of a change: is the logic right, is it safe, does it hold under real load, is risky code tested, is it fast enough, and is every line needed. Reads the connected code, not only the diff. Each finding is explained in plain English. Use for \"review this\", \"code review\", \"review the last commit\", \"review my PR\", \"is this over-engineered\", /ponytail-review.\n",
+      "definition_paths": [
+        ".local/share/ponytail/skills/ponytail-review/SKILL.md"
+      ]
+    },
+    {
       "name": "prototype",
       "description": "Supporting prototype workflow for wayfinder tickets, or explicitly requested throwaway logic/state or UI exploration. Answer a specific design question with a cheap runnable artifact.",
       "definition_paths": [
+        ".codex/skills/prototype/SKILL.md",
         ".config/opencode/skills/prototype/SKILL.md"
       ]
     },
@@ -272,6 +334,7 @@
       "name": "research",
       "description": "Supporting research workflow for wayfinder research tickets, or explicitly requested delegated primary-source research. Capture cited findings using the repository's existing note conventions.",
       "definition_paths": [
+        ".codex/skills/research/SKILL.md",
         ".config/opencode/skills/research/SKILL.md"
       ]
     },
@@ -279,6 +342,7 @@
       "name": "retro",
       "description": "Use for requested retrospectives or unusually difficult/inefficient sessions. Suggest improvements to rules, navigation, checks, tooling, and MCP access; present findings before making environment changes.",
       "definition_paths": [
+        ".codex/skills/retro/SKILL.md",
         ".config/opencode/skills/retro/SKILL.md"
       ]
     },
@@ -286,6 +350,7 @@
       "name": "setup-matt-pocock-skills",
       "description": "Use ONLY when explicitly requested, or when code-review/wayfinder needs missing per-repo tracker/doc configuration. Inspect existing conventions, propose setup, and confirm before editing. Not a global bootstrap.",
       "definition_paths": [
+        ".codex/skills/setup-matt-pocock-skills/SKILL.md",
         ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md"
       ]
     },
@@ -301,6 +366,7 @@
       "name": "systematic-debugging",
       "description": "Use for non-trivial bugs, unexplained failures, regressions, flaky behavior, or unclear root causes. Reproduce and investigate systematically before proposing fixes.",
       "definition_paths": [
+        ".codex/skills/systematic-debugging/SKILL.md",
         ".config/opencode/skills/systematic-debugging/SKILL.md"
       ]
     },
@@ -308,6 +374,7 @@
       "name": "test-driven-development",
       "description": "Use ONLY when systematic-debugging calls for a failing regression test, or when the user explicitly requests test-driven development. On-demand dependency; not an automatic workflow for every feature or edit.",
       "definition_paths": [
+        ".codex/skills/test-driven-development/SKILL.md",
         ".config/opencode/skills/test-driven-development/SKILL.md"
       ]
     },
@@ -315,6 +382,7 @@
       "name": "ui-ux-pro-max",
       "description": "Supporting design intelligence for design-system exploration, style comparison, typography and palette research, industry-specific UI patterns, and a new project's visual direction. Automatically use when research materially helps; assist Impeccable or Taste without becoming another primary design owner.",
       "definition_paths": [
+        ".codex/skills/ui-ux-pro-max/SKILL.md",
         ".opencode/skills/ui-ux-pro-max/SKILL.md"
       ]
     },
@@ -332,6 +400,7 @@
       "name": "verification-before-completion",
       "description": "Use before claiming a coding task fixed, complete, or passing. Run appropriate current tests, build, runtime, lint, typecheck, or configuration checks; inspect results and state exactly what they prove.",
       "definition_paths": [
+        ".codex/skills/verification-before-completion/SKILL.md",
         ".config/opencode/skills/verification-before-completion/SKILL.md"
       ]
     },
@@ -339,6 +408,7 @@
       "name": "wayfinder",
       "description": "Use ONLY for explicitly requested decision maps for large multi-session projects with unclear major architectural/product decisions. Resolve decisions before implementation. Not for ordinary features or bug fixes.",
       "definition_paths": [
+        ".codex/skills/wayfinder/SKILL.md",
         ".config/opencode/skills/wayfinder/SKILL.md"
       ]
     },
@@ -346,25 +416,25 @@
       "name": "writing-for-agents",
       "description": "Supporting writing reference called by retro. Use when that workflow calls it, or when explicitly requested for agent-facing skills, rules, or documentation. Keep routine work free of extra workflow stages.",
       "definition_paths": [
+        ".codex/skills/writing-for-agents/SKILL.md",
         ".config/opencode/skills/writing-for-agents/SKILL.md"
       ]
     }
   ],
-  "definition_paths": 75,
-  "directory_aliases": 23,
-  "logical_files": 1146,
-  "unique_content_blobs": 858,
-  "logical_bytes": 14452745,
-  "stored_blob_bytes": 8804835,
+  "definition_paths": 99,
+  "directory_aliases": 41,
+  "logical_files": 1192,
+  "unique_content_blobs": 904,
+  "logical_bytes": 15321652,
+  "stored_blob_bytes": 9673742,
   "portability_transform_counts": {
-    "reference-companion": 1,
+    "codex-portable-profile": 1,
+    "portable-mcp-command": 2,
+    "sanitized-config": 3,
     "vendored-runtime-path": 1,
     "explicit-global-discovery": 1,
+    "home-rebase": 4,
     "merged-native-plugins": 1,
-    "portable-mcp-command": 1,
-    "sanitized-config": 2,
-    "home-rebase": 1,
-    "project-rebase:ringkas": 1,
     "portable-plugin-paths": 1
   },
   "dependencies": {
@@ -381,8 +451,13 @@
       "fast-uri": "3.1.8",
       "fast-deep-equal": "3.1.3"
     },
+    "codex_mcp": {
+      "@playwright/mcp": "0.0.83",
+      "@upstash/context7-mcp": "4.4.4"
+    },
+    "ponytail": "5.3.2",
     "plugin_api": "1.17.11",
-    "python": ">=3.10",
+    "python": ">=3.11",
     "node": ">=22",
     "optional_tools": {
       "dcg": "0.6.7",
@@ -391,9 +466,9 @@
     }
   },
   "observed_prerequisites": {
-    "node": "v24.18.0",
-    "python": "3.14.6",
-    "git": "git version 2.55.0.windows.1"
+    "node": "v22.23.4",
+    "python": "3.13.5",
+    "git": "git version 2.47.3"
   },
   "required_environment": [
     "CONTEXT7_API_KEY"
@@ -401,143 +476,212 @@
   "optional_projects": {
     "ringkas": "$HOME/Projects/RINGKAS; project source/data are not included"
   },
-  "excluded": [
-    {
-      "path": ".opencode/skills/ui-ux-pro-max/scripts/__pycache__",
-      "reason": "cache or unrelated dependency tree"
-    },
-    {
-      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/json-schema-traverse/.github",
-      "reason": "non-runtime package tests/examples"
-    },
-    {
-      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/json-schema-traverse/spec/fixtures",
-      "reason": "non-runtime package tests/examples"
-    },
-    {
-      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/fast-uri/.github",
-      "reason": "non-runtime package tests/examples"
-    },
-    {
-      "path": ".local/share/opencode-portable/ecc-runtime/node_modules/fast-uri/test",
-      "reason": "non-runtime package tests/examples"
-    }
-  ],
+  "excluded": [],
   "aliases": [
     {
       "path": ".claude/skills/agent-browser",
       "target": ".agents/skills/agent-browser",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/brandkit",
       "target": ".agents/skills/brandkit",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/caveman",
       "target": ".agents/skills/caveman",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/cross-harness-handoff",
       "target": ".agents/skills/cross-harness-handoff",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/design-taste-frontend",
       "target": ".agents/skills/design-taste-frontend",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/design-taste-frontend-v1",
       "target": ".agents/skills/design-taste-frontend-v1",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/find-skills",
       "target": ".agents/skills/find-skills",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/full-output-enforcement",
       "target": ".agents/skills/full-output-enforcement",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/gpt-taste",
       "target": ".agents/skills/gpt-taste",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/high-end-visual-design",
       "target": ".agents/skills/high-end-visual-design",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/image-to-code",
       "target": ".agents/skills/image-to-code",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/imagegen-frontend-mobile",
       "target": ".agents/skills/imagegen-frontend-mobile",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/imagegen-frontend-web",
       "target": ".agents/skills/imagegen-frontend-web",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/industrial-brutalist-ui",
       "target": ".agents/skills/industrial-brutalist-ui",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/minimalist-ui",
       "target": ".agents/skills/minimalist-ui",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/no-ai-slop",
       "target": ".agents/skills/no-ai-slop",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/redesign-existing-projects",
       "target": ".agents/skills/redesign-existing-projects",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/stitch-design-taste",
       "target": ".agents/skills/stitch-design-taste",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".claude/skills/unified-memory",
       "target": ".agents/skills/unified-memory",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".cline/skills/cross-harness-handoff",
       "target": ".agents/skills/cross-harness-handoff",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".cline/skills/unified-memory",
       "target": ".agents/skills/unified-memory",
-      "source_kind": "junction"
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/code-review",
+      "target": ".config/opencode/skills/code-review",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/domain-modeling",
+      "target": ".config/opencode/skills/domain-modeling",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/doubt-driven-development",
+      "target": ".config/opencode/skills/doubt-driven-development",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/grill-with-docs",
+      "target": ".config/opencode/skills/grill-with-docs",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/grilling",
+      "target": ".config/opencode/skills/grilling",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/handoff",
+      "target": ".config/opencode/skills/handoff",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/incremental-implementation",
+      "target": ".config/opencode/skills/incremental-implementation",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/karpathy-guidelines",
+      "target": ".config/opencode/skills/karpathy-guidelines",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/prototype",
+      "target": ".config/opencode/skills/prototype",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/research",
+      "target": ".config/opencode/skills/research",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/retro",
+      "target": ".config/opencode/skills/retro",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/setup-matt-pocock-skills",
+      "target": ".config/opencode/skills/setup-matt-pocock-skills",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/systematic-debugging",
+      "target": ".config/opencode/skills/systematic-debugging",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/test-driven-development",
+      "target": ".config/opencode/skills/test-driven-development",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/ui-ux-pro-max",
+      "target": ".opencode/skills/ui-ux-pro-max",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/verification-before-completion",
+      "target": ".config/opencode/skills/verification-before-completion",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/wayfinder",
+      "target": ".config/opencode/skills/wayfinder",
+      "source_kind": "symlink"
+    },
+    {
+      "path": ".codex/skills/writing-for-agents",
+      "target": ".config/opencode/skills/writing-for-agents",
+      "source_kind": "symlink"
     },
     {
       "path": ".gemini/config/skills/cross-harness-handoff",
       "target": ".agents/skills/cross-harness-handoff",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     },
     {
       "path": ".gemini/config/skills/unified-memory",
       "target": ".agents/skills/unified-memory",
-      "source_kind": "junction"
+      "source_kind": "symlink"
     }
   ]
 }

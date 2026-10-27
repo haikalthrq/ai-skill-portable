@@ -9,6 +9,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from common import dump, sanitized_config, sha, strip_jsonc, test_temp_root, session_storage, structured_credentials, structured_asset
 from restore import load_snapshot, make_alias, restore, rollback
 from secret_scan import scan_bytes
+from backup import codex_profile
+from common import isolated_env, portable_bytes, render
+from codex_verify import inline_toml
+from bootstrap import mcp_packages_ready
+import tomllib
 
 def fixture(repo, payload=b'# routing\n'):
     record = {'path': '.config/opencode/AGENTS.md', 'blob': sha(payload), 'sha256': sha(payload),
@@ -42,6 +47,108 @@ class MigrationTests(unittest.TestCase):
         first = restore(self.repo, self.home)
         self.assertEqual(first, restore(self.repo, self.home))
         self.assertFalse(self.home.exists())
+
+    def codex_fixture(self, extra_argument=None):
+        self.home.mkdir(exist_ok=True)
+        source = self.home / '.codex/config.toml'
+        source.parent.mkdir(exist_ok=True)
+        entries = {'ecc-memory-vault': '.agents/skills/cross-harness-handoff/scripts/memory-mcp.mjs',
+                   'context7': '.local/share/codex-mcp/node_modules/@upstash/context7-mcp/dist/index.js',
+                   'playwright': '.local/share/codex-mcp/node_modules/@playwright/mcp/cli.js'}
+        lines = ['model = "example-model"', '[projects."private-repo"]', 'trust_level = "trusted"',
+                 '[hooks]', 'enabled = true']
+        for name, entry in entries.items():
+            args = [str(self.home / entry)]
+            if extra_argument and name == 'context7':
+                args.extend(extra_argument)
+            lines += ['[mcp_servers.' + name + ']', 'command = "node"', 'args = ' + json.dumps(args)]
+        lines += ['[mcp_servers.context7.env]', 'CONTEXT7_API_KEY = "synthetic-private-value"',
+                  '[mcp_servers.ecc-memory-vault.env]', 'ECC_MEMORY_HARNESS = "codex"']
+        source.write_text('\n'.join(lines) + '\n')
+        return source
+
+    def test_codex_profile_excludes_secret_trust_and_private_paths(self):
+        source = self.codex_fixture()
+        original = source.read_bytes()
+        payload, secrets, required, selected = codex_profile(self.home)
+        self.assertEqual(selected, source)
+        profile = tomllib.loads(payload.decode())
+        self.assertEqual(profile['model'], 'example-model')
+        self.assertNotIn('synthetic-private-value', payload.decode())
+        self.assertEqual(secrets, ['synthetic-private-value'])
+        self.assertEqual(required, {'CONTEXT7_API_KEY'})
+        self.assertEqual(profile['mcp_servers']['context7']['env_vars'], ['CONTEXT7_API_KEY'])
+        self.assertNotIn('projects', profile)
+        self.assertNotIn('hooks', profile)
+        self.assertNotIn(str(self.home), payload.decode())
+        self.assertEqual(source.read_bytes(), original)
+
+    def test_capture_can_read_restored_codex_profile_without_main_mcp(self):
+        source = self.codex_fixture()
+        restored_profile = source.with_name('portable.config.toml')
+        source.rename(restored_profile)
+        source.write_text('model = "unrelated-model"\n')
+        payload, _, _, selected = codex_profile(self.home)
+        self.assertEqual(selected, restored_profile)
+        self.assertEqual(tomllib.loads(payload.decode())['model'], 'example-model')
+
+    def test_codex_profile_rejects_secret_command_arguments(self):
+        self.codex_fixture(['--api-key', 'synthetic-private-value'])
+        with self.assertRaises(ValueError):
+            codex_profile(self.home)
+
+    def test_codex_app_server_override_preserves_nested_toml_values(self):
+        value = {'ecc-memory-vault': {'command': 'node', 'args': ['path with spaces', 'quote"here'],
+                                     'env': {'ECC_MEMORY_HARNESS': 'codex'}, 'enabled': True}}
+        self.assertEqual(tomllib.loads('mcp_servers = ' + inline_toml(value))['mcp_servers'], value)
+
+    def test_disposable_environment_does_not_reuse_caller_codex_or_database(self):
+        from unittest.mock import patch
+        with patch.dict(os.environ, {'CODEX_HOME': '/caller-private-config'}):
+            env = isolated_env(self.home)
+        self.assertEqual(env['CODEX_HOME'], str(self.home / '.codex'))
+        self.assertEqual(env['XDG_DATA_HOME'], str(self.home / '.local/share/opencode-portable/data'))
+
+    def test_partial_mcp_installation_is_not_reported_ready(self):
+        package = self.home / 'node_modules/@playwright/mcp'
+        package.mkdir(parents=True)
+        (package / 'package.json').write_text('{"version":"0.0.83"}')
+        self.assertFalse(mcp_packages_ready(self.home / 'node_modules', {'@playwright/mcp': '0.0.83'}, {}))
+
+    def test_missing_mcp_transitive_dependency_triggers_repair(self):
+        from unittest.mock import patch
+        import subprocess
+        package = self.home / 'node_modules/@playwright/mcp'
+        package.mkdir(parents=True)
+        (package / 'package.json').write_text('{"version":"0.0.83"}')
+        (package / 'cli.js').write_text('// fixture')
+        with patch('bootstrap.command', side_effect=subprocess.CalledProcessError(1, ['node'])):
+            self.assertFalse(mcp_packages_ready(self.home / 'node_modules', {'@playwright/mcp': '0.0.83'}, {}))
+
+    def test_codex_command_resolves_platform_executable(self):
+        from unittest.mock import patch
+        from common import command
+        with patch('common.shutil.which', return_value='/tools/codex.cmd'), patch('common.subprocess.run') as run:
+            command(['codex', 'plugin', 'list'])
+        self.assertEqual(run.call_args.args[0][0], '/tools/codex.cmd')
+
+    def test_posix_file_url_capture_renders_valid_windows_file_url(self):
+        from pathlib import PureWindowsPath
+        source = self.home.as_uri() + '/.local/share/ponytail/.opencode/plugins/ponytail.mjs'
+        payload, _ = portable_bytes(source.encode(), self.home)
+        self.assertTrue(payload.startswith(b'file:///__PORTABLE_HOME__/'))
+        windows = PureWindowsPath('C:/Restored Home')
+        expected = windows.as_uri() + '/.local/share/ponytail/.opencode/plugins/ponytail.mjs'
+        self.assertEqual(render(payload, windows, '.config/opencode/opencode.jsonc').decode(), expected)
+        self.assertEqual(render(payload.replace(b'file:///', b'file://'), windows,
+                                '.config/opencode/opencode.jsonc').decode(), expected)
+
+    def test_codex_profile_accepts_portable_slash_paths(self):
+        source = self.codex_fixture()
+        config = source.read_text()
+        source.write_text(config.replace(str(self.home), self.home.as_posix()))
+        payload, _, _, _ = codex_profile(self.home)
+        self.assertIn(b'__PORTABLE_HOME__/.agents/skills', payload)
 
     def test_apply_twice_and_rollback_twice(self):
         first = restore(self.repo, self.home, apply=True)

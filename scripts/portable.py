@@ -4,6 +4,8 @@ import argparse
 import json
 from pathlib import Path
 import sys
+import os
+import subprocess
 
 from backup import capture
 from restore import restore, rollback
@@ -27,12 +29,25 @@ def main():
     check = sub.add_parser('verify')
     check.add_argument('--home', type=Path)
     check.add_argument('--native', action='store_true')
+    run = sub.add_parser('run', help='Run pinned OpenCode with its own data directory, preserving other versions and sessions')
+    run.add_argument('--home', type=Path, default=Path.home())
+    run.add_argument('arguments', nargs=argparse.REMAINDER)
     undo = sub.add_parser('rollback')
     undo.add_argument('transaction')
     undo.add_argument('--home', type=Path, default=Path.home())
     undo.add_argument('--apply', action='store_true')
     args = parser.parse_args()
     try:
+        if args.action == 'run':
+            home = args.home.resolve()
+            prefix = home / '.local/share/opencode-portable/tools/node_modules'
+            package = json.loads((prefix / 'opencode-ai/package.json').read_text())
+            binary = prefix / 'opencode-ai' / package['bin']['opencode']
+            env = os.environ.copy()
+            env['XDG_DATA_HOME'] = str(home / '.local/share/opencode-portable/data')
+            env['PATH'] = str(prefix / '.bin') + os.pathsep + env.get('PATH', '')
+            arguments = args.arguments[1:] if args.arguments[:1] == ['--'] else args.arguments
+            return subprocess.call([str(binary)] + arguments, env=env)
         if args.action == 'backup':
             report = capture(args.home, args.repo.resolve())
         elif args.action == 'restore':
@@ -51,7 +66,7 @@ def main():
                         report['bootstrap'] = bootstrap(args.repo.resolve(), args.home, True)
                         report['verification'] = verify(args.repo.resolve(), args.home, True)
                         report['ok'] = report['verification']['ok']
-                        report['path_instruction'] = 'Add $HOME/.local/share/opencode-portable/tools/node_modules/.bin to PATH, then authenticate providers locally.'
+                        report['path_instruction'] = 'Use portable.py run -- <OpenCode arguments> for isolated data; use codex -p portable for the Codex MCP profile. Authenticate providers and trust Codex hooks locally.'
                     except Exception:
                         report['ok'] = False
                         report['error'] = 'Runtime/bootstrap validation failed; the displayed restore transaction remains available for rollback.'

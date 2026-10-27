@@ -6,12 +6,66 @@ from pathlib import Path
 import re
 import shutil
 import tempfile
+import tomllib
 
 from common import (SKILL_ROOTS, TREE_ROOTS, SAFE_FILES, SKIP_DIRS, TOKEN, blocked, command, native_catalog,
-                    dump, link, logical, portable_bytes, sanitized_config, sha, strip_jsonc, session_storage, structured_credentials, structured_asset)
+                    dump, link, logical, portable_bytes, sanitized_config, sha, strip_jsonc, session_storage, structured_credentials, structured_asset,
+                    isolated_env)
 from secret_scan import scan_bytes
 
 RUNTIME = '.local/share/opencode-portable/ecc-runtime'
+
+def codex_profile(home):
+    """Publish only model preferences and the three reviewed MCP definitions."""
+    source = home / '.codex/config.toml'
+    config = tomllib.loads(source.read_text(encoding='utf-8')) if source.is_file() else {}
+    if not {'ecc-memory-vault', 'context7', 'playwright'} <= set(config.get('mcp_servers', {})):
+        source = home / '.codex/portable.config.toml'
+        config = tomllib.loads(source.read_text(encoding='utf-8'))
+    lines, secrets, required = [], [], set()
+    for key in ['model', 'model_reasoning_effort']:
+        if key in config:
+            if not isinstance(config[key], str):
+                raise ValueError('Unexpected Codex model preference')
+            lines.append(key + ' = ' + json.dumps(config[key]))
+    for name in ['ecc-memory-vault', 'context7', 'playwright']:
+        server = config.get('mcp_servers', {}).get(name)
+        if not isinstance(server, dict):
+            raise ValueError('Missing required Codex MCP: ' + name)
+        command_path = server.get('command', '')
+        if Path(command_path).name not in {'node', 'node.exe'}:
+            raise ValueError('Unexpected Codex MCP executable: ' + name)
+        args = server.get('args', [])
+        expected = {'ecc-memory-vault': '.agents/skills/cross-harness-handoff/scripts/memory-mcp.mjs',
+                    'context7': '.local/share/codex-mcp/node_modules/@upstash/context7-mcp/dist/index.js',
+                    'playwright': '.local/share/codex-mcp/node_modules/@playwright/mcp/cli.js'}[name]
+        if not isinstance(args, list) or not args or not isinstance(args[0], str) or not Path(args[0]).is_absolute() or Path(args[0]).resolve() != (home / expected).resolve():
+            raise ValueError('Unexpected Codex MCP entry point: ' + name)
+        normalized = [TOKEN + '/' + expected] + args[1:]
+        # Reject credentials in arguments before rendering a TOML document.
+        sanitized_config({'command': ['node'] + normalized}, secrets)
+        lines += ['', '[mcp_servers.' + name + ']', 'command = "node"',
+                  'args = ' + json.dumps(normalized)]
+        if name == 'context7':
+            required.add('CONTEXT7_API_KEY')
+            lines.append('env_vars = ["CONTEXT7_API_KEY"]')
+        environment = server.get('env', {})
+        for key, value in environment.items():
+            if key == 'ECC_MEMORY_HARNESS' and name == 'ecc-memory-vault' and value == 'codex':
+                continue
+            if key != 'CONTEXT7_API_KEY' or name != 'context7' or not isinstance(value, str):
+                raise ValueError('Unreviewed Codex MCP environment variable')
+            if value:
+                secrets.append(value)
+        if name == 'ecc-memory-vault':
+            lines += ['', '[mcp_servers.ecc-memory-vault.env]', 'ECC_MEMORY_HARNESS = "codex"']
+    # Bootstrap installs this local, captured marketplace; no moving upstream HEAD.
+    lines += ['', '[marketplaces.ponytail]', 'source_type = "local"',
+              'source = "' + TOKEN + '/.local/share/ponytail"',
+              '', '[plugins."ponytail@ponytail"]', 'enabled = true']
+    text = '\n'.join(lines) + '\n'
+    tomllib.loads(text)
+    return text.encode(), secrets, required, source
 
 def capture(home, repo):
     home = home.resolve()
@@ -85,6 +139,11 @@ def capture(home, repo):
             else:
                 raise ValueError('Unsupported filesystem entry: ' + relative)
 
+    # Read Codex secrets before any tree so cross-file detection covers the entire payload.
+    profile, codex_secrets, codex_required, codex_source = codex_profile(home)
+    credentials.extend(codex_secrets)
+    required_env.update(codex_required)
+
     # Secret values remain in this process only, never in inventory/report files.
     configs = {}
     for relative in ['.config/opencode/opencode.json', '.config/opencode/opencode.jsonc', '.opencode/opencode.json']:
@@ -136,12 +195,22 @@ def capture(home, repo):
             continue
         source = home / root
         if source.is_dir():
-            tree(source, root)
+            if root == '.local/share/ponytail':
+                # Only Codex/OpenCode runtime assets; no upstream tests, other adapters or moving Git marketplace.
+                for folder in ['skills', 'hooks', '.opencode', '.codex-plugin']:
+                    tree(source / folder, root + '/' + folder)
+                for filename in ['LICENSE', 'AGENTS.md', 'package.json', '.claude-plugin/marketplace.json',
+                                 'assets/codex-icon.png', 'assets/logo.png']:
+                    add(source / filename, root + '/' + filename)
+            else:
+                tree(source, root)
     for relative in SAFE_FILES:
         source = home / relative
-        if not source.is_file() or relative in configs or relative == '.config/cross-harness-memory/runtime.json':
+        if not source.is_file() or relative in configs or relative in {'.config/cross-harness-memory/runtime.json', '.codex/portable.config.toml'}:
             continue
         add(source, relative)
+    add(codex_source, '.codex/portable.config.toml', profile,
+        ['sanitized-config', 'codex-portable-profile', 'portable-mcp-command'])
     # The preserved upstream copy links to this companion relative to references/.
     # Keep both original files intact, and supply its missing companion on restore.
     recipe = home / '.agents/skills/animate/RECIPES.md'
@@ -214,7 +283,7 @@ def capture(home, repo):
     add(global_source, '.config/opencode/opencode.jsonc', (json.dumps(merged, indent=2) + '\n').encode(),
         ['sanitized-config', 'portable-mcp-command', 'explicit-global-discovery', 'merged-native-plugins'])
 
-    native = native_catalog(cwd=home)
+    native = native_catalog(cwd=home, env=isolated_env(home))
     inventory = [{'name': item['name'], 'description': item['description'],
         'builtin': item['location'] == '<built-in>',
         'definition_candidates': sorted(d['path'] for d in definitions if d['name'] == item['name'])}
@@ -237,12 +306,17 @@ def capture(home, repo):
         'aliases': sorted(aliases.values(), key=lambda x: x['path']), 'files': sorted(files.values(), key=lambda x: x['path']),
         'excluded': excluded, 'required_environment': sorted(required_env),
         'dependencies': {'installed_tools': tool_versions, 'vendored_ecc_dependencies': packages,
-            'plugin_api': '1.17.11', 'python': '>=3.10', 'node': '>=22',
+            'codex_mcp': json.loads((home / '.local/share/codex-mcp/package.json').read_text())['dependencies'],
+            'ponytail': json.loads((home / '.local/share/ponytail/package.json').read_text())['version'],
+            'plugin_api': '1.17.11', 'python': '>=3.11', 'node': '>=22',
             'optional_tools': {'dcg': '0.6.7', 'graphify': '0.9.5', 'officecli': 'source installation currently has a missing .NET assembly'}},
         'portability_adaptations': ['home prefixes rebased at restore', 'ECC memory code/dependencies vendored without full pack registration',
             'MCP credentials replaced by environment references', 'native plugin paths resolved',
             'Linux DCG PATH delimiter corrected only in restored copy'],
         'authentication': 'Provider and remote MCP credentials/sessions must be created locally; ECC itself uses local harness identity and repository binding.'}
+    manifest['codex'] = {'profile': 'portable', 'mcp_servers': ['ecc-memory-vault', 'context7', 'playwright'],
+        'expected_portable_skills': len({d['name'] for d in definitions if d['path'].startswith(('.agents/skills/', '.codex/skills/', '.local/share/ponytail/skills/'))}),
+        'ponytail_skills': 6, 'hooks_trust': 'Review and trust locally in Codex /hooks; trust decisions are not backed up.'}
     manifest['observed_prerequisites'] = {'node': command(['node', '--version']).stdout.strip(),
         'python': __import__('platform').python_version(), 'git': command(['git', '--version']).stdout.strip()}
     manifest['optional_project_checkouts'] = {'ringkas': '$HOME/Projects/RINGKAS; project source/data are not included'}

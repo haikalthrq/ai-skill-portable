@@ -7,22 +7,25 @@ import re
 import stat
 import subprocess
 import tempfile
+import shutil
 
 TOKEN = '__PORTABLE_HOME__'
 SKILL_ROOTS = ['.agents/skills', '.claude/skills', '.config/opencode/skills', '.opencode/skills',
-               '.codex/skills', '.gemini/skills', '.gemini/config/skills', '.cline/skills']
+               '.codex/skills', '.gemini/skills', '.gemini/config/skills', '.cline/skills',
+               '.local/share/ponytail/skills']
 TREE_ROOTS = SKILL_ROOTS + ['.config/opencode/commands', '.config/opencode/command',
     '.config/opencode/agents', '.config/opencode/agent', '.config/opencode/plugins',
     '.config/opencode/plugin', '.config/opencode/skill-source-licenses',
     '.opencode/commands', '.opencode/agents', '.opencode/plugins', '.opencode/.opencode/plugins',
-    '.local/share/opencode-portable/ecc-runtime']
+    '.local/share/opencode-portable/ecc-runtime', '.local/share/ponytail']
 SAFE_FILES = ['.config/opencode/AGENTS.md', '.config/opencode/opencode.jsonc',
     '.config/opencode/opencode.json', '.config/opencode/package.json', '.config/opencode/package-lock.json',
     '.opencode/opencode.json', '.opencode/package.json', '.opencode/package-lock.json',
     '.opencode/opencode-codex-identity-plugin.ts', '.agents/AGENTS.md', '.agents/.skill-lock.json',
     '.config/opencode/selected-skills-installation.json',
     '.local/state/opencode/model.json', '.config/opencode/tui.json',
-    '.claude/CLAUDE.md', '.codex/AGENTS.md', '.gemini/GEMINI.md', '.config/cross-harness-memory/runtime.json']
+    '.claude/CLAUDE.md', '.codex/AGENTS.md', '.gemini/GEMINI.md', '.config/cross-harness-memory/runtime.json',
+    '.codex/portable.config.toml', '.local/share/codex-mcp/package.json', '.local/share/codex-mcp/package-lock.json']
 DENIED_NAMES = {'auth.json', '.npmrc', '.pypirc', '.git-credentials', 'credentials.json',
     'credentials', 'cookies.json', 'session.json', 'tokens.json', 'token.json',
     'storage-state.json', 'storage_state.json', 'storagestate.json', 'auth-state.json',
@@ -96,6 +99,9 @@ def portable_bytes(data, home):
         return data, []
     mappings = [(str(home).replace('\\', '\\\\'), TOKEN), (home.as_posix(), TOKEN), (str(home), TOKEN)]
     changed = []
+    if home.as_uri() in text:
+        text = text.replace(home.as_uri(), 'file:///' + TOKEN)
+        changed.append('home-rebase')
     project_pattern = r'file:///[a-zA-Z]:/[^)\r\n"<>]*?/RINGKAS(?=/)'
     if re.search(project_pattern, text):
         text = re.sub(project_pattern, 'file:///' + TOKEN + '/Projects/RINGKAS', text)
@@ -116,12 +122,16 @@ def render(data, home, relative):
     except UnicodeDecodeError:
         return data
     text = text.replace('file:///' + TOKEN, home.as_uri())
+    # Older POSIX captures consumed the third slash with the absolute home prefix.
+    text = text.replace('file://' + TOKEN, home.as_uri())
     text = text.replace(TOKEN, home.as_posix())
     if os.name != 'nt' and relative == '.opencode/plugins/dcg-guard.js':
         text = text.replace('.split(";")', '.split(process.platform === "win32" ? ";" : ":")')
     return text.encode('utf-8')
 
 def command(args, **kwargs):
+    if args[0] == 'codex':
+        args = [shutil.which('codex') or 'codex'] + args[1:]
     if os.name == 'nt' and args[0] in {'opencode', 'npm', 'npx', 'git', 'gh', 'agent-browser', 'uipro', 'ecc'}:
         executable = args[0] + ('.exe' if args[0] in {'git', 'gh'} else '.cmd')
         args = [executable] + args[1:]
@@ -152,8 +162,9 @@ def isolated_env(home):
     for key in list(env):
         if key.startswith('OPENCODE_') or key.startswith('ECC_MEMORY_') or re.search(r'(API_KEY|TOKEN|PASSWORD|SECRET)$', key):
             env.pop(key, None)
-    env.update({'HOME': str(home), 'USERPROFILE': str(home), 'XDG_CONFIG_HOME': str(home / '.config'),
-        'XDG_DATA_HOME': str(home / '.local/share'), 'XDG_CACHE_HOME': str(home / '.cache'),
+    env.update({'HOME': str(home), 'USERPROFILE': str(home), 'CODEX_HOME': str(home / '.codex'),
+        'XDG_CONFIG_HOME': str(home / '.config'),
+        'XDG_DATA_HOME': str(home / '.local/share/opencode-portable/data'), 'XDG_CACHE_HOME': str(home / '.cache'),
         'XDG_STATE_HOME': str(home / '.local/state'), 'APPDATA': str(home / 'AppData/Roaming'),
         'LOCALAPPDATA': str(home / 'AppData/Local'), 'OPENCODE_CONFIG_DIR': str(home / '.config/opencode'),
         'OPENCODE_TEST_HOME': str(home), 'PYTHONDONTWRITEBYTECODE': '1', 'IMPECCABLE_NO_UPDATE_CHECK': '1',

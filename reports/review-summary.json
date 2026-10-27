@@ -1,36 +1,35 @@
 {
-  "review_scope": "Working implementation compared with initial repository commit c97a327 and the owner's migration requirements",
-  "bounded_safety_review_passes": 3,
-  "cross_model_review": "Owner explicitly selected local review only; no external model invoked",
-  "standards_findings_addressed": [
-    "Cross-version Windows reparse-point containment",
-    "Bootstrap destination containment and artifact retry",
-    "Credential classification, exact removed-value cross-file checks and session exclusion",
-    "Private Windows rollback DACL and verified pre-change bytes",
-    "Path prefix/ancestor conflicts and guarded alias targets",
-    "Direct Win32 junction API, with no command-shell expansion",
-    "Staged alias replacement and durable restore/rollback intermediate states",
-    "Rollback preserves observed permission changes and supports interruption recovery",
-    "Declared JSON/JSONC is parsed fail-closed even with BOM or leading comments",
-    "Authentication command arguments are rejected, including compound and bearer forms"
+  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0",
+  "review_scope": "Current Codex/OpenCode portable state versus cacb8800cb2c12e059905de3f98c21258b74a30c",
+  "review_method": "Separate Standards and Spec subagent reviews, followed by verification of fixes",
+  "addressed_findings": [
+    "Resolve Windows Codex executable shim",
+    "Detect incomplete MCP runtime entry points and dependency imports, reinstall and recheck",
+    "Normalize restored Codex entry-point paths before comparison",
+    "Canonicalize file URLs for POSIX-to-Windows restore, retaining legacy placeholder support"
   ],
-  "spec_findings_addressed": [
-    "Preview/apply reports include prerequisites and local authentication requirements",
-    "Native verification uses and cleans a disposable Git workspace",
-    "One-command migrate orchestrates restore, bootstrap and native verification"
-  ],
-  "documented_constraints": [
-    "Stop unrelated configuration writers during mutation; no interprocess lock is claimed",
-    "Capture requires this complete ECC-enabled environment rather than silently dropping integrations",
-    "Optional OS/browser/OfficeCLI runtimes and local authentication remain manual",
-    "Rollback covers snapshot-managed content; isolated downloaded tool caches remain separate"
-  ],
+  "remaining_actionable_findings": {
+    "standards": 0,
+    "spec": 0
+  },
   "current_verification": {
-    "windows_regression_tests": "25 discovered; 24 passed; 1 POSIX-only mode test skipped",
-    "linux_regression_tests": "25 passed",
-    "windows_complete_restore_bootstrap_verify_rollback": "passed",
-    "linux_complete_restore_bootstrap_verify_rollback": "passed",
-    "fresh_restored_model_routing_sessions": "4 passed",
-    "original_source_files_rehashed_unchanged": 1145
-  }
+    "regression_tests": "35 passed",
+    "linux_restore_bootstrap_native_codex_mcp_recapture_rollback": true,
+    "opencode_skills": 51,
+    "codex_portable_skills": 51,
+    "codex_mcp_tools": {
+      "ecc-memory-vault": 4,
+      "context7": 2,
+      "playwright": 25
+    },
+    "source_files_rehashed_unchanged": 1192,
+    "backup_idempotent": true
+  },
+  "not_checked": [
+    "Fresh Windows execution (previous evidence marked historical)",
+    "Fresh model-driven routing (previous evidence marked historical)",
+    "Live Context7 API requests and browser launch in disposable-home integration",
+    "User-specific provider authentication and hook approval"
+  ],
+  "privacy": "Credentials, private project source, trust decisions, browser sessions and memory records excluded; Context7 secret replaced by local environment requirement"
 }

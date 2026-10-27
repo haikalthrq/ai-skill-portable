@@ -1,0 +1,25 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+
+[mcp_servers.ecc-memory-vault]
+command = "node"
+args = ["__PORTABLE_HOME__/.agents/skills/cross-harness-handoff/scripts/memory-mcp.mjs"]
+
+[mcp_servers.ecc-memory-vault.env]
+ECC_MEMORY_HARNESS = "codex"
+
+[mcp_servers.context7]
+command = "node"
+args = ["__PORTABLE_HOME__/.local/share/codex-mcp/node_modules/@upstash/context7-mcp/dist/index.js"]
+env_vars = ["CONTEXT7_API_KEY"]
+
+[mcp_servers.playwright]
+command = "node"
+args = ["__PORTABLE_HOME__/.local/share/codex-mcp/node_modules/@playwright/mcp/cli.js", "--headless", "--isolated", "--browser", "chromium"]
+
+[marketplaces.ponytail]
+source_type = "local"
+source = "__PORTABLE_HOME__/.local/share/ponytail"
+
+[plugins."ponytail@ponytail"]
+enabled = true

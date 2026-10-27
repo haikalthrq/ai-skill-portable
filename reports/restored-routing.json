@@ -41,5 +41,7 @@
     }
   ],
   "authentication_exported": false,
-  "source_skills_modified": false
+  "source_skills_modified": false,
+  "evidence_status": "historical; not rerun for the updated Codex/Ponytail/MCP snapshot",
+  "verified_snapshot_id": "c4e8d377987485a4b748d8d21da65d4a60f5ca8fb2ddb8567eebfc3b1b204625"
 }

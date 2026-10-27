@@ -6,9 +6,25 @@ import os
 from pathlib import Path
 import shutil
 import sys
+import subprocess
 
 from common import command, dump, isolated_env, link, private_path
 from restore import load_snapshot
+
+MCP_ENTRY_POINTS = {'@playwright/mcp': 'cli.js', '@upstash/context7-mcp': 'dist/index.js'}
+
+def mcp_packages_ready(dependencies, expected, env):
+    try:
+        for name, version in expected.items():
+            root = dependencies / name
+            entry = root / MCP_ENTRY_POINTS[name]
+            if not entry.is_file() or json.loads((root / 'package.json').read_text())['version'] != version:
+                return False
+            # Import the CLI to detect an interrupted/missing transitive dependency tree too.
+            command(['node', str(entry), '--help'], env=env, timeout=30)
+        return True
+    except (OSError, ValueError, KeyError, subprocess.SubprocessError):
+        return False
 
 def install_plugin_dependencies(home):
     env = isolated_env(home)
@@ -72,6 +88,41 @@ def bootstrap(repo, home, apply=False):
     if not up_to_date or not binary_path.is_file():
         command(['npm', 'rebuild', '--prefix', str(prefix), 'opencode-ai'], env=env, timeout=180)
     install_plugin_dependencies(home)
+    mcp_prefix = private_path(home, home / '.local/share/codex-mcp')
+    expected_mcp = manifest['dependencies'].get('codex_mcp', {})
+    if expected_mcp:
+        if set(expected_mcp) != {'@playwright/mcp', '@upstash/context7-mcp'}:
+            raise ValueError('Unexpected Codex MCP runtime package')
+        dependencies = private_path(home, mcp_prefix / 'node_modules')
+        if dependencies.exists():
+            for path in dependencies.rglob('*'):
+                if link(path) and not path.resolve().is_relative_to(home):
+                    raise ValueError('MCP dependency tree redirects outside target home')
+        current_mcp = mcp_packages_ready(dependencies, expected_mcp, env)
+        if not current_mcp:
+            command(['npm', 'ci', '--prefix', str(mcp_prefix), '--ignore-scripts', '--no-audit', '--no-fund'],
+                    env=env, timeout=600)
+            if not mcp_packages_ready(dependencies, expected_mcp, env):
+                raise ValueError('MCP runtimes did not initialize after installation')
+        report['mcp_changed'] = not current_mcp
+        report['browser_setup'] = 'Install Chromium with Playwright CLI; Linux browser system libraries require OS package installation.'
+    if manifest.get('codex'):
+        if shutil.which('codex'):
+            # Only this isolated target's Codex config/cache may be changed; never the caller's.
+            codex_home = private_path(home, home / '.codex')
+            private_path(home, codex_home / 'plugins')
+            config_file = codex_home / 'config.toml'
+            if link(config_file):
+                raise ValueError('Codex configuration is redirected')
+            for path in codex_home.rglob('*'):
+                if link(path) and not path.resolve().is_relative_to(home):
+                    raise ValueError('Codex tree redirects outside target home')
+            command(['codex', 'plugin', 'marketplace', 'add', str(home / '.local/share/ponytail')], env=env, timeout=120)
+            command(['codex', 'plugin', 'add', 'ponytail@ponytail'], env=env, timeout=120)
+            report['codex_plugin_installed'] = True
+        else:
+            report['codex_plugin_installed'] = False
+            report['codex_setup'] = 'Install Codex, then run bootstrap again to register the captured local Ponytail marketplace.'
     report['changed'] = not up_to_date
     report['path_directory'] = str(installed / '.bin')
     return report

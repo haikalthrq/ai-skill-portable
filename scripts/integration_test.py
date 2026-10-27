@@ -5,15 +5,17 @@ import json
 import os
 from pathlib import Path
 import platform
+import shutil
 import sys
 import tempfile
 
 from common import command, dump, isolated_env, sha, test_temp_root
-from restore import restore, rollback
+from restore import restore, rollback, load_snapshot
 from verify import verify
 
 def integration(repo, native=False, tools=False):
-    report = {'platform': platform.system(), 'python': platform.python_version(), 'checks': {}, 'ok': False}
+    report = {'platform': platform.system(), 'python': platform.python_version(),
+        'snapshot_id': load_snapshot(repo)[0]['snapshot_id'], 'checks': {}, 'ok': False}
     with tempfile.TemporaryDirectory(prefix='opencode-portable-', dir=test_temp_root()) as temp:
         home = Path(temp).resolve() / 'isolated HOME with spaces'
         home.mkdir()
@@ -68,13 +70,19 @@ def integration(repo, native=False, tools=False):
             from bootstrap import bootstrap, install_plugin_dependencies
             if tools:
                 installed = bootstrap(repo, home, apply=True)
-                assert installed['ok'] and bootstrap(repo, home, apply=True)['changed'] is False
+                assert installed['ok']
+                repeated = bootstrap(repo, home, apply=True)
+                assert repeated['changed'] is False and repeated.get('mcp_changed', False) is False
                 runtime_env = isolated_env(home)
                 report['runtime_versions'] = {name: command([name, '--version'], env=runtime_env, timeout=60).stdout.strip()
                     for name in ['opencode', 'agent-browser', 'uipro']}
                 assert report['runtime_versions']['opencode'] == '1.18.35'
                 assert '0.38.2' in report['runtime_versions']['agent-browser']
                 assert '2.15.0' in report['runtime_versions']['uipro']
+                runner = command([sys.executable, str(repo / 'scripts/portable.py'), 'run',
+                    '--home', str(home), '--', '--version'], env=runtime_env, timeout=60).stdout.strip()
+                assert runner == report['runtime_versions']['opencode']
+                report['checks']['isolated_portable_runner'] = True
                 report['checks']['pinned_runtime_bootstrap_idempotence'] = True
             else:
                 install_plugin_dependencies(home)
@@ -88,6 +96,20 @@ def integration(repo, native=False, tools=False):
                     'migrate', '--home', str(home), '--apply'], env=isolated_env(home), timeout=600).stdout)
                 assert orchestrated['ok'] and orchestrated['changes'] == 0
                 report['checks']['one_command_migration'] = True
+                if shutil.which('codex'):
+                    from codex_verify import verify_codex
+                    report['codex'] = verify_codex(home)
+                    assert report['codex']['ok'], report['codex']
+                    report['checks']['codex_profile_skills_and_mcp_discovery'] = True
+                else:
+                    report['codex'] = {'checked': False, 'reason': 'Codex CLI is not installed on this host'}
+                from backup import capture
+                captured_repo = Path(temp) / 'recaptured-repo'
+                captured_repo.mkdir()
+                recaptured = capture(home, captured_repo)
+                assert recaptured['skills'] == runtime['native_discovery_count']
+                assert capture(home, captured_repo)['changed'] is False
+                report['checks']['restored_environment_can_be_backed_up_idempotently'] = True
         planned_rollback = rollback(home, applied['transaction'])
         assert planned_rollback['ok'], planned_rollback
         undone = rollback(home, applied['transaction'], apply=True)
@@ -96,7 +118,7 @@ def integration(repo, native=False, tools=False):
         assert rollback(home, applied['transaction'], apply=True)['changes'] == 0
         report['checks']['full_snapshot_rollback_idempotence'] = True
     source = repo / '.work/source-hashes.json'
-    if source.exists() and os.name == 'nt':
+    if source.exists():
         originals = json.loads(source.read_text())
         assert all(Path(path).is_file() and sha(Path(path).read_bytes()) == digest for path, digest in originals.items()), 'Source environment changed'
         report['checks']['original_source_files_unchanged'] = len(originals)

@@ -60,10 +60,15 @@
   "plugin": [
     "file:///__PORTABLE_HOME__/.opencode/.opencode/plugins/graphify.js",
     "file:///__PORTABLE_HOME__/.opencode/opencode-codex-identity-plugin.ts",
-    "file:///__PORTABLE_HOME__/.opencode/plugins/dcg-guard.js"
+    "file:///__PORTABLE_HOME__/.opencode/plugins/dcg-guard.js",
+    "file:///__PORTABLE_HOME__/.local/share/ponytail/.opencode/plugins/ponytail.mjs"
   ],
   "skills": {
     "paths": [
+      "__PORTABLE_HOME__/.agents/skills",
+      "__PORTABLE_HOME__/.claude/skills",
+      "__PORTABLE_HOME__/.config/opencode/skills",
+      "__PORTABLE_HOME__/.opencode/skills",
       "__PORTABLE_HOME__/.agents/skills",
       "__PORTABLE_HOME__/.claude/skills",
       "__PORTABLE_HOME__/.config/opencode/skills",

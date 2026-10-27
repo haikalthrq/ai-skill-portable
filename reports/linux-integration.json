@@ -1,6 +1,6 @@
 {
   "platform": "Linux",
-  "python": "3.11.2",
+  "python": "3.13.5",
   "checks": {
     "two_read_only_previews": true,
     "idempotent_apply": true,
@@ -8,17 +8,21 @@
     "vendored_ecc_save_read_doctor": true,
     "restored_custom_mcp_adapter": true,
     "restored_handoff_helper": true,
+    "isolated_portable_runner": true,
     "pinned_runtime_bootstrap_idempotence": true,
     "fresh_native_discovery_and_bodies": true,
     "one_command_migration": true,
-    "full_snapshot_rollback_idempotence": true
+    "codex_profile_skills_and_mcp_discovery": true,
+    "restored_environment_can_be_backed_up_idempotently": true,
+    "full_snapshot_rollback_idempotence": true,
+    "original_source_files_unchanged": 1192
   },
   "ok": true,
   "restore": {
-    "files": 1146,
-    "aliases": 23,
-    "expected_skills": 45,
-    "unique_blobs": 858,
+    "files": 1192,
+    "aliases": 41,
+    "expected_skills": 51,
+    "unique_blobs": 904,
     "broken_local_links": []
   },
   "runtime_versions": {
@@ -27,11 +31,27 @@
     "uipro": "2.15.0"
   },
   "native": {
-    "native_discovery_count": 45,
+    "native_discovery_count": 51,
     "native_names_match": true,
     "native_descriptions_match": true,
     "native_all_bodies_loaded": true,
     "native_bodies_match_snapshot": true,
     "native_paths_isolated": true
-  }
+  },
+  "codex": {
+    "ok": true,
+    "expected_portable_skills": 51,
+    "portable_skills_found": 51,
+    "missing": [],
+    "loader_error_count": 0,
+    "cli_profile_validated": true,
+    "mcp_tool_counts": {
+      "ecc-memory-vault": 4,
+      "context7": 2,
+      "playwright": 25
+    },
+    "provider_authentication_used": false,
+    "hook_trust_granted": false
+  },
+  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0"
 }
