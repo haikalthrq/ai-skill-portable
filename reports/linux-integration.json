@@ -1,6 +1,7 @@
 {
   "platform": "Linux",
   "python": "3.13.5",
+  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0",
   "checks": {
     "two_read_only_previews": true,
     "idempotent_apply": true,
@@ -52,6 +53,5 @@
     },
     "provider_authentication_used": false,
     "hook_trust_granted": false
-  },
-  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0"
+  }
 }

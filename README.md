@@ -15,6 +15,24 @@ A sanitized backup of the **installed, customized skills and integrations**, not
 
 This snapshot is verified on Linux. Windows and model-driven routing reports are explicitly **historical**, not evidence for the current snapshot. See [inventory](reports/inventory.json) and [Linux integration](reports/linux-integration.json).
 
+## Install by asking your agent
+
+Give this prompt to a coding agent with terminal and network access:
+
+```text
+Instal https://github.com/haikalthrq/ai-skill-portable untuk Codex dan OpenCode
+di mesin ini. Clone repo, baca AGENTS.md dan INSTALL.md, lalu ikuti alur
+instalasi agent sampai verifikasi selesai. Pasang prasyarat yang kurang,
+runtime MCP, Chromium dan dependensi browser sesuai OS. Kerjakan semua
+perintahnya; jangan hanya memberi saya tutorial. Pertahankan konfigurasi,
+session dan data yang ada, serta jangan simpan secret di repo atau log.
+Minta tindakan saya hanya jika diperlukan untuk login, secret, persetujuan
+hooks, akses administrator yang tidak tersedia, atau konflik file yang
+memerlukan keputusan. Laporkan hasil tes dan langkah yang masih terblokir.
+```
+
+The agent follows [INSTALL.md](INSTALL.md): inspect, preview, apply, configure PATH, install browser prerequisites and verify both harnesses. You do not need to copy terminal commands manually. Login, secret entry, hook trust, unavailable administrator access and approval to replace conflicting files can still require your action; the agent must not bypass those gates or claim they passed.
+
 ## New machine: restore
 
 Install **Git, Python 3.11+, Node.js 22+ and npm**. Install Codex separately for its integration. Authenticate GitHub locally if needed.

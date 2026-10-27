@@ -97,8 +97,9 @@ def integration(repo, native=False, tools=False):
                 assert orchestrated['ok'] and orchestrated['changes'] == 0
                 report['checks']['one_command_migration'] = True
                 if shutil.which('codex'):
-                    from codex_verify import verify_codex
-                    report['codex'] = verify_codex(home)
+                    report['codex'] = json.loads(command([sys.executable,
+                        str(repo / 'scripts/codex_verify.py'), '--home', str(home)],
+                        env=runtime_env, timeout=300).stdout)
                     assert report['codex']['ok'], report['codex']
                     report['checks']['codex_profile_skills_and_mcp_discovery'] = True
                 else:

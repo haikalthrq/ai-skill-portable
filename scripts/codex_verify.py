@@ -6,6 +6,8 @@ import shutil
 from threading import Thread
 import time
 import tomllib
+import argparse
+from pathlib import Path
 
 from common import command, isolated_env
 
@@ -90,3 +92,12 @@ def verify_codex(home):
             process.kill()
             process.wait()
         reader.join(timeout=5)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--home', type=Path, default=Path.home())
+    args = parser.parse_args()
+    result = verify_codex(args.home.resolve())
+    print(json.dumps(result, indent=2))
+    raise SystemExit(0 if result['ok'] else 1)
