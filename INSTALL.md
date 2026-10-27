@@ -1,106 +1,104 @@
-# Installation runbook for coding agents
+# Installation guide for agents
 
-This is an execution workflow for an agent with terminal and network access. When the user asks to install this repository, **perform the steps**; do not hand them a list of commands. Use the existing scripts, retain the captured versions, and finish every independent step while a required human action is pending.
+Complete the installation when the user asks for it. Run the commands, check the results, and finish independent work while waiting for required user input. Keep the captured versions.
 
-The target is the user's home on the machine running your terminal, not automatically the laptop displaying an SSH session. Confirm the target from session context; ask only if it is genuinely ambiguous. Default to both Codex and OpenCode unless the user narrows the request. Explain that snapshot restore also retains existing Claude/Gemini/Cline variants and global instructions; it does not install those applications.
+## 1. Check the machine and checkout
 
-## 1. Inspect the machine and checkout
+Identify the OS, architecture, shell, target home, installed runtimes and existing Codex/OpenCode config. The target is the machine running your terminal; an SSH session may target a different machine from the user's laptop. Use session context and ask only if the target is unclear.
 
-Determine OS, architecture, target home, shell, installed runtimes, existing Codex/OpenCode configuration, and relevant running configuration writers. Do not dump config values, environment variables or login files into output. Do not terminate the user's editor, server or session without authorization.
+Install both Codex and OpenCode unless the user narrows the request. Restore also copies Claude/Gemini/Cline skill variants and global instructions. It does not install those applications.
 
-Clone `https://github.com/haikalthrq/ai-skill-portable.git` into a normal persistent directory and work from that checkout. If it already exists, inspect its remote, branch and local changes first. Do not overwrite local work or reuse an unrelated directory. Fetch updates and fast-forward only a clean, appropriate checkout. Record the commit being installed.
+Clone `https://github.com/haikalthrq/ai-skill-portable.git` into a persistent directory. For an existing checkout, inspect its remote, branch and local changes before fetching. Fast-forward a clean checkout; preserve local work. Record the commit being installed.
 
-Read `README.md`, this file and the entry-point scripts before executing them. This repository is a snapshot restorer, not a request to reinstall all upstream skills at their latest revisions.
+Read `README.md`, this guide and the entry-point scripts. Check for active configuration writers. Keep credentials and config values out of output, and leave the user's editor, server and sessions running unless stopping them is authorized.
 
-## 2. Resolve prerequisites yourself
+## 2. Install missing prerequisites
 
-Check actual versions, not just command existence: **Python 3.11+, Node.js 22+, npm and Git**. Check `codex` when Codex integration is requested. On Windows, find the usable Python launcher and resolve npm/Codex executable shims. Use `python` or `python3` as appropriate throughout the workflow.
+Check versions: Python 3.11+, Node.js 22+, npm and Git. Install Codex before migration when requested. On Windows, find a working Python launcher and resolve npm/Codex executable shims. Use `python` or `python3` as appropriate below.
 
-Install missing prerequisites using an existing version manager, the OS package manager or the software's official installation instructions. Prefer an existing compatible runtime or a user-scoped installation. Avoid changing unrelated global runtime versions or installing a full ECC skill/hook pack. Ensure the selected Node works in a non-interactive subprocess too, not only an interactive version-manager shell.
+Use an existing compatible runtime, a version manager, the OS package manager or official installation instructions. Prefer user-scoped installs and preserve unrelated global versions. Check that Node works in a non-interactive subprocess. Install the ECC runtime through bootstrap; leave its full skill/hook pack disabled.
 
-If administrator rights or an OS approval are required and unavailable, request that specific action and explain which dependency needs it. Do not bypass permissions. Continue independent steps that can run safely. If a prerequisite cannot be installed, report its exact name/version requirement and mark dependent steps blocked rather than starting a partial migration blindly.
+If a dependency needs unavailable administrator access or OS approval, request that specific action. Continue independent work. Report the missing version and block dependent steps if you cannot install it.
 
-## 3. Verify and preview before writing
+## 3. Verify and preview
 
-Run these from the checkout (adapt the Python executable to the platform):
+From the checkout:
 
 ```sh
 python3 scripts/portable.py verify
 python3 scripts/portable.py migrate
 ```
 
-For an explicitly selected alternate home, pass the same absolute `--home` to every target-dependent command. Inspect the JSON: snapshot verification must pass; prerequisites must exist at supported versions; conflicts must be empty. Preview itself must not write target files.
+Pass the same absolute `--home` to every target-dependent command when using an alternate home. Check the JSON: verification must pass, prerequisites must meet the version requirements, and conflicts must be empty. Preview must leave target files untouched.
 
-When there are conflicting managed files, inspect the relevant differences without exposing credentials, explain the exact files that would change, and obtain a specific replacement decision. Do not infer permission to replace existing user rules or configuration from the general install request. Use `--replace` only when that replacement is authorized; the restorer keeps private rollback copies. Never delete files or bypass a symlink/containment rejection to make preview pass.
+For conflicting files, inspect the differences without exposing credentials. Show the user which files would change and request a replacement decision. A general install request does not authorize replacing existing user rules or config. Use `--replace` only with that approval; the restorer saves private rollback copies. Preserve symlink and path-containment checks.
 
-## 4. Apply, bootstrap and preserve recovery information
+## 4. Apply and save the transaction ID
 
 ```sh
 python3 scripts/portable.py migrate --apply
 ```
 
-Inspect both the exit code and JSON `ok`, including bootstrap and verification results. Save the restore transaction ID privately and include it in the final installation summary. Do not discard it when bootstrap fails. On an idempotent rerun there may be no new transaction: retain the original ID.
+Check the exit code and JSON `ok`, including bootstrap and verification results. Save the transaction ID privately and include it in the final report, even if bootstrap fails. An unchanged rerun may have no new transaction; retain the original ID.
 
-If a runtime download or initialization fails, identify and repair that dependency and rerun `scripts/bootstrap.py --apply`, followed by verification. Do not rerun upstream skill installers or use `backup` to hide drift. If necessary, preview rollback using the saved ID; do not overwrite newer work or remove caches/data outside snapshot rollback.
-
-Codex should be installed before migration when requested. If it was installed later, rerun:
+If a download or runtime fails, repair that dependency, then rerun bootstrap and verification:
 
 ```sh
 python3 scripts/bootstrap.py --apply
 ```
 
-Bootstrap registers Ponytail from the captured local marketplace in the target Codex main config while preserving unrelated entries. The three MCP connections and model preferences live in `~/.codex/portable.config.toml`, selected with `codex -p portable`. Do not silently overwrite the main config to make the profile the default.
+Run this again if Codex was installed after migration. Preserve installed skills; do not run upstream skill installers or `backup` during installation. If rollback is needed, preview it with the saved ID and preserve newer work and data outside snapshot rollback.
 
-## 5. Finish environment and browser setup
+Bootstrap registers the captured Ponytail marketplace in the target Codex main config, preserving other entries. MCP connections and model preferences live in `~/.codex/portable.config.toml`, selected by `codex -p portable`. Keep the user's main config and default profile intact.
 
-Add `~/.local/share/opencode-portable/tools/node_modules/.bin` to the appropriate user PATH, idempotently, preserving the existing shell/profile contents. Make the supported Node and Codex executable available to fresh non-interactive subprocesses. For Windows use user environment settings; for POSIX use the user's actual shell profile. Do not assume editing `.bashrc` alone fixes a desktop application's environment.
+## 5. Set PATH, browser dependencies and credentials
 
-Install Chromium using the locked Playwright package:
+Add `~/.local/share/opencode-portable/tools/node_modules/.bin` to the user PATH without duplicating entries or replacing existing profile content. Use the user's shell profile on POSIX or user environment settings on Windows. Check Node and Codex in a fresh non-interactive subprocess. Desktop applications may need restarting to pick up environment changes.
+
+Install Chromium from the locked Playwright package:
 
 ```sh
 node "$HOME/.local/share/codex-mcp/node_modules/playwright/cli.js" install chromium
 ```
 
-On Linux install its OS libraries as needed:
+On Linux, install its OS libraries as needed:
 
 ```sh
 node "$HOME/.local/share/codex-mcp/node_modules/playwright/cli.js" install-deps chromium
 ```
 
-Adapt shell quoting and path syntax to the platform. These commands operate on the installed pinned runtime; do not upgrade Playwright or disable the browser sandbox as a generic workaround. Request actual missing administrator access if needed. Browser downloads and OS packages are outside snapshot rollback.
+Adapt quoting and paths to the platform. Request missing administrator access when required. Keep the pinned Playwright version and browser sandbox settings. Browser downloads and OS packages are outside snapshot rollback.
 
-For Context7, check whether `CONTEXT7_API_KEY` is available **without printing it**. Reuse a credential the user already authorized, or use their normal secret manager/local credential-entry mechanism. Do not request it in a public issue, commit it, print it, put it in process arguments or save it in shell history. The portable profile forwards this environment variable; do not put a literal key in the captured profile. After environment changes, desktop processes may need restarting. Without a usable key, distinguish an MCP schema connection from a successful authenticated documentation query.
+Check for `CONTEXT7_API_KEY` without printing it. Reuse an authorized credential or ask the user to enter it through their local secret mechanism. Keep it out of public issues, Git, logs, process arguments and shell history. The portable profile forwards the environment variable; never place a literal key in that profile.
 
-## 6. Verify the installed result
-
-Run and inspect:
+## 6. Verify the result
 
 ```sh
-python3 scripts/portable.py verify --home <absolute-target-home> --native
-python3 scripts/codex_verify.py --home <absolute-target-home>
+python3 scripts/portable.py verify --home "/absolute/target/home" --native
+python3 scripts/codex_verify.py --home "/absolute/target/home"
 ```
 
-The first checks the restored OpenCode snapshot and discovery. The second checks the actual Codex portable CLI profile, portable skills and tools exposed by ECC, Context7 and Playwright. Run the Codex check only when Codex is installed. Read expected counts from the manifest rather than hard-coding future versions. The verifier does not approve hooks, invoke a model, query live docs or launch a browser.
+Replace the quoted path with the selected home. The first command checks restored OpenCode files and skill discovery. The second checks the Codex profile, skills and tools from ECC, Context7 and Playwright. Run the Codex check when Codex is installed. Read expected counts from the manifest.
 
-Then perform functional smoke checks through available MCP tools or a local MCP client using the installed definitions:
+These commands leave hook approvals, model calls, live docs queries and browser launch untested. Follow them with functional MCP checks using available tools or a local client:
 
-- **ECC:** start a fresh local MCP process from a disposable Git repository, initialize/list tools, then run `memory_doctor` with `scopes: ["project"]` and that repository's absolute `workspaceRoot`. Do not try to rebind an existing MCP process from another repository, write test memories into the user's real project or scan personal memory.
-- **Context7:** resolve a public library and retrieve a small documentation result. Never include the key in test logs. If authentication/rate limits block this, report that separately from server discovery.
-- **Playwright:** launch configured headless/isolated Chromium, navigate to a local synthetic page, inspect its snapshot, then close the session you created. This proves the browser binaries and OS libraries work without using the user's browsing profile.
+- **ECC:** start a fresh MCP process from a disposable Git repository. Initialize it, list tools, and call `memory_doctor` with `scopes: ["project"]` and that repository's absolute `workspaceRoot`. Leave the user's project and personal memory untouched. An existing process bound to another repository must stay bound there.
+- **Context7:** resolve a public library and retrieve a small documentation result. Report authentication or rate-limit failures separately from server discovery. Keep the key out of logs.
+- **Playwright:** launch configured headless, isolated Chromium, open a local synthetic page, inspect its snapshot, and close your session. Use the isolated profile rather than the user's browsing profile.
 
-If tool refresh is required, use a local client or installed runtime for the test rather than claiming a tool call happened. If no supported test path is available, report the functional test as pending. A discovery-only check is not proof of full readiness.
+If this session has not loaded the new tools, test through a local MCP client or the installed runtime. If that is unavailable, mark the functional check pending. Report discovery and functional checks separately.
 
-Do not run the full maintainer integration suite against the live user home. It already uses a disposable home when explicitly run; normal installation requires the targeted checks above.
+Use these targeted checks for installation. The maintainer integration suite tests a disposable home and is not a replacement for checking the user's installed result.
 
-## 7. Complete the remaining human gates
+## 7. Finish required user actions
 
-Finish all automated work before asking the user for remaining actions. Do not request a second generic installation approval. Only these concrete gates may remain:
+Complete automated work before requesting remaining actions. Ask only for a specific unresolved requirement:
 
-- Provider/GitHub login that needs the user's browser, account consent or MFA. Use the portable OpenCode runner for its login: `python3 scripts/portable.py run -- auth login`. Do not import another installation's auth/database. Follow the provider login flow for Codex if needed.
+- Provider/GitHub login requiring a browser, consent or MFA. Start the supported interactive flow. OpenCode login uses `python3 scripts/portable.py run -- auth login`; preserve other installations' auth and databases. Use Codex's provider login flow when needed.
 - Secret entry through the user's local mechanism.
-- Ponytail hook review/trust in Codex `/hooks` and a fresh chat. Do not edit approval/trust storage or bypass hook trust.
-- An OS administrator prompt or a decision on exact conflicting files.
+- Ponytail hook review and trust in Codex `/hooks`, followed by a fresh chat. Leave trust storage and approval checks intact.
+- Missing administrator access or approval to replace specific conflicting files.
 
-If a login command must be interactive, start or present that specific supported flow; do not claim credentials are valid because configuration exists. Do not forcibly restart the session you are using to perform the installation.
+Keep the installation session running until its work is complete. Config presence alone does not prove credentials work.
 
-End with a concise report: checkout commit; selected home/profile; installed components; exact verification outcomes and pending tests; transaction ID and rollback command; remaining user actions. Distinguish **installed**, **discovered**, and **functionally verified**. For later use, provide `codex -p portable` and `python3 scripts/portable.py run` as launch commands, not as unfinished installation work.
+Report the checkout commit, target home/profile, installed components, checks passed or pending, transaction ID, rollback command and remaining user actions. Distinguish installed, discovered and functionally verified components. Give `codex -p portable` and `python3 scripts/portable.py run` as launch commands for later use.

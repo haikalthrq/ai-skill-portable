@@ -1,41 +1,45 @@
 # Portable Codex and OpenCode environment
 
-A sanitized backup of the **installed, customized skills and integrations**, not a list of moving upstream URLs. The current snapshot restores **51 OpenCode discovery names** (50 captured skills plus one built-in), **51 portable Codex skills** (including Graphify and six Ponytail skills), and **41 directory aliases**. Descriptions, routing guidance, native variants, references, scripts, datasets and licenses are retained. Codex system skills and account-managed OpenAI plugins are supplied by Codex itself.
+Back up and restore the installed skills, plugins and MCP connections for Codex and OpenCode. The snapshot keeps their customized instructions, scripts, datasets, licenses and routing descriptions.
 
-## What is preserved
+It contains 51 portable Codex skills, 51 OpenCode skill names (including one built-in), and 41 directory aliases. Codex supplies its own system skills and account-managed OpenAI plugins.
 
-- Ponytail **5.3.2**: six skills, Codex lifecycle hooks, OpenCode 1 adapter, commands, required assets and license. Bootstrap installs the captured local marketplace, not GitHub HEAD.
-- Codex `portable` profile: **ECC Memory Vault**, **Context7**, **Playwright MCP**, and model preferences. Snapshot restore does not replace the main `~/.codex/config.toml`, project trust or hook approvals.
-- Locked MCP runtimes: `@upstash/context7-mcp` **4.4.4**, `@playwright/mcp` **0.0.83**.
-- Runtime pins: OpenCode **1.18.35**, Agent Browser **0.38.2**, UI UX Pro Max CLI **2.15.0**, ECC Universal **2.2.3**.
-- Installed ECC memory code and pure-JS dependencies, without activating the full ECC pack.
-- A dedicated OpenCode data directory that avoids incompatible databases from other versions.
-
-**No API key, provider login, browser session, project source, transcript or memory record is included.** Context7 credentials are replaced by a required `CONTEXT7_API_KEY` environment variable.
-
-This snapshot is verified on Linux. Windows and model-driven routing reports are explicitly **historical**, not evidence for the current snapshot. See [inventory](reports/inventory.json) and [Linux integration](reports/linux-integration.json).
-
-## Install by asking your agent
+## Install with an agent
 
 Give this prompt to a coding agent with terminal and network access:
 
 ```text
-Instal https://github.com/haikalthrq/ai-skill-portable untuk Codex dan OpenCode
-di mesin ini. Clone repo, baca AGENTS.md dan INSTALL.md, lalu ikuti alur
-instalasi agent sampai verifikasi selesai. Pasang prasyarat yang kurang,
-runtime MCP, Chromium dan dependensi browser sesuai OS. Kerjakan semua
-perintahnya; jangan hanya memberi saya tutorial. Pertahankan konfigurasi,
-session dan data yang ada, serta jangan simpan secret di repo atau log.
-Minta tindakan saya hanya jika diperlukan untuk login, secret, persetujuan
-hooks, akses administrator yang tidak tersedia, atau konflik file yang
-memerlukan keputusan. Laporkan hasil tes dan langkah yang masih terblokir.
+Install https://github.com/haikalthrq/ai-skill-portable for Codex and OpenCode
+on this machine. Clone the repository, read AGENTS.md and INSTALL.md, and
+complete the installation and verification. Install missing prerequisites,
+MCP runtimes, Chromium and browser dependencies. Preserve existing config,
+sessions and data. Keep secrets out of the repository and logs.
+Ask me only for required login, secret entry, hook approval, unavailable
+administrator access, or a decision about conflicting files.
+Report what passed and what remains blocked.
 ```
 
-The agent follows [INSTALL.md](INSTALL.md): inspect, preview, apply, configure PATH, install browser prerequisites and verify both harnesses. You do not need to copy terminal commands manually. Login, secret entry, hook trust, unavailable administrator access and approval to replace conflicting files can still require your action; the agent must not bypass those gates or claim they passed.
+[INSTALL.md](INSTALL.md) tells the agent which commands to run and how to check the result. Account login, secret entry, hook trust and file conflicts may still need your input.
 
-## New machine: restore
+## Included versions
 
-Install **Git, Python 3.11+, Node.js 22+ and npm**. Install Codex separately for its integration. Authenticate GitHub locally if needed.
+| Component | Version |
+|---|---|
+| OpenCode | 1.18.35 |
+| Ponytail | 5.3.2, all six skills |
+| ECC Universal | 2.2.3, memory code and required JavaScript dependencies |
+| Context7 MCP | 4.4.4 |
+| Playwright MCP | 0.0.83 |
+| Agent Browser | 0.38.2 |
+| UI UX Pro Max CLI | 2.15.0 |
+
+Bootstrap uses captured Ponytail files and locked npm packages. It leaves existing skill versions intact. The Codex `portable` profile includes ECC Memory Vault, Context7, Playwright and model preferences. OpenCode uses its captured configuration and a separate data directory.
+
+Credentials, browser sessions, private projects, transcripts, memory records and trust approvals stay on the source machine. Supply `CONTEXT7_API_KEY` locally after restore.
+
+## Manual installation
+
+Install Git, Python 3.11+, Node.js 22+ and npm. Install Codex if you want its integration, then run:
 
 ```sh
 git clone https://github.com/haikalthrq/ai-skill-portable.git
@@ -45,60 +49,62 @@ python3 scripts/portable.py migrate
 python3 scripts/portable.py migrate --apply
 ```
 
-On Windows use `python`. All actions accept `--home` for a disposable/alternate home; `--repo` precedes the action.
+Use `python` on Windows. Preview writes nothing to the target. Resolve reported conflicts before applying; use `--replace` only after approving the affected files. Stop configuration writers and save the restore transaction ID for rollback.
 
-**Save the restore transaction ID.** Preview writes nothing to the target. Differing managed files cause a conflict before mutation. `--replace` explicitly permits replacement and stores exact private rollback copies. Stop configuration writers before restore/rollback.
+Pass `--home` for an alternate home and place `--repo` before the action when selecting another checkout. If you install Codex later, rerun `python3 scripts/bootstrap.py --apply`.
 
-Migration restores the snapshot, installs pinned runtimes and locked MCP packages, initializes existing OpenCode plugin dependencies, registers captured Ponytail when Codex is installed, and verifies native OpenCode discovery. It does not run `skills add`, Impeccable's installer or `uipro init`. Dependency lifecycle scripts stay disabled except OpenCode's pinned binary setup. After installing Codex, rerun `python3 scripts/bootstrap.py --apply` if needed.
+### Start Codex
 
-### Codex
-
-Add the installed runtime tool directory to your shell PATH, and persist it in your shell profile (or Windows user PATH). Node.js must also be available in non-interactive shells.
+Add the runtime tools to your user PATH and keep Node available in non-interactive shells:
 
 ```sh
 export PATH="$HOME/.local/share/opencode-portable/tools/node_modules/.bin:$PATH"
 codex -p portable
 ```
 
-Set `CONTEXT7_API_KEY` locally through your secret manager or environment configuration; never put its value in Git or a saved shell command. The portable profile forwards it to the pinned Context7 MCP runtime. Inspect registrations with `codex -p portable mcp list`.
+Persist PATH in your shell profile or Windows user environment. Set `CONTEXT7_API_KEY` through your secret manager or local environment settings. Keep its value out of Git, command arguments and shell history.
 
-Use `-p portable` explicitly: ordinary `codex` keeps your main configuration. Review/trust Ponytail hooks in `/hooks`, then start a new chat; approvals are intentionally not transferable. Skills include `$ponytail:ponytail-review` and `$ponytail:ponytail-help`.
+Use `-p portable` to select the restored MCP profile. Review Ponytail hooks in `/hooks`, trust them, then start a new chat. Commands include `$ponytail:ponytail-review` and `$ponytail:ponytail-help`.
 
-Bootstrap registers the captured local Ponytail marketplace in the target Codex main configuration while retaining other entries. Those generated registration/cache changes are separate from snapshot rollback.
+Snapshot restore leaves the main Codex config alone. Bootstrap adds the local Ponytail marketplace to it while preserving other entries.
 
-### OpenCode
-
-Use the portable runner so this pinned version has its own database and authentication directory:
+### Start OpenCode
 
 ```sh
 python3 scripts/portable.py run -- auth login
 python3 scripts/portable.py run
 ```
 
-The runner changes only the child's `XDG_DATA_HOME` to `~/.local/share/opencode-portable/data` and adds its tool directory to PATH. Other OpenCode databases remain untouched. `run --home` selects the executable/data directory; set the target's normal HOME/XDG variables too when using a different home interactively.
+The runner uses `~/.local/share/opencode-portable/data` for this version's database and login, leaving other OpenCode databases untouched. `run --home` selects the executable and data directory; set HOME/XDG variables too when running as a different home.
 
-Ponytail uses OpenCode 1's `plugin` key and captured `.mjs` adapter, with ruleset injection and six `/ponytail` commands. Restart an existing OpenCode process after changes.
+Ponytail adds its rules and six `/ponytail` commands through the OpenCode 1 adapter. Restart an existing process to load config changes.
 
-### Browser and other local prerequisites
-
-Playwright runtime installation does **not** install browser binaries or Linux system libraries:
+### Install the browser
 
 ```sh
 node "$HOME/.local/share/codex-mcp/node_modules/playwright/cli.js" install chromium
-# Linux: may require administrator access.
+# Linux only; may require administrator access.
 node "$HOME/.local/share/codex-mcp/node_modules/playwright/cli.js" install-deps chromium
 ```
 
-Codex launches Chromium headless with an isolated profile. Cookies/authenticated profiles are not restored.
+Playwright runs Chromium headless with an isolated profile. Adapt quoting to your shell.
 
-- **ECC:** pass the current absolute Git root as `workspaceRoot`. Each MCP process pins to one verified repository. Harnesses share its `.ecc/memory/`; project trust and memory remain local.
-- **Context7:** OpenCode retains its remote MCP; Codex uses its pinned local runtime. Both use a locally supplied key; restore is not proof of credential validity.
-- **Optional tools:** DCG 0.6.7, Graphify 0.9.5 and OfficeCLI are not installed automatically. OfficeCLI was already broken in the source environment; only its skill is preserved.
-- **Optional RINGKAS references:** resolve under `$HOME/Projects/RINGKAS`. Clone separately if needed; project source/data are not included.
+## Verify the installation
 
-## Update this backup
+```sh
+python3 scripts/portable.py verify --home "/absolute/target/home" --native
+python3 scripts/codex_verify.py --home "/absolute/target/home"
+```
 
-Run from the successfully restored installation, with portable tools on PATH:
+Use your target's absolute path. The first command checks OpenCode files, aliases and discovered skills. The second checks the Codex profile, skills and MCP tools. Neither tests live documentation queries, browser launch, provider login or model routing. The agent runbook includes functional MCP checks.
+
+The current snapshot passed Linux integration tests. Windows and model-routing reports are marked historical and need fresh runs. See the [inventory](reports/inventory.json) and [Linux report](reports/linux-integration.json).
+
+ECC requires the current Git root as `workspaceRoot` and binds each MCP process to one repository. Context7 uses a remote server in OpenCode and a pinned local runtime in Codex. DCG, Graphify and OfficeCLI runtimes require separate setup; the source OfficeCLI runtime was already broken. Optional RINGKAS references point to `$HOME/Projects/RINGKAS`, which you must clone separately.
+
+## Update and publish the backup
+
+From a restored installation with portable tools on PATH:
 
 ```sh
 python3 scripts/portable.py backup
@@ -106,36 +112,23 @@ python3 scripts/inventory_report.py
 python3 scripts/portable.py verify
 python3 -m unittest discover -s tests -v
 python3 scripts/integration_test.py --native --bootstrap --report reports/linux-integration.json
-```
-
-Capture reads installed Codex main MCP definitions to produce the safe portable profile. It requires all three reviewed MCPs and the local Ponytail payload, and fails rather than silently dropping an out-of-allowlist skill or required integration. Project trust, hook decisions, unrelated Codex configuration and credentials are excluded. Only Ponytail's Codex/OpenCode runtime payload is captured; unrelated host adapters, tests and optional Claude band setup are not activated.
-
-The manifest maps home-relative destinations to SHA-256 blobs. Identical capture preserves snapshot ID/time. Capture stages privately and publishes only after validation; source files are read, not modified. Adding another plugin/skill source needs a reviewed explicit mapping.
-
-### Scan before publishing
-
-```sh
 python3 scripts/fetch_gitleaks.py
 python3 scripts/secret_scan.py --gitleaks .work/gitleaks/gitleaks --report reports/secret-scan.json
 ```
 
-On Windows use `gitleaks.exe`. Gitleaks **8.30.1** is checksum-verified. Local patterns and exact removed-secret detection supplement default scanner rules; **snapshot blobs are scanned**. Findings do not print credential values. Inspect the diff, then commit only intended code/snapshot/docs/sanitized reports. Backup never commits or pushes automatically.
+Use `gitleaks.exe` on Windows. The scanner download is checksum-verified, and scans include snapshot blobs. Inspect the diff before committing or pushing.
 
-## Verification and rollback
+Capture requires all three Codex MCP definitions and the local Ponytail files. It rejects unknown skill roots and missing required integrations. Identical captures keep the snapshot ID and timestamp. Backup reads source files, validates a staged snapshot, and replaces the old snapshot only after validation. It never commits or pushes.
 
-- `verify`: manifest/path safety and every blob's integrity; no target writes.
-- `verify --home <home>`: rendered bytes, definitions, aliases and required local Markdown links.
-- `verify --home <home> --native`: fresh OpenCode names, descriptions, loaded bodies and contained paths.
-- `integration_test.py --native --bootstrap`: disposable HOME with spaces; repeated preview/restore/bootstrap; real dataset search; ECC save/read/doctor, MCP binding and handoff helper; native discovery; one-command migration; full snapshot rollback. If Codex is installed, checks its portable CLI profile, all 51 portable skills and tool discovery from three MCPs, without provider credentials or hook approval. Does not test live Context7 queries, browser launch or model-driven routing.
-- `routing_probe.py --home <home>`: optional real model-driven routing after local authentication. Semantic selection is not a guaranteed hard trigger. Historical reports retain their original snapshot identity.
-
-Preview and apply rollback using the saved transaction:
+## Rollback
 
 ```sh
 python3 scripts/portable.py rollback <transaction-id>
 python3 scripts/portable.py rollback <transaction-id> --apply
 ```
 
-Rollback refuses newer edits and restores old bytes/aliases or removes newly restored content. Journals stay private under `~/.local/state/opencode-portable/transactions/`. Downloaded runtimes/browser caches, Codex-generated marketplace/config/cache registrations, OS packages and OpenCode data are outside snapshot rollback. Check for local work before removing them. Windows junction handling is retained, but this revision needs a fresh Windows integration run.
+Rollback restores old files and aliases or removes newly restored content. It refuses newer edits and keeps private journals under `~/.local/state/opencode-portable/transactions/`.
 
-See [MIGRATION-BRIEF.md](MIGRATION-BRIEF.md) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+Downloaded runtimes, browser caches, OS packages, Codex-generated registrations and OpenCode data are outside snapshot rollback. Check for local work before removing them.
+
+Read [MIGRATION-BRIEF.md](MIGRATION-BRIEF.md) for the preservation contract and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for sources and licenses.
