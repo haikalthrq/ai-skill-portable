@@ -1,6 +1,6 @@
-# Implemented migration contract
+# Codex, OpenCode and Google Antigravity migration contract
 
-This repository contains the real sanitized snapshot and a working migration system for OpenCode and Codex. It is an **environment** backup, not a project/transcript/authentication backup or an upstream skill updater.
+This repository preserves the installed skill environment for Codex, OpenCode and Google Antigravity App/IDE. Credentials, private projects, transcripts and memory records remain local.
 
 ## Authoritative artifacts
 
@@ -10,6 +10,7 @@ This repository contains the real sanitized snapshot and a working migration sys
 | `snapshot/blobs/<sha256>` | Deduplicated actual installed content; plain files, not opaque archives hiding scan results |
 | `scripts/portable.py` | Idempotent capture, preview/apply restore, one-command migrate/bootstrap/verify, and guarded rollback |
 | `scripts/bootstrap.py` | Target-home runtime/package setup; no skill installation/update |
+| `scripts/antigravity.py` | Physical Antigravity skill copies and required frontmatter/file verification |
 | `scripts/secret_scan.py`, `fetch_gitleaks.py` | Fail-closed local checks plus pinned independent scanner |
 | `scripts/integration_test.py`, `tests/` | Disposable full restore/rollback and adversarial path/credential tests |
 | `scripts/routing_probe.py` | Fresh authenticated native skill calls after restore |
@@ -19,9 +20,9 @@ This repository contains the real sanitized snapshot and a working migration sys
 
 1. Read the installed files. Preserve their descriptions, bodies, references, scripts, datasets, licenses, local adapters and custom plugins. Never replace them with current upstream downloads merely because upstream exists.
 2. Keep physical variants distinct. Deduplicate identical file content only; reconstruct original directory destinations and explicit aliases from the manifest.
-3. Snapshot all 51 OpenCode discovery names, including the built-in supplied by its pinned runtime. Codex has 51 portable skills, including auxiliary Graphify and six namespaced Ponytail skills. Retain provider variants and explicit aliases without forcing Graphify into OpenCode discovery.
+3. Keep 43 unique active core skills, including the installed reverse-engineering skill. Exclude retired `caveman` and `officecli` definitions, content and installation metadata. Codex has 50 portable skills (core, Graphify, six Ponytail skills); OpenCode has 50 names (core, Ponytail, one built-in). Antigravity receives the 43 core skills. Preserve provider variants and keep those count categories separate.
 4. Keep Context7/ECC integration instructions and host-identity/repository-binding behavior. Exclude all authentication, browser/session data, memory vault records and unrelated home/project content.
-5. Never change the original skill installation during backup/testing. The Windows integration evidence rehashes the captured source files to detect mutation.
+5. Never change the original skill installation during backup/testing. Integration tests rehash captured source files to detect mutation. Removing a skill from this backup does not delete its live installation or user data.
 
 ## Portable path contract
 
@@ -29,7 +30,10 @@ This repository contains the real sanitized snapshot and a working migration sys
 - Actual home prefixes become `__PORTABLE_HOME__` in stored text and expand on restore. Source and transformed hashes distinguish intentional portability from accidental content changes.
 - The ECC memory/runtime configuration points to the captured installed memory implementation under `$HOME/.local/share/opencode-portable/ecc-runtime`, rather than the old Windows roaming npm path.
 - MCP uses `node` from PATH; native plugin paths become relocatable file URLs. Explicit global skill paths make the retained native roots discoverable on both platforms.
-- Windows junctions and Linux relative symlinks recreate directory aliases. Windows reparse-point detection does not depend on Python 3.12-only methods.
+- Windows junctions and Linux relative symlinks recreate aliases outside the Antigravity target. Windows reparse-point detection does not depend on Python 3.12-only methods.
+- Antigravity App/IDE global skills use `.gemini/config/skills/<skill>/SKILL.md` under the target home. Capture dereferences approved core aliases into physical file records and keeps existing native variants. Restore writes real directories with all supporting files on every OS; no Antigravity alias/junction records are allowed. Windows Antigravity does not follow NTFS junctions/reparse points.
+- Antigravity's copies use the normal restore journal, conflict checks and rollback. Existing redirected destination parents are rejected before writing, including with `--replace`; their targets remain untouched. Resolve an existing linked installation explicitly rather than copying through it.
+- `migrate --antigravity` and `bootstrap.py --antigravity` require Antigravity metadata; current snapshots deploy it by default. `verify --home <home> --antigravity` checks required name/description frontmatter, non-empty instructions, physical paths and file hashes. It does not claim a native App/IDE scanner or model-routing test. The standalone Antigravity CLI global path is outside this target.
 - Linux adjusts the copied DCG plugin's PATH delimiter; the original live plugin and stored source identity stay unchanged.
 - RINGKAS-only references map to `$HOME/Projects/RINGKAS`; the private project is not backed up. Animate's preserved upstream reference receives a copied companion RECIPES.md without modifying the source installation.
 - Codex's sanitized `.codex/portable.config.toml` profile keeps the three reviewed MCP definitions and model preferences, excluding the main config, hook approvals, project trust and credentials. Capture can use the restored profile when main config has no MCP definitions.
@@ -60,8 +64,9 @@ Gitleaks scans the publishable repository including content blobs before staging
 
 - Payload/content-address identity and original-file preservation.
 - Complete Windows and Linux disposable restore, real junction/symlink aliases, repeated previews/apply/bootstrap, complete rollback.
-- Fresh OpenCode discovery of exactly 51 names; descriptions and loaded bodies match the restored snapshot; paths remain in the sandbox.
-- If Codex is available: its portable CLI profile, 51 portable skills and tools from ECC/Context7/Playwright are discovered without credentials, model calls or hook approval. app-server does not accept --profile, so verification separately checks CLI profile loading and uses its exact MCP values as app-server overrides.
+- Fresh OpenCode discovery of 50 names; descriptions and loaded bodies match the restored snapshot; paths remain in the sandbox.
+- If Codex is available: its portable CLI profile, 50 portable skills and tools from ECC/Context7/Playwright are discovered without credentials, model calls or hook approval. app-server does not accept --profile, so verification checks CLI profile loading separately and uses its exact MCP values as app-server overrides.
+- All 43 Antigravity core directories are physical, complete and valid after restore. Tests reject missing frontmatter, modified references, linked roots/children, broken links and alias-bearing manifests. Restore, repeated apply, recapture and rollback retain this contract.
 - Real UI UX Pro Max data search and ECC memory save/read/doctor, custom MCP initialization/tools and handoff helper.
 - Fresh model-driven frontend/debugging/handoff/backend routing tests with no skill names in those prompts.
 - Adversarial tests for corruption, traversal, duplicate/prefix conflicts, redirected parents/state, credentials and preservation of newer work.
@@ -69,6 +74,6 @@ Gitleaks scans the publishable repository including content blobs before staging
 
 ## Maintenance limits and manual setup
 
-Python 3.11+/Git/Node 22+, Codex installation, provider login, Context7 key, Codex hook approval, browser binaries/OS libraries, optional DCG/Graphify/OfficeCLI and private project checkouts remain local setup. OfficeCLI already had a missing .NET assembly; its skill is preserved without claiming that runtime was fixed. Windows and model-driven routing evidence from the previous snapshot is labelled historical; the current snapshot needs fresh runs there.
+Python 3.11+/Git/Node 22+, Codex/Antigravity application installation, provider login, Context7 key, Codex hook approval, browser binaries/OS libraries, optional DCG/Graphify and private project checkouts remain local setup. Windows and model-driven routing evidence from previous snapshots is labelled historical. Native Windows Antigravity scanner and routing checks require the installed application; filesystem checks alone do not prove them.
 
-Capture intentionally fails if this complete environment's required ECC binding or discovered out-of-allowlist skill is missing. Review and explicitly extend mappings before capturing external roots; never traverse arbitrary personal directories. Retain third-party licenses/notices, inspect scripts before bootstrap, and use the tested pinned OpenCode version for equivalent discovery. Different future harness/model versions can choose skills differently even when the file snapshot is identical.
+Capture fails if required ECC binding is missing or a discovered skill has no approved mapping. Review mappings before adding external roots. Keep third-party licenses, inspect scripts before bootstrap, and use the pinned OpenCode version for equivalent discovery. Tool and model versions can select different skills from the same snapshot.

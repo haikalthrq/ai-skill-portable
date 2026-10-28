@@ -26,9 +26,12 @@ def integration(repo, native=False, tools=False):
         report['checks']['two_read_only_previews'] = True
         applied = restore(repo, home, apply=True)
         assert applied['ok']
-        initial = verify(repo, home)
+        initial = verify(repo, home, antigravity=True)
         assert initial['ok'], initial
         report['restore'] = {key: initial[key] for key in ['files', 'aliases', 'expected_skills', 'unique_blobs', 'broken_local_links']}
+        report['antigravity'] = initial['antigravity']
+        assert initial['antigravity']['physical_skills_verified'] == load_snapshot(repo)[0]['antigravity']['expected_skills']
+        report['checks']['antigravity_physical_files_and_frontmatter'] = True
         assert restore(repo, home, apply=True)['changes'] == 0
         report['checks']['idempotent_apply'] = True
         env = isolated_env(home)
@@ -69,7 +72,7 @@ def integration(repo, native=False, tools=False):
         if native:
             from bootstrap import bootstrap, install_plugin_dependencies
             if tools:
-                installed = bootstrap(repo, home, apply=True)
+                installed = bootstrap(repo, home, apply=True, antigravity=True)
                 assert installed['ok']
                 repeated = bootstrap(repo, home, apply=True)
                 assert repeated['changed'] is False and repeated.get('mcp_changed', False) is False
@@ -93,7 +96,7 @@ def integration(repo, native=False, tools=False):
             report['checks']['fresh_native_discovery_and_bodies'] = True
             if tools:
                 orchestrated = json.loads(command([sys.executable, str(repo / 'scripts/portable.py'),
-                    'migrate', '--home', str(home), '--apply'], env=isolated_env(home), timeout=600).stdout)
+                    'migrate', '--home', str(home), '--apply', '--antigravity'], env=isolated_env(home), timeout=600).stdout)
                 assert orchestrated['ok'] and orchestrated['changes'] == 0
                 report['checks']['one_command_migration'] = True
                 if shutil.which('codex'):

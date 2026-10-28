@@ -26,9 +26,11 @@ def main():
     migrate.add_argument('--home', type=Path, default=Path.home())
     migrate.add_argument('--apply', action='store_true')
     migrate.add_argument('--replace', action='store_true')
+    migrate.add_argument('--antigravity', action='store_true', help='Require the Antigravity target (included by default in current snapshots)')
     check = sub.add_parser('verify')
     check.add_argument('--home', type=Path)
     check.add_argument('--native', action='store_true')
+    check.add_argument('--antigravity', action='store_true', help='Check physical Antigravity directories and skill frontmatter')
     run = sub.add_parser('run', help='Run pinned OpenCode with its own data directory, preserving other versions and sessions')
     run.add_argument('--home', type=Path, default=Path.home())
     run.add_argument('arguments', nargs=argparse.REMAINDER)
@@ -55,6 +57,10 @@ def main():
                 parser.error('--apply and --dry-run are mutually exclusive')
             report = restore(args.repo.resolve(), args.home, args.apply, args.replace)
         elif args.action == 'migrate':
+            if args.antigravity:
+                from restore import load_snapshot
+                if not load_snapshot(args.repo.resolve())[0].get('antigravity'):
+                    raise ValueError('Snapshot has no Antigravity target')
             report = restore(args.repo.resolve(), args.home, False, args.replace)
             if args.apply and report['ok']:
                 if report['missing_runtime_prerequisites']:
@@ -63,15 +69,15 @@ def main():
                     report = restore(args.repo.resolve(), args.home, True, args.replace)
                     from bootstrap import bootstrap
                     try:
-                        report['bootstrap'] = bootstrap(args.repo.resolve(), args.home, True)
-                        report['verification'] = verify(args.repo.resolve(), args.home, True)
+                        report['bootstrap'] = bootstrap(args.repo.resolve(), args.home, True, args.antigravity)
+                        report['verification'] = verify(args.repo.resolve(), args.home, True, args.antigravity)
                         report['ok'] = report['verification']['ok']
                         report['path_instruction'] = 'Use portable.py run -- <OpenCode arguments> for isolated data; use codex -p portable for the Codex MCP profile. Authenticate providers and trust Codex hooks locally.'
                     except Exception:
                         report['ok'] = False
                         report['error'] = 'Runtime/bootstrap validation failed; the displayed restore transaction remains available for rollback.'
         elif args.action == 'verify':
-            report = verify(args.repo.resolve(), args.home, args.native)
+            report = verify(args.repo.resolve(), args.home, args.native, args.antigravity)
         else:
             report = rollback(args.home, args.transaction, args.apply)
     except (ValueError, OSError) as error:

@@ -43,6 +43,8 @@ def load_snapshot(repo):
     aliases = set()
     for record in manifest['aliases']:
         relative, target = record['path'], record['target']
+        if relative.casefold().startswith('.gemini/config/skills/'):
+            raise ValueError('Antigravity skills must be physical directories, not aliases')
         logical(relative + '/SKILL.md')
         logical(target + '/SKILL.md')
         if relative.casefold() in aliases or relative.casefold() in paths:
@@ -55,6 +57,25 @@ def load_snapshot(repo):
     for path in data:
         if any(parent.as_posix() in data for parent in Path(path).parents if parent.as_posix() != '.'):
             raise ValueError('File/directory prefix collision: ' + path)
+    metadata = manifest.get('antigravity')
+    if metadata:
+        from antigravity import ROOT, DEPRECATED, frontmatter
+        names = metadata.get('skills', [])
+        if metadata.get('root') != ROOT or not isinstance(names, list) or not names or any(not isinstance(n, str) or not re.fullmatch('[a-z0-9][a-z0-9_-]*', n) for n in names) or len(set(names)) != len(names) or metadata.get('expected_skills') != len(names) or set(names) & DEPRECATED:
+            raise ValueError('Invalid Antigravity inventory')
+        if any(ROOT + '/' + n + '/SKILL.md' not in data for n in names):
+            raise ValueError('Antigravity inventory is missing a physical definition')
+        if any(not frontmatter(data[ROOT + '/' + n + '/SKILL.md'].decode('utf-8-sig'), n) for n in names):
+            raise ValueError('Invalid Antigravity skill frontmatter')
+        physical_names = {p.split('/')[3] for p in data if p.startswith(ROOT + '/')}
+        if physical_names != set(names):
+            raise ValueError('Antigravity files and inventory disagree')
+        definitions = [d for d in manifest['definitions'] if d['path'].startswith(ROOT + '/')]
+        expected = {ROOT + '/' + n + '/SKILL.md' for n in names}
+        if {d['path'] for d in definitions} != expected or any(d.get('alias') or d['canonical'] != d['path'] for d in definitions):
+            raise ValueError('Antigravity definition paths must describe physical copies')
+    if 'definition_paths' in manifest and manifest['definition_paths'] != sorted(d['path'] for d in manifest['definitions']):
+        raise ValueError('Definition path index is out of sync')
     return manifest, data
 
 def state(path):
@@ -145,7 +166,7 @@ def make_alias(path, target):
 def remove(path):
     if path.is_symlink():
         path.unlink()
-    elif link(path) and path.is_dir():
+    elif link(path):
         path.rmdir()
     elif path.is_file():
         path.unlink()
@@ -159,6 +180,10 @@ def plan_restore(repo, home, replace=False):
     home = home.resolve()
     manifest, data = load_snapshot(repo)
     changes, conflicts = [], []
+    if manifest.get('antigravity'):
+        from antigravity import ROOT, require_physical_tree
+        for name in manifest['antigravity']['skills']:
+            require_physical_tree(home, home / ROOT / name)
     for record in manifest['files']:
         relative = record['path']
         path = contained(home, relative)

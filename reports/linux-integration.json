@@ -1,9 +1,10 @@
 {
   "platform": "Linux",
   "python": "3.13.5",
-  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0",
+  "snapshot_id": "e5efb047b79993495e08550fb39f06d2a139e840aeb08170bae1e67f4850b288",
   "checks": {
     "two_read_only_previews": true,
+    "antigravity_physical_files_and_frontmatter": true,
     "idempotent_apply": true,
     "real_dataset_search": true,
     "vendored_ecc_save_read_doctor": true,
@@ -16,15 +17,22 @@
     "codex_profile_skills_and_mcp_discovery": true,
     "restored_environment_can_be_backed_up_idempotently": true,
     "full_snapshot_rollback_idempotence": true,
-    "original_source_files_unchanged": 1192
+    "original_source_files_unchanged": 1197
   },
   "ok": true,
   "restore": {
-    "files": 1192,
-    "aliases": 41,
-    "expected_skills": 51,
-    "unique_blobs": 904,
+    "files": 1362,
+    "aliases": 38,
+    "expected_skills": 50,
+    "unique_blobs": 910,
     "broken_local_links": []
+  },
+  "antigravity": {
+    "ok": true,
+    "expected_skills": 43,
+    "physical_skills_verified": 43,
+    "errors": [],
+    "native_routing_tested": false
   },
   "runtime_versions": {
     "opencode": "1.18.35",
@@ -32,7 +40,7 @@
     "uipro": "2.15.0"
   },
   "native": {
-    "native_discovery_count": 51,
+    "native_discovery_count": 50,
     "native_names_match": true,
     "native_descriptions_match": true,
     "native_all_bodies_loaded": true,
@@ -41,8 +49,8 @@
   },
   "codex": {
     "ok": true,
-    "expected_portable_skills": 51,
-    "portable_skills_found": 51,
+    "expected_portable_skills": 50,
+    "portable_skills_found": 50,
     "missing": [],
     "loader_error_count": 0,
     "cli_profile_validated": true,

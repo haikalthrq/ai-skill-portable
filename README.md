@@ -1,15 +1,16 @@
-# Portable Codex and OpenCode environment
+# Portable Codex, OpenCode and Google Antigravity environment
 
-Back up and restore the installed skills, plugins and MCP connections for Codex and OpenCode. The snapshot keeps their customized instructions, scripts, datasets, licenses and routing descriptions.
+Back up and restore skills for Codex, OpenCode and Google Antigravity, plus the existing Codex/OpenCode plugins and MCP connections. The snapshot keeps customized instructions, scripts, datasets, licenses and routing descriptions.
 
-It contains 51 portable Codex skills, 51 OpenCode skill names (including one built-in), and 41 directory aliases. Codex supplies its own system skills and account-managed OpenAI plugins.
+The snapshot contains 43 unique active core skills. Antigravity receives those 43 skills as physical directories. Codex has 50 portable skills (the core set, Graphify and six Ponytail skills); OpenCode has 50 skill names (the core set, Ponytail and one built-in). Codex supplies its own system skills and account-managed OpenAI plugins. The retired `caveman` and `officecli` skills are excluded.
 
 ## Install with an agent
 
 Give this prompt to a coding agent with terminal and network access:
 
 ```text
-Install https://github.com/haikalthrq/ai-skill-portable for Codex and OpenCode
+Install https://github.com/haikalthrq/ai-skill-portable for Codex, OpenCode
+and Google Antigravity
 on this machine. Clone the repository, read AGENTS.md and INSTALL.md, and
 complete the installation and verification. Install missing prerequisites,
 MCP runtimes, Chromium and browser dependencies.
@@ -30,7 +31,7 @@ Report what passed and what remains blocked.
 | Agent Browser | 0.38.2 |
 | UI UX Pro Max CLI | 2.15.0 |
 
-Bootstrap uses captured Ponytail files and locked npm packages. It leaves existing skill versions intact. The Codex `portable` profile includes ECC Memory Vault, Context7, Playwright and model preferences. OpenCode uses its captured configuration and a separate data directory.
+Bootstrap uses captured Ponytail files and locked npm packages. It leaves existing skill versions intact. The Codex `portable` profile includes ECC Memory Vault, Context7, Playwright and model preferences. OpenCode uses its captured configuration and a separate data directory. Restore writes Antigravity files through the same rollback journal.
 
 Credentials, browser sessions, private projects, transcripts, memory records and trust approvals stay on the source machine. Supply `CONTEXT7_API_KEY` locally after restore.
 
@@ -43,12 +44,20 @@ git clone https://github.com/haikalthrq/ai-skill-portable.git
 cd ai-skill-portable
 python3 scripts/portable.py verify
 python3 scripts/portable.py migrate
-python3 scripts/portable.py migrate --apply
+python3 scripts/portable.py migrate --apply --antigravity
 ```
 
 Use `python` on Windows. Preview writes nothing to the target. Resolve reported conflicts before applying; use `--replace` only after approving the affected files. Stop configuration writers and save the restore transaction ID for rollback.
 
 Pass `--home` for an alternate home and place `--repo` before the action when selecting another checkout. If you install Codex later, rerun `python3 scripts/bootstrap.py --apply`.
+
+### Use Antigravity
+
+Install the Antigravity App or IDE, then run the migration above. Current snapshots always include its target; `--antigravity` requires that target explicitly. Bootstrap also accepts `--antigravity` to check that the snapshot includes it. It does not install Antigravity itself.
+
+Global skills live at `~/.gemini/config/skills/<skill>/SKILL.md`. Every restored skill is a physical directory, including its scripts and references. Windows Antigravity does not follow NTFS junctions/reparse points, so this target never uses junctions or symlinks on any OS. An existing linked target blocks restore; preserve it and resolve the reported path before retrying. `--replace` does not bypass this check.
+
+Start a new Antigravity conversation after restore. It reads skill names and descriptions from frontmatter and automatically loads relevant instructions for your prompt. You can also use `/<skill-name>`. See [Google's skill documentation](https://antigravity.google/docs/skills?tab=ide). This target covers the App/IDE global directory; the separate Antigravity CLI has a different global path.
 
 ### Start Codex
 
@@ -89,15 +98,15 @@ Playwright runs Chromium headless with an isolated profile. Adapt quoting to you
 ## Verify the installation
 
 ```sh
-python3 scripts/portable.py verify --home "/absolute/target/home" --native
+python3 scripts/portable.py verify --home "/absolute/target/home" --native --antigravity
 python3 scripts/codex_verify.py --home "/absolute/target/home"
 ```
 
-Use your target's absolute path. The first command checks OpenCode files, aliases and discovered skills. The second checks the Codex profile, skills and MCP tools. Neither tests live documentation queries, browser launch, provider login or model routing. The agent runbook includes functional MCP checks.
+Use your target's absolute path. The first command checks OpenCode discovery plus Antigravity's physical files, frontmatter and hashes. Antigravity checks also run automatically for snapshots that include it. The second checks the Codex profile, skills and MCP tools. These checks do not test live documentation queries, browser launch, provider login or Antigravity's native scanner and model routing.
 
 The current snapshot passed Linux integration tests. Windows and model-routing reports are marked historical and need fresh runs. See the [inventory](reports/inventory.json) and [Linux report](reports/linux-integration.json).
 
-ECC requires the current Git root as `workspaceRoot` and binds each MCP process to one repository. Context7 uses a remote server in OpenCode and a pinned local runtime in Codex. DCG, Graphify and OfficeCLI runtimes require separate setup; the source OfficeCLI runtime was already broken. Optional RINGKAS references point to `$HOME/Projects/RINGKAS`, which you must clone separately.
+ECC requires the current Git root as `workspaceRoot` and binds each MCP process to one repository. Context7 uses a remote server in OpenCode and a pinned local runtime in Codex. DCG and Graphify runtimes require separate setup. Optional RINGKAS references point to `$HOME/Projects/RINGKAS`, which you must clone separately.
 
 ## Update and publish the backup
 

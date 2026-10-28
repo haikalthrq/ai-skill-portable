@@ -1,12 +1,12 @@
-# Installation guide for agents
+# Codex, OpenCode and Google Antigravity installation guide
 
 Complete the installation when the user asks for it. Run the commands, check the results, and finish independent work while waiting for required user input. Keep the captured versions.
 
 ## 1. Check the machine and checkout
 
-Identify the OS, architecture, shell, target home, installed runtimes and existing Codex/OpenCode config. The target is the machine running your terminal; an SSH session may target a different machine from the user's laptop. Use session context and ask only if the target is unclear.
+Identify the OS, architecture, shell, target home, installed runtimes and existing Codex/OpenCode/Antigravity config. The target is the machine running your terminal; an SSH session may target a different machine from the user's laptop. Use session context and ask only if the target is unclear.
 
-Install both Codex and OpenCode unless the user narrows the request. Restore also copies Claude/Gemini/Cline skill variants and global instructions. It does not install those applications.
+The snapshot supports Codex, OpenCode and Antigravity App/IDE. Deploy the three skill targets unless the user narrows the request. Current migration restores all targets; `--antigravity` requires its target explicitly and does not disable the others. Install selected applications through their supported installers. Restore also retains Claude/Gemini/Cline variants and global instructions.
 
 Clone `https://github.com/haikalthrq/ai-skill-portable.git` into a persistent directory. For an existing checkout, inspect its remote, branch and local changes before fetching. Fast-forward a clean checkout; preserve local work. Record the commit being installed.
 
@@ -26,17 +26,19 @@ From the checkout:
 
 ```sh
 python3 scripts/portable.py verify
-python3 scripts/portable.py migrate
+python3 scripts/portable.py migrate --antigravity
 ```
 
 Pass the same absolute `--home` to every target-dependent command when using an alternate home. Check the JSON: verification must pass, prerequisites must meet the version requirements, and conflicts must be empty. Preview must leave target files untouched.
 
 For conflicting files, inspect the differences without exposing credentials. Show the user which files would change and request a replacement decision. A general install request does not authorize replacing existing user rules or config. Use `--replace` only with that approval; the restorer saves private rollback copies. Preserve symlink and path-containment checks.
 
+Check `~/.gemini/config/skills` and its destination folders for symlinks, NTFS junctions or other reparse points. Antigravity requires physical directories, so a linked destination blocks restore even with `--replace`. Preserve the existing target and resolve that specific conflict with the user. Never copy files through the link or delete its target to make installation pass.
+
 ## 4. Apply and save the transaction ID
 
 ```sh
-python3 scripts/portable.py migrate --apply
+python3 scripts/portable.py migrate --apply --antigravity
 ```
 
 Check the exit code and JSON `ok`, including bootstrap and verification results. Save the transaction ID privately and include it in the final report, even if bootstrap fails. An unchanged rerun may have no new transaction; retain the original ID.
@@ -50,6 +52,8 @@ python3 scripts/bootstrap.py --apply
 Run this again if Codex was installed after migration. Preserve installed skills; do not run upstream skill installers or `backup` during installation. If rollback is needed, preview it with the saved ID and preserve newer work and data outside snapshot rollback.
 
 Bootstrap registers the captured Ponytail marketplace in the target Codex main config, preserving other entries. MCP connections and model preferences live in `~/.codex/portable.config.toml`, selected by `codex -p portable`. Keep the user's main config and default profile intact.
+
+Restore deploys all 43 Antigravity core skills under `~/.gemini/config/skills/<skill>/SKILL.md` as physical files and directories, with scripts and references. This rule applies on every OS; Windows Antigravity's scanner does not follow junctions/reparse points. The normal restore journal covers these copies and their rollback. Retired `caveman` and `officecli` content is excluded from the snapshot; existing unrelated user files are not deleted.
 
 ## 5. Set PATH, browser dependencies and credentials
 
@@ -74,11 +78,13 @@ Check for `CONTEXT7_API_KEY` without printing it. Reuse an authorized credential
 ## 6. Verify the result
 
 ```sh
-python3 scripts/portable.py verify --home "/absolute/target/home" --native
+python3 scripts/portable.py verify --home "/absolute/target/home" --native --antigravity
 python3 scripts/codex_verify.py --home "/absolute/target/home"
 ```
 
-Replace the quoted path with the selected home. The first command checks restored OpenCode files and skill discovery. The second checks the Codex profile, skills and tools from ECC, Context7 and Playwright. Run the Codex check when Codex is installed. Read expected counts from the manifest.
+Replace the quoted path with the selected home. The first command checks OpenCode discovery and Antigravity's physical skill trees, required frontmatter and file hashes. The second checks the Codex profile, skills and tools from ECC, Context7 and Playwright. Run the Codex check when Codex is installed. Read expected counts from the manifest: core, built-in and plugin counts are separate.
+
+For Antigravity, start a fresh App/IDE conversation and inspect the available skills. Names and descriptions come from `SKILL.md` frontmatter; Antigravity loads relevant instructions automatically based on the prompt. Test one relevant prompt, or invoke `/<skill-name>`, if the application is available. Physical-file validation alone does not prove its native scanner or model routing ran. The separate Antigravity CLI uses a different global directory and is outside this target. See [Google's skill documentation](https://antigravity.google/docs/skills?tab=ide).
 
 These commands leave hook approvals, model calls, live docs queries and browser launch untested. Follow them with functional MCP checks using available tools or a local client:
 

@@ -10,6 +10,9 @@ repo = Path(__file__).resolve().parents[1]
 manifest, data = load_snapshot(repo)
 report = {'snapshot_id': manifest['snapshot_id'], 'created_utc': manifest['created_utc'],
     'codex': manifest.get('codex'),
+    'antigravity': manifest.get('antigravity'),
+    'supported_targets': ['codex', 'opencode', 'antigravity'],
+    'active_core_skills': manifest.get('active_core_skills'),
     'discoverable_skills': manifest['expected_discovery_count'], 'builtin_skills': [s['name'] for s in manifest['skills'] if s['builtin']],
     'skills': [{'name': s['name'], 'description': s['description'], 'definition_paths': s['definition_candidates']} for s in manifest['skills']],
     'definition_paths': len(manifest['definitions']), 'directory_aliases': len(manifest['aliases']),

@@ -1,9 +1,9 @@
 {
   "schema": "opencode-portable/v1",
-  "created_utc": "2026-10-27T07:43:44.140352+00:00",
+  "created_utc": "2026-10-28T13:22:20.849348+00:00",
   "source_platform": "posix",
   "opencode_version": "1.18.35",
-  "expected_discovery_count": 51,
+  "expected_discovery_count": 50,
   "skills": [
     {
       "name": "agent-browser",
@@ -11,7 +11,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/agent-browser/SKILL.md",
-        ".claude/skills/agent-browser/SKILL.md"
+        ".claude/skills/agent-browser/SKILL.md",
+        ".gemini/config/skills/agent-browser/SKILL.md"
       ]
     },
     {
@@ -19,7 +20,8 @@
       "description": "Emil animation implementation specialist. Automatically use to build new purposeful animations, motion or transitions with appropriate tools, properties, easing, duration, interruption, exit and reduced-motion behavior. Existing easing or interaction refinement uses emil-design-eng.",
       "builtin": false,
       "definition_candidates": [
-        ".agents/skills/animate/SKILL.md"
+        ".agents/skills/animate/SKILL.md",
+        ".gemini/config/skills/animate/SKILL.md"
       ]
     },
     {
@@ -28,16 +30,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/brandkit/SKILL.md",
-        ".claude/skills/brandkit/SKILL.md"
-      ]
-    },
-    {
-      "name": "caveman",
-      "description": "Ultra-terse caveman communication mode. Use only when the user explicitly requests caveman/very terse replies, not merely technical context optimization.",
-      "builtin": false,
-      "definition_candidates": [
-        ".agents/skills/caveman/SKILL.md",
-        ".claude/skills/caveman/SKILL.md"
+        ".claude/skills/brandkit/SKILL.md",
+        ".gemini/config/skills/brandkit/SKILL.md"
       ]
     },
     {
@@ -46,7 +40,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/code-review/SKILL.md",
-        ".config/opencode/skills/code-review/SKILL.md"
+        ".config/opencode/skills/code-review/SKILL.md",
+        ".gemini/config/skills/code-review/SKILL.md"
       ]
     },
     {
@@ -54,7 +49,8 @@
       "description": "Optional Context7 MCP reference for external library/API docs. Use when requested; normal documentation-dependent work calls the existing MCP directly.",
       "builtin": false,
       "definition_candidates": [
-        ".agents/skills/context7-mcp/SKILL.md"
+        ".agents/skills/context7-mcp/SKILL.md",
+        ".gemini/config/skills/context7-mcp/SKILL.md"
       ]
     },
     {
@@ -80,7 +76,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/design-taste-frontend/SKILL.md",
-        ".claude/skills/design-taste-frontend/SKILL.md"
+        ".claude/skills/design-taste-frontend/SKILL.md",
+        ".gemini/config/skills/design-taste-frontend/SKILL.md"
       ]
     },
     {
@@ -89,7 +86,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/design-taste-frontend-v1/SKILL.md",
-        ".claude/skills/design-taste-frontend-v1/SKILL.md"
+        ".claude/skills/design-taste-frontend-v1/SKILL.md",
+        ".gemini/config/skills/design-taste-frontend-v1/SKILL.md"
       ]
     },
     {
@@ -98,7 +96,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/domain-modeling/SKILL.md",
-        ".config/opencode/skills/domain-modeling/SKILL.md"
+        ".config/opencode/skills/domain-modeling/SKILL.md",
+        ".gemini/config/skills/domain-modeling/SKILL.md"
       ]
     },
     {
@@ -107,7 +106,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/doubt-driven-development/SKILL.md",
-        ".config/opencode/skills/doubt-driven-development/SKILL.md"
+        ".config/opencode/skills/doubt-driven-development/SKILL.md",
+        ".gemini/config/skills/doubt-driven-development/SKILL.md"
       ]
     },
     {
@@ -115,7 +115,8 @@
       "description": "Emil Kowalski's motion and interaction-quality specialist. Automatically use to improve existing modal easing, transitions, micro-interactions, animation decisions or interaction polish. Supports the frontend owner; new animation construction uses animate.",
       "builtin": false,
       "definition_candidates": [
-        ".agents/skills/emil-design-eng/SKILL.md"
+        ".agents/skills/emil-design-eng/SKILL.md",
+        ".gemini/config/skills/emil-design-eng/SKILL.md"
       ]
     },
     {
@@ -123,7 +124,8 @@
       "description": "Optional external-library documentation helper. Prefer the existing Context7 MCP directly; use this helper when explicitly requested, without reinstalling its CLI.",
       "builtin": false,
       "definition_candidates": [
-        ".agents/skills/find-docs/SKILL.md"
+        ".agents/skills/find-docs/SKILL.md",
+        ".gemini/config/skills/find-docs/SKILL.md"
       ]
     },
     {
@@ -132,7 +134,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/find-skills/SKILL.md",
-        ".claude/skills/find-skills/SKILL.md"
+        ".claude/skills/find-skills/SKILL.md",
+        ".gemini/config/skills/find-skills/SKILL.md"
       ]
     },
     {
@@ -141,7 +144,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/full-output-enforcement/SKILL.md",
-        ".claude/skills/full-output-enforcement/SKILL.md"
+        ".claude/skills/full-output-enforcement/SKILL.md",
+        ".gemini/config/skills/full-output-enforcement/SKILL.md"
       ]
     },
     {
@@ -150,7 +154,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/gpt-taste/SKILL.md",
-        ".claude/skills/gpt-taste/SKILL.md"
+        ".claude/skills/gpt-taste/SKILL.md",
+        ".gemini/config/skills/gpt-taste/SKILL.md"
       ]
     },
     {
@@ -159,7 +164,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/grill-with-docs/SKILL.md",
-        ".config/opencode/skills/grill-with-docs/SKILL.md"
+        ".config/opencode/skills/grill-with-docs/SKILL.md",
+        ".gemini/config/skills/grill-with-docs/SKILL.md"
       ]
     },
     {
@@ -168,7 +174,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/grilling/SKILL.md",
-        ".config/opencode/skills/grilling/SKILL.md"
+        ".config/opencode/skills/grilling/SKILL.md",
+        ".gemini/config/skills/grilling/SKILL.md"
       ]
     },
     {
@@ -177,7 +184,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/handoff/SKILL.md",
-        ".config/opencode/skills/handoff/SKILL.md"
+        ".config/opencode/skills/handoff/SKILL.md",
+        ".gemini/config/skills/handoff/SKILL.md"
       ]
     },
     {
@@ -186,7 +194,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/high-end-visual-design/SKILL.md",
-        ".claude/skills/high-end-visual-design/SKILL.md"
+        ".claude/skills/high-end-visual-design/SKILL.md",
+        ".gemini/config/skills/high-end-visual-design/SKILL.md"
       ]
     },
     {
@@ -195,7 +204,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/image-to-code/SKILL.md",
-        ".claude/skills/image-to-code/SKILL.md"
+        ".claude/skills/image-to-code/SKILL.md",
+        ".gemini/config/skills/image-to-code/SKILL.md"
       ]
     },
     {
@@ -204,7 +214,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/imagegen-frontend-mobile/SKILL.md",
-        ".claude/skills/imagegen-frontend-mobile/SKILL.md"
+        ".claude/skills/imagegen-frontend-mobile/SKILL.md",
+        ".gemini/config/skills/imagegen-frontend-mobile/SKILL.md"
       ]
     },
     {
@@ -213,7 +224,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/imagegen-frontend-web/SKILL.md",
-        ".claude/skills/imagegen-frontend-web/SKILL.md"
+        ".claude/skills/imagegen-frontend-web/SKILL.md",
+        ".gemini/config/skills/imagegen-frontend-web/SKILL.md"
       ]
     },
     {
@@ -234,7 +246,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/incremental-implementation/SKILL.md",
-        ".config/opencode/skills/incremental-implementation/SKILL.md"
+        ".config/opencode/skills/incremental-implementation/SKILL.md",
+        ".gemini/config/skills/incremental-implementation/SKILL.md"
       ]
     },
     {
@@ -243,7 +256,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/industrial-brutalist-ui/SKILL.md",
-        ".claude/skills/industrial-brutalist-ui/SKILL.md"
+        ".claude/skills/industrial-brutalist-ui/SKILL.md",
+        ".gemini/config/skills/industrial-brutalist-ui/SKILL.md"
       ]
     },
     {
@@ -252,7 +266,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/karpathy-guidelines/SKILL.md",
-        ".config/opencode/skills/karpathy-guidelines/SKILL.md"
+        ".config/opencode/skills/karpathy-guidelines/SKILL.md",
+        ".gemini/config/skills/karpathy-guidelines/SKILL.md"
       ]
     },
     {
@@ -261,7 +276,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/minimalist-ui/SKILL.md",
-        ".claude/skills/minimalist-ui/SKILL.md"
+        ".claude/skills/minimalist-ui/SKILL.md",
+        ".gemini/config/skills/minimalist-ui/SKILL.md"
       ]
     },
     {
@@ -276,20 +292,12 @@
       ]
     },
     {
-      "name": "officecli",
-      "description": "Create, analyze, proofread, and modify Office documents (.docx, .xlsx, .pptx) using the officecli CLI tool. Use when the user wants to create, inspect, check formatting, find issues, add charts, or modify Office documents.",
-      "builtin": false,
-      "definition_candidates": [
-        ".agents/skills/officecli/SKILL.md",
-        ".claude/skills/officecli/SKILL.md"
-      ]
-    },
-    {
       "name": "pick-ui-library",
       "description": "Pick the right library for a given frontend task from a curated, opinionated list — numbers, OTP inputs, charts, command menus, virtualization, drag and drop, toasts, state, styling, and more. Only runs when explicitly invoked; it does not trigger on its own.",
       "builtin": false,
       "definition_candidates": [
-        ".agents/skills/pick-ui-library/SKILL.md"
+        ".agents/skills/pick-ui-library/SKILL.md",
+        ".gemini/config/skills/pick-ui-library/SKILL.md"
       ]
     },
     {
@@ -346,7 +354,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/prototype/SKILL.md",
-        ".config/opencode/skills/prototype/SKILL.md"
+        ".config/opencode/skills/prototype/SKILL.md",
+        ".gemini/config/skills/prototype/SKILL.md"
       ]
     },
     {
@@ -355,7 +364,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/redesign-existing-projects/SKILL.md",
-        ".claude/skills/redesign-existing-projects/SKILL.md"
+        ".claude/skills/redesign-existing-projects/SKILL.md",
+        ".gemini/config/skills/redesign-existing-projects/SKILL.md"
       ]
     },
     {
@@ -364,7 +374,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/research/SKILL.md",
-        ".config/opencode/skills/research/SKILL.md"
+        ".config/opencode/skills/research/SKILL.md",
+        ".gemini/config/skills/research/SKILL.md"
       ]
     },
     {
@@ -373,7 +384,17 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/retro/SKILL.md",
-        ".config/opencode/skills/retro/SKILL.md"
+        ".config/opencode/skills/retro/SKILL.md",
+        ".gemini/config/skills/retro/SKILL.md"
+      ]
+    },
+    {
+      "name": "reverse-engineer-anything",
+      "description": "Reverse engineer native, managed, Electron/JavaScript, packaged, firmware, and browser targets with REA, and build agent environments (AgentEnv bundles) of web applications from a live instance or a capture. Use shipped-artifact or requested runtime evidence to explain features, compare versions, decompile code, or guide a reconstruction. Skip REA for ordinary source-repository architecture analysis.",
+      "builtin": false,
+      "definition_candidates": [
+        ".agents/skills/reverse-engineer-anything/SKILL.md",
+        ".gemini/config/skills/reverse-engineer-anything/SKILL.md"
       ]
     },
     {
@@ -382,7 +403,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/setup-matt-pocock-skills/SKILL.md",
-        ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md"
+        ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md",
+        ".gemini/config/skills/setup-matt-pocock-skills/SKILL.md"
       ]
     },
     {
@@ -391,7 +413,8 @@
       "builtin": false,
       "definition_candidates": [
         ".agents/skills/stitch-design-taste/SKILL.md",
-        ".claude/skills/stitch-design-taste/SKILL.md"
+        ".claude/skills/stitch-design-taste/SKILL.md",
+        ".gemini/config/skills/stitch-design-taste/SKILL.md"
       ]
     },
     {
@@ -400,7 +423,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/systematic-debugging/SKILL.md",
-        ".config/opencode/skills/systematic-debugging/SKILL.md"
+        ".config/opencode/skills/systematic-debugging/SKILL.md",
+        ".gemini/config/skills/systematic-debugging/SKILL.md"
       ]
     },
     {
@@ -409,7 +433,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/test-driven-development/SKILL.md",
-        ".config/opencode/skills/test-driven-development/SKILL.md"
+        ".config/opencode/skills/test-driven-development/SKILL.md",
+        ".gemini/config/skills/test-driven-development/SKILL.md"
       ]
     },
     {
@@ -418,6 +443,7 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/ui-ux-pro-max/SKILL.md",
+        ".gemini/config/skills/ui-ux-pro-max/SKILL.md",
         ".opencode/skills/ui-ux-pro-max/SKILL.md"
       ]
     },
@@ -438,7 +464,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/verification-before-completion/SKILL.md",
-        ".config/opencode/skills/verification-before-completion/SKILL.md"
+        ".config/opencode/skills/verification-before-completion/SKILL.md",
+        ".gemini/config/skills/verification-before-completion/SKILL.md"
       ]
     },
     {
@@ -447,7 +474,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/wayfinder/SKILL.md",
-        ".config/opencode/skills/wayfinder/SKILL.md"
+        ".config/opencode/skills/wayfinder/SKILL.md",
+        ".gemini/config/skills/wayfinder/SKILL.md"
       ]
     },
     {
@@ -456,7 +484,8 @@
       "builtin": false,
       "definition_candidates": [
         ".codex/skills/writing-for-agents/SKILL.md",
-        ".config/opencode/skills/writing-for-agents/SKILL.md"
+        ".config/opencode/skills/writing-for-agents/SKILL.md",
+        ".gemini/config/skills/writing-for-agents/SKILL.md"
       ]
     }
   ],
@@ -477,12 +506,6 @@
       "name": "brandkit",
       "path": ".agents/skills/brandkit/SKILL.md",
       "canonical": ".agents/skills/brandkit/SKILL.md",
-      "alias": false
-    },
-    {
-      "name": "caveman",
-      "path": ".agents/skills/caveman/SKILL.md",
-      "canonical": ".agents/skills/caveman/SKILL.md",
       "alias": false
     },
     {
@@ -588,12 +611,6 @@
       "alias": false
     },
     {
-      "name": "officecli",
-      "path": ".agents/skills/officecli/SKILL.md",
-      "canonical": ".agents/skills/officecli/SKILL.md",
-      "alias": false
-    },
-    {
       "name": "pick-ui-library",
       "path": ".agents/skills/pick-ui-library/SKILL.md",
       "canonical": ".agents/skills/pick-ui-library/SKILL.md",
@@ -603,6 +620,12 @@
       "name": "redesign-existing-projects",
       "path": ".agents/skills/redesign-existing-projects/SKILL.md",
       "canonical": ".agents/skills/redesign-existing-projects/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "reverse-engineer-anything",
+      "path": ".agents/skills/reverse-engineer-anything/SKILL.md",
+      "canonical": ".agents/skills/reverse-engineer-anything/SKILL.md",
       "alias": false
     },
     {
@@ -627,12 +650,6 @@
       "name": "brandkit",
       "path": ".claude/skills/brandkit/SKILL.md",
       "canonical": ".agents/skills/brandkit/SKILL.md",
-      "alias": true
-    },
-    {
-      "name": "caveman",
-      "path": ".claude/skills/caveman/SKILL.md",
-      "canonical": ".agents/skills/caveman/SKILL.md",
       "alias": true
     },
     {
@@ -718,12 +735,6 @@
       "path": ".claude/skills/no-ai-slop/SKILL.md",
       "canonical": ".agents/skills/no-ai-slop/SKILL.md",
       "alias": true
-    },
-    {
-      "name": "officecli",
-      "path": ".claude/skills/officecli/SKILL.md",
-      "canonical": ".claude/skills/officecli/SKILL.md",
-      "alias": false
     },
     {
       "name": "redesign-existing-projects",
@@ -985,30 +996,6 @@
     },
     {
       "name": "cross-harness-handoff",
-      "path": ".gemini/config/skills/cross-harness-handoff/SKILL.md",
-      "canonical": ".agents/skills/cross-harness-handoff/SKILL.md",
-      "alias": true
-    },
-    {
-      "name": "impeccable",
-      "path": ".gemini/config/skills/impeccable/SKILL.md",
-      "canonical": ".gemini/config/skills/impeccable/SKILL.md",
-      "alias": false
-    },
-    {
-      "name": "no-ai-slop",
-      "path": ".gemini/config/skills/no-ai-slop/SKILL.md",
-      "canonical": ".gemini/config/skills/no-ai-slop/SKILL.md",
-      "alias": false
-    },
-    {
-      "name": "unified-memory",
-      "path": ".gemini/config/skills/unified-memory/SKILL.md",
-      "canonical": ".agents/skills/unified-memory/SKILL.md",
-      "alias": true
-    },
-    {
-      "name": "cross-harness-handoff",
       "path": ".cline/skills/cross-harness-handoff/SKILL.md",
       "canonical": ".agents/skills/cross-harness-handoff/SKILL.md",
       "alias": true
@@ -1054,6 +1041,264 @@
       "path": ".local/share/ponytail/skills/ponytail-review/SKILL.md",
       "canonical": ".local/share/ponytail/skills/ponytail-review/SKILL.md",
       "alias": false
+    },
+    {
+      "name": "agent-browser",
+      "path": ".gemini/config/skills/agent-browser/SKILL.md",
+      "canonical": ".gemini/config/skills/agent-browser/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "animate",
+      "path": ".gemini/config/skills/animate/SKILL.md",
+      "canonical": ".gemini/config/skills/animate/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "brandkit",
+      "path": ".gemini/config/skills/brandkit/SKILL.md",
+      "canonical": ".gemini/config/skills/brandkit/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "code-review",
+      "path": ".gemini/config/skills/code-review/SKILL.md",
+      "canonical": ".gemini/config/skills/code-review/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "context7-mcp",
+      "path": ".gemini/config/skills/context7-mcp/SKILL.md",
+      "canonical": ".gemini/config/skills/context7-mcp/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "cross-harness-handoff",
+      "path": ".gemini/config/skills/cross-harness-handoff/SKILL.md",
+      "canonical": ".gemini/config/skills/cross-harness-handoff/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "design-taste-frontend",
+      "path": ".gemini/config/skills/design-taste-frontend/SKILL.md",
+      "canonical": ".gemini/config/skills/design-taste-frontend/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "design-taste-frontend-v1",
+      "path": ".gemini/config/skills/design-taste-frontend-v1/SKILL.md",
+      "canonical": ".gemini/config/skills/design-taste-frontend-v1/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "domain-modeling",
+      "path": ".gemini/config/skills/domain-modeling/SKILL.md",
+      "canonical": ".gemini/config/skills/domain-modeling/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "doubt-driven-development",
+      "path": ".gemini/config/skills/doubt-driven-development/SKILL.md",
+      "canonical": ".gemini/config/skills/doubt-driven-development/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "emil-design-eng",
+      "path": ".gemini/config/skills/emil-design-eng/SKILL.md",
+      "canonical": ".gemini/config/skills/emil-design-eng/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "find-docs",
+      "path": ".gemini/config/skills/find-docs/SKILL.md",
+      "canonical": ".gemini/config/skills/find-docs/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "find-skills",
+      "path": ".gemini/config/skills/find-skills/SKILL.md",
+      "canonical": ".gemini/config/skills/find-skills/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "full-output-enforcement",
+      "path": ".gemini/config/skills/full-output-enforcement/SKILL.md",
+      "canonical": ".gemini/config/skills/full-output-enforcement/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "gpt-taste",
+      "path": ".gemini/config/skills/gpt-taste/SKILL.md",
+      "canonical": ".gemini/config/skills/gpt-taste/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "grill-with-docs",
+      "path": ".gemini/config/skills/grill-with-docs/SKILL.md",
+      "canonical": ".gemini/config/skills/grill-with-docs/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "grilling",
+      "path": ".gemini/config/skills/grilling/SKILL.md",
+      "canonical": ".gemini/config/skills/grilling/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "handoff",
+      "path": ".gemini/config/skills/handoff/SKILL.md",
+      "canonical": ".gemini/config/skills/handoff/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "high-end-visual-design",
+      "path": ".gemini/config/skills/high-end-visual-design/SKILL.md",
+      "canonical": ".gemini/config/skills/high-end-visual-design/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "image-to-code",
+      "path": ".gemini/config/skills/image-to-code/SKILL.md",
+      "canonical": ".gemini/config/skills/image-to-code/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "imagegen-frontend-mobile",
+      "path": ".gemini/config/skills/imagegen-frontend-mobile/SKILL.md",
+      "canonical": ".gemini/config/skills/imagegen-frontend-mobile/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "imagegen-frontend-web",
+      "path": ".gemini/config/skills/imagegen-frontend-web/SKILL.md",
+      "canonical": ".gemini/config/skills/imagegen-frontend-web/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "impeccable",
+      "path": ".gemini/config/skills/impeccable/SKILL.md",
+      "canonical": ".gemini/config/skills/impeccable/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "incremental-implementation",
+      "path": ".gemini/config/skills/incremental-implementation/SKILL.md",
+      "canonical": ".gemini/config/skills/incremental-implementation/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "industrial-brutalist-ui",
+      "path": ".gemini/config/skills/industrial-brutalist-ui/SKILL.md",
+      "canonical": ".gemini/config/skills/industrial-brutalist-ui/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "karpathy-guidelines",
+      "path": ".gemini/config/skills/karpathy-guidelines/SKILL.md",
+      "canonical": ".gemini/config/skills/karpathy-guidelines/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "minimalist-ui",
+      "path": ".gemini/config/skills/minimalist-ui/SKILL.md",
+      "canonical": ".gemini/config/skills/minimalist-ui/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "no-ai-slop",
+      "path": ".gemini/config/skills/no-ai-slop/SKILL.md",
+      "canonical": ".gemini/config/skills/no-ai-slop/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "pick-ui-library",
+      "path": ".gemini/config/skills/pick-ui-library/SKILL.md",
+      "canonical": ".gemini/config/skills/pick-ui-library/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "prototype",
+      "path": ".gemini/config/skills/prototype/SKILL.md",
+      "canonical": ".gemini/config/skills/prototype/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "redesign-existing-projects",
+      "path": ".gemini/config/skills/redesign-existing-projects/SKILL.md",
+      "canonical": ".gemini/config/skills/redesign-existing-projects/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "research",
+      "path": ".gemini/config/skills/research/SKILL.md",
+      "canonical": ".gemini/config/skills/research/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "retro",
+      "path": ".gemini/config/skills/retro/SKILL.md",
+      "canonical": ".gemini/config/skills/retro/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "reverse-engineer-anything",
+      "path": ".gemini/config/skills/reverse-engineer-anything/SKILL.md",
+      "canonical": ".gemini/config/skills/reverse-engineer-anything/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "path": ".gemini/config/skills/setup-matt-pocock-skills/SKILL.md",
+      "canonical": ".gemini/config/skills/setup-matt-pocock-skills/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "stitch-design-taste",
+      "path": ".gemini/config/skills/stitch-design-taste/SKILL.md",
+      "canonical": ".gemini/config/skills/stitch-design-taste/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "systematic-debugging",
+      "path": ".gemini/config/skills/systematic-debugging/SKILL.md",
+      "canonical": ".gemini/config/skills/systematic-debugging/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "test-driven-development",
+      "path": ".gemini/config/skills/test-driven-development/SKILL.md",
+      "canonical": ".gemini/config/skills/test-driven-development/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "path": ".gemini/config/skills/ui-ux-pro-max/SKILL.md",
+      "canonical": ".gemini/config/skills/ui-ux-pro-max/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "unified-memory",
+      "path": ".gemini/config/skills/unified-memory/SKILL.md",
+      "canonical": ".gemini/config/skills/unified-memory/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "verification-before-completion",
+      "path": ".gemini/config/skills/verification-before-completion/SKILL.md",
+      "canonical": ".gemini/config/skills/verification-before-completion/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "wayfinder",
+      "path": ".gemini/config/skills/wayfinder/SKILL.md",
+      "canonical": ".gemini/config/skills/wayfinder/SKILL.md",
+      "alias": false
+    },
+    {
+      "name": "writing-for-agents",
+      "path": ".gemini/config/skills/writing-for-agents/SKILL.md",
+      "canonical": ".gemini/config/skills/writing-for-agents/SKILL.md",
+      "alias": false
     }
   ],
   "aliases": [
@@ -1065,11 +1310,6 @@
     {
       "path": ".claude/skills/brandkit",
       "target": ".agents/skills/brandkit",
-      "source_kind": "symlink"
-    },
-    {
-      "path": ".claude/skills/caveman",
-      "target": ".agents/skills/caveman",
       "source_kind": "symlink"
     },
     {
@@ -1251,27 +1491,19 @@
       "path": ".codex/skills/writing-for-agents",
       "target": ".config/opencode/skills/writing-for-agents",
       "source_kind": "symlink"
-    },
-    {
-      "path": ".gemini/config/skills/cross-harness-handoff",
-      "target": ".agents/skills/cross-harness-handoff",
-      "source_kind": "symlink"
-    },
-    {
-      "path": ".gemini/config/skills/unified-memory",
-      "target": ".agents/skills/unified-memory",
-      "source_kind": "symlink"
     }
   ],
   "files": [
     {
       "path": ".agents/.skill-lock.json",
-      "blob": "89fb094a36a33046643e3d7ad5dbb3229bbf95719177584c82b6eed03ace8a25",
-      "sha256": "89fb094a36a33046643e3d7ad5dbb3229bbf95719177584c82b6eed03ace8a25",
+      "blob": "d777479df4893f9697ef3c5ebbfa0ddf64366239ffa577007f1fa7c2240629cd",
+      "sha256": "d777479df4893f9697ef3c5ebbfa0ddf64366239ffa577007f1fa7c2240629cd",
       "source_sha256": "89fb094a36a33046643e3d7ad5dbb3229bbf95719177584c82b6eed03ace8a25",
-      "bytes": 8267,
+      "bytes": 7903,
       "executable": false,
-      "transforms": []
+      "transforms": [
+        "retired-skills-removed"
+      ]
     },
     {
       "path": ".agents/AGENTS.md",
@@ -1351,15 +1583,6 @@
       "sha256": "5f8c229fd568c0bbb6a0db5fe28d27be69f0066418679265a8aff05d7b76f8ff",
       "source_sha256": "5f8c229fd568c0bbb6a0db5fe28d27be69f0066418679265a8aff05d7b76f8ff",
       "bytes": 16483,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".agents/skills/caveman/SKILL.md",
-      "blob": "c4dd01926144e2be76e78a023e6b8fa0d0138e2bc25e63214695ca1439071818",
-      "sha256": "c4dd01926144e2be76e78a023e6b8fa0d0138e2bc25e63214695ca1439071818",
-      "source_sha256": "c4dd01926144e2be76e78a023e6b8fa0d0138e2bc25e63214695ca1439071818",
-      "bytes": 2124,
       "executable": false,
       "transforms": []
     },
@@ -2552,15 +2775,6 @@
       "transforms": []
     },
     {
-      "path": ".agents/skills/officecli/SKILL.md",
-      "blob": "1099a436f11f44022ed0cdeaec43f9c2b35a7f9cba4cec8b5ea5c3ff1240928c",
-      "sha256": "1099a436f11f44022ed0cdeaec43f9c2b35a7f9cba4cec8b5ea5c3ff1240928c",
-      "source_sha256": "1099a436f11f44022ed0cdeaec43f9c2b35a7f9cba4cec8b5ea5c3ff1240928c",
-      "bytes": 23400,
-      "executable": false,
-      "transforms": []
-    },
-    {
       "path": ".agents/skills/pick-ui-library/SKILL.md",
       "blob": "6a3532136cf7f2a82dcfd8f7edd84787739749d8a9c1a8081534ee549d284de4",
       "sha256": "6a3532136cf7f2a82dcfd8f7edd84787739749d8a9c1a8081534ee549d284de4",
@@ -2584,6 +2798,78 @@
       "sha256": "518607a171e8e52dd0a4d8223d8be09b3b1b2e08d7598858462ef813ac147bdc",
       "source_sha256": "518607a171e8e52dd0a4d8223d8be09b3b1b2e08d7598858462ef813ac147bdc",
       "bytes": 15730,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".agents/skills/reverse-engineer-anything/SKILL.md",
+      "blob": "e588e02ba9579942d77df15a4ba5f8773a59b033aa96e5b57eb22b4244250baf",
+      "sha256": "e588e02ba9579942d77df15a4ba5f8773a59b033aa96e5b57eb22b4244250baf",
+      "source_sha256": "e588e02ba9579942d77df15a4ba5f8773a59b033aa96e5b57eb22b4244250baf",
+      "bytes": 34977,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".agents/skills/reverse-engineer-anything/references/android-applications.md",
+      "blob": "1698a9a21eacc685b327059efee2e9cdb6ac1f55fa3875eed96b4b304ab155f3",
+      "sha256": "1698a9a21eacc685b327059efee2e9cdb6ac1f55fa3875eed96b4b304ab155f3",
+      "source_sha256": "1698a9a21eacc685b327059efee2e9cdb6ac1f55fa3875eed96b4b304ab155f3",
+      "bytes": 4077,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".agents/skills/reverse-engineer-anything/references/connection-and-recovery.md",
+      "blob": "69aae4c8c2741cc745171a007257cf94fa65247bf73e4c4eb031a1361a06831e",
+      "sha256": "69aae4c8c2741cc745171a007257cf94fa65247bf73e4c4eb031a1361a06831e",
+      "source_sha256": "69aae4c8c2741cc745171a007257cf94fa65247bf73e4c4eb031a1361a06831e",
+      "bytes": 19004,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".agents/skills/reverse-engineer-anything/references/environments.md",
+      "blob": "bb1065d7c0c96f82d6350c4f55071a883f99dd852fa1e6e62650b26782cdc95b",
+      "sha256": "bb1065d7c0c96f82d6350c4f55071a883f99dd852fa1e6e62650b26782cdc95b",
+      "source_sha256": "bb1065d7c0c96f82d6350c4f55071a883f99dd852fa1e6e62650b26782cdc95b",
+      "bytes": 14750,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".agents/skills/reverse-engineer-anything/references/evidence-workflows.md",
+      "blob": "f44b68acc6ebaa60c1f5d0670e4f9ff7212d351a0ecc6e6ca77ce38b9177ea57",
+      "sha256": "f44b68acc6ebaa60c1f5d0670e4f9ff7212d351a0ecc6e6ca77ce38b9177ea57",
+      "source_sha256": "f44b68acc6ebaa60c1f5d0670e4f9ff7212d351a0ecc6e6ca77ce38b9177ea57",
+      "bytes": 8091,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".agents/skills/reverse-engineer-anything/references/javascript-applications.md",
+      "blob": "15ae2177ef1c41e25095238c64b38f34d8ea53ea3c4c74f627096f90b8eaa54b",
+      "sha256": "15ae2177ef1c41e25095238c64b38f34d8ea53ea3c4c74f627096f90b8eaa54b",
+      "source_sha256": "15ae2177ef1c41e25095238c64b38f34d8ea53ea3c4c74f627096f90b8eaa54b",
+      "bytes": 14476,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".agents/skills/reverse-engineer-anything/references/native-and-artifacts.md",
+      "blob": "159e6596df8942246b6a8e42efa9777a129196efeea87435c6505d4446d4b687",
+      "sha256": "159e6596df8942246b6a8e42efa9777a129196efeea87435c6505d4446d4b687",
+      "source_sha256": "159e6596df8942246b6a8e42efa9777a129196efeea87435c6505d4446d4b687",
+      "bytes": 42609,
+      "executable": false,
+      "transforms": []
+    },
+    {
+      "path": ".agents/skills/reverse-engineer-anything/references/runtime-observation.md",
+      "blob": "e207a912470a1a56dc02316eb7b040ac50b4d763f2273e97a6811863d9051d74",
+      "sha256": "e207a912470a1a56dc02316eb7b040ac50b4d763f2273e97a6811863d9051d74",
+      "source_sha256": "e207a912470a1a56dc02316eb7b040ac50b4d763f2273e97a6811863d9051d74",
+      "bytes": 11905,
       "executable": false,
       "transforms": []
     },
@@ -3551,15 +3837,6 @@
       "transforms": []
     },
     {
-      "path": ".claude/skills/officecli/SKILL.md",
-      "blob": "1099a436f11f44022ed0cdeaec43f9c2b35a7f9cba4cec8b5ea5c3ff1240928c",
-      "sha256": "1099a436f11f44022ed0cdeaec43f9c2b35a7f9cba4cec8b5ea5c3ff1240928c",
-      "source_sha256": "1099a436f11f44022ed0cdeaec43f9c2b35a7f9cba4cec8b5ea5c3ff1240928c",
-      "bytes": 23400,
-      "executable": false,
-      "transforms": []
-    },
-    {
       "path": ".codex/AGENTS.md",
       "blob": "514eac0038a64c270540a16628564b760ff180ad10dc2a486d7bd332cccf94c5",
       "sha256": "514eac0038a64c270540a16628564b760ff180ad10dc2a486d7bd332cccf94c5",
@@ -4348,6 +4625,479 @@
       "transforms": []
     },
     {
+      "path": ".gemini/config/skills/agent-browser/SKILL.md",
+      "blob": "50d941f04cb69665343e1b91a51017ae930de80a674192aba4c4f26839c0b781",
+      "sha256": "50d941f04cb69665343e1b91a51017ae930de80a674192aba4c4f26839c0b781",
+      "source_sha256": "50d941f04cb69665343e1b91a51017ae930de80a674192aba4c4f26839c0b781",
+      "bytes": 3381,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/agent-browser/references/preserved-discovery.md",
+      "blob": "63b4bde0de19e9cb138ca7ec0be38c013b1006d83538f97b8c7e88fae24ae9f9",
+      "sha256": "63b4bde0de19e9cb138ca7ec0be38c013b1006d83538f97b8c7e88fae24ae9f9",
+      "source_sha256": "63b4bde0de19e9cb138ca7ec0be38c013b1006d83538f97b8c7e88fae24ae9f9",
+      "bytes": 5894,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/agent-browser/references/windows-lifecycle.md",
+      "blob": "22ccf6856920339da1268d41011dcbd9e711e4e340322bbd2a23f02d0401c606",
+      "sha256": "22ccf6856920339da1268d41011dcbd9e711e4e340322bbd2a23f02d0401c606",
+      "source_sha256": "22ccf6856920339da1268d41011dcbd9e711e4e340322bbd2a23f02d0401c606",
+      "bytes": 2022,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/animate/RECIPES.md",
+      "blob": "7b835d46748f13e05048ef1a7f3b49587a1b7fee4a72854c788992e184af9cf5",
+      "sha256": "7b835d46748f13e05048ef1a7f3b49587a1b7fee4a72854c788992e184af9cf5",
+      "source_sha256": "7b835d46748f13e05048ef1a7f3b49587a1b7fee4a72854c788992e184af9cf5",
+      "bytes": 8281,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/animate/SKILL.md",
+      "blob": "19df4d095aef3a28ca936e85c9cd7b114ab17bc398bc8cf506db0e6a815fb62f",
+      "sha256": "19df4d095aef3a28ca936e85c9cd7b114ab17bc398bc8cf506db0e6a815fb62f",
+      "source_sha256": "19df4d095aef3a28ca936e85c9cd7b114ab17bc398bc8cf506db0e6a815fb62f",
+      "bytes": 11875,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/animate/references/RECIPES.md",
+      "blob": "7b835d46748f13e05048ef1a7f3b49587a1b7fee4a72854c788992e184af9cf5",
+      "sha256": "7b835d46748f13e05048ef1a7f3b49587a1b7fee4a72854c788992e184af9cf5",
+      "source_sha256": "7b835d46748f13e05048ef1a7f3b49587a1b7fee4a72854c788992e184af9cf5",
+      "bytes": 8281,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/animate/references/upstream.md",
+      "blob": "6e7a0d28864bd9cb658913049df6944ce320a3646ac0e339ba8c7d99a9e764e5",
+      "sha256": "6e7a0d28864bd9cb658913049df6944ce320a3646ac0e339ba8c7d99a9e764e5",
+      "source_sha256": "6e7a0d28864bd9cb658913049df6944ce320a3646ac0e339ba8c7d99a9e764e5",
+      "bytes": 12067,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/brandkit/SKILL.md",
+      "blob": "5f8c229fd568c0bbb6a0db5fe28d27be69f0066418679265a8aff05d7b76f8ff",
+      "sha256": "5f8c229fd568c0bbb6a0db5fe28d27be69f0066418679265a8aff05d7b76f8ff",
+      "source_sha256": "5f8c229fd568c0bbb6a0db5fe28d27be69f0066418679265a8aff05d7b76f8ff",
+      "bytes": 16483,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/code-review/SKILL.md",
+      "blob": "a8c7b20b86c68918e2a411810fd2e98c0a8e1400a2e51631dca65ed0afaba315",
+      "sha256": "a8c7b20b86c68918e2a411810fd2e98c0a8e1400a2e51631dca65ed0afaba315",
+      "source_sha256": "a8c7b20b86c68918e2a411810fd2e98c0a8e1400a2e51631dca65ed0afaba315",
+      "bytes": 6543,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/code-review/agents/openai.yaml",
+      "blob": "3f72329747a916ac8ab2b4004490c79e1be6774a8a83e5b258d6ddc7e866abfe",
+      "sha256": "3f72329747a916ac8ab2b4004490c79e1be6774a8a83e5b258d6ddc7e866abfe",
+      "source_sha256": "3f72329747a916ac8ab2b4004490c79e1be6774a8a83e5b258d6ddc7e866abfe",
+      "bytes": 103,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/context7-mcp/SKILL.md",
+      "blob": "2bf9e59a2675dde93c123fa5ea3a70179e7a672f65188b68fc2d7d0c9d7e7035",
+      "sha256": "2bf9e59a2675dde93c123fa5ea3a70179e7a672f65188b68fc2d7d0c9d7e7035",
+      "source_sha256": "2bf9e59a2675dde93c123fa5ea3a70179e7a672f65188b68fc2d7d0c9d7e7035",
+      "bytes": 2613,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/cross-harness-handoff/SKILL.md",
+      "blob": "7b3210847480370f36162d7555110826435b316e780c7d26ab4b708135402384",
+      "sha256": "7b3210847480370f36162d7555110826435b316e780c7d26ab4b708135402384",
+      "source_sha256": "7b3210847480370f36162d7555110826435b316e780c7d26ab4b708135402384",
+      "bytes": 8856,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/cross-harness-handoff/scripts/memory-mcp.mjs",
+      "blob": "c622cf58609c375d99d12ecce7f0eea4dc0b517493b39a9a675ed2097e6e38a5",
+      "sha256": "c622cf58609c375d99d12ecce7f0eea4dc0b517493b39a9a675ed2097e6e38a5",
+      "source_sha256": "c622cf58609c375d99d12ecce7f0eea4dc0b517493b39a9a675ed2097e6e38a5",
+      "bytes": 5715,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/cross-harness-handoff/scripts/workflow.mjs",
+      "blob": "2f8f89f69e035570c3c51fd8a413d1457e08c179eb4b58af3e5a8dae4bac491d",
+      "sha256": "2f8f89f69e035570c3c51fd8a413d1457e08c179eb4b58af3e5a8dae4bac491d",
+      "source_sha256": "2f8f89f69e035570c3c51fd8a413d1457e08c179eb4b58af3e5a8dae4bac491d",
+      "bytes": 5877,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/cross-harness-handoff/templates/handoff.md",
+      "blob": "9c9ceac321519669a254f153fcda8415f97b7c16dd25ab30514dd0e55cbf4360",
+      "sha256": "9c9ceac321519669a254f153fcda8415f97b7c16dd25ab30514dd0e55cbf4360",
+      "source_sha256": "9c9ceac321519669a254f153fcda8415f97b7c16dd25ab30514dd0e55cbf4360",
+      "bytes": 1198,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/design-taste-frontend-v1/SKILL.md",
+      "blob": "381bce3c03b4fb6af4ac72b85b8f4719ee2de8a4a0ac2e5546e7be4437a31e33",
+      "sha256": "381bce3c03b4fb6af4ac72b85b8f4719ee2de8a4a0ac2e5546e7be4437a31e33",
+      "source_sha256": "381bce3c03b4fb6af4ac72b85b8f4719ee2de8a4a0ac2e5546e7be4437a31e33",
+      "bytes": 21309,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/design-taste-frontend/SKILL.md",
+      "blob": "5a76eabec7b160883face6e6938b668cb91421c99d2b0ab95f57be3e056fd3fc",
+      "sha256": "5a76eabec7b160883face6e6938b668cb91421c99d2b0ab95f57be3e056fd3fc",
+      "source_sha256": "5a76eabec7b160883face6e6938b668cb91421c99d2b0ab95f57be3e056fd3fc",
+      "bytes": 3850,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/design-taste-frontend/references/preserved-guidance.md",
+      "blob": "2e064e92aca020b2e0bad69326fe7ea55d59005ed53d1a8cbce1bd135d44b8b3",
+      "sha256": "2e064e92aca020b2e0bad69326fe7ea55d59005ed53d1a8cbce1bd135d44b8b3",
+      "source_sha256": "2e064e92aca020b2e0bad69326fe7ea55d59005ed53d1a8cbce1bd135d44b8b3",
+      "bytes": 88459,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/domain-modeling/ADR-FORMAT.md",
+      "blob": "b7021c31a1c2485b07356a8110fd1fd1ae4facbab3e210983789f425f867d95b",
+      "sha256": "b7021c31a1c2485b07356a8110fd1fd1ae4facbab3e210983789f425f867d95b",
+      "source_sha256": "b7021c31a1c2485b07356a8110fd1fd1ae4facbab3e210983789f425f867d95b",
+      "bytes": 2780,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/domain-modeling/GLOSSARY-FORMAT.md",
+      "blob": "61fa9f6f9231070461dd4f7d4cfad377c33013c1e5668e1e6c0a8e4500944b3b",
+      "sha256": "61fa9f6f9231070461dd4f7d4cfad377c33013c1e5668e1e6c0a8e4500944b3b",
+      "source_sha256": "61fa9f6f9231070461dd4f7d4cfad377c33013c1e5668e1e6c0a8e4500944b3b",
+      "bytes": 2360,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/domain-modeling/SKILL.md",
+      "blob": "0ade289d621f49b89918ad81d197000b421cc93820adb9ee1d74fa117f8f3ffb",
+      "sha256": "0ade289d621f49b89918ad81d197000b421cc93820adb9ee1d74fa117f8f3ffb",
+      "source_sha256": "0ade289d621f49b89918ad81d197000b421cc93820adb9ee1d74fa117f8f3ffb",
+      "bytes": 3464,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/domain-modeling/agents/openai.yaml",
+      "blob": "ce496c77c77a090877bff10f198c9770fb52e23088351350ea0826380f948ff8",
+      "sha256": "ce496c77c77a090877bff10f198c9770fb52e23088351350ea0826380f948ff8",
+      "source_sha256": "ce496c77c77a090877bff10f198c9770fb52e23088351350ea0826380f948ff8",
+      "bytes": 104,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/doubt-driven-development/SKILL.md",
+      "blob": "6a210f67c79362c486c3431cd1ed9f5653f1288de855cb1b4f36475f4f2ee79e",
+      "sha256": "6a210f67c79362c486c3431cd1ed9f5653f1288de855cb1b4f36475f4f2ee79e",
+      "source_sha256": "6a210f67c79362c486c3431cd1ed9f5653f1288de855cb1b4f36475f4f2ee79e",
+      "bytes": 16919,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/doubt-driven-development/references/orchestration-patterns.md",
+      "blob": "61e543d86f19f86b83074f8c1c769455c7085a2c72dd47b1da21a8c63785be4a",
+      "sha256": "61e543d86f19f86b83074f8c1c769455c7085a2c72dd47b1da21a8c63785be4a",
+      "source_sha256": "61e543d86f19f86b83074f8c1c769455c7085a2c72dd47b1da21a8c63785be4a",
+      "bytes": 18201,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/emil-design-eng/SKILL.md",
+      "blob": "c7e46c45b25f4424dfd2bad11984a808c81853b471f99ef99e67f74d813f98bd",
+      "sha256": "c7e46c45b25f4424dfd2bad11984a808c81853b471f99ef99e67f74d813f98bd",
+      "source_sha256": "c7e46c45b25f4424dfd2bad11984a808c81853b471f99ef99e67f74d813f98bd",
+      "bytes": 27897,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/emil-design-eng/references/upstream.md",
+      "blob": "a2ee9da0840c23b509a27e742edbc8f8fdb4416ca7d6ffde67d79023bfb8a5bf",
+      "sha256": "a2ee9da0840c23b509a27e742edbc8f8fdb4416ca7d6ffde67d79023bfb8a5bf",
+      "source_sha256": "a2ee9da0840c23b509a27e742edbc8f8fdb4416ca7d6ffde67d79023bfb8a5bf",
+      "bytes": 27797,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/find-docs/SKILL.md",
+      "blob": "47a5cebf1efb39198cc36afb1e31c40180a59e1560bc590fac65efa6c43cff84",
+      "sha256": "47a5cebf1efb39198cc36afb1e31c40180a59e1560bc590fac65efa6c43cff84",
+      "source_sha256": "47a5cebf1efb39198cc36afb1e31c40180a59e1560bc590fac65efa6c43cff84",
+      "bytes": 6019,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/find-skills/SKILL.md",
+      "blob": "f677f56ef47799ad6dd0f1310371c793495f0d2df72dee46e3be62e587855851",
+      "sha256": "f677f56ef47799ad6dd0f1310371c793495f0d2df72dee46e3be62e587855851",
+      "source_sha256": "f677f56ef47799ad6dd0f1310371c793495f0d2df72dee46e3be62e587855851",
+      "bytes": 5444,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/full-output-enforcement/SKILL.md",
+      "blob": "7b2275b591af7760b36a2dfb1dbcf3c99c5054c52298a1066c4979f39ed947d9",
+      "sha256": "7b2275b591af7760b36a2dfb1dbcf3c99c5054c52298a1066c4979f39ed947d9",
+      "source_sha256": "7b2275b591af7760b36a2dfb1dbcf3c99c5054c52298a1066c4979f39ed947d9",
+      "bytes": 2641,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/gpt-taste/SKILL.md",
+      "blob": "7e92589135d0575ec90359d4f28488027a03a751ce90ea435dea0d6e6cfad9c5",
+      "sha256": "7e92589135d0575ec90359d4f28488027a03a751ce90ea435dea0d6e6cfad9c5",
+      "source_sha256": "7e92589135d0575ec90359d4f28488027a03a751ce90ea435dea0d6e6cfad9c5",
+      "bytes": 7773,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/grill-with-docs/SKILL.md",
+      "blob": "1629f535572382347947c5e783f1aca9ffed6d87cccd7acb1cfd2e7e3baff63b",
+      "sha256": "1629f535572382347947c5e783f1aca9ffed6d87cccd7acb1cfd2e7e3baff63b",
+      "source_sha256": "1629f535572382347947c5e783f1aca9ffed6d87cccd7acb1cfd2e7e3baff63b",
+      "bytes": 354,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/grill-with-docs/agents/openai.yaml",
+      "blob": "81e6af95559517a292767439da8f46a468b4d88a6773a3316d511a428eb16ff3",
+      "sha256": "81e6af95559517a292767439da8f46a468b4d88a6773a3316d511a428eb16ff3",
+      "source_sha256": "81e6af95559517a292767439da8f46a468b4d88a6773a3316d511a428eb16ff3",
+      "bytes": 150,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/grilling/SKILL.md",
+      "blob": "597cc979e7ecbbb35b216d48bbaf0fd4d70776af6e3d3900655ea0c7c22b6758",
+      "sha256": "597cc979e7ecbbb35b216d48bbaf0fd4d70776af6e3d3900655ea0c7c22b6758",
+      "source_sha256": "597cc979e7ecbbb35b216d48bbaf0fd4d70776af6e3d3900655ea0c7c22b6758",
+      "bytes": 2148,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/grilling/agents/openai.yaml",
+      "blob": "ad75163922ff8263acdd25ebc37420e8fcf1fccb93483fd5742e9bd26f5c45f6",
+      "sha256": "ad75163922ff8263acdd25ebc37420e8fcf1fccb93483fd5742e9bd26f5c45f6",
+      "source_sha256": "ad75163922ff8263acdd25ebc37420e8fcf1fccb93483fd5742e9bd26f5c45f6",
+      "bytes": 116,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/handoff/SKILL.md",
+      "blob": "4018d35381bb191d567d9e7f61f092efbcbb7d06e0e1fda4db8e9138e2dbf4d8",
+      "sha256": "4018d35381bb191d567d9e7f61f092efbcbb7d06e0e1fda4db8e9138e2dbf4d8",
+      "source_sha256": "4018d35381bb191d567d9e7f61f092efbcbb7d06e0e1fda4db8e9138e2dbf4d8",
+      "bytes": 1363,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/handoff/agents/openai.yaml",
+      "blob": "deb645c801764579994bd23d1954aa991ef1d0d55bf30043d47ada631fcff5f4",
+      "sha256": "deb645c801764579994bd23d1954aa991ef1d0d55bf30043d47ada631fcff5f4",
+      "source_sha256": "deb645c801764579994bd23d1954aa991ef1d0d55bf30043d47ada631fcff5f4",
+      "bytes": 146,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/high-end-visual-design/SKILL.md",
+      "blob": "96903d36277f0f56c25ebde368104e566976b066537639b52ee5aaebbd1d7ddc",
+      "sha256": "96903d36277f0f56c25ebde368104e566976b066537639b52ee5aaebbd1d7ddc",
+      "source_sha256": "96903d36277f0f56c25ebde368104e566976b066537639b52ee5aaebbd1d7ddc",
+      "bytes": 10584,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/image-to-code/SKILL.md",
+      "blob": "9702128718ecde64500faf574b3f132984ad22ce6ca16a66277f354934bb9f6b",
+      "sha256": "9702128718ecde64500faf574b3f132984ad22ce6ca16a66277f354934bb9f6b",
+      "source_sha256": "9702128718ecde64500faf574b3f132984ad22ce6ca16a66277f354934bb9f6b",
+      "bytes": 3052,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/image-to-code/references/preserved-guidance.md",
+      "blob": "2944189b448e2a77cbbf55014030b1890a9ec5891acc9fa97fb8c215e0008407",
+      "sha256": "2944189b448e2a77cbbf55014030b1890a9ec5891acc9fa97fb8c215e0008407",
+      "source_sha256": "2944189b448e2a77cbbf55014030b1890a9ec5891acc9fa97fb8c215e0008407",
+      "bytes": 37670,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/imagegen-frontend-mobile/SKILL.md",
+      "blob": "8f3d60a65cc85ccaa456af2d1956f5411d0cb54b8103dfba18feae4cccf56ba3",
+      "sha256": "8f3d60a65cc85ccaa456af2d1956f5411d0cb54b8103dfba18feae4cccf56ba3",
+      "source_sha256": "8f3d60a65cc85ccaa456af2d1956f5411d0cb54b8103dfba18feae4cccf56ba3",
+      "bytes": 2880,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/imagegen-frontend-mobile/references/preserved-guidance.md",
+      "blob": "3cadf1bfbe836d377832d090e5db8479f98903453a4d1342be9636178755f9dd",
+      "sha256": "3cadf1bfbe836d377832d090e5db8479f98903453a4d1342be9636178755f9dd",
+      "source_sha256": "3cadf1bfbe836d377832d090e5db8479f98903453a4d1342be9636178755f9dd",
+      "bytes": 41791,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/imagegen-frontend-web/SKILL.md",
+      "blob": "8696a321989a0f395ccd5432e1991149ae5fb5c81610f75af92b586429f76424",
+      "sha256": "8696a321989a0f395ccd5432e1991149ae5fb5c81610f75af92b586429f76424",
+      "source_sha256": "8696a321989a0f395ccd5432e1991149ae5fb5c81610f75af92b586429f76424",
+      "bytes": 2767,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/imagegen-frontend-web/references/preserved-guidance.md",
+      "blob": "23e6d27ab410e97fe5e844d18db97c8e674d317abd8567f4c7726ee16f56da6e",
+      "sha256": "23e6d27ab410e97fe5e844d18db97c8e674d317abd8567f4c7726ee16f56da6e",
+      "source_sha256": "23e6d27ab410e97fe5e844d18db97c8e674d317abd8567f4c7726ee16f56da6e",
+      "bytes": 37841,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
       "path": ".gemini/config/skills/impeccable/SKILL.md",
       "blob": "b04b37abd22dd15905318008db74c1f6f3c0cac981cfab54bbf7a218bdade5ab",
       "sha256": "b04b37abd22dd15905318008db74c1f6f3c0cac981cfab54bbf7a218bdade5ab",
@@ -4365,6 +5115,61 @@
       "executable": false,
       "transforms": [
         "home-rebase"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/incremental-implementation/SKILL.md",
+      "blob": "93e9045381f69577a8f2e7d6f4a0848a793426f30c0381b9768b7b17e82fef72",
+      "sha256": "93e9045381f69577a8f2e7d6f4a0848a793426f30c0381b9768b7b17e82fef72",
+      "source_sha256": "93e9045381f69577a8f2e7d6f4a0848a793426f30c0381b9768b7b17e82fef72",
+      "bytes": 10020,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/incremental-implementation/references/definition-of-done.md",
+      "blob": "d1c75d2ae65d2c7a9cd01f93fa8de63e00e75f2fe5d08be224d576157054dcee",
+      "sha256": "d1c75d2ae65d2c7a9cd01f93fa8de63e00e75f2fe5d08be224d576157054dcee",
+      "source_sha256": "d1c75d2ae65d2c7a9cd01f93fa8de63e00e75f2fe5d08be224d576157054dcee",
+      "bytes": 3798,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/industrial-brutalist-ui/SKILL.md",
+      "blob": "a40b619220260356d2be18f0ed90e67d00950f10e3a15b7b0ef1c3b41af35849",
+      "sha256": "a40b619220260356d2be18f0ed90e67d00950f10e3a15b7b0ef1c3b41af35849",
+      "source_sha256": "a40b619220260356d2be18f0ed90e67d00950f10e3a15b7b0ef1c3b41af35849",
+      "bytes": 8405,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/karpathy-guidelines/SKILL.md",
+      "blob": "e2553e9b66299fbca399804d6c44dfa44b2384b979ca5bf8b933b4916bb3141b",
+      "sha256": "e2553e9b66299fbca399804d6c44dfa44b2384b979ca5bf8b933b4916bb3141b",
+      "source_sha256": "e2553e9b66299fbca399804d6c44dfa44b2384b979ca5bf8b933b4916bb3141b",
+      "bytes": 2585,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/minimalist-ui/SKILL.md",
+      "blob": "950a26303b4d5f94c25b65336fb2348138a9ebc3a5182b8fd956c9b3cfb33e24",
+      "sha256": "950a26303b4d5f94c25b65336fb2348138a9ebc3a5182b8fd956c9b3cfb33e24",
+      "source_sha256": "950a26303b4d5f94c25b65336fb2348138a9ebc3a5182b8fd956c9b3cfb33e24",
+      "bytes": 7994,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
       ]
     },
     {
@@ -4393,6 +5198,1293 @@
       "bytes": 3257,
       "executable": false,
       "transforms": []
+    },
+    {
+      "path": ".gemini/config/skills/pick-ui-library/SKILL.md",
+      "blob": "6a3532136cf7f2a82dcfd8f7edd84787739749d8a9c1a8081534ee549d284de4",
+      "sha256": "6a3532136cf7f2a82dcfd8f7edd84787739749d8a9c1a8081534ee549d284de4",
+      "source_sha256": "6a3532136cf7f2a82dcfd8f7edd84787739749d8a9c1a8081534ee549d284de4",
+      "bytes": 4875,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/pick-ui-library/references/upstream.md",
+      "blob": "6a3532136cf7f2a82dcfd8f7edd84787739749d8a9c1a8081534ee549d284de4",
+      "sha256": "6a3532136cf7f2a82dcfd8f7edd84787739749d8a9c1a8081534ee549d284de4",
+      "source_sha256": "6a3532136cf7f2a82dcfd8f7edd84787739749d8a9c1a8081534ee549d284de4",
+      "bytes": 4875,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/prototype/LOGIC.md",
+      "blob": "8d7e31de7ce73b8e62f207e3f3ecbd90a7a54fdc728f8965f5f0739976f9959a",
+      "sha256": "8d7e31de7ce73b8e62f207e3f3ecbd90a7a54fdc728f8965f5f0739976f9959a",
+      "source_sha256": "8d7e31de7ce73b8e62f207e3f3ecbd90a7a54fdc728f8965f5f0739976f9959a",
+      "bytes": 6103,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/prototype/SKILL.md",
+      "blob": "b5b344a2db42dd760b3e7b6212f3e997c80dad5ca060567e9b48febf009cb184",
+      "sha256": "b5b344a2db42dd760b3e7b6212f3e997c80dad5ca060567e9b48febf009cb184",
+      "source_sha256": "b5b344a2db42dd760b3e7b6212f3e997c80dad5ca060567e9b48febf009cb184",
+      "bytes": 2960,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/prototype/UI.md",
+      "blob": "5ea83263ba72174c9055d58045f053d6577c0db6802c1e15bd1468dd16f78a0b",
+      "sha256": "5ea83263ba72174c9055d58045f053d6577c0db6802c1e15bd1468dd16f78a0b",
+      "source_sha256": "5ea83263ba72174c9055d58045f053d6577c0db6802c1e15bd1468dd16f78a0b",
+      "bytes": 7025,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/prototype/agents/openai.yaml",
+      "blob": "cc1ce1ceaba1442c431dc76abb84b271ad72ecb94dcefee53130df742dc11787",
+      "sha256": "cc1ce1ceaba1442c431dc76abb84b271ad72ecb94dcefee53130df742dc11787",
+      "source_sha256": "cc1ce1ceaba1442c431dc76abb84b271ad72ecb94dcefee53130df742dc11787",
+      "bytes": 103,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/redesign-existing-projects/SKILL.md",
+      "blob": "518607a171e8e52dd0a4d8223d8be09b3b1b2e08d7598858462ef813ac147bdc",
+      "sha256": "518607a171e8e52dd0a4d8223d8be09b3b1b2e08d7598858462ef813ac147bdc",
+      "source_sha256": "518607a171e8e52dd0a4d8223d8be09b3b1b2e08d7598858462ef813ac147bdc",
+      "bytes": 15730,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/research/SKILL.md",
+      "blob": "6a79eb6c0e28f44673cb0959a170a6ddb72d08c70e08d7fc8aa33d2d8b962729",
+      "sha256": "6a79eb6c0e28f44673cb0959a170a6ddb72d08c70e08d7fc8aa33d2d8b962729",
+      "source_sha256": "6a79eb6c0e28f44673cb0959a170a6ddb72d08c70e08d7fc8aa33d2d8b962729",
+      "bytes": 759,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/research/agents/openai.yaml",
+      "blob": "73840328dfa6b689d81ee645d8aaf8570a0cc44d64a32b119ea6091d2828d412",
+      "sha256": "73840328dfa6b689d81ee645d8aaf8570a0cc44d64a32b119ea6091d2828d412",
+      "source_sha256": "73840328dfa6b689d81ee645d8aaf8570a0cc44d64a32b119ea6091d2828d412",
+      "bytes": 97,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/retro/SKILL.md",
+      "blob": "e54ce24525d12ce5a98283c69ade699602b6849d500d8e44225f82b6308d7f6c",
+      "sha256": "e54ce24525d12ce5a98283c69ade699602b6849d500d8e44225f82b6308d7f6c",
+      "source_sha256": "e54ce24525d12ce5a98283c69ade699602b6849d500d8e44225f82b6308d7f6c",
+      "bytes": 4573,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/retro/agents/openai.yaml",
+      "blob": "61afaa61443da49b3ff8fcc9d04735362bfec03e213791226134a3a21a9c6fd3",
+      "sha256": "61afaa61443da49b3ff8fcc9d04735362bfec03e213791226134a3a21a9c6fd3",
+      "source_sha256": "61afaa61443da49b3ff8fcc9d04735362bfec03e213791226134a3a21a9c6fd3",
+      "bytes": 151,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/reverse-engineer-anything/SKILL.md",
+      "blob": "e588e02ba9579942d77df15a4ba5f8773a59b033aa96e5b57eb22b4244250baf",
+      "sha256": "e588e02ba9579942d77df15a4ba5f8773a59b033aa96e5b57eb22b4244250baf",
+      "source_sha256": "e588e02ba9579942d77df15a4ba5f8773a59b033aa96e5b57eb22b4244250baf",
+      "bytes": 34977,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/reverse-engineer-anything/references/android-applications.md",
+      "blob": "1698a9a21eacc685b327059efee2e9cdb6ac1f55fa3875eed96b4b304ab155f3",
+      "sha256": "1698a9a21eacc685b327059efee2e9cdb6ac1f55fa3875eed96b4b304ab155f3",
+      "source_sha256": "1698a9a21eacc685b327059efee2e9cdb6ac1f55fa3875eed96b4b304ab155f3",
+      "bytes": 4077,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/reverse-engineer-anything/references/connection-and-recovery.md",
+      "blob": "69aae4c8c2741cc745171a007257cf94fa65247bf73e4c4eb031a1361a06831e",
+      "sha256": "69aae4c8c2741cc745171a007257cf94fa65247bf73e4c4eb031a1361a06831e",
+      "source_sha256": "69aae4c8c2741cc745171a007257cf94fa65247bf73e4c4eb031a1361a06831e",
+      "bytes": 19004,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/reverse-engineer-anything/references/environments.md",
+      "blob": "bb1065d7c0c96f82d6350c4f55071a883f99dd852fa1e6e62650b26782cdc95b",
+      "sha256": "bb1065d7c0c96f82d6350c4f55071a883f99dd852fa1e6e62650b26782cdc95b",
+      "source_sha256": "bb1065d7c0c96f82d6350c4f55071a883f99dd852fa1e6e62650b26782cdc95b",
+      "bytes": 14750,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/reverse-engineer-anything/references/evidence-workflows.md",
+      "blob": "f44b68acc6ebaa60c1f5d0670e4f9ff7212d351a0ecc6e6ca77ce38b9177ea57",
+      "sha256": "f44b68acc6ebaa60c1f5d0670e4f9ff7212d351a0ecc6e6ca77ce38b9177ea57",
+      "source_sha256": "f44b68acc6ebaa60c1f5d0670e4f9ff7212d351a0ecc6e6ca77ce38b9177ea57",
+      "bytes": 8091,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/reverse-engineer-anything/references/javascript-applications.md",
+      "blob": "15ae2177ef1c41e25095238c64b38f34d8ea53ea3c4c74f627096f90b8eaa54b",
+      "sha256": "15ae2177ef1c41e25095238c64b38f34d8ea53ea3c4c74f627096f90b8eaa54b",
+      "source_sha256": "15ae2177ef1c41e25095238c64b38f34d8ea53ea3c4c74f627096f90b8eaa54b",
+      "bytes": 14476,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/reverse-engineer-anything/references/native-and-artifacts.md",
+      "blob": "159e6596df8942246b6a8e42efa9777a129196efeea87435c6505d4446d4b687",
+      "sha256": "159e6596df8942246b6a8e42efa9777a129196efeea87435c6505d4446d4b687",
+      "source_sha256": "159e6596df8942246b6a8e42efa9777a129196efeea87435c6505d4446d4b687",
+      "bytes": 42609,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/reverse-engineer-anything/references/runtime-observation.md",
+      "blob": "e207a912470a1a56dc02316eb7b040ac50b4d763f2273e97a6811863d9051d74",
+      "sha256": "e207a912470a1a56dc02316eb7b040ac50b4d763f2273e97a6811863d9051d74",
+      "source_sha256": "e207a912470a1a56dc02316eb7b040ac50b4d763f2273e97a6811863d9051d74",
+      "bytes": 11905,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/setup-matt-pocock-skills/SKILL.md",
+      "blob": "e09747c37730b598eb059c99b550642f150f8a7ec2afe18ba625915e9d6152f0",
+      "sha256": "e09747c37730b598eb059c99b550642f150f8a7ec2afe18ba625915e9d6152f0",
+      "source_sha256": "e09747c37730b598eb059c99b550642f150f8a7ec2afe18ba625915e9d6152f0",
+      "bytes": 7127,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/setup-matt-pocock-skills/agents/openai.yaml",
+      "blob": "53d0bf3786862a1cb5013ca78f12013b166d0819823dae0d3f9eb13eee2acdf2",
+      "sha256": "53d0bf3786862a1cb5013ca78f12013b166d0819823dae0d3f9eb13eee2acdf2",
+      "source_sha256": "53d0bf3786862a1cb5013ca78f12013b166d0819823dae0d3f9eb13eee2acdf2",
+      "bytes": 157,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/setup-matt-pocock-skills/domain.md",
+      "blob": "20ee347cfcb4bd2266a8b747c11ca6c3dec85ff4cc38319de88cc3cadc12c80b",
+      "sha256": "20ee347cfcb4bd2266a8b747c11ca6c3dec85ff4cc38319de88cc3cadc12c80b",
+      "source_sha256": "20ee347cfcb4bd2266a8b747c11ca6c3dec85ff4cc38319de88cc3cadc12c80b",
+      "bytes": 2093,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/setup-matt-pocock-skills/issue-tracker-github.md",
+      "blob": "aa933ecccc415f7b51681075879439a6616ba1bf9a8cf91dbee536ff1625ecac",
+      "sha256": "aa933ecccc415f7b51681075879439a6616ba1bf9a8cf91dbee536ff1625ecac",
+      "source_sha256": "aa933ecccc415f7b51681075879439a6616ba1bf9a8cf91dbee536ff1625ecac",
+      "bytes": 4163,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+      "blob": "ce09c41e2cfd2a4cd751c9f0557e8c9acd07b035b6fca45268ab350e3343bc77",
+      "sha256": "ce09c41e2cfd2a4cd751c9f0557e8c9acd07b035b6fca45268ab350e3343bc77",
+      "source_sha256": "ce09c41e2cfd2a4cd751c9f0557e8c9acd07b035b6fca45268ab350e3343bc77",
+      "bytes": 3862,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/setup-matt-pocock-skills/issue-tracker-local.md",
+      "blob": "a604b658f0730eae3107671b09323ed8382bd546e82dc3bedc265bccbeb35021",
+      "sha256": "a604b658f0730eae3107671b09323ed8382bd546e82dc3bedc265bccbeb35021",
+      "source_sha256": "a604b658f0730eae3107671b09323ed8382bd546e82dc3bedc265bccbeb35021",
+      "bytes": 1840,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/setup-matt-pocock-skills/triage-labels.md",
+      "blob": "713abcdd778059289bc4ed8278d14787f719707d429da716ae814e69a727843c",
+      "sha256": "713abcdd778059289bc4ed8278d14787f719707d429da716ae814e69a727843c",
+      "source_sha256": "713abcdd778059289bc4ed8278d14787f719707d429da716ae814e69a727843c",
+      "bytes": 1072,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/stitch-design-taste/DESIGN.md",
+      "blob": "4d13f63345ee4a0774fa910c6019d0579e05ff565699ff1a79e3f648f5db1d35",
+      "sha256": "4d13f63345ee4a0774fa910c6019d0579e05ff565699ff1a79e3f648f5db1d35",
+      "source_sha256": "4d13f63345ee4a0774fa910c6019d0579e05ff565699ff1a79e3f648f5db1d35",
+      "bytes": 12174,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/stitch-design-taste/SKILL.md",
+      "blob": "16b3eb3916341f5aaff1831ed3f0b1ab8fa1130f8e4c1fbdbd08138d6fec6922",
+      "sha256": "16b3eb3916341f5aaff1831ed3f0b1ab8fa1130f8e4c1fbdbd08138d6fec6922",
+      "source_sha256": "16b3eb3916341f5aaff1831ed3f0b1ab8fa1130f8e4c1fbdbd08138d6fec6922",
+      "bytes": 11921,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/CREATION-LOG.md",
+      "blob": "c24733a5b1821bd6bed1fc950261f0b9f4e90097e0bbb96459d8179713730789",
+      "sha256": "c24733a5b1821bd6bed1fc950261f0b9f4e90097e0bbb96459d8179713730789",
+      "source_sha256": "c24733a5b1821bd6bed1fc950261f0b9f4e90097e0bbb96459d8179713730789",
+      "bytes": 4257,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/SKILL.md",
+      "blob": "028a911a5e2a9afbeefb6b3e11188c1ccd6a7732d41adc27ddebfc0434f8dc13",
+      "sha256": "028a911a5e2a9afbeefb6b3e11188c1ccd6a7732d41adc27ddebfc0434f8dc13",
+      "source_sha256": "028a911a5e2a9afbeefb6b3e11188c1ccd6a7732d41adc27ddebfc0434f8dc13",
+      "bytes": 9581,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/condition-based-waiting-example.ts",
+      "blob": "40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e",
+      "sha256": "40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e",
+      "source_sha256": "40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e",
+      "bytes": 5054,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/condition-based-waiting.md",
+      "blob": "e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26",
+      "sha256": "e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26",
+      "source_sha256": "e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26",
+      "bytes": 3516,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/defense-in-depth.md",
+      "blob": "1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7",
+      "sha256": "1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7",
+      "source_sha256": "1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7",
+      "bytes": 3650,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/find-polluter.sh",
+      "blob": "dd7b8f13c4cc2a24b33ff87b18da9248f3e1c80a085c3316224f69ff0fa5c43c",
+      "sha256": "dd7b8f13c4cc2a24b33ff87b18da9248f3e1c80a085c3316224f69ff0fa5c43c",
+      "source_sha256": "dd7b8f13c4cc2a24b33ff87b18da9248f3e1c80a085c3316224f69ff0fa5c43c",
+      "bytes": 1986,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/root-cause-tracing.md",
+      "blob": "75b933b6a8c40bdb2031b10f21654395b56ec6ab6bc7b018c18d3fe57aeb7fb8",
+      "sha256": "75b933b6a8c40bdb2031b10f21654395b56ec6ab6bc7b018c18d3fe57aeb7fb8",
+      "source_sha256": "75b933b6a8c40bdb2031b10f21654395b56ec6ab6bc7b018c18d3fe57aeb7fb8",
+      "bytes": 5321,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/test-academic.md",
+      "blob": "fe2ba480d78ac0d686dc025f41c2a32a43d642bf533f91b0c6053a04d35d6486",
+      "sha256": "fe2ba480d78ac0d686dc025f41c2a32a43d642bf533f91b0c6053a04d35d6486",
+      "source_sha256": "fe2ba480d78ac0d686dc025f41c2a32a43d642bf533f91b0c6053a04d35d6486",
+      "bytes": 653,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/test-pressure-1.md",
+      "blob": "0b6a915db0054577819834c79be9eb614e97bddba10d73768e1fbe91cfed048a",
+      "sha256": "0b6a915db0054577819834c79be9eb614e97bddba10d73768e1fbe91cfed048a",
+      "source_sha256": "0b6a915db0054577819834c79be9eb614e97bddba10d73768e1fbe91cfed048a",
+      "bytes": 1900,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/test-pressure-2.md",
+      "blob": "b2030aeffba07050e8ad573ddf87486457c4a016a786bb326235bebd856f2016",
+      "sha256": "b2030aeffba07050e8ad573ddf87486457c4a016a786bb326235bebd856f2016",
+      "source_sha256": "b2030aeffba07050e8ad573ddf87486457c4a016a786bb326235bebd856f2016",
+      "bytes": 2283,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/systematic-debugging/test-pressure-3.md",
+      "blob": "96b50a52e2c7989c9cf20fb752c47c1e9a3a70dc362f8f7989f8f5b64dac7708",
+      "sha256": "96b50a52e2c7989c9cf20fb752c47c1e9a3a70dc362f8f7989f8f5b64dac7708",
+      "source_sha256": "96b50a52e2c7989c9cf20fb752c47c1e9a3a70dc362f8f7989f8f5b64dac7708",
+      "bytes": 2692,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/test-driven-development/SKILL.md",
+      "blob": "5b23ffcdeb12face074e6a125261d6fae5c77f20f31bc46bcc53f903e318644e",
+      "sha256": "5b23ffcdeb12face074e6a125261d6fae5c77f20f31bc46bcc53f903e318644e",
+      "source_sha256": "5b23ffcdeb12face074e6a125261d6fae5c77f20f31bc46bcc53f903e318644e",
+      "bytes": 9966,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/test-driven-development/writing-good-tests.md",
+      "blob": "51471c853306ff92ca8bb41dcaea05f31c0e46b03651f8f3c99754b7172f4ae1",
+      "sha256": "51471c853306ff92ca8bb41dcaea05f31c0e46b03651f8f3c99754b7172f4ae1",
+      "source_sha256": "51471c853306ff92ca8bb41dcaea05f31c0e46b03651f8f3c99754b7172f4ae1",
+      "bytes": 8268,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/SKILL.md",
+      "blob": "abcf720d202220a92a146e47d8c029c1f658b268681f0c554291cacea7fb86c5",
+      "sha256": "abcf720d202220a92a146e47d8c029c1f658b268681f0c554291cacea7fb86c5",
+      "source_sha256": "abcf720d202220a92a146e47d8c029c1f658b268681f0c554291cacea7fb86c5",
+      "bytes": 3608,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/app-interface.csv",
+      "blob": "331e7cf2c0b222d80c566c5f255c63cb339f65bfd02e471a720f28e4864a9f08",
+      "sha256": "331e7cf2c0b222d80c566c5f255c63cb339f65bfd02e471a720f28e4864a9f08",
+      "source_sha256": "331e7cf2c0b222d80c566c5f255c63cb339f65bfd02e471a720f28e4864a9f08",
+      "bytes": 11046,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "blob": "65fe0b64480a8a827738297d0a64ca55c627d4afcb774fe4555c59cea8dd6905",
+      "sha256": "65fe0b64480a8a827738297d0a64ca55c627d4afcb774fe4555c59cea8dd6905",
+      "source_sha256": "65fe0b64480a8a827738297d0a64ca55c627d4afcb774fe4555c59cea8dd6905",
+      "bytes": 2392,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/charts.csv",
+      "blob": "4115cf1120680f2cedef0676cb648f30c7ef4699e2a947535d4113e71ed3b12a",
+      "sha256": "4115cf1120680f2cedef0676cb648f30c7ef4699e2a947535d4113e71ed3b12a",
+      "source_sha256": "4115cf1120680f2cedef0676cb648f30c7ef4699e2a947535d4113e71ed3b12a",
+      "bytes": 23365,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/colors.csv",
+      "blob": "8162429222bce22df62b564085946a30d07cc9722c58d0a3a494bd0d1d00841c",
+      "sha256": "8162429222bce22df62b564085946a30d07cc9722c58d0a3a494bd0d1d00841c",
+      "source_sha256": "8162429222bce22df62b564085946a30d07cc9722c58d0a3a494bd0d1d00841c",
+      "bytes": 37940,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/data-provenance.json",
+      "blob": "e82fb33ed49375a300e93d9c11ccd1c1493c999e84ee7ee295e527634786e2e0",
+      "sha256": "e82fb33ed49375a300e93d9c11ccd1c1493c999e84ee7ee295e527634786e2e0",
+      "source_sha256": "e82fb33ed49375a300e93d9c11ccd1c1493c999e84ee7ee295e527634786e2e0",
+      "bytes": 36686,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "blob": "35688523f2955795caa1a47c53b83099e60c1708461476f9cc3a050cf3b0148a",
+      "sha256": "35688523f2955795caa1a47c53b83099e60c1708461476f9cc3a050cf3b0148a",
+      "source_sha256": "35688523f2955795caa1a47c53b83099e60c1708461476f9cc3a050cf3b0148a",
+      "bytes": 433127,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "blob": "1c8c3b2ea1faf6a1012da463756def8b3889db33f2226f0343bb4daa80307d03",
+      "sha256": "1c8c3b2ea1faf6a1012da463756def8b3889db33f2226f0343bb4daa80307d03",
+      "source_sha256": "1c8c3b2ea1faf6a1012da463756def8b3889db33f2226f0343bb4daa80307d03",
+      "bytes": 747241,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/icons.csv",
+      "blob": "50816c6012030178195a16ee481ebf58b47bd985d70e8ec58886cc83f6eddafc",
+      "sha256": "50816c6012030178195a16ee481ebf58b47bd985d70e8ec58886cc83f6eddafc",
+      "source_sha256": "50816c6012030178195a16ee481ebf58b47bd985d70e8ec58886cc83f6eddafc",
+      "bytes": 57945,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/landing.csv",
+      "blob": "9a2edd3bb676c2a58f00ade7a062e285222d4297bfd847c8d5b056f0dbbf52d0",
+      "sha256": "9a2edd3bb676c2a58f00ade7a062e285222d4297bfd847c8d5b056f0dbbf52d0",
+      "source_sha256": "9a2edd3bb676c2a58f00ade7a062e285222d4297bfd847c8d5b056f0dbbf52d0",
+      "bytes": 25449,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/motion.csv",
+      "blob": "381affe8df8ea1f66fbbda2598827f9f54299107bbe6a1b4e9b68f6b62091ceb",
+      "sha256": "381affe8df8ea1f66fbbda2598827f9f54299107bbe6a1b4e9b68f6b62091ceb",
+      "source_sha256": "381affe8df8ea1f66fbbda2598827f9f54299107bbe6a1b4e9b68f6b62091ceb",
+      "bytes": 14679,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "blob": "2399325233b277b5c97a80e6a5e8941154f5d057beee4e7613db87c87d700236",
+      "sha256": "2399325233b277b5c97a80e6a5e8941154f5d057beee4e7613db87c87d700236",
+      "source_sha256": "2399325233b277b5c97a80e6a5e8941154f5d057beee4e7613db87c87d700236",
+      "bytes": 823933,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/products.csv",
+      "blob": "42473f75e8dde5987bdf89ce55d8c168091b80a356cae691dd60247d80720b70",
+      "sha256": "42473f75e8dde5987bdf89ce55d8c168091b80a356cae691dd60247d80720b70",
+      "source_sha256": "42473f75e8dde5987bdf89ce55d8c168091b80a356cae691dd60247d80720b70",
+      "bytes": 75623,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/react-performance.csv",
+      "blob": "3d925802539abac5afeb63ae8aa1960b7229ad271b3a47caed40ab2d97ad0734",
+      "sha256": "3d925802539abac5afeb63ae8aa1960b7229ad271b3a47caed40ab2d97ad0734",
+      "source_sha256": "3d925802539abac5afeb63ae8aa1960b7229ad271b3a47caed40ab2d97ad0734",
+      "bytes": 15080,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/angular.csv",
+      "blob": "704be83f2bad30c7e6de01afb113ffa01e0c458762f48b7102f31ba2367b5553",
+      "sha256": "704be83f2bad30c7e6de01afb113ffa01e0c458762f48b7102f31ba2367b5553",
+      "source_sha256": "704be83f2bad30c7e6de01afb113ffa01e0c458762f48b7102f31ba2367b5553",
+      "bytes": 19863,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/astro.csv",
+      "blob": "2c2f55fadaafc05e04cc321c8194a1a28b656e6757fe2ba316f41b16428299c6",
+      "sha256": "2c2f55fadaafc05e04cc321c8194a1a28b656e6757fe2ba316f41b16428299c6",
+      "source_sha256": "2c2f55fadaafc05e04cc321c8194a1a28b656e6757fe2ba316f41b16428299c6",
+      "bytes": 14591,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+      "blob": "442fca14675a020683473e7e49f08abb27b9df0765c80efe54aef61f1a4ac258",
+      "sha256": "442fca14675a020683473e7e49f08abb27b9df0765c80efe54aef61f1a4ac258",
+      "source_sha256": "442fca14675a020683473e7e49f08abb27b9df0765c80efe54aef61f1a4ac258",
+      "bytes": 27327,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "blob": "64dba0ac17349f28bce517a0f5f48c54d9ed2e487ec0c0258303463b382f41a0",
+      "sha256": "64dba0ac17349f28bce517a0f5f48c54d9ed2e487ec0c0258303463b382f41a0",
+      "source_sha256": "64dba0ac17349f28bce517a0f5f48c54d9ed2e487ec0c0258303463b382f41a0",
+      "bytes": 14192,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "blob": "d05a581d20af57b8ca0104a6d31d90a07c437d500662a96c3029fc2f9a4678ee",
+      "sha256": "d05a581d20af57b8ca0104a6d31d90a07c437d500662a96c3029fc2f9a4678ee",
+      "source_sha256": "d05a581d20af57b8ca0104a6d31d90a07c437d500662a96c3029fc2f9a4678ee",
+      "bytes": 16551,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/javafx.csv",
+      "blob": "2e819b8d5abdd23ad4dae0991650fdb57af497aabd68b37463aa9c442944c869",
+      "sha256": "2e819b8d5abdd23ad4dae0991650fdb57af497aabd68b37463aa9c442944c869",
+      "source_sha256": "2e819b8d5abdd23ad4dae0991650fdb57af497aabd68b37463aa9c442944c869",
+      "bytes": 33577,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+      "blob": "699de218b286948eaec7d15767b6e1350ee299167e49bf476d82e3ff58724e0a",
+      "sha256": "699de218b286948eaec7d15767b6e1350ee299167e49bf476d82e3ff58724e0a",
+      "source_sha256": "699de218b286948eaec7d15767b6e1350ee299167e49bf476d82e3ff58724e0a",
+      "bytes": 12295,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/laravel.csv",
+      "blob": "854ea4daa5fc61292d22235ad33b49ba3fe22423c3de8d3cb03758ffed3b59f9",
+      "sha256": "854ea4daa5fc61292d22235ad33b49ba3fe22423c3de8d3cb03758ffed3b59f9",
+      "source_sha256": "854ea4daa5fc61292d22235ad33b49ba3fe22423c3de8d3cb03758ffed3b59f9",
+      "bytes": 20163,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "blob": "ecd2c27b2ea0127d203ae726060efcdd7335b5e83f96b99e4f3befbbfeebd5a4",
+      "sha256": "ecd2c27b2ea0127d203ae726060efcdd7335b5e83f96b99e4f3befbbfeebd5a4",
+      "source_sha256": "ecd2c27b2ea0127d203ae726060efcdd7335b5e83f96b99e4f3befbbfeebd5a4",
+      "bytes": 18687,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "blob": "c36ee8470926b4a0748d241363c71664c9969c2edbc62f7f72de0db73880fac6",
+      "sha256": "c36ee8470926b4a0748d241363c71664c9969c2edbc62f7f72de0db73880fac6",
+      "source_sha256": "c36ee8470926b4a0748d241363c71664c9969c2edbc62f7f72de0db73880fac6",
+      "bytes": 24106,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "blob": "3d9b54ed2d151bd9c86e9e5609b8a6f88a00c4c52fa601a30af96c49b2c4d176",
+      "sha256": "3d9b54ed2d151bd9c86e9e5609b8a6f88a00c4c52fa601a30af96c49b2c4d176",
+      "source_sha256": "3d9b54ed2d151bd9c86e9e5609b8a6f88a00c4c52fa601a30af96c49b2c4d176",
+      "bytes": 23014,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "blob": "ba31dd9c0c04da6bc02a74448bf121f9c0728ae5ba3b4d47b487778b0a1135b5",
+      "sha256": "ba31dd9c0c04da6bc02a74448bf121f9c0728ae5ba3b4d47b487778b0a1135b5",
+      "source_sha256": "ba31dd9c0c04da6bc02a74448bf121f9c0728ae5ba3b4d47b487778b0a1135b5",
+      "bytes": 14049,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/react.csv",
+      "blob": "2d2b9c198e875106a30f7ee68341a9ee0033cad60a7e130cf23152783e08aeda",
+      "sha256": "2d2b9c198e875106a30f7ee68341a9ee0033cad60a7e130cf23152783e08aeda",
+      "source_sha256": "2d2b9c198e875106a30f7ee68341a9ee0033cad60a7e130cf23152783e08aeda",
+      "bytes": 19036,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "blob": "e56cfde5b74907836ac3582a4779d5b7f3d206a702ab81b8669a1b668c3eeb51",
+      "sha256": "e56cfde5b74907836ac3582a4779d5b7f3d206a702ab81b8669a1b668c3eeb51",
+      "source_sha256": "e56cfde5b74907836ac3582a4779d5b7f3d206a702ab81b8669a1b668c3eeb51",
+      "bytes": 23184,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+      "blob": "f6e379ba802941ba26b01d4ffbe3cd39120f2587659a1d93851c707f66bc13db",
+      "sha256": "f6e379ba802941ba26b01d4ffbe3cd39120f2587659a1d93851c707f66bc13db",
+      "source_sha256": "f6e379ba802941ba26b01d4ffbe3cd39120f2587659a1d93851c707f66bc13db",
+      "bytes": 15078,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+      "blob": "bdd9231ff3ad658f4e7c063e1eb49df2fd09ac8d90631a86df899b39833b9623",
+      "sha256": "bdd9231ff3ad658f4e7c063e1eb49df2fd09ac8d90631a86df899b39833b9623",
+      "source_sha256": "bdd9231ff3ad658f4e7c063e1eb49df2fd09ac8d90631a86df899b39833b9623",
+      "bytes": 15323,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/threejs.csv",
+      "blob": "97542e0ba34915a0ff7578be20e1619495df47c95c8c1c39b83e3785e1de771f",
+      "sha256": "97542e0ba34915a0ff7578be20e1619495df47c95c8c1c39b83e3785e1de771f",
+      "source_sha256": "97542e0ba34915a0ff7578be20e1619495df47c95c8c1c39b83e3785e1de771f",
+      "bytes": 46051,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/uno.csv",
+      "blob": "a0474363e4225b5367214d5675fd3e075f137026f9500f0d04357882ef4f6d48",
+      "sha256": "a0474363e4225b5367214d5675fd3e075f137026f9500f0d04357882ef4f6d48",
+      "source_sha256": "a0474363e4225b5367214d5675fd3e075f137026f9500f0d04357882ef4f6d48",
+      "bytes": 30091,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/uwp.csv",
+      "blob": "c409f08c1fbba1f1029f1acaa554e7b4471cc85517a5751c9f2e62465badcd5c",
+      "sha256": "c409f08c1fbba1f1029f1acaa554e7b4471cc85517a5751c9f2e62465badcd5c",
+      "source_sha256": "c409f08c1fbba1f1029f1acaa554e7b4471cc85517a5751c9f2e62465badcd5c",
+      "bytes": 24692,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "blob": "b655f1ebb9dff2652d15981f31b1784c8a6d4759efd2815a14f3088257569f95",
+      "sha256": "b655f1ebb9dff2652d15981f31b1784c8a6d4759efd2815a14f3088257569f95",
+      "source_sha256": "b655f1ebb9dff2652d15981f31b1784c8a6d4759efd2815a14f3088257569f95",
+      "bytes": 12813,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/winui.csv",
+      "blob": "e676dc1c13ee6c205c40b0746f1335150a346c7a49a0616d2545bc3d2c930c85",
+      "sha256": "e676dc1c13ee6c205c40b0746f1335150a346c7a49a0616d2545bc3d2c930c85",
+      "source_sha256": "e676dc1c13ee6c205c40b0746f1335150a346c7a49a0616d2545bc3d2c930c85",
+      "bytes": 27890,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/stacks/wpf.csv",
+      "blob": "9781a9950b20333637b30a02e498b7efca21b618a3eeb8665836f3ac6e974da7",
+      "sha256": "9781a9950b20333637b30a02e498b7efca21b618a3eeb8665836f3ac6e974da7",
+      "source_sha256": "9781a9950b20333637b30a02e498b7efca21b618a3eeb8665836f3ac6e974da7",
+      "bytes": 24158,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/styles.csv",
+      "blob": "a93a4d9d7025856575d7b7583bda020be9043013432c5af7c58af9dbdfb206b7",
+      "sha256": "a93a4d9d7025856575d7b7583bda020be9043013432c5af7c58af9dbdfb206b7",
+      "source_sha256": "a93a4d9d7025856575d7b7583bda020be9043013432c5af7c58af9dbdfb206b7",
+      "bytes": 149478,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/typography.csv",
+      "blob": "321fc446e89024488ebae96dda93efc4d2307bd8bddb240857ad51364f6782c8",
+      "sha256": "321fc446e89024488ebae96dda93efc4d2307bd8bddb240857ad51364f6782c8",
+      "source_sha256": "321fc446e89024488ebae96dda93efc4d2307bd8bddb240857ad51364f6782c8",
+      "bytes": 49997,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "blob": "f0774dd741cecdad5eec842034bd6d5e9ea50e9f220a1910069748daa0bb8e9a",
+      "sha256": "f0774dd741cecdad5eec842034bd6d5e9ea50e9f220a1910069748daa0bb8e9a",
+      "source_sha256": "f0774dd741cecdad5eec842034bd6d5e9ea50e9f220a1910069748daa0bb8e9a",
+      "bytes": 77360,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "blob": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5",
+      "sha256": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5",
+      "source_sha256": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5",
+      "bytes": 27516,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/references/upstream-opencode.md",
+      "blob": "7efe992af244592af0c436f4da888be079d9df5b1d2817d6e4e8486f9bc4c28e",
+      "sha256": "7efe992af244592af0c436f4da888be079d9df5b1d2817d6e4e8486f9bc4c28e",
+      "source_sha256": "7efe992af244592af0c436f4da888be079d9df5b1d2817d6e4e8486f9bc4c28e",
+      "bytes": 28100,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/core.py",
+      "blob": "e544826963efefce3c59b65e18d83d92a5baf571f05458025bf1fa9021eced42",
+      "sha256": "e544826963efefce3c59b65e18d83d92a5baf571f05458025bf1fa9021eced42",
+      "source_sha256": "e544826963efefce3c59b65e18d83d92a5baf571f05458025bf1fa9021eced42",
+      "bytes": 41234,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/design_system.py",
+      "blob": "6a94743c3362c9c7e6d1450b94f4014d9ea752e7b4e151f6f0bdb217e0544bf7",
+      "sha256": "6a94743c3362c9c7e6d1450b94f4014d9ea752e7b4e151f6f0bdb217e0544bf7",
+      "source_sha256": "6a94743c3362c9c7e6d1450b94f4014d9ea752e7b4e151f6f0bdb217e0544bf7",
+      "bytes": 70937,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+      "blob": "b8bac1af82aa280d3e06f00aabaeac4337e632996b07fed874e2b6ee6e9c5913",
+      "sha256": "b8bac1af82aa280d3e06f00aabaeac4337e632996b07fed874e2b6ee6e9c5913",
+      "source_sha256": "b8bac1af82aa280d3e06f00aabaeac4337e632996b07fed874e2b6ee6e9c5913",
+      "bytes": 5824,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/search.py",
+      "blob": "8373e2dd2d560d9853ec116140de0e0d5bee45a6abe5e041173c84e1c36a7f87",
+      "sha256": "8373e2dd2d560d9853ec116140de0e0d5bee45a6abe5e041173c84e1c36a7f87",
+      "source_sha256": "8373e2dd2d560d9853ec116140de0e0d5bee45a6abe5e041173c84e1c36a7f87",
+      "bytes": 9123,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json",
+      "blob": "22d8dc81a7d6827b7e8b64b53e7d184210fb9759e8e294e0d5133c81cc460176",
+      "sha256": "22d8dc81a7d6827b7e8b64b53e7d184210fb9759e8e294e0d5133c81cc460176",
+      "source_sha256": "22d8dc81a7d6827b7e8b64b53e7d184210fb9759e8e294e0d5133c81cc460176",
+      "bytes": 1079,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json",
+      "blob": "c608ad5c4084ebc50a4bbbfb69ea2456c01fd5519c457e18410fffd250ae948f",
+      "sha256": "c608ad5c4084ebc50a4bbbfb69ea2456c01fd5519c457e18410fffd250ae948f",
+      "source_sha256": "c608ad5c4084ebc50a4bbbfb69ea2456c01fd5519c457e18410fffd250ae948f",
+      "bytes": 1772,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-existing.csv",
+      "blob": "4e0761b839dc6b2187a370e82eddc0aed8a7ff10c09e28dd814bb3656dac595b",
+      "sha256": "4e0761b839dc6b2187a370e82eddc0aed8a7ff10c09e28dd814bb3656dac595b",
+      "source_sha256": "4e0761b839dc6b2187a370e82eddc0aed8a7ff10c09e28dd814bb3656dac595b",
+      "bytes": 480,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json",
+      "blob": "30bffc29ae348416a2de2f9c6c418e768e4578f136b0f4bac5d2f70124f2e9ba",
+      "sha256": "30bffc29ae348416a2de2f9c6c418e768e4578f136b0f4bac5d2f70124f2e9ba",
+      "source_sha256": "30bffc29ae348416a2de2f9c6c418e768e4578f136b0f4bac5d2f70124f2e9ba",
+      "bytes": 328,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json",
+      "blob": "6243a48a4619986768c4628e2d0c98ff195beba71ba9be5df8f0c52fc6d90c0b",
+      "sha256": "6243a48a4619986768c4628e2d0c98ff195beba71ba9be5df8f0c52fc6d90c0b",
+      "source_sha256": "6243a48a4619986768c4628e2d0c98ff195beba71ba9be5df8f0c52fc6d90c0b",
+      "bytes": 97,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/icons-curated.csv",
+      "blob": "68362c9a700c13b96f000784a0198c1c7e117a7088a01c85744e44233038fe9d",
+      "sha256": "68362c9a700c13b96f000784a0198c1c7e117a7088a01c85744e44233038fe9d",
+      "source_sha256": "68362c9a700c13b96f000784a0198c1c7e117a7088a01c85744e44233038fe9d",
+      "bytes": 495,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json",
+      "blob": "ae4d0bb076240824e1b643c2270d1f8cc0952a69502ec1e622b7dedd85b930bb",
+      "sha256": "ae4d0bb076240824e1b643c2270d1f8cc0952a69502ec1e622b7dedd85b930bb",
+      "source_sha256": "ae4d0bb076240824e1b643c2270d1f8cc0952a69502ec1e622b7dedd85b930bb",
+      "bytes": 571,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json",
+      "blob": "500588c757d6de03e3d7e69b27a8b8b1f88ccf6bb0333e4c1e9b0d6a4f112475",
+      "sha256": "500588c757d6de03e3d7e69b27a8b8b1f88ccf6bb0333e4c1e9b0d6a4f112475",
+      "source_sha256": "500588c757d6de03e3d7e69b27a8b8b1f88ccf6bb0333e4c1e9b0d6a4f112475",
+      "bytes": 370,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json",
+      "blob": "d79f2ee0afdbc2f87776733e145df3538a16a25d7c2fba0056bb48295dad0ded",
+      "sha256": "d79f2ee0afdbc2f87776733e145df3538a16a25d7c2fba0056bb48295dad0ded",
+      "source_sha256": "d79f2ee0afdbc2f87776733e145df3538a16a25d7c2fba0056bb48295dad0ded",
+      "bytes": 87,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json",
+      "blob": "1c57a1d76bcc0cdd3632d4c18b9c0e79576b4591df39831c9607e5d0eb4f2cec",
+      "sha256": "1c57a1d76bcc0cdd3632d4c18b9c0e79576b4591df39831c9607e5d0eb4f2cec",
+      "source_sha256": "1c57a1d76bcc0cdd3632d4c18b9c0e79576b4591df39831c9607e5d0eb4f2cec",
+      "bytes": 81,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json",
+      "blob": "38398452985116e74e31bd6bccca0f4decd1bbfe4eebc1ac99f7a1836baaf77f",
+      "sha256": "38398452985116e74e31bd6bccca0f4decd1bbfe4eebc1ac99f7a1836baaf77f",
+      "source_sha256": "38398452985116e74e31bd6bccca0f4decd1bbfe4eebc1ac99f7a1836baaf77f",
+      "bytes": 89436,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json",
+      "blob": "e77d36eebbf6ddc2860946a02cdb659351da6c09f2688f1ed30939a418099646",
+      "sha256": "e77d36eebbf6ddc2860946a02cdb659351da6c09f2688f1ed30939a418099646",
+      "source_sha256": "e77d36eebbf6ddc2860946a02cdb659351da6c09f2688f1ed30939a418099646",
+      "bytes": 36734,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json",
+      "blob": "9d738e11c6b82fecc8d0946e7b38515518ded5ed3294a7eb19a021c4edb5b57d",
+      "sha256": "9d738e11c6b82fecc8d0946e7b38515518ded5ed3294a7eb19a021c4edb5b57d",
+      "source_sha256": "9d738e11c6b82fecc8d0946e7b38515518ded5ed3294a7eb19a021c4edb5b57d",
+      "bytes": 5079,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py",
+      "blob": "3e2ca5d12702318f641ae62d0c14f22a3bcc84d84e79b863c0e947d475604adb",
+      "sha256": "3e2ca5d12702318f641ae62d0c14f22a3bcc84d84e79b863c0e947d475604adb",
+      "source_sha256": "3e2ca5d12702318f641ae62d0c14f22a3bcc84d84e79b863c0e947d475604adb",
+      "bytes": 19466,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "blob": "3527fe2f4b852f69f07c17ddc0d615d9a6e025c924e45a33985579a94a8d2118",
+      "sha256": "3527fe2f4b852f69f07c17ddc0d615d9a6e025c924e45a33985579a94a8d2118",
+      "source_sha256": "3527fe2f4b852f69f07c17ddc0d615d9a6e025c924e45a33985579a94a8d2118",
+      "bytes": 16680,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py",
+      "blob": "3ffc6b4905c9ea26d7ac4527ab154d153584231aee71b2ae4bd017977fa09cc5",
+      "sha256": "3ffc6b4905c9ea26d7ac4527ab154d153584231aee71b2ae4bd017977fa09cc5",
+      "source_sha256": "3ffc6b4905c9ea26d7ac4527ab154d153584231aee71b2ae4bd017977fa09cc5",
+      "bytes": 8954,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "blob": "0360d6e10080c0bca214f2b0bbad582ba50702a542ce21013351aca54938df3a",
+      "sha256": "0360d6e10080c0bca214f2b0bbad582ba50702a542ce21013351aca54938df3a",
+      "source_sha256": "0360d6e10080c0bca214f2b0bbad582ba50702a542ce21013351aca54938df3a",
+      "bytes": 19513,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
+      "blob": "517ba1ba6195c94811126d1162139c51aff77fc68c3e320c7bb6c1e89e76bc9b",
+      "sha256": "517ba1ba6195c94811126d1162139c51aff77fc68c3e320c7bb6c1e89e76bc9b",
+      "source_sha256": "517ba1ba6195c94811126d1162139c51aff77fc68c3e320c7bb6c1e89e76bc9b",
+      "bytes": 7690,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py",
+      "blob": "904f90bc6d364763673fa6067d98a4227d535760fa8b6d26abe22208176997ca",
+      "sha256": "904f90bc6d364763673fa6067d98a4227d535760fa8b6d26abe22208176997ca",
+      "source_sha256": "904f90bc6d364763673fa6067d98a4227d535760fa8b6d26abe22208176997ca",
+      "bytes": 8170,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py",
+      "blob": "2fe56a4d6fe5fff15ff592274b0eeaba925146cefea6c0fa29d8f1b77c9aca1f",
+      "sha256": "2fe56a4d6fe5fff15ff592274b0eeaba925146cefea6c0fa29d8f1b77c9aca1f",
+      "source_sha256": "2fe56a4d6fe5fff15ff592274b0eeaba925146cefea6c0fa29d8f1b77c9aca1f",
+      "bytes": 8430,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py",
+      "blob": "cd14d0092e8a454d213aa104b53e4e70ba698491fa00fde9fdec5ca8a3d70011",
+      "sha256": "cd14d0092e8a454d213aa104b53e4e70ba698491fa00fde9fdec5ca8a3d70011",
+      "source_sha256": "cd14d0092e8a454d213aa104b53e4e70ba698491fa00fde9fdec5ca8a3d70011",
+      "bytes": 7425,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py",
+      "blob": "b51d32ee8a15505b87cb81957fb2d1b385e041e8beb4463c311d236bfd29ebd4",
+      "sha256": "b51d32ee8a15505b87cb81957fb2d1b385e041e8beb4463c311d236bfd29ebd4",
+      "source_sha256": "b51d32ee8a15505b87cb81957fb2d1b385e041e8beb4463c311d236bfd29ebd4",
+      "bytes": 5874,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py",
+      "blob": "becc5fa40e7516613d4e9930f226aa483e3796090c17cb16542c93d1927e680d",
+      "sha256": "becc5fa40e7516613d4e9930f226aa483e3796090c17cb16542c93d1927e680d",
+      "source_sha256": "becc5fa40e7516613d4e9930f226aa483e3796090c17cb16542c93d1927e680d",
+      "bytes": 7699,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/ui-ux-pro-max/scripts/validate_data.py",
+      "blob": "718ad4cbb227436015c9c2bc80fc583d6ed738b01c1a940ef85e350780d99f58",
+      "sha256": "718ad4cbb227436015c9c2bc80fc583d6ed738b01c1a940ef85e350780d99f58",
+      "source_sha256": "718ad4cbb227436015c9c2bc80fc583d6ed738b01c1a940ef85e350780d99f58",
+      "bytes": 52064,
+      "executable": true,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/unified-memory/SKILL.md",
+      "blob": "c42e96155783a44a50f13ab63e9d7f33c9d03b7a1f30777ef434401469c1630a",
+      "sha256": "c42e96155783a44a50f13ab63e9d7f33c9d03b7a1f30777ef434401469c1630a",
+      "source_sha256": "c42e96155783a44a50f13ab63e9d7f33c9d03b7a1f30777ef434401469c1630a",
+      "bytes": 7871,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/verification-before-completion/SKILL.md",
+      "blob": "8051b04adfce1bab5dbc5128f49ff5731545c6b0b248fd958443913cb20cf5b7",
+      "sha256": "8051b04adfce1bab5dbc5128f49ff5731545c6b0b248fd958443913cb20cf5b7",
+      "source_sha256": "8051b04adfce1bab5dbc5128f49ff5731545c6b0b248fd958443913cb20cf5b7",
+      "bytes": 3959,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/wayfinder/SKILL.md",
+      "blob": "34529907684f1a74a764bb7f3db151a0d1f196d35f8bcb86720ed15ec6f05e64",
+      "sha256": "34529907684f1a74a764bb7f3db151a0d1f196d35f8bcb86720ed15ec6f05e64",
+      "source_sha256": "34529907684f1a74a764bb7f3db151a0d1f196d35f8bcb86720ed15ec6f05e64",
+      "bytes": 12523,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/wayfinder/agents/openai.yaml",
+      "blob": "3e698cdff8e84d0e900d8dec535060e9e6d16d923b313eefd881e958d164e37a",
+      "sha256": "3e698cdff8e84d0e900d8dec535060e9e6d16d923b313eefd881e958d164e37a",
+      "source_sha256": "3e698cdff8e84d0e900d8dec535060e9e6d16d923b313eefd881e958d164e37a",
+      "bytes": 149,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/writing-for-agents/SKILL-MECHANICS.md",
+      "blob": "86f112c08d785cc224c13dcda75c0724b74bd62622cc61d4b7ab3dbbaf37f6fc",
+      "sha256": "86f112c08d785cc224c13dcda75c0724b74bd62622cc61d4b7ab3dbbaf37f6fc",
+      "source_sha256": "86f112c08d785cc224c13dcda75c0724b74bd62622cc61d4b7ab3dbbaf37f6fc",
+      "bytes": 2651,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/writing-for-agents/SKILL.md",
+      "blob": "c1ee61c08334e5d3dc5144366146b77a89f8adb6f8378642896c129e0936a166",
+      "sha256": "c1ee61c08334e5d3dc5144366146b77a89f8adb6f8378642896c129e0936a166",
+      "source_sha256": "c1ee61c08334e5d3dc5144366146b77a89f8adb6f8378642896c129e0936a166",
+      "bytes": 11069,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
+    },
+    {
+      "path": ".gemini/config/skills/writing-for-agents/agents/openai.yaml",
+      "blob": "486c388ed1babac6ea25001147b41d3ff6c8892b0128ae1b0bef8feea6363428",
+      "sha256": "486c388ed1babac6ea25001147b41d3ff6c8892b0128ae1b0bef8feea6363428",
+      "source_sha256": "486c388ed1babac6ea25001147b41d3ff6c8892b0128ae1b0bef8feea6363428",
+      "bytes": 105,
+      "executable": false,
+      "transforms": [
+        "antigravity-physical-copy"
+      ]
     },
     {
       "path": ".gemini/skills/impeccable/SKILL.md",
@@ -12041,8 +14133,7 @@
     "node": ">=22",
     "optional_tools": {
       "dcg": "0.6.7",
-      "graphify": "0.9.5",
-      "officecli": "source installation currently has a missing .NET assembly"
+      "graphify": "0.9.5"
     }
   },
   "portability_adaptations": [
@@ -12060,10 +14151,199 @@
       "context7",
       "playwright"
     ],
-    "expected_portable_skills": 51,
+    "expected_portable_skills": 50,
     "ponytail_skills": 6,
     "hooks_trust": "Review and trust locally in Codex /hooks; trust decisions are not backed up."
   },
+  "antigravity": {
+    "root": ".gemini/config/skills",
+    "skills": [
+      "agent-browser",
+      "animate",
+      "brandkit",
+      "code-review",
+      "context7-mcp",
+      "cross-harness-handoff",
+      "design-taste-frontend",
+      "design-taste-frontend-v1",
+      "domain-modeling",
+      "doubt-driven-development",
+      "emil-design-eng",
+      "find-docs",
+      "find-skills",
+      "full-output-enforcement",
+      "gpt-taste",
+      "grill-with-docs",
+      "grilling",
+      "handoff",
+      "high-end-visual-design",
+      "image-to-code",
+      "imagegen-frontend-mobile",
+      "imagegen-frontend-web",
+      "impeccable",
+      "incremental-implementation",
+      "industrial-brutalist-ui",
+      "karpathy-guidelines",
+      "minimalist-ui",
+      "no-ai-slop",
+      "pick-ui-library",
+      "prototype",
+      "redesign-existing-projects",
+      "research",
+      "retro",
+      "reverse-engineer-anything",
+      "setup-matt-pocock-skills",
+      "stitch-design-taste",
+      "systematic-debugging",
+      "test-driven-development",
+      "ui-ux-pro-max",
+      "unified-memory",
+      "verification-before-completion",
+      "wayfinder",
+      "writing-for-agents"
+    ],
+    "expected_skills": 43,
+    "deployment": "physical-files",
+    "native_routing_tested": false
+  },
+  "active_core_skills": 43,
+  "definition_paths": [
+    ".agents/skills/agent-browser/SKILL.md",
+    ".agents/skills/animate/SKILL.md",
+    ".agents/skills/brandkit/SKILL.md",
+    ".agents/skills/context7-mcp/SKILL.md",
+    ".agents/skills/cross-harness-handoff/SKILL.md",
+    ".agents/skills/design-taste-frontend-v1/SKILL.md",
+    ".agents/skills/design-taste-frontend/SKILL.md",
+    ".agents/skills/emil-design-eng/SKILL.md",
+    ".agents/skills/find-docs/SKILL.md",
+    ".agents/skills/find-skills/SKILL.md",
+    ".agents/skills/full-output-enforcement/SKILL.md",
+    ".agents/skills/gpt-taste/SKILL.md",
+    ".agents/skills/high-end-visual-design/SKILL.md",
+    ".agents/skills/image-to-code/SKILL.md",
+    ".agents/skills/imagegen-frontend-mobile/SKILL.md",
+    ".agents/skills/imagegen-frontend-web/SKILL.md",
+    ".agents/skills/impeccable/SKILL.md",
+    ".agents/skills/industrial-brutalist-ui/SKILL.md",
+    ".agents/skills/minimalist-ui/SKILL.md",
+    ".agents/skills/no-ai-slop/SKILL.md",
+    ".agents/skills/pick-ui-library/SKILL.md",
+    ".agents/skills/redesign-existing-projects/SKILL.md",
+    ".agents/skills/reverse-engineer-anything/SKILL.md",
+    ".agents/skills/stitch-design-taste/SKILL.md",
+    ".agents/skills/unified-memory/SKILL.md",
+    ".claude/skills/agent-browser/SKILL.md",
+    ".claude/skills/brandkit/SKILL.md",
+    ".claude/skills/cross-harness-handoff/SKILL.md",
+    ".claude/skills/design-taste-frontend-v1/SKILL.md",
+    ".claude/skills/design-taste-frontend/SKILL.md",
+    ".claude/skills/find-skills/SKILL.md",
+    ".claude/skills/full-output-enforcement/SKILL.md",
+    ".claude/skills/gpt-taste/SKILL.md",
+    ".claude/skills/high-end-visual-design/SKILL.md",
+    ".claude/skills/image-to-code/SKILL.md",
+    ".claude/skills/imagegen-frontend-mobile/SKILL.md",
+    ".claude/skills/imagegen-frontend-web/SKILL.md",
+    ".claude/skills/impeccable/SKILL.md",
+    ".claude/skills/industrial-brutalist-ui/SKILL.md",
+    ".claude/skills/minimalist-ui/SKILL.md",
+    ".claude/skills/no-ai-slop/SKILL.md",
+    ".claude/skills/redesign-existing-projects/SKILL.md",
+    ".claude/skills/stitch-design-taste/SKILL.md",
+    ".claude/skills/unified-memory/SKILL.md",
+    ".cline/skills/cross-harness-handoff/SKILL.md",
+    ".cline/skills/unified-memory/SKILL.md",
+    ".codex/skills/code-review/SKILL.md",
+    ".codex/skills/domain-modeling/SKILL.md",
+    ".codex/skills/doubt-driven-development/SKILL.md",
+    ".codex/skills/graphify/SKILL.md",
+    ".codex/skills/grill-with-docs/SKILL.md",
+    ".codex/skills/grilling/SKILL.md",
+    ".codex/skills/handoff/SKILL.md",
+    ".codex/skills/incremental-implementation/SKILL.md",
+    ".codex/skills/karpathy-guidelines/SKILL.md",
+    ".codex/skills/prototype/SKILL.md",
+    ".codex/skills/research/SKILL.md",
+    ".codex/skills/retro/SKILL.md",
+    ".codex/skills/setup-matt-pocock-skills/SKILL.md",
+    ".codex/skills/systematic-debugging/SKILL.md",
+    ".codex/skills/test-driven-development/SKILL.md",
+    ".codex/skills/ui-ux-pro-max/SKILL.md",
+    ".codex/skills/verification-before-completion/SKILL.md",
+    ".codex/skills/wayfinder/SKILL.md",
+    ".codex/skills/writing-for-agents/SKILL.md",
+    ".config/opencode/skills/code-review/SKILL.md",
+    ".config/opencode/skills/domain-modeling/SKILL.md",
+    ".config/opencode/skills/doubt-driven-development/SKILL.md",
+    ".config/opencode/skills/grill-with-docs/SKILL.md",
+    ".config/opencode/skills/grilling/SKILL.md",
+    ".config/opencode/skills/handoff/SKILL.md",
+    ".config/opencode/skills/incremental-implementation/SKILL.md",
+    ".config/opencode/skills/karpathy-guidelines/SKILL.md",
+    ".config/opencode/skills/prototype/SKILL.md",
+    ".config/opencode/skills/research/SKILL.md",
+    ".config/opencode/skills/retro/SKILL.md",
+    ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md",
+    ".config/opencode/skills/systematic-debugging/SKILL.md",
+    ".config/opencode/skills/test-driven-development/SKILL.md",
+    ".config/opencode/skills/verification-before-completion/SKILL.md",
+    ".config/opencode/skills/wayfinder/SKILL.md",
+    ".config/opencode/skills/writing-for-agents/SKILL.md",
+    ".gemini/config/skills/agent-browser/SKILL.md",
+    ".gemini/config/skills/animate/SKILL.md",
+    ".gemini/config/skills/brandkit/SKILL.md",
+    ".gemini/config/skills/code-review/SKILL.md",
+    ".gemini/config/skills/context7-mcp/SKILL.md",
+    ".gemini/config/skills/cross-harness-handoff/SKILL.md",
+    ".gemini/config/skills/design-taste-frontend-v1/SKILL.md",
+    ".gemini/config/skills/design-taste-frontend/SKILL.md",
+    ".gemini/config/skills/domain-modeling/SKILL.md",
+    ".gemini/config/skills/doubt-driven-development/SKILL.md",
+    ".gemini/config/skills/emil-design-eng/SKILL.md",
+    ".gemini/config/skills/find-docs/SKILL.md",
+    ".gemini/config/skills/find-skills/SKILL.md",
+    ".gemini/config/skills/full-output-enforcement/SKILL.md",
+    ".gemini/config/skills/gpt-taste/SKILL.md",
+    ".gemini/config/skills/grill-with-docs/SKILL.md",
+    ".gemini/config/skills/grilling/SKILL.md",
+    ".gemini/config/skills/handoff/SKILL.md",
+    ".gemini/config/skills/high-end-visual-design/SKILL.md",
+    ".gemini/config/skills/image-to-code/SKILL.md",
+    ".gemini/config/skills/imagegen-frontend-mobile/SKILL.md",
+    ".gemini/config/skills/imagegen-frontend-web/SKILL.md",
+    ".gemini/config/skills/impeccable/SKILL.md",
+    ".gemini/config/skills/incremental-implementation/SKILL.md",
+    ".gemini/config/skills/industrial-brutalist-ui/SKILL.md",
+    ".gemini/config/skills/karpathy-guidelines/SKILL.md",
+    ".gemini/config/skills/minimalist-ui/SKILL.md",
+    ".gemini/config/skills/no-ai-slop/SKILL.md",
+    ".gemini/config/skills/pick-ui-library/SKILL.md",
+    ".gemini/config/skills/prototype/SKILL.md",
+    ".gemini/config/skills/redesign-existing-projects/SKILL.md",
+    ".gemini/config/skills/research/SKILL.md",
+    ".gemini/config/skills/retro/SKILL.md",
+    ".gemini/config/skills/reverse-engineer-anything/SKILL.md",
+    ".gemini/config/skills/setup-matt-pocock-skills/SKILL.md",
+    ".gemini/config/skills/stitch-design-taste/SKILL.md",
+    ".gemini/config/skills/systematic-debugging/SKILL.md",
+    ".gemini/config/skills/test-driven-development/SKILL.md",
+    ".gemini/config/skills/ui-ux-pro-max/SKILL.md",
+    ".gemini/config/skills/unified-memory/SKILL.md",
+    ".gemini/config/skills/verification-before-completion/SKILL.md",
+    ".gemini/config/skills/wayfinder/SKILL.md",
+    ".gemini/config/skills/writing-for-agents/SKILL.md",
+    ".gemini/skills/impeccable/SKILL.md",
+    ".gemini/skills/no-ai-slop/SKILL.md",
+    ".local/share/ponytail/skills/ponytail-audit/SKILL.md",
+    ".local/share/ponytail/skills/ponytail-debt/SKILL.md",
+    ".local/share/ponytail/skills/ponytail-gain/SKILL.md",
+    ".local/share/ponytail/skills/ponytail-help/SKILL.md",
+    ".local/share/ponytail/skills/ponytail-review/SKILL.md",
+    ".local/share/ponytail/skills/ponytail/SKILL.md",
+    ".opencode/skills/impeccable/SKILL.md",
+    ".opencode/skills/ui-ux-pro-max/SKILL.md"
+  ],
   "observed_prerequisites": {
     "node": "v22.23.4",
     "python": "3.13.5",
@@ -12072,5 +14352,5 @@
   "optional_project_checkouts": {
     "ringkas": "$HOME/Projects/RINGKAS; project source/data are not included"
   },
-  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0"
+  "snapshot_id": "e5efb047b79993495e08550fb39f06d2a139e840aeb08170bae1e67f4850b288"
 }

@@ -9,12 +9,15 @@ import tempfile
 from common import command, isolated_env, link, render, sha, native_catalog, test_temp_root
 from restore import load_snapshot, plan_restore
 
-def verify(repo, home=None, native=False):
+def verify(repo, home=None, native=False, antigravity=False):
     manifest, data = load_snapshot(repo)
     report = {'ok': True, 'snapshot_id': manifest['snapshot_id'], 'files': len(data),
         'aliases': len(manifest['aliases']), 'expected_skills': manifest['expected_discovery_count'],
         'unique_blobs': len({r['blob'] for r in manifest['files']}), 'errors': []}
     if home is None:
+        if antigravity:
+            report['ok'] = False
+            report['errors'].append('Antigravity verification requires --home')
         return report
     home = home.resolve()
     _, changes, conflicts = plan_restore(repo, home)
@@ -48,6 +51,10 @@ def verify(repo, home=None, native=False):
     report['optional_external_or_package_doc_links'] = [b for b in broken if b not in report['broken_local_links']]
     # Existing platform/project-only links are listed; new corruption is a hash failure.
     report['ok'] = not report['errors'] and not report['broken_local_links']
+    if antigravity or manifest.get('antigravity'):
+        from antigravity import verify_antigravity
+        report['antigravity'] = verify_antigravity(manifest, home, data)
+        report['ok'] = report['ok'] and report['antigravity']['ok']
     if native:
         env = isolated_env(home)
         with tempfile.TemporaryDirectory(prefix='portable-native-verify-', dir=test_temp_root()) as temp:

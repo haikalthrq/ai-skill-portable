@@ -1,35 +1,37 @@
 {
-  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0",
-  "review_scope": "Current Codex/OpenCode portable state versus cacb8800cb2c12e059905de3f98c21258b74a30c",
-  "review_method": "Separate Standards and Spec subagent reviews, followed by verification of fixes",
+  "snapshot_id": "e5efb047b79993495e08550fb39f06d2a139e840aeb08170bae1e67f4850b288",
+  "review_scope": "First-class Antigravity support and current skill capture versus 11b2822",
+  "review_method": "Independent Standards and Spec subagent reviews, with fixes rechecked",
   "addressed_findings": [
-    "Resolve Windows Codex executable shim",
-    "Detect incomplete MCP runtime entry points and dependency imports, reinstall and recheck",
-    "Normalize restored Codex entry-point paths before comparison",
-    "Canonicalize file URLs for POSIX-to-Windows restore, retaining legacy placeholder support"
+    "Preflight checks all existing managed Antigravity children for links before any mutation",
+    "Frontmatter rejects non-string, duplicate, quoted/escaped required keys and unsupported mappings",
+    "Definition paths match physical Antigravity records and the manifest index"
   ],
   "remaining_actionable_findings": {
     "standards": 0,
     "spec": 0
   },
   "current_verification": {
-    "regression_tests": "35 passed",
-    "linux_restore_bootstrap_native_codex_mcp_recapture_rollback": true,
-    "opencode_skills": 51,
-    "codex_portable_skills": 51,
-    "codex_mcp_tools": {
+    "regression_tests": "45 passed",
+    "linux_restore_bootstrap_verify_recapture_rollback": true,
+    "active_core_skills": 43,
+    "antigravity_physical_skills": 43,
+    "opencode_names": 50,
+    "codex_portable_skills": 50,
+    "mcp_tool_counts": {
       "ecc-memory-vault": 4,
       "context7": 2,
       "playwright": 25
     },
-    "source_files_rehashed_unchanged": 1192,
-    "backup_idempotent": true
+    "source_files_rehashed_unchanged": 1197,
+    "capture_idempotent": true,
+    "manifest_blobs_in_sync": true,
+    "retired_skills_absent": true
   },
   "not_checked": [
-    "Fresh Windows execution (previous evidence marked historical)",
-    "Fresh model-driven routing (previous evidence marked historical)",
-    "Live Context7 API requests and browser launch in disposable-home integration",
-    "User-specific provider authentication and hook approval"
+    "Native Antigravity App/IDE scanner and model routing",
+    "Native Windows execution; prior Windows evidence remains historical",
+    "Fresh live documentation queries, browser launch and provider login"
   ],
-  "privacy": "Credentials, private project source, trust decisions, browser sessions and memory records excluded; Context7 secret replaced by local environment requirement"
+  "privacy": "API keys, credentials, trust decisions, browser sessions, private projects and memory excluded"
 }

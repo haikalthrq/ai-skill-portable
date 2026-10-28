@@ -1,6 +1,6 @@
 {
-  "snapshot_id": "eb53162cc37d07e80e7ce8869570d5afbbdd36d2c0359cc442a2fb84bd1cbfd0",
-  "created_utc": "2026-10-27T07:43:44.140352+00:00",
+  "snapshot_id": "e5efb047b79993495e08550fb39f06d2a139e840aeb08170bae1e67f4850b288",
+  "created_utc": "2026-10-28T13:22:20.849348+00:00",
   "codex": {
     "profile": "portable",
     "mcp_servers": [
@@ -8,11 +8,68 @@
       "context7",
       "playwright"
     ],
-    "expected_portable_skills": 51,
+    "expected_portable_skills": 50,
     "ponytail_skills": 6,
     "hooks_trust": "Review and trust locally in Codex /hooks; trust decisions are not backed up."
   },
-  "discoverable_skills": 51,
+  "antigravity": {
+    "root": ".gemini/config/skills",
+    "skills": [
+      "agent-browser",
+      "animate",
+      "brandkit",
+      "code-review",
+      "context7-mcp",
+      "cross-harness-handoff",
+      "design-taste-frontend",
+      "design-taste-frontend-v1",
+      "domain-modeling",
+      "doubt-driven-development",
+      "emil-design-eng",
+      "find-docs",
+      "find-skills",
+      "full-output-enforcement",
+      "gpt-taste",
+      "grill-with-docs",
+      "grilling",
+      "handoff",
+      "high-end-visual-design",
+      "image-to-code",
+      "imagegen-frontend-mobile",
+      "imagegen-frontend-web",
+      "impeccable",
+      "incremental-implementation",
+      "industrial-brutalist-ui",
+      "karpathy-guidelines",
+      "minimalist-ui",
+      "no-ai-slop",
+      "pick-ui-library",
+      "prototype",
+      "redesign-existing-projects",
+      "research",
+      "retro",
+      "reverse-engineer-anything",
+      "setup-matt-pocock-skills",
+      "stitch-design-taste",
+      "systematic-debugging",
+      "test-driven-development",
+      "ui-ux-pro-max",
+      "unified-memory",
+      "verification-before-completion",
+      "wayfinder",
+      "writing-for-agents"
+    ],
+    "expected_skills": 43,
+    "deployment": "physical-files",
+    "native_routing_tested": false
+  },
+  "supported_targets": [
+    "codex",
+    "opencode",
+    "antigravity"
+  ],
+  "active_core_skills": 43,
+  "discoverable_skills": 50,
   "builtin_skills": [
     "customize-opencode"
   ],
@@ -22,14 +79,16 @@
       "description": "On-demand functional browser/UI testing, forms, screenshots and console/network investigation. Use when no equivalent native browser works or explicitly requested; native Antigravity/Codex tools take precedence.",
       "definition_paths": [
         ".agents/skills/agent-browser/SKILL.md",
-        ".claude/skills/agent-browser/SKILL.md"
+        ".claude/skills/agent-browser/SKILL.md",
+        ".gemini/config/skills/agent-browser/SKILL.md"
       ]
     },
     {
       "name": "animate",
       "description": "Emil animation implementation specialist. Automatically use to build new purposeful animations, motion or transitions with appropriate tools, properties, easing, duration, interruption, exit and reduced-motion behavior. Existing easing or interaction refinement uses emil-design-eng.",
       "definition_paths": [
-        ".agents/skills/animate/SKILL.md"
+        ".agents/skills/animate/SKILL.md",
+        ".gemini/config/skills/animate/SKILL.md"
       ]
     },
     {
@@ -37,15 +96,8 @@
       "description": "Generate brand identity/logo systems and guideline boards. Use for requested branding/identity visual assets, not general UI coding or website reconstruction.",
       "definition_paths": [
         ".agents/skills/brandkit/SKILL.md",
-        ".claude/skills/brandkit/SKILL.md"
-      ]
-    },
-    {
-      "name": "caveman",
-      "description": "Ultra-terse caveman communication mode. Use only when the user explicitly requests caveman/very terse replies, not merely technical context optimization.",
-      "definition_paths": [
-        ".agents/skills/caveman/SKILL.md",
-        ".claude/skills/caveman/SKILL.md"
+        ".claude/skills/brandkit/SKILL.md",
+        ".gemini/config/skills/brandkit/SKILL.md"
       ]
     },
     {
@@ -53,14 +105,16 @@
       "description": "Use for requested reviews, pre-merge/PR, or completion of significant implementation. Review against repository standards and the originating spec in separate subagents. Not after every tiny modification.",
       "definition_paths": [
         ".codex/skills/code-review/SKILL.md",
-        ".config/opencode/skills/code-review/SKILL.md"
+        ".config/opencode/skills/code-review/SKILL.md",
+        ".gemini/config/skills/code-review/SKILL.md"
       ]
     },
     {
       "name": "context7-mcp",
       "description": "Optional Context7 MCP reference for external library/API docs. Use when requested; normal documentation-dependent work calls the existing MCP directly.",
       "definition_paths": [
-        ".agents/skills/context7-mcp/SKILL.md"
+        ".agents/skills/context7-mcp/SKILL.md",
+        ".gemini/config/skills/context7-mcp/SKILL.md"
       ]
     },
     {
@@ -83,7 +137,8 @@
       "description": "Alternative frontend design owner for clearly experimental, distinctive art direction, creative portfolios, cinematic or expressive marketing sites, and unconventional composition or typography. Select automatically from that intent; ordinary UI and neutral landing pages use Impeccable.",
       "definition_paths": [
         ".agents/skills/design-taste-frontend/SKILL.md",
-        ".claude/skills/design-taste-frontend/SKILL.md"
+        ".claude/skills/design-taste-frontend/SKILL.md",
+        ".gemini/config/skills/design-taste-frontend/SKILL.md"
       ]
     },
     {
@@ -91,7 +146,8 @@
       "description": "Legacy v1 taste workflow. Use only when explicitly requested or a project requires its exact prior behavior; not the ordinary frontend default.",
       "definition_paths": [
         ".agents/skills/design-taste-frontend-v1/SKILL.md",
-        ".claude/skills/design-taste-frontend-v1/SKILL.md"
+        ".claude/skills/design-taste-frontend-v1/SKILL.md",
+        ".gemini/config/skills/design-taste-frontend-v1/SKILL.md"
       ]
     },
     {
@@ -99,7 +155,8 @@
       "description": "Supporting domain-model discipline for grill-with-docs or wayfinder. Use when called by those workflows or explicitly requested to sharpen terminology, edit a glossary, or record a meaningful ADR.",
       "definition_paths": [
         ".codex/skills/domain-modeling/SKILL.md",
-        ".config/opencode/skills/domain-modeling/SKILL.md"
+        ".config/opencode/skills/domain-modeling/SKILL.md",
+        ".gemini/config/skills/domain-modeling/SKILL.md"
       ]
     },
     {
@@ -107,21 +164,24 @@
       "description": "Use ONLY for non-trivial high-risk or uncertain decisions involving auth/security, payments, destructive migrations/data loss, concurrency/correctness, difficult architecture, or unfamiliar high-impact code. Bounded fresh-context adversarial review. Ask the user before each cross-model escalation.",
       "definition_paths": [
         ".codex/skills/doubt-driven-development/SKILL.md",
-        ".config/opencode/skills/doubt-driven-development/SKILL.md"
+        ".config/opencode/skills/doubt-driven-development/SKILL.md",
+        ".gemini/config/skills/doubt-driven-development/SKILL.md"
       ]
     },
     {
       "name": "emil-design-eng",
       "description": "Emil Kowalski's motion and interaction-quality specialist. Automatically use to improve existing modal easing, transitions, micro-interactions, animation decisions or interaction polish. Supports the frontend owner; new animation construction uses animate.",
       "definition_paths": [
-        ".agents/skills/emil-design-eng/SKILL.md"
+        ".agents/skills/emil-design-eng/SKILL.md",
+        ".gemini/config/skills/emil-design-eng/SKILL.md"
       ]
     },
     {
       "name": "find-docs",
       "description": "Optional external-library documentation helper. Prefer the existing Context7 MCP directly; use this helper when explicitly requested, without reinstalling its CLI.",
       "definition_paths": [
-        ".agents/skills/find-docs/SKILL.md"
+        ".agents/skills/find-docs/SKILL.md",
+        ".gemini/config/skills/find-docs/SKILL.md"
       ]
     },
     {
@@ -129,7 +189,8 @@
       "description": "Find/install agent skills when the user asks to extend capabilities. Not a routine prerequisite for coding, verification or optimizing already installed skills.",
       "definition_paths": [
         ".agents/skills/find-skills/SKILL.md",
-        ".claude/skills/find-skills/SKILL.md"
+        ".claude/skills/find-skills/SKILL.md",
+        ".gemini/config/skills/find-skills/SKILL.md"
       ]
     },
     {
@@ -137,7 +198,8 @@
       "description": "Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.",
       "definition_paths": [
         ".agents/skills/full-output-enforcement/SKILL.md",
-        ".claude/skills/full-output-enforcement/SKILL.md"
+        ".claude/skills/full-output-enforcement/SKILL.md",
+        ".gemini/config/skills/full-output-enforcement/SKILL.md"
       ]
     },
     {
@@ -145,7 +207,8 @@
       "description": "Cinematic GSAP/AIDA scrolltelling and gapless bento design. Use for an explicit motion-heavy/Awwwards request or this named style, not ordinary product UI.",
       "definition_paths": [
         ".agents/skills/gpt-taste/SKILL.md",
-        ".claude/skills/gpt-taste/SKILL.md"
+        ".claude/skills/gpt-taste/SKILL.md",
+        ".gemini/config/skills/gpt-taste/SKILL.md"
       ]
     },
     {
@@ -153,7 +216,8 @@
       "description": "Use for explicitly requested interviews or substantial ambiguous work with unresolved requirements, terminology, or design decisions worth preserving in ADRs or a glossary. Simple fixes do not need grilling.",
       "definition_paths": [
         ".codex/skills/grill-with-docs/SKILL.md",
-        ".config/opencode/skills/grill-with-docs/SKILL.md"
+        ".config/opencode/skills/grill-with-docs/SKILL.md",
+        ".gemini/config/skills/grill-with-docs/SKILL.md"
       ]
     },
     {
@@ -161,7 +225,8 @@
       "description": "Supporting interview primitive. Use when called by grill-with-docs or wayfinder, or explicitly requested to stress-test a plan or decision. Investigate discoverable facts yourself; interview for unresolved human decisions.",
       "definition_paths": [
         ".codex/skills/grilling/SKILL.md",
-        ".config/opencode/skills/grilling/SKILL.md"
+        ".config/opencode/skills/grilling/SKILL.md",
+        ".gemini/config/skills/grilling/SKILL.md"
       ]
     },
     {
@@ -169,7 +234,8 @@
       "description": "Use when moving to a fresh session, switching models, context has become long/noisy, or another agent must continue. Preserve decisions, status, changed files, verification, unresolved issues, and artifact pointers.",
       "definition_paths": [
         ".codex/skills/handoff/SKILL.md",
-        ".config/opencode/skills/handoff/SKILL.md"
+        ".config/opencode/skills/handoff/SKILL.md",
+        ".gemini/config/skills/handoff/SKILL.md"
       ]
     },
     {
@@ -177,7 +243,8 @@
       "description": "Agency-style glass, double-bezel components and fluid motion. Use only for that explicitly requested visual language; not a default aesthetic for all frontends.",
       "definition_paths": [
         ".agents/skills/high-end-visual-design/SKILL.md",
-        ".claude/skills/high-end-visual-design/SKILL.md"
+        ".claude/skills/high-end-visual-design/SKILL.md",
+        ".gemini/config/skills/high-end-visual-design/SKILL.md"
       ]
     },
     {
@@ -185,7 +252,8 @@
       "description": "Image-generation-first website implementation: generate references, analyze them, then build faithful code. Use for that explicit art-first workflow; supplied screenshot reconstruction belongs to the primary frontend workflow.",
       "definition_paths": [
         ".agents/skills/image-to-code/SKILL.md",
-        ".claude/skills/image-to-code/SKILL.md"
+        ".claude/skills/image-to-code/SKILL.md",
+        ".gemini/config/skills/image-to-code/SKILL.md"
       ]
     },
     {
@@ -193,7 +261,8 @@
       "description": "Generate iOS/Android app-screen and flow concept images with coherent device framing. Images only; use for mobile visual concepts, not websites, responsive web coding or native app implementation.",
       "definition_paths": [
         ".agents/skills/imagegen-frontend-mobile/SKILL.md",
-        ".claude/skills/imagegen-frontend-mobile/SKILL.md"
+        ".claude/skills/imagegen-frontend-mobile/SKILL.md",
+        ".gemini/config/skills/imagegen-frontend-mobile/SKILL.md"
       ]
     },
     {
@@ -201,7 +270,8 @@
       "description": "Generate website design-reference images, one horizontal image per section. Use for requested web comps/visual references, not ordinary UI coding or faithful reconstruction of an existing screenshot.",
       "definition_paths": [
         ".agents/skills/imagegen-frontend-web/SKILL.md",
-        ".claude/skills/imagegen-frontend-web/SKILL.md"
+        ".claude/skills/imagegen-frontend-web/SKILL.md",
+        ".gemini/config/skills/imagegen-frontend-web/SKILL.md"
       ]
     },
     {
@@ -220,7 +290,8 @@
       "description": "Use for substantial or multi-file implementation in small reviewable slices: implement, verify, then continue. Avoid giant speculative changes. Trivial one-line changes need no artificial slicing or extra process.",
       "definition_paths": [
         ".codex/skills/incremental-implementation/SKILL.md",
-        ".config/opencode/skills/incremental-implementation/SKILL.md"
+        ".config/opencode/skills/incremental-implementation/SKILL.md",
+        ".gemini/config/skills/incremental-implementation/SKILL.md"
       ]
     },
     {
@@ -228,7 +299,8 @@
       "description": "Swiss industrial/blueprint or tactical CRT interface styling. Use for an explicitly requested brutalist/telemetry aesthetic, not all dashboards.",
       "definition_paths": [
         ".agents/skills/industrial-brutalist-ui/SKILL.md",
-        ".claude/skills/industrial-brutalist-ui/SKILL.md"
+        ".claude/skills/industrial-brutalist-ui/SKILL.md",
+        ".gemini/config/skills/industrial-brutalist-ui/SKILL.md"
       ]
     },
     {
@@ -236,7 +308,8 @@
       "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.",
       "definition_paths": [
         ".codex/skills/karpathy-guidelines/SKILL.md",
-        ".config/opencode/skills/karpathy-guidelines/SKILL.md"
+        ".config/opencode/skills/karpathy-guidelines/SKILL.md",
+        ".gemini/config/skills/karpathy-guidelines/SKILL.md"
       ]
     },
     {
@@ -244,7 +317,8 @@
       "description": "Warm editorial, monochrome/pastel and flat UI styling. Use for that explicitly requested aesthetic or this named skill, not every minimalist product task.",
       "definition_paths": [
         ".agents/skills/minimalist-ui/SKILL.md",
-        ".claude/skills/minimalist-ui/SKILL.md"
+        ".claude/skills/minimalist-ui/SKILL.md",
+        ".gemini/config/skills/minimalist-ui/SKILL.md"
       ]
     },
     {
@@ -258,18 +332,11 @@
       ]
     },
     {
-      "name": "officecli",
-      "description": "Create, analyze, proofread, and modify Office documents (.docx, .xlsx, .pptx) using the officecli CLI tool. Use when the user wants to create, inspect, check formatting, find issues, add charts, or modify Office documents.",
-      "definition_paths": [
-        ".agents/skills/officecli/SKILL.md",
-        ".claude/skills/officecli/SKILL.md"
-      ]
-    },
-    {
       "name": "pick-ui-library",
       "description": "Pick the right library for a given frontend task from a curated, opinionated list — numbers, OTP inputs, charts, command menus, virtualization, drag and drop, toasts, state, styling, and more. Only runs when explicitly invoked; it does not trigger on its own.",
       "definition_paths": [
-        ".agents/skills/pick-ui-library/SKILL.md"
+        ".agents/skills/pick-ui-library/SKILL.md",
+        ".gemini/config/skills/pick-ui-library/SKILL.md"
       ]
     },
     {
@@ -319,7 +386,8 @@
       "description": "Supporting prototype workflow for wayfinder tickets, or explicitly requested throwaway logic/state or UI exploration. Answer a specific design question with a cheap runnable artifact.",
       "definition_paths": [
         ".codex/skills/prototype/SKILL.md",
-        ".config/opencode/skills/prototype/SKILL.md"
+        ".config/opencode/skills/prototype/SKILL.md",
+        ".gemini/config/skills/prototype/SKILL.md"
       ]
     },
     {
@@ -327,7 +395,8 @@
       "description": "Audit and visually redesign an existing website/app while preserving stack, brand and functionality. Use for a requested redesign, not a small routine component change.",
       "definition_paths": [
         ".agents/skills/redesign-existing-projects/SKILL.md",
-        ".claude/skills/redesign-existing-projects/SKILL.md"
+        ".claude/skills/redesign-existing-projects/SKILL.md",
+        ".gemini/config/skills/redesign-existing-projects/SKILL.md"
       ]
     },
     {
@@ -335,7 +404,8 @@
       "description": "Supporting research workflow for wayfinder research tickets, or explicitly requested delegated primary-source research. Capture cited findings using the repository's existing note conventions.",
       "definition_paths": [
         ".codex/skills/research/SKILL.md",
-        ".config/opencode/skills/research/SKILL.md"
+        ".config/opencode/skills/research/SKILL.md",
+        ".gemini/config/skills/research/SKILL.md"
       ]
     },
     {
@@ -343,7 +413,16 @@
       "description": "Use for requested retrospectives or unusually difficult/inefficient sessions. Suggest improvements to rules, navigation, checks, tooling, and MCP access; present findings before making environment changes.",
       "definition_paths": [
         ".codex/skills/retro/SKILL.md",
-        ".config/opencode/skills/retro/SKILL.md"
+        ".config/opencode/skills/retro/SKILL.md",
+        ".gemini/config/skills/retro/SKILL.md"
+      ]
+    },
+    {
+      "name": "reverse-engineer-anything",
+      "description": "Reverse engineer native, managed, Electron/JavaScript, packaged, firmware, and browser targets with REA, and build agent environments (AgentEnv bundles) of web applications from a live instance or a capture. Use shipped-artifact or requested runtime evidence to explain features, compare versions, decompile code, or guide a reconstruction. Skip REA for ordinary source-repository architecture analysis.",
+      "definition_paths": [
+        ".agents/skills/reverse-engineer-anything/SKILL.md",
+        ".gemini/config/skills/reverse-engineer-anything/SKILL.md"
       ]
     },
     {
@@ -351,7 +430,8 @@
       "description": "Use ONLY when explicitly requested, or when code-review/wayfinder needs missing per-repo tracker/doc configuration. Inspect existing conventions, propose setup, and confirm before editing. Not a global bootstrap.",
       "definition_paths": [
         ".codex/skills/setup-matt-pocock-skills/SKILL.md",
-        ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md"
+        ".config/opencode/skills/setup-matt-pocock-skills/SKILL.md",
+        ".gemini/config/skills/setup-matt-pocock-skills/SKILL.md"
       ]
     },
     {
@@ -359,7 +439,8 @@
       "description": "Create semantic DESIGN.md guidance for Google Stitch handoff. Use for a Stitch/design-system export request, not ordinary frontend implementation.",
       "definition_paths": [
         ".agents/skills/stitch-design-taste/SKILL.md",
-        ".claude/skills/stitch-design-taste/SKILL.md"
+        ".claude/skills/stitch-design-taste/SKILL.md",
+        ".gemini/config/skills/stitch-design-taste/SKILL.md"
       ]
     },
     {
@@ -367,7 +448,8 @@
       "description": "Use for non-trivial bugs, unexplained failures, regressions, flaky behavior, or unclear root causes. Reproduce and investigate systematically before proposing fixes.",
       "definition_paths": [
         ".codex/skills/systematic-debugging/SKILL.md",
-        ".config/opencode/skills/systematic-debugging/SKILL.md"
+        ".config/opencode/skills/systematic-debugging/SKILL.md",
+        ".gemini/config/skills/systematic-debugging/SKILL.md"
       ]
     },
     {
@@ -375,7 +457,8 @@
       "description": "Use ONLY when systematic-debugging calls for a failing regression test, or when the user explicitly requests test-driven development. On-demand dependency; not an automatic workflow for every feature or edit.",
       "definition_paths": [
         ".codex/skills/test-driven-development/SKILL.md",
-        ".config/opencode/skills/test-driven-development/SKILL.md"
+        ".config/opencode/skills/test-driven-development/SKILL.md",
+        ".gemini/config/skills/test-driven-development/SKILL.md"
       ]
     },
     {
@@ -383,6 +466,7 @@
       "description": "Supporting design intelligence for design-system exploration, style comparison, typography and palette research, industry-specific UI patterns, and a new project's visual direction. Automatically use when research materially helps; assist Impeccable or Taste without becoming another primary design owner.",
       "definition_paths": [
         ".codex/skills/ui-ux-pro-max/SKILL.md",
+        ".gemini/config/skills/ui-ux-pro-max/SKILL.md",
         ".opencode/skills/ui-ux-pro-max/SKILL.md"
       ]
     },
@@ -401,7 +485,8 @@
       "description": "Use before claiming a coding task fixed, complete, or passing. Run appropriate current tests, build, runtime, lint, typecheck, or configuration checks; inspect results and state exactly what they prove.",
       "definition_paths": [
         ".codex/skills/verification-before-completion/SKILL.md",
-        ".config/opencode/skills/verification-before-completion/SKILL.md"
+        ".config/opencode/skills/verification-before-completion/SKILL.md",
+        ".gemini/config/skills/verification-before-completion/SKILL.md"
       ]
     },
     {
@@ -409,7 +494,8 @@
       "description": "Use ONLY for explicitly requested decision maps for large multi-session projects with unclear major architectural/product decisions. Resolve decisions before implementation. Not for ordinary features or bug fixes.",
       "definition_paths": [
         ".codex/skills/wayfinder/SKILL.md",
-        ".config/opencode/skills/wayfinder/SKILL.md"
+        ".config/opencode/skills/wayfinder/SKILL.md",
+        ".gemini/config/skills/wayfinder/SKILL.md"
       ]
     },
     {
@@ -417,17 +503,19 @@
       "description": "Supporting writing reference called by retro. Use when that workflow calls it, or when explicitly requested for agent-facing skills, rules, or documentation. Keep routine work free of extra workflow stages.",
       "definition_paths": [
         ".codex/skills/writing-for-agents/SKILL.md",
-        ".config/opencode/skills/writing-for-agents/SKILL.md"
+        ".config/opencode/skills/writing-for-agents/SKILL.md",
+        ".gemini/config/skills/writing-for-agents/SKILL.md"
       ]
     }
   ],
-  "definition_paths": 99,
-  "directory_aliases": 41,
-  "logical_files": 1192,
-  "unique_content_blobs": 904,
-  "logical_bytes": 15321652,
-  "stored_blob_bytes": 9673742,
+  "definition_paths": 135,
+  "directory_aliases": 38,
+  "logical_files": 1362,
+  "unique_content_blobs": 910,
+  "logical_bytes": 19812114,
+  "stored_blob_bytes": 9797743,
   "portability_transform_counts": {
+    "retired-skills-removed": 1,
     "codex-portable-profile": 1,
     "portable-mcp-command": 2,
     "sanitized-config": 3,
@@ -435,6 +523,7 @@
     "explicit-global-discovery": 1,
     "home-rebase": 4,
     "merged-native-plugins": 1,
+    "antigravity-physical-copy": 165,
     "portable-plugin-paths": 1
   },
   "dependencies": {
@@ -461,8 +550,7 @@
     "node": ">=22",
     "optional_tools": {
       "dcg": "0.6.7",
-      "graphify": "0.9.5",
-      "officecli": "source installation currently has a missing .NET assembly"
+      "graphify": "0.9.5"
     }
   },
   "observed_prerequisites": {
@@ -486,11 +574,6 @@
     {
       "path": ".claude/skills/brandkit",
       "target": ".agents/skills/brandkit",
-      "source_kind": "symlink"
-    },
-    {
-      "path": ".claude/skills/caveman",
-      "target": ".agents/skills/caveman",
       "source_kind": "symlink"
     },
     {
@@ -671,16 +754,6 @@
     {
       "path": ".codex/skills/writing-for-agents",
       "target": ".config/opencode/skills/writing-for-agents",
-      "source_kind": "symlink"
-    },
-    {
-      "path": ".gemini/config/skills/cross-harness-handoff",
-      "target": ".agents/skills/cross-harness-handoff",
-      "source_kind": "symlink"
-    },
-    {
-      "path": ".gemini/config/skills/unified-memory",
-      "target": ".agents/skills/unified-memory",
       "source_kind": "symlink"
     }
   ]

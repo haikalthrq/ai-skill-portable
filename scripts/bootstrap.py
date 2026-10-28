@@ -41,7 +41,7 @@ def install_plugin_dependencies(home):
             command(['npm', 'ci', '--prefix', str(target), '--ignore-scripts', '--no-audit', '--no-fund'],
                     env=env, timeout=300)
 
-def bootstrap(repo, home, apply=False):
+def bootstrap(repo, home, apply=False, antigravity=False):
     manifest, _ = load_snapshot(repo)
     versions = manifest['dependencies']['installed_tools']
     if link(home):
@@ -60,6 +60,11 @@ def bootstrap(repo, home, apply=False):
     report = {'ok': True, 'apply': apply, 'packages': packages,
         'prefix': '$HOME/.local/share/opencode-portable/tools',
         'skills_installed_or_updated': 0, 'required_commands': ['node', 'npm', 'git', 'python']}
+    if antigravity and not manifest.get('antigravity'):
+        raise ValueError('Snapshot has no Antigravity target; recapture it before installation')
+    if manifest.get('antigravity'):
+        report['antigravity'] = {'deployment': 'physical-files restored by the snapshot journal',
+            'expected_skills': manifest['antigravity']['expected_skills']}
     if not apply:
         return report
     from verify import verify
@@ -132,9 +137,10 @@ if __name__ == '__main__':
     parser.add_argument('--repo', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--home', type=Path, default=Path.home())
     parser.add_argument('--apply', action='store_true')
+    parser.add_argument('--antigravity', action='store_true', help='Require physical Antigravity skills in the restored target')
     args = parser.parse_args()
     try:
-        print(json.dumps(bootstrap(args.repo, args.home, args.apply), indent=2))
+        print(json.dumps(bootstrap(args.repo, args.home, args.apply, args.antigravity), indent=2))
     except Exception as error:
         print(json.dumps({'ok': False, 'error': str(error)}))
         sys.exit(1)

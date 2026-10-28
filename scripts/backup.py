@@ -12,6 +12,7 @@ from common import (SKILL_ROOTS, TREE_ROOTS, SAFE_FILES, SKIP_DIRS, TOKEN, block
                     dump, link, logical, portable_bytes, sanitized_config, sha, strip_jsonc, session_storage, structured_credentials, structured_asset,
                     isolated_env)
 from secret_scan import scan_bytes
+from antigravity import DEPRECATED, materialize_snapshot
 
 RUNTIME = '.local/share/opencode-portable/ecc-runtime'
 
@@ -184,6 +185,8 @@ def capture(home, repo):
         if link(source_root):
             raise ValueError('Redirected skill root requires an explicit mapping: ' + root)
         for directory in sorted(source_root.iterdir()):
+            if directory.name in DEPRECATED:
+                continue
             if (directory / 'SKILL.md').is_file():
                 resolved = directory.resolve(strict=True)
                 canonical = resolved.relative_to(home).as_posix()
@@ -208,7 +211,12 @@ def capture(home, repo):
         source = home / relative
         if not source.is_file() or relative in configs or relative in {'.config/cross-harness-memory/runtime.json', '.codex/portable.config.toml'}:
             continue
-        add(source, relative)
+        if relative == '.agents/.skill-lock.json':
+            metadata = json.loads(source.read_text())
+            metadata['skills'] = {k: v for k, v in metadata['skills'].items() if k not in DEPRECATED}
+            add(source, relative, (json.dumps(metadata, indent=2) + '\n').encode(), ['retired-skills-removed'])
+        else:
+            add(source, relative)
     add(codex_source, '.codex/portable.config.toml', profile,
         ['sanitized-config', 'codex-portable-profile', 'portable-mcp-command'])
     # The preserved upstream copy links to this companion relative to references/.
@@ -283,7 +291,8 @@ def capture(home, repo):
     add(global_source, '.config/opencode/opencode.jsonc', (json.dumps(merged, indent=2) + '\n').encode(),
         ['sanitized-config', 'portable-mcp-command', 'explicit-global-discovery', 'merged-native-plugins'])
 
-    native = native_catalog(cwd=home, env=isolated_env(home))
+    antigravity = materialize_snapshot(files, blobs, definitions, aliases)
+    native = [skill for skill in native_catalog(cwd=home, env=isolated_env(home)) if skill['name'] not in DEPRECATED]
     inventory = [{'name': item['name'], 'description': item['description'],
         'builtin': item['location'] == '<built-in>',
         'definition_candidates': sorted(d['path'] for d in definitions if d['name'] == item['name'])}
@@ -309,7 +318,7 @@ def capture(home, repo):
             'codex_mcp': json.loads((home / '.local/share/codex-mcp/package.json').read_text())['dependencies'],
             'ponytail': json.loads((home / '.local/share/ponytail/package.json').read_text())['version'],
             'plugin_api': '1.17.11', 'python': '>=3.11', 'node': '>=22',
-            'optional_tools': {'dcg': '0.6.7', 'graphify': '0.9.5', 'officecli': 'source installation currently has a missing .NET assembly'}},
+            'optional_tools': {'dcg': '0.6.7', 'graphify': '0.9.5'}},
         'portability_adaptations': ['home prefixes rebased at restore', 'ECC memory code/dependencies vendored without full pack registration',
             'MCP credentials replaced by environment references', 'native plugin paths resolved',
             'Linux DCG PATH delimiter corrected only in restored copy'],
@@ -317,6 +326,13 @@ def capture(home, repo):
     manifest['codex'] = {'profile': 'portable', 'mcp_servers': ['ecc-memory-vault', 'context7', 'playwright'],
         'expected_portable_skills': len({d['name'] for d in definitions if d['path'].startswith(('.agents/skills/', '.codex/skills/', '.local/share/ponytail/skills/'))}),
         'ponytail_skills': 6, 'hooks_trust': 'Review and trust locally in Codex /hooks; trust decisions are not backed up.'}
+    manifest['antigravity'] = antigravity
+    manifest['active_core_skills'] = antigravity['expected_skills']
+    manifest['definition_paths'] = sorted(d['path'] for d in definitions)
+    referenced_blobs = {record['blob'] for record in files.values()}
+    for path in blobs.iterdir():
+        if path.name not in referenced_blobs:
+            path.unlink()
     manifest['observed_prerequisites'] = {'node': command(['node', '--version']).stdout.strip(),
         'python': __import__('platform').python_version(), 'git': command(['git', '--version']).stdout.strip()}
     manifest['optional_project_checkouts'] = {'ringkas': '$HOME/Projects/RINGKAS; project source/data are not included'}
