@@ -55,7 +55,7 @@ def bootstrap(repo, home, apply=False, antigravity=False):
         current = current.parent
     packages = [f'{name}@{version}' for name, version in sorted(versions.items())]
     import re
-    if set(versions) - {'opencode-ai', 'ecc-universal', 'agent-browser', 'ui-ux-pro-max-cli'} or any(not re.fullmatch(r'\d+\.\d+\.\d+(?:-[a-zA-Z0-9.]+)?', v) for v in versions.values()):
+    if set(versions) - {'opencode-ai', 'ecc-universal', 'agent-browser', 'agent-desktop', 'ui-ux-pro-max-cli'} or any(not re.fullmatch(r'\d+\.\d+\.\d+(?:-[a-zA-Z0-9.]+)?', v) for v in versions.values()):
         raise ValueError('Unexpected runtime package or version')
     report = {'ok': True, 'apply': apply, 'packages': packages,
         'prefix': '$HOME/.local/share/opencode-portable/tools',
@@ -92,6 +92,13 @@ def bootstrap(repo, home, apply=False, antigravity=False):
     binary_path = installed / 'opencode-ai' / package['bin']['opencode']
     if not up_to_date or not binary_path.is_file():
         command(['npm', 'rebuild', '--prefix', str(prefix), 'opencode-ai'], env=env, timeout=180)
+    if 'agent-desktop' in versions:
+        desktop_cli = installed / '.bin' / ('agent-desktop.cmd' if os.name == 'nt' else 'agent-desktop')
+        if not up_to_date or not desktop_cli.is_file():
+            command(['npm', 'rebuild', '--prefix', str(prefix), 'agent-desktop'], env=env, timeout=180)
+        desktop = json.loads(command([str(desktop_cli), 'version'], env=env, timeout=30).stdout)
+        if not desktop.get('ok') or desktop['data']['version'] != versions['agent-desktop']:
+            raise ValueError('Agent Desktop did not initialize at the pinned version')
     install_plugin_dependencies(home)
     mcp_prefix = private_path(home, home / '.local/share/codex-mcp')
     expected_mcp = manifest['dependencies'].get('codex_mcp', {})

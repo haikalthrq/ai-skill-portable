@@ -20,7 +20,7 @@ This repository preserves the installed skill environment for Codex, OpenCode an
 
 1. Read the installed files. Preserve their descriptions, bodies, references, scripts, datasets, licenses, local adapters and custom plugins. Never replace them with current upstream downloads merely because upstream exists.
 2. Keep physical variants distinct. Deduplicate identical file content only; reconstruct original directory destinations and explicit aliases from the manifest.
-3. Keep 43 unique active core skills, including the installed reverse-engineering skill. Exclude retired `caveman` and `officecli` definitions, content and installation metadata. Codex has 50 portable skills (core, Graphify, six Ponytail skills); OpenCode has 50 names (core, Ponytail, one built-in). Antigravity receives the 43 core skills. Preserve provider variants and keep those count categories separate.
+3. Keep 44 unique active core skills, including the installed reverse-engineering skill. Exclude retired `caveman` and `officecli` definitions, content and installation metadata. Codex has 51 portable skills (core, Graphify, six Ponytail skills); OpenCode has 51 names (core, Ponytail, one built-in). Antigravity receives the 44 core skills. Preserve provider variants and keep those count categories separate.
 4. Keep Context7/ECC integration instructions and host-identity/repository-binding behavior. Exclude all authentication, browser/session data, memory vault records and unrelated home/project content.
 5. Never change the original skill installation during backup/testing. Integration tests rehash captured source files to detect mutation. Removing a skill from this backup does not delete its live installation or user data.
 
@@ -64,11 +64,11 @@ Gitleaks scans the publishable repository including content blobs before staging
 
 - Payload/content-address identity and original-file preservation.
 - Complete Windows and Linux disposable restore, real junction/symlink aliases, repeated previews/apply/bootstrap, complete rollback.
-- Fresh OpenCode discovery of 50 names; descriptions and loaded bodies match the restored snapshot; paths remain in the sandbox.
-- If Codex is available: its portable CLI profile, 50 portable skills and tools from ECC/Context7/Playwright are discovered without credentials, model calls or hook approval. app-server does not accept --profile, so verification checks CLI profile loading separately and uses its exact MCP values as app-server overrides.
-- All 43 Antigravity core directories are physical, complete and valid after restore. Tests reject missing frontmatter, modified references, linked roots/children, broken links and alias-bearing manifests. Restore, repeated apply, recapture and rollback retain this contract.
+- Fresh OpenCode discovery of 51 names; descriptions and loaded bodies match the restored snapshot; paths remain in the sandbox.
+- If Codex is available: its portable CLI profile, 51 portable skills and tools from ECC/Context7/Playwright are discovered without credentials, model calls or hook approval. app-server does not accept --profile, so verification checks CLI profile loading separately and uses its exact MCP values as app-server overrides.
+- All 44 Antigravity core directories are physical, complete and valid after restore. Tests reject missing frontmatter, modified references, linked roots/children, broken links and alias-bearing manifests. Restore, repeated apply, recapture and rollback retain this contract.
 - Real UI UX Pro Max data search and ECC memory save/read/doctor, custom MCP initialization/tools and handoff helper.
-- Fresh model-driven frontend/debugging/handoff/backend routing tests with no skill names in those prompts.
+- Fresh model-driven frontend, debugging, handoff, desktop and backend routing tests with no skill names in those prompts.
 - Adversarial tests for corruption, traversal, duplicate/prefix conflicts, redirected parents/state, credentials and preservation of newer work.
 - Independent redacted secret scan before staging and again before pushing; inspect Git status, diff and recent history, then commit only intended files.
 

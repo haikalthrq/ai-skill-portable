@@ -1,6 +1,6 @@
 {
-  "snapshot_id": "e5efb047b79993495e08550fb39f06d2a139e840aeb08170bae1e67f4850b288",
-  "created_utc": "2026-10-28T13:22:20.849348+00:00",
+  "snapshot_id": "26d61c3eaa13f4bbff8f584bc4b7e77d2ac87413cfa70702e380e413af3de293",
+  "created_utc": "2026-11-04T08:01:32.428743+00:00",
   "codex": {
     "profile": "portable",
     "mcp_servers": [
@@ -8,7 +8,7 @@
       "context7",
       "playwright"
     ],
-    "expected_portable_skills": 50,
+    "expected_portable_skills": 51,
     "ponytail_skills": 6,
     "hooks_trust": "Review and trust locally in Codex /hooks; trust decisions are not backed up."
   },
@@ -16,6 +16,7 @@
     "root": ".gemini/config/skills",
     "skills": [
       "agent-browser",
+      "agent-desktop",
       "animate",
       "brandkit",
       "code-review",
@@ -59,7 +60,7 @@
       "wayfinder",
       "writing-for-agents"
     ],
-    "expected_skills": 43,
+    "expected_skills": 44,
     "deployment": "physical-files",
     "native_routing_tested": false
   },
@@ -68,8 +69,8 @@
     "opencode",
     "antigravity"
   ],
-  "active_core_skills": 43,
-  "discoverable_skills": 50,
+  "active_core_skills": 44,
+  "discoverable_skills": 51,
   "builtin_skills": [
     "customize-opencode"
   ],
@@ -81,6 +82,14 @@
         ".agents/skills/agent-browser/SKILL.md",
         ".claude/skills/agent-browser/SKILL.md",
         ".gemini/config/skills/agent-browser/SKILL.md"
+      ]
+    },
+    {
+      "name": "agent-desktop",
+      "description": "Operate desktop applications on macOS, Windows and Linux through native accessibility trees, using the agent-desktop CLI. Use when an AI agent must see or act on a desktop GUI: click buttons, fill forms, read UI state, navigate menus, toggle checkboxes, scroll, drag, type text, press shortcuts, take screenshots, manage windows, use the clipboard, launch or close apps, read notifications. Triggers on: \"click button\", \"fill form\", \"open app\", \"read UI\", \"computer use\", \"operate desktop\", \"accessibility tree\", \"snapshot app\", \"type into field\", \"navigate menu\", \"toggle checkbox\", \"take screenshot\", \"desktop automation\", \"agent-desktop\", or any desktop GUI task on macOS, Windows or Linux.\n",
+      "definition_paths": [
+        ".agents/skills/agent-desktop/SKILL.md",
+        ".gemini/config/skills/agent-desktop/SKILL.md"
       ]
     },
     {
@@ -508,12 +517,12 @@
       ]
     }
   ],
-  "definition_paths": 135,
+  "definition_paths": 137,
   "directory_aliases": 38,
-  "logical_files": 1362,
-  "unique_content_blobs": 910,
-  "logical_bytes": 19812114,
-  "stored_blob_bytes": 9797743,
+  "logical_files": 1372,
+  "unique_content_blobs": 915,
+  "logical_bytes": 19950581,
+  "stored_blob_bytes": 9867189,
   "portability_transform_counts": {
     "retired-skills-removed": 1,
     "codex-portable-profile": 1,
@@ -523,7 +532,7 @@
     "explicit-global-discovery": 1,
     "home-rebase": 4,
     "merged-native-plugins": 1,
-    "antigravity-physical-copy": 165,
+    "antigravity-physical-copy": 170,
     "portable-plugin-paths": 1
   },
   "dependencies": {
@@ -531,7 +540,8 @@
       "opencode-ai": "1.18.35",
       "agent-browser": "0.38.2",
       "ui-ux-pro-max-cli": "2.15.0",
-      "ecc-universal": "2.2.3"
+      "ecc-universal": "2.2.3",
+      "agent-desktop": "1.1.0"
     },
     "vendored_ecc_dependencies": {
       "ajv": "8.20.0",

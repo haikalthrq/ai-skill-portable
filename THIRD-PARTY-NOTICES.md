@@ -14,6 +14,7 @@ Principal sources:
 - Context7: https://github.com/upstash/context7 — MCP runtime 4.4.4, pinned in the captured npm lockfile; fetched by bootstrap, not vendored as node_modules. API keys remain local.
 - Playwright MCP: https://github.com/microsoft/playwright-mcp — runtime 0.0.83, pinned in the captured npm lockfile. Browser binaries and OS libraries are installed separately, not redistributed here.
 - Agent Browser: https://github.com/vercel-labs/agent-browser — pinned runtime 0.38.2; runtime packages are installed locally by bootstrap, not placed in this Git repository.
+- Agent Desktop: https://github.com/vercel-labs/agent-desktop — official Apache-2.0 skill and pinned CLI 1.1.0. The CLI is installed locally by bootstrap.
 - OpenCode: https://github.com/anomalyco/opencode — pinned runtime 1.18.35; its built-in customize-opencode skill is supplied by that runtime.
 - Gitleaks: https://github.com/gitleaks/gitleaks — scanner 8.30.1 is fetched locally and verified against the official checksum, never bundled into the committed snapshot.
 

@@ -1,40 +1,65 @@
 {
   "platform": "Windows",
   "python": "3.14.6",
+  "snapshot_id": "26d61c3eaa13f4bbff8f584bc4b7e77d2ac87413cfa70702e380e413af3de293",
   "checks": {
     "two_read_only_previews": true,
+    "antigravity_physical_files_and_frontmatter": true,
     "idempotent_apply": true,
     "real_dataset_search": true,
     "vendored_ecc_save_read_doctor": true,
     "restored_custom_mcp_adapter": true,
     "restored_handoff_helper": true,
+    "isolated_portable_runner": true,
     "pinned_runtime_bootstrap_idempotence": true,
     "fresh_native_discovery_and_bodies": true,
     "one_command_migration": true,
-    "full_snapshot_rollback_idempotence": true,
-    "original_source_files_unchanged": 1145
+    "codex_profile_skills_and_mcp_discovery": true,
+    "restored_environment_can_be_backed_up_idempotently": true,
+    "full_snapshot_rollback_idempotence": true
   },
   "ok": true,
   "restore": {
-    "files": 1146,
-    "aliases": 23,
-    "expected_skills": 45,
-    "unique_blobs": 858,
+    "files": 1372,
+    "aliases": 38,
+    "expected_skills": 51,
+    "unique_blobs": 915,
     "broken_local_links": []
+  },
+  "antigravity": {
+    "ok": true,
+    "expected_skills": 44,
+    "physical_skills_verified": 44,
+    "errors": [],
+    "native_routing_tested": false
   },
   "runtime_versions": {
     "opencode": "1.18.35",
     "agent-browser": "agent-browser 0.38.2",
-    "uipro": "2.15.0"
+    "uipro": "2.15.0",
+    "agent-desktop": "1.1.0"
   },
   "native": {
-    "native_discovery_count": 45,
+    "native_discovery_count": 51,
     "native_names_match": true,
     "native_descriptions_match": true,
     "native_all_bodies_loaded": true,
     "native_bodies_match_snapshot": true,
     "native_paths_isolated": true
   },
-  "evidence_status": "historical; not rerun for the updated Codex/Ponytail/MCP snapshot",
-  "verified_snapshot_id": "c4e8d377987485a4b748d8d21da65d4a60f5ca8fb2ddb8567eebfc3b1b204625"
+  "codex": {
+    "ok": true,
+    "expected_portable_skills": 51,
+    "portable_skills_found": 51,
+    "missing": [],
+    "loader_error_count": 0,
+    "cli_profile_validated": true,
+    "mcp_tool_counts": {
+      "ecc-memory-vault": 4,
+      "context7": 2,
+      "playwright": 25
+    },
+    "provider_authentication_used": false,
+    "hook_trust_granted": false
+  }
 }

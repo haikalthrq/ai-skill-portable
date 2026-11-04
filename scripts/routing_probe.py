@@ -10,18 +10,19 @@ import subprocess
 import tempfile
 
 from common import command, dump, isolated_env, test_temp_root
-from restore import restore
-from bootstrap import install_plugin_dependencies
+from restore import load_snapshot, restore
+from bootstrap import bootstrap
 from verify import verify
 
 CASES = {
     'frontend': ('Build a VPS monitoring dashboard.', {'impeccable'}),
     'debugging': ('Investigate an unexplained backend regression in helpers.js using disciplined root-cause debugging.', {'systematic-debugging'}),
     'handoff': ('Prepare a durable cross-harness handoff for this repository to another harness. This is a dry run: inspect and propose the handoff, but do not save memory.', {'cross-harness-handoff', 'unified-memory'}),
+    'desktop': ('Plan how to inspect the interactive controls in a Windows Calculator window through its accessibility tree. Do not interact with the desktop.', {'agent-desktop'}),
     'backend': ('Plan a small backend-only numeric input validation change in helpers.js. This has no UI implications.', set()),
 }
 FRONTEND = {'impeccable', 'design-taste-frontend', 'ui-ux-pro-max', 'animate', 'emil-design-eng',
-            'gpt-taste', 'image-to-code', 'redesign-existing-projects', 'agent-browser'}
+            'gpt-taste', 'image-to-code', 'redesign-existing-projects', 'agent-browser', 'agent-desktop'}
 
 def probes(home, model):
     workspace = home / 'routing-probe-workspace'
@@ -38,8 +39,11 @@ def probes(home, model):
     def run(name):
         prompt, expected = CASES[name]
         prompt += ' This is a read-only routing/planning test. Use applicable installed guidance, inspect fixture context, then give a short plan. Do not edit files, install tools, launch browsers, read authentication files or make unrelated network calls. Infer demo assumptions.'
-        result = command(['opencode', 'run', '--format', 'json', '--model', model,
-            '--title', 'Portable restored routing ' + name, prompt], cwd=workspace, env=env, input='', timeout=300)
+        try:
+            result = command(['opencode', 'run', '--format', 'json', '--model', model,
+                '--title', 'Portable restored routing ' + name, prompt], cwd=workspace, env=env, input='', timeout=300)
+        except subprocess.CalledProcessError as error:
+            result = error
         skills, sessions, errors = [], set(), []
         for line in result.stdout.splitlines():
             try:
@@ -58,7 +62,9 @@ def probes(home, model):
             elif event.get('type') == 'error':
                 errors.append('model/runtime error')
         selected = set(skills)
-        passed = expected <= selected and not errors
+        if result.returncode:
+            errors.append('model/runtime exit ' + str(result.returncode))
+        passed = expected <= selected and not errors and bool(sessions)
         if name == 'backend':
             passed = passed and not selected.intersection(FRONTEND)
         return {'scenario': name, 'passed': bool(passed), 'skills': skills,
@@ -79,13 +85,13 @@ if __name__ == '__main__':
     if args.isolated_local_auth:
         with tempfile.TemporaryDirectory(prefix='portable-routing-', dir=test_temp_root()) as temp:
             target = Path(temp).resolve()
-            restore(args.repo, target, apply=True)
-            install_plugin_dependencies(target)
+            assert restore(args.repo, target, apply=True)['ok']
+            assert bootstrap(args.repo, target, apply=True)['ok']
             assert verify(args.repo, target, native=True)['ok']
             source_auth = args.home / '.local/share/opencode/auth.json'
             if not source_auth.is_file():
                 raise ValueError('Authenticate locally before running model-driven probes')
-            destination = target / '.local/share/opencode/auth.json'
+            destination = Path(isolated_env(target)['XDG_DATA_HOME']) / 'opencode/auth.json'
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_bytes(source_auth.read_bytes())
             if os.name == 'nt':
@@ -100,11 +106,13 @@ if __name__ == '__main__':
             finally:
                 destination.unlink(missing_ok=True)
                 # Remove managed junctions before TemporaryDirectory cleans the sandbox.
-                from restore import remove, load_snapshot
+                from restore import remove
                 for alias in load_snapshot(args.repo)[0]['aliases']:
                     remove(target / alias['path'])
     else:
         report = probes(args.home.resolve(), args.model)
+    if args.isolated_local_auth:
+        report['snapshot_id'] = load_snapshot(args.repo)[0]['snapshot_id']
     if args.report:
         dump(args.report, report)
     print(json.dumps(report, indent=2))

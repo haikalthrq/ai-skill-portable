@@ -36,7 +36,7 @@ for relative in ['.config/opencode/opencode.jsonc', '.opencode/opencode.json']:
                       for k, v in config.get('provider', {}).items()},
         'mcp': {k: {'type': v.get('type'), 'enabled': v.get('enabled'), 'header_names': list(v.get('headers', {})),
                        'environment_names': list(v.get('environment', {}))} for k, v in config.get('mcp', {}).items()}}
-for name in ['opencode-ai', 'ecc-universal', 'agent-browser', 'ui-ux-pro-max-cli']:
+for name in ['opencode-ai', 'ecc-universal', 'agent-browser', 'agent-desktop', 'ui-ux-pro-max-cli']:
     root = home / 'AppData/Roaming/npm/node_modules' / name
     path = root / 'package.json'
     if path.exists():

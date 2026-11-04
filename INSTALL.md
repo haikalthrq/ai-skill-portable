@@ -53,11 +53,13 @@ Run this again if Codex was installed after migration. Preserve installed skills
 
 Bootstrap registers the captured Ponytail marketplace in the target Codex main config, preserving other entries. MCP connections and model preferences live in `~/.codex/portable.config.toml`, selected by `codex -p portable`. Keep the user's main config and default profile intact.
 
-Restore deploys all 43 Antigravity core skills under `~/.gemini/config/skills/<skill>/SKILL.md` as physical files and directories, with scripts and references. This rule applies on every OS; Windows Antigravity's scanner does not follow junctions/reparse points. The normal restore journal covers these copies and their rollback. Retired `caveman` and `officecli` content is excluded from the snapshot; existing unrelated user files are not deleted.
+Restore deploys all 44 Antigravity core skills under `~/.gemini/config/skills/<skill>/SKILL.md` as physical files and directories, with scripts and references. This rule applies on every OS; Windows Antigravity's scanner does not follow junctions/reparse points. The normal restore journal covers these copies and their rollback. Retired `caveman` and `officecli` content is excluded from the snapshot; existing unrelated user files are not deleted.
 
 ## 5. Set PATH, browser dependencies and credentials
 
 Add `~/.local/share/opencode-portable/tools/node_modules/.bin` to the user PATH without duplicating entries or replacing existing profile content. Use the user's shell profile on POSIX or user environment settings on Windows. Check Node and Codex in a fresh non-interactive subprocess. Desktop applications may need restarting to pick up environment changes.
+
+Check `agent-desktop version` from that PATH. Bootstrap installs the pinned CLI and the snapshot supplies its shared skill. For desktop interaction, run `agent-desktop status` to check the current OS and permissions.
 
 Install Chromium from the locked Playwright package:
 

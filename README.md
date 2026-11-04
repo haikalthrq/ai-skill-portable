@@ -2,7 +2,7 @@
 
 Back up and restore skills for Codex, OpenCode and Google Antigravity, plus the existing Codex/OpenCode plugins and MCP connections. The snapshot keeps customized instructions, scripts, datasets, licenses and routing descriptions.
 
-The snapshot contains 43 unique active core skills. Antigravity receives those 43 skills as physical directories. Codex has 50 portable skills (the core set, Graphify and six Ponytail skills); OpenCode has 50 skill names (the core set, Ponytail and one built-in). Codex supplies its own system skills and account-managed OpenAI plugins. The retired `caveman` and `officecli` skills are excluded.
+The snapshot contains 44 unique active core skills. Antigravity receives those 44 skills as physical directories. Codex has 51 portable skills (the core set, Graphify and six Ponytail skills); OpenCode has 51 skill names (the core set, Ponytail and one built-in). Codex supplies its own system skills and account-managed OpenAI plugins. The retired `caveman` and `officecli` skills are excluded.
 
 ## Install with an agent
 
@@ -29,6 +29,7 @@ Report what passed and what remains blocked.
 | Context7 MCP | 4.4.4 |
 | Playwright MCP | 0.0.83 |
 | Agent Browser | 0.38.2 |
+| Agent Desktop | 1.1.0 |
 | UI UX Pro Max CLI | 2.15.0 |
 
 Bootstrap uses captured Ponytail files and locked npm packages. It leaves existing skill versions intact. The Codex `portable` profile includes ECC Memory Vault, Context7, Playwright and model preferences. OpenCode uses its captured configuration and a separate data directory. Restore writes Antigravity files through the same rollback journal.
@@ -58,6 +59,10 @@ Install the Antigravity App or IDE, then run the migration above. Current snapsh
 Global skills live at `~/.gemini/config/skills/<skill>/SKILL.md`. Every restored skill is a physical directory, including its scripts and references. Windows Antigravity does not follow NTFS junctions/reparse points, so this target never uses junctions or symlinks on any OS. An existing linked target blocks restore; preserve it and resolve the reported path before retrying. `--replace` does not bypass this check.
 
 Start a new Antigravity conversation after restore. It reads skill names and descriptions from frontmatter and automatically loads relevant instructions for your prompt. You can also use `/<skill-name>`. See [Google's skill documentation](https://antigravity.google/docs/skills?tab=ide). This target covers the App/IDE global directory; the separate Antigravity CLI has a different global path.
+
+### Desktop automation
+
+Bootstrap installs the pinned Agent Desktop CLI. Put the runtime directory on PATH so Codex, OpenCode and Antigravity can call it from the shared skill. Codex prefers it for Windows desktop tasks and keeps native browser tools for browser verification. Version 1.1.0 integrates through the CLI.
 
 ### Start Codex
 
@@ -104,7 +109,7 @@ python3 scripts/codex_verify.py --home "/absolute/target/home"
 
 Use your target's absolute path. The first command checks OpenCode discovery plus Antigravity's physical files, frontmatter and hashes. Antigravity checks also run automatically for snapshots that include it. The second checks the Codex profile, skills and MCP tools. These checks do not test live documentation queries, browser launch, provider login or Antigravity's native scanner and model routing.
 
-The current snapshot passed Linux integration tests. Windows and model-routing reports are marked historical and need fresh runs. See the [inventory](reports/inventory.json) and [Linux report](reports/linux-integration.json).
+Compare the snapshot ID in the [inventory](reports/inventory.json) with each integration report. Reports from earlier snapshots, including model-driven routing evidence, are historical.
 
 ECC requires the current Git root as `workspaceRoot` and binds each MCP process to one repository. Context7 uses a remote server in OpenCode and a pinned local runtime in Codex. DCG and Graphify runtimes require separate setup. Optional RINGKAS references point to `$HOME/Projects/RINGKAS`, which you must clone separately.
 

@@ -82,6 +82,13 @@ def integration(repo, native=False, tools=False):
                 assert report['runtime_versions']['opencode'] == '1.18.35'
                 assert '0.38.2' in report['runtime_versions']['agent-browser']
                 assert '2.15.0' in report['runtime_versions']['uipro']
+                desktop_version = load_snapshot(repo)[0]['dependencies']['installed_tools'].get('agent-desktop')
+                if desktop_version:
+                    cli = home / '.local/share/opencode-portable/tools/node_modules/.bin' / (
+                        'agent-desktop.cmd' if os.name == 'nt' else 'agent-desktop')
+                    desktop = json.loads(command([str(cli), 'version'], env=runtime_env, timeout=30).stdout)
+                    assert desktop['ok'] and desktop['data']['version'] == desktop_version
+                    report['runtime_versions']['agent-desktop'] = desktop_version
                 runner = command([sys.executable, str(repo / 'scripts/portable.py'), 'run',
                     '--home', str(home), '--', '--version'], env=runtime_env, timeout=60).stdout.strip()
                 assert runner == report['runtime_versions']['opencode']

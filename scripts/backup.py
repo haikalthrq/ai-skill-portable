@@ -302,7 +302,7 @@ def capture(home, repo):
             raise ValueError('Discovered skill outside approved roots: ' + item['name'])
     tool_versions = {}
     npm_root = Path(command(['npm', 'root', '--global']).stdout.strip())
-    for name in ['opencode-ai', 'agent-browser', 'ui-ux-pro-max-cli']:
+    for name in ['opencode-ai', 'agent-browser', 'agent-desktop', 'ui-ux-pro-max-cli']:
         candidates = [home / '.local/share/opencode-portable/tools/node_modules' / name, npm_root / name]
         root = next((p for p in candidates if (p / 'package.json').is_file()), None)
         if root:
