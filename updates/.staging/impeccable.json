@@ -501,6 +501,48 @@
       "sha256": "ec7e8af06c8b3c2b1e059d27f5f7bf2a720a6632acc32adb5d06a14290e94857",
       "bytes": 37579,
       "git_sha": "6af0ac4d20cf1c799f4b3662cecb0fe88affebff"
+    },
+    {
+      "relative": "reference/mode-operate.md",
+      "mode": "100644",
+      "sha256": "eba8a2d70326e0765c5b377959fefc24ba2ab4de3473de99039aedaf6351915f",
+      "bytes": 4716,
+      "git_sha": "833775ba85f03bf65a4c1b23e39192f7653414e6"
+    },
+    {
+      "relative": "reference/mode-persuade.md",
+      "mode": "100644",
+      "sha256": "8811d35e91bd423548cc2a73c5f64d780ab7b642781d6c60be3f5968c708cae4",
+      "bytes": 3638,
+      "git_sha": "9c152d67064fb8453a7eaa89de20c35fc115b085"
+    },
+    {
+      "relative": "reference/mode-read.md",
+      "mode": "100644",
+      "sha256": "b302360a98b6e5dd4d52f30f5a1c3e930ef85e7b2d7fc1b28bf63db1a89d3029",
+      "bytes": 4396,
+      "git_sha": "b30c4c9139e3094bd35c60738decb6109326153f"
+    },
+    {
+      "relative": "reference/new-work.md",
+      "mode": "100644",
+      "sha256": "07a1c82cf857ec4df08b11fb225840ea7d1da8e4c134a3c0e4affaaa09f17c99",
+      "bytes": 63005,
+      "git_sha": "54619a178ab4c80131f277f8a8525a52f7b318bb"
+    },
+    {
+      "relative": "reference/onboard.md",
+      "mode": "100644",
+      "sha256": "1d560edc83275642e21119877cdb8ae0dff64c59da15f849669cfc03571b2bc3",
+      "bytes": 7688,
+      "git_sha": "f2e1c15af24976fbddb6770719fae66172268ff4"
+    },
+    {
+      "relative": "reference/operate.md",
+      "mode": "100644",
+      "sha256": "13fd6890974e2149d0702b1390c335750e1dad0ef521e0ad9168cfa9322c68a7",
+      "bytes": 4145,
+      "git_sha": "524f2c3ae9fa497284e9699f3ca5320cce5d05cf"
     }
   ]
 }
