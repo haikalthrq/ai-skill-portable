@@ -463,42 +463,42 @@
     {
       "relative": "reference/hooks.md",
       "mode": "100644",
-      "sha256": "4801795edae1ab83bba51c8a897970685fc836f5c841a65c1ec3e5e3fc130e6b",
+      "sha256": "cc04b3e5452046119611e6e4eb8b1431a86a8abc082502ae9246236f543434c2",
       "bytes": 15134,
       "git_sha": "23a80818745a9f92f6fdb433e9c32d96dc6cd8b2"
     },
     {
       "relative": "reference/init.md",
       "mode": "100644",
-      "sha256": "5bd40a2bb629f32a4d092c51e7a91ba3e7149c8e713d362c7e70eacae21b997f",
+      "sha256": "b6aa89b5d8cd3cf46d74c033c7c5f48c40311ba394e7de5954675b6df4a5b231",
       "bytes": 12229,
       "git_sha": "0be86b1c536c32609d5f158c43704bb5d6723c28"
     },
     {
       "relative": "reference/ios.md",
       "mode": "100644",
-      "sha256": "58d1289cd7271cfb63df84a9b0cc9672b20463198474306c9589d67e1f3d28eb",
+      "sha256": "7cc3d8fe74d90bd6a16657a79fc3c729ff9c40d54a875ac45e99d526aac288c6",
       "bytes": 3812,
       "git_sha": "c6244dfe32176e5718d86211b7d1eb5601eb0860"
     },
     {
       "relative": "reference/layout.md",
       "mode": "100644",
-      "sha256": "c224b96fbe80b8c951daa78377b0e00d54ded913f25b70ebfea13ba3dd8d3f00",
+      "sha256": "d6802b86362f6af50b75a9343b6839601277403704934e4c74825bb6e1966ae4",
       "bytes": 5161,
       "git_sha": "aa547c742fc373bc459bdbb7977683441aa48ec0"
     },
     {
       "relative": "reference/live-setup.md",
       "mode": "100644",
-      "sha256": "b4fe145f6d2cea85e7842e82b2a08265a539b2709a247696b4e7059bf7435ca5",
+      "sha256": "81832aa1d0850333dd542e986bca615e966a0d79ada71ff8d669e4aa62a38077",
       "bytes": 8186,
       "git_sha": "6e10f00f7f2a789da582f38cdaef89de39ead266"
     },
     {
       "relative": "reference/live.md",
       "mode": "100644",
-      "sha256": "1eef02d44079745606e74cf2360b8354fa83ba0e70bcf65398bbfc624d2ffa69",
+      "sha256": "ec7e8af06c8b3c2b1e059d27f5f7bf2a720a6632acc32adb5d06a14290e94857",
       "bytes": 37579,
       "git_sha": "6af0ac4d20cf1c799f4b3662cecb0fe88affebff"
     }
