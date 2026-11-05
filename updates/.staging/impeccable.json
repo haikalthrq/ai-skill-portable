@@ -585,6 +585,48 @@
       "sha256": "99d7fdcaf2a75de77ada9277a6f92d6fbc40a0dbd2c6c33a986a6258a78fc4c2",
       "bytes": 3336,
       "git_sha": "21c12a626e7ef084fa6ed5d03b93b91e3eb122ce"
+    },
+    {
+      "relative": "reference/shape.md",
+      "mode": "100644",
+      "sha256": "8c9e10a7225086bd7ddf66b616cbf352573e6602759dc312a21608a688f41969",
+      "bytes": 3547,
+      "git_sha": "90a74ae813331cbce8fff6beb498ced77970fadf"
+    },
+    {
+      "relative": "reference/typeset.md",
+      "mode": "100644",
+      "sha256": "1087d2d115342df59e52c168f76b980e6faaf72993998aff16544620c97c4caf",
+      "bytes": 6263,
+      "git_sha": "683175632928ab5566e517ad6128a07166e095e8"
+    },
+    {
+      "relative": "reference/visualize.md",
+      "mode": "100644",
+      "sha256": "04a0f75b05ff8dced073549e260143e5a9a08781784142dbcb5b012e9ae7cc79",
+      "bytes": 13956,
+      "git_sha": "afb44acced4f2a39de7cbeb200b47d4dcf89486f"
+    },
+    {
+      "relative": "scripts/command-metadata.json",
+      "mode": "100644",
+      "sha256": "a0f8b6081f7b6252ee7eb5e5d9c1d5a17c2c04e395997f68a174ab94b50e22dd",
+      "bytes": 8318,
+      "git_sha": "4686bb6deea643493198bff1369bc2958b3909a7"
+    },
+    {
+      "relative": "scripts/data/font-index-failures.json",
+      "mode": "100644",
+      "sha256": "d75c19bc576c44c50149502ea6a8cb45e9e7a38b76cbd657a9c9999447da0eeb",
+      "bytes": 2437,
+      "git_sha": "1aca67220413ef163570c75405b444d7a27a32be"
+    },
+    {
+      "relative": "scripts/data/font-index.json",
+      "mode": "100644",
+      "sha256": "0ba59cd3469c6c08926367958aad34c13f8c4c53eb1229aec2fd7a0fa8c1a390",
+      "bytes": 0,
+      "git_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
     }
   ]
 }
