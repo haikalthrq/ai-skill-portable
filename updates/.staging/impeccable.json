@@ -333,6 +333,48 @@
       "sha256": "2bf94ef878065a0203712f3746f6209284a0c0199b39d2dc0f08ce4f90e7d647",
       "bytes": 8326,
       "git_sha": "af725765fb65a02375815060fe825da390f2d051"
+    },
+    {
+      "relative": "reference/bolder.md",
+      "mode": "100644",
+      "sha256": "f7075a6ec62ea1fdeb24b481273238bed7a7d396f949d38e33a4a1ee2bec7dd4",
+      "bytes": 3566,
+      "git_sha": "c11a146b502cb46f6d5ad3f11ba0f6ff75c0e4d7"
+    },
+    {
+      "relative": "reference/clarify.md",
+      "mode": "100644",
+      "sha256": "9fd3977468b1c831210bd7c23c11ecc5f041997447cb97bc2659e62242a69a40",
+      "bytes": 4590,
+      "git_sha": "4506a31c95e02b2ad918367a0ef4461643d51532"
+    },
+    {
+      "relative": "reference/colorize.md",
+      "mode": "100644",
+      "sha256": "6191c3d19f0b1f2a17a23dbc1bd5b562d6e3dc6329282656815b9edbf59cbd8e",
+      "bytes": 4537,
+      "git_sha": "02fa661efac9229d6e869a20ef8ee928d4b986a0"
+    },
+    {
+      "relative": "reference/component-review.md",
+      "mode": "100644",
+      "sha256": "8cec723c7d0e3744ae7afc634b91bfd9cdae1eaab291287bf9f803b87d0e85ba",
+      "bytes": 8017,
+      "git_sha": "a3c35c92999ecde66f53c96fb287d8adaa0e17f3"
+    },
+    {
+      "relative": "reference/craft-floor.md",
+      "mode": "100644",
+      "sha256": "a1555d4da48b0753bb0213ea5ca254bc5032757f0ea4781fdfcba626fe5469d0",
+      "bytes": 5532,
+      "git_sha": "fd7280103f7ef4b009b38ce58f594c44c0f04caa"
+    },
+    {
+      "relative": "reference/craft.md",
+      "mode": "100644",
+      "sha256": "64100f964d8f284cfe6d9ef3e9f2a85110d642da8b6f0c8183ee7d3eaa9441d1",
+      "bytes": 555,
+      "git_sha": "dbbc9402c07cdab21f2b6eb69279b8435fecfd7f"
     }
   ]
 }
