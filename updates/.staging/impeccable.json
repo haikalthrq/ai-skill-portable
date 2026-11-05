@@ -669,6 +669,34 @@
       "sha256": "f0f1f195d7e3d496cde6cc277c093dcd9d96cd42747f1ba14cf1757591662712",
       "bytes": 5838,
       "git_sha": "6871770720d3dd7a284c545e20b97b613635f36f"
+    },
+    {
+      "relative": "scripts/live-browser.js",
+      "mode": "100644",
+      "sha256": "43a2389707e7d3fcf1deed9c8735bc4a0927efef8946dc59f959cc1b456d6462",
+      "bytes": 563433,
+      "git_sha": "9124daccab920ed769c4abd7370b3d18d3facade"
+    },
+    {
+      "relative": "scripts/modern-screenshot.umd.js",
+      "mode": "100644",
+      "sha256": "7c81b206380ef84116949cd9d5c671f530f9d40694816af7d4b1ae946a7bd525",
+      "bytes": 29290,
+      "git_sha": "a9c5208f6b141d3bafdb8eb843d6fcbdcf23e370"
+    },
+    {
+      "relative": "scripts/VERSION",
+      "mode": "100644",
+      "sha256": "bc6c6d9fa3e6815b9801bdec1fbf548e576b741f1b12dcc959d8c069ae19e091",
+      "bytes": 7,
+      "git_sha": "f8bc4c6256ab7d4bb54c2ab7af94c4fa5e58ac56"
+    },
+    {
+      "relative": "SKILL.md",
+      "mode": "100644",
+      "sha256": "706d7cc9be29e3bb754b59b952b315c3aa6b256a9c63ae5665e8faccaaea716b",
+      "bytes": 11762,
+      "git_sha": "c0dd2530c9968963b1f63bf50b227c4a33996e3b"
     }
   ]
 }
