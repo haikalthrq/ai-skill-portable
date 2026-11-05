@@ -627,6 +627,48 @@
       "sha256": "0ba59cd3469c6c08926367958aad34c13f8c4c53eb1229aec2fd7a0fa8c1a390",
       "bytes": 0,
       "git_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "relative": "scripts/engine-checksums.txt",
+      "mode": "100644",
+      "sha256": "2c8104f807ca939845cd05e5edb62c053ed405dfe9aa5ac2dbf5d69418977204",
+      "bytes": 787,
+      "git_sha": "2e948006a8ac3cb811b775f88b131def849f2237"
+    },
+    {
+      "relative": "scripts/impeccable",
+      "mode": "100755",
+      "sha256": "0721a873694deef33d2e9344260f8900d8c6edd78e49ba2dc552f58be7aaf0e2",
+      "bytes": 11320,
+      "git_sha": "0b31c9e1b9921cdb443aa735a06ac2707259e475"
+    },
+    {
+      "relative": "scripts/impeccable.cmd",
+      "mode": "100644",
+      "sha256": "99458e0ab4fd331f42ba2727ee125f560c671c6169130ad85c2bed90cdf8bed8",
+      "bytes": 12197,
+      "git_sha": "6157693b75c837249060089f2240b363d38e8023"
+    },
+    {
+      "relative": "scripts/live-browser-dom.js",
+      "mode": "100644",
+      "sha256": "c0aaa6d271bfe17167f6bf3b9f0854a9bc8903534c5a060e47315c31a00166b4",
+      "bytes": 12283,
+      "git_sha": "ef1ca8928111080ddb923da14c7827b7396a9e62"
+    },
+    {
+      "relative": "scripts/live-browser-ignores.js",
+      "mode": "100644",
+      "sha256": "1a87a04f80259be2ab82c7d02575fe18d034809dfed5043d72aa0feee3a3d95a",
+      "bytes": 10423,
+      "git_sha": "1a2912e57a3b2b10a0d961b5dfe568253133fe53"
+    },
+    {
+      "relative": "scripts/live-browser-session.js",
+      "mode": "100644",
+      "sha256": "f0f1f195d7e3d496cde6cc277c093dcd9d96cd42747f1ba14cf1757591662712",
+      "bytes": 5838,
+      "git_sha": "6871770720d3dd7a284c545e20b97b613635f36f"
     }
   ]
 }
