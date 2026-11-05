@@ -1,0 +1,296 @@
+{
+  "schema": "impeccable-import-staging/v1",
+  "upstream": "pbakaus/impeccable",
+  "source_commit": "8c7b98c0ae139611ffb757b1cb61d7e151a156b8",
+  "entries": [
+    {
+      "path": "agents/impeccable_asset_producer.toml",
+      "mode": "100644"
+    },
+    {
+      "path": "agents/impeccable_documenter.toml",
+      "mode": "100644"
+    },
+    {
+      "path": "agents/impeccable_finish_reviewer.toml",
+      "mode": "100644"
+    },
+    {
+      "path": "agents/impeccable_manual_edit_applier.toml",
+      "mode": "100644"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/adapt.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/adapt.native.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/android.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/animate.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/audit.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/audit.native.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/bolder.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/clarify.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/colorize.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/component-review.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/craft-floor.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/craft.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/critique.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/degraded/asset-producer.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/degraded/documenter.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/degraded/finish-reviewer.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/degraded/manual-edit-applier.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/delight.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/distill.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/doctor.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/document.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/extract.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/generate.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/harden.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/hooks.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/init.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/ios.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/layout.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/live-setup.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/live.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/mode-operate.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/mode-persuade.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/mode-read.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/new-work.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/onboard.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/operate.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/optimize.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/overdrive.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/polish.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/quieter.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/region-map.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/routing.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/shape.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/typeset.md",
+      "mode": "100644"
+    },
+    {
+      "path": "reference/visualize.md",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/command-metadata.json",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/data/font-index-failures.json",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/data/font-index.json",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/engine-checksums.txt",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/impeccable",
+      "mode": "100755"
+    },
+    {
+      "path": "scripts/impeccable.cmd",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/live-browser-dom.js",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/live-browser-ignores.js",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/live-browser-session.js",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/live-browser.js",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/modern-screenshot.umd.js",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/VERSION",
+      "mode": "100644"
+    },
+    {
+      "path": "SKILL.md",
+      "mode": "100644"
+    }
+  ],
+  "completed": [
+    {
+      "relative": "agents/impeccable_asset_producer.toml",
+      "mode": "100644",
+      "sha256": "4dbdb0cfdc2466961da6b22d200f3ec7bf8bb47c27448a2e6e3c03cdbf589831",
+      "bytes": 8429,
+      "git_sha": "91eeca4cce0e62881149b094e758f814510649c3"
+    },
+    {
+      "relative": "agents/impeccable_documenter.toml",
+      "mode": "100644",
+      "sha256": "e7778229d8f31433fc11e29dd2caac8e85281e27ea5c9410474703bb0185100f",
+      "bytes": 3562,
+      "git_sha": "a39f92774a4eb7ff2349de664d4c0123e38d2f08"
+    },
+    {
+      "relative": "agents/impeccable_finish_reviewer.toml",
+      "mode": "100644",
+      "sha256": "f52cdfbaeea0623c31c25442cab373e93f10e96c65838cd8b672cd345f610d7e",
+      "bytes": 15731,
+      "git_sha": "53a4aeb0cc7781c4f780f5e6b36f04032f2d0cd5"
+    },
+    {
+      "relative": "agents/impeccable_manual_edit_applier.toml",
+      "mode": "100644",
+      "sha256": "4b01f4eb8a49fb00bc88248735c3b5442beb1791ec71d98e6d203f268a24010b",
+      "bytes": 7472,
+      "git_sha": "ae18e0742b1d0a2ca0d950407e53c36294ce2af2"
+    },
+    {
+      "relative": "agents/openai.yaml",
+      "mode": "100644",
+      "sha256": "ce9967ad70f99cf04456f3347c266723c2fbbb600267d10a822b7cd20562c321",
+      "bytes": 236,
+      "git_sha": "e86d8a955ee9527dc9acfa70ded41f8c54aea435"
+    }
+  ]
+}
