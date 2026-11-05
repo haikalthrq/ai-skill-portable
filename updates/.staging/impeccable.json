@@ -375,6 +375,48 @@
       "sha256": "64100f964d8f284cfe6d9ef3e9f2a85110d642da8b6f0c8183ee7d3eaa9441d1",
       "bytes": 555,
       "git_sha": "dbbc9402c07cdab21f2b6eb69279b8435fecfd7f"
+    },
+    {
+      "relative": "reference/critique.md",
+      "mode": "100644",
+      "sha256": "814813663de76b3be3fd7275f9dd28dc00bf869c7766ff6d5105a4dc04577392",
+      "bytes": 48958,
+      "git_sha": "07ae4a854ede894de3320f42e50743c1ab4681fb"
+    },
+    {
+      "relative": "reference/degraded/asset-producer.md",
+      "mode": "100644",
+      "sha256": "79615cdd5303bcf8e1dfb284be8afa3fe3c04dabffa790fea2bdce21e15a13a6",
+      "bytes": 8630,
+      "git_sha": "a7c26afe2ceba0cbcfb7c7092e183b26f0b6af81"
+    },
+    {
+      "relative": "reference/degraded/documenter.md",
+      "mode": "100644",
+      "sha256": "10d2b482c24f4fbb7c61fb78e32bd3e91c51de8f724f1c24c742dfaad45b67ed",
+      "bytes": 3733,
+      "git_sha": "d1640cc06f909cd6bda8c44ad70f85351bab7387"
+    },
+    {
+      "relative": "reference/degraded/finish-reviewer.md",
+      "mode": "100644",
+      "sha256": "bf395cd106658c63f532ed346db86bfabf6ee118927125012ddf231826acf717",
+      "bytes": 15880,
+      "git_sha": "73a85a0ce87be98e0107b4c9c63c29ea4dd37165"
+    },
+    {
+      "relative": "reference/degraded/manual-edit-applier.md",
+      "mode": "100644",
+      "sha256": "f30cd0a70b662c21e3ebfae29f884001f1b43813c85beb7391f1917144b55b87",
+      "bytes": 7685,
+      "git_sha": "7f2bdb65d1c708e32c56b6dd3c2695208692a901"
+    },
+    {
+      "relative": "reference/delight.md",
+      "mode": "100644",
+      "sha256": "5cd657a62b35d07e478940894c609f38f0d1546d6875f1910856ae56d13e5861",
+      "bytes": 3716,
+      "git_sha": "60a8e83ee48d50901acfa886d3ec4bc72b40ec6f"
     }
   ]
 }
