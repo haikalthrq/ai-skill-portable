@@ -344,42 +344,42 @@
     {
       "relative": "reference/clarify.md",
       "mode": "100644",
-      "sha256": "9fd3977468b1c831210bd7c23c11ecc5f041997447cb97bc2659e62242a69a40",
+      "sha256": "063488a92470b6dc84ceae52653f1a17c913d56c9d0b127b32748d2d4ba08e38",
       "bytes": 4590,
       "git_sha": "4506a31c95e02b2ad918367a0ef4461643d51532"
     },
     {
       "relative": "reference/colorize.md",
       "mode": "100644",
-      "sha256": "6191c3d19f0b1f2a17a23dbc1bd5b562d6e3dc6329282656815b9edbf59cbd8e",
+      "sha256": "93a9a4f0122fdb11aa157a72023f95e63e021897e1f98ddfbd1c089e2ad0a8ac",
       "bytes": 4537,
       "git_sha": "02fa661efac9229d6e869a20ef8ee928d4b986a0"
     },
     {
       "relative": "reference/component-review.md",
       "mode": "100644",
-      "sha256": "8cec723c7d0e3744ae7afc634b91bfd9cdae1eaab291287bf9f803b87d0e85ba",
+      "sha256": "51c512ec408c80d14f04ec3cabe7c390131c537cd17e2c9a24f4058f5afe31ee",
       "bytes": 8017,
       "git_sha": "a3c35c92999ecde66f53c96fb287d8adaa0e17f3"
     },
     {
       "relative": "reference/craft-floor.md",
       "mode": "100644",
-      "sha256": "a1555d4da48b0753bb0213ea5ca254bc5032757f0ea4781fdfcba626fe5469d0",
+      "sha256": "02db47857bb0a58ca9abe0e6f391dbf69d0253ab6987b4d2752f8f0e55e3759a",
       "bytes": 5532,
       "git_sha": "fd7280103f7ef4b009b38ce58f594c44c0f04caa"
     },
     {
       "relative": "reference/craft.md",
       "mode": "100644",
-      "sha256": "64100f964d8f284cfe6d9ef3e9f2a85110d642da8b6f0c8183ee7d3eaa9441d1",
+      "sha256": "7dc341e6b3a0f12829776ceec805c579485be2ca33fc0fa178f013d35ea7e26f",
       "bytes": 555,
       "git_sha": "dbbc9402c07cdab21f2b6eb69279b8435fecfd7f"
     },
     {
       "relative": "reference/critique.md",
       "mode": "100644",
-      "sha256": "814813663de76b3be3fd7275f9dd28dc00bf869c7766ff6d5105a4dc04577392",
+      "sha256": "53505f93f2908f79116d46b60472874ab0ed499858ce0a6162cdb7b98af32e9e",
       "bytes": 48958,
       "git_sha": "07ae4a854ede894de3320f42e50743c1ab4681fb"
     },
