@@ -302,42 +302,42 @@
     {
       "relative": "reference/adapt.native.md",
       "mode": "100644",
-      "sha256": "be8052b6b6e3de3ee6768ff4ddfa3d2647681c69c233a84696802b6cbe09d9bf",
+      "sha256": "b0c9f9f7e351e67a27321f21833c713cb3be4dd9511e18e064bf167a2a208eba",
       "bytes": 3910,
       "git_sha": "435c40a6f416809d88cef92c09f0331c65fddec8"
     },
     {
       "relative": "reference/android.md",
       "mode": "100644",
-      "sha256": "c3b504c97287f7d7d918e0557142627a0c33f90b5890858912efef0b2cf5b87f",
+      "sha256": "c3d26e10afebb370021e91daf60919e3a2e5f5dda1d96e9fe93e5ac66b48f3e1",
       "bytes": 4203,
       "git_sha": "32a5cf7ccfd78afe659f10f80cca6bbb3ef7de69"
     },
     {
       "relative": "reference/animate.md",
       "mode": "100644",
-      "sha256": "c2b7b11fbc7d7024c810258bc434f85eed37d592cd3f1254eb3daf01023daf4a",
+      "sha256": "27c9332d04c1a5c1578a9153ce037bc0b783706331af2d121ea59875a38d9b2c",
       "bytes": 5236,
       "git_sha": "c8fb9e038bb74a125646b64c49bc39711f63e8f4"
     },
     {
       "relative": "reference/audit.md",
       "mode": "100644",
-      "sha256": "9e7ad58bdefaacef1fbba3776f72c90315ce6668c06e819da54dc27950fbbc32",
+      "sha256": "f5a02f8554332935a9ee963b9e28295696c49bb5496e9a4d4a1e8fd3403421e0",
       "bytes": 9584,
       "git_sha": "13bf0d7c71802a48af4863c08ee3ed898f72c4b2"
     },
     {
       "relative": "reference/audit.native.md",
       "mode": "100644",
-      "sha256": "2bf94ef878065a0203712f3746f6209284a0c0199b39d2dc0f08ce4f90e7d647",
+      "sha256": "f130f05b4d64fe151b4f4f71dcf5f42867353ca07c3cb577feda2cea1930e3f9",
       "bytes": 8326,
       "git_sha": "af725765fb65a02375815060fe825da390f2d051"
     },
     {
       "relative": "reference/bolder.md",
       "mode": "100644",
-      "sha256": "f7075a6ec62ea1fdeb24b481273238bed7a7d396f949d38e33a4a1ee2bec7dd4",
+      "sha256": "28b1db8cdbf02d8deb2499d2cb5fe6fb048137973c0f8aefb5ae6ad5daca758d",
       "bytes": 3566,
       "git_sha": "c11a146b502cb46f6d5ad3f11ba0f6ff75c0e4d7"
     },
