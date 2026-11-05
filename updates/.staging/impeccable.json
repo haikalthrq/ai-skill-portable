@@ -386,42 +386,42 @@
     {
       "relative": "reference/degraded/asset-producer.md",
       "mode": "100644",
-      "sha256": "79615cdd5303bcf8e1dfb284be8afa3fe3c04dabffa790fea2bdce21e15a13a6",
+      "sha256": "7df54828d09d421d74c63c195ee4dc21337bda17235d473fe5fcd40e34c27b43",
       "bytes": 8630,
       "git_sha": "a7c26afe2ceba0cbcfb7c7092e183b26f0b6af81"
     },
     {
       "relative": "reference/degraded/documenter.md",
       "mode": "100644",
-      "sha256": "10d2b482c24f4fbb7c61fb78e32bd3e91c51de8f724f1c24c742dfaad45b67ed",
+      "sha256": "53a621ab4b91a0cc7c672be9f5fa1dd8bd65491f13177b3d0d49ba11b77b42f2",
       "bytes": 3733,
       "git_sha": "d1640cc06f909cd6bda8c44ad70f85351bab7387"
     },
     {
       "relative": "reference/degraded/finish-reviewer.md",
       "mode": "100644",
-      "sha256": "bf395cd106658c63f532ed346db86bfabf6ee118927125012ddf231826acf717",
+      "sha256": "843f6ca42c106ad98cffc42c6b7ee8a6fd0dd76885071b7c1d33306a70f2ffaa",
       "bytes": 15880,
       "git_sha": "73a85a0ce87be98e0107b4c9c63c29ea4dd37165"
     },
     {
       "relative": "reference/degraded/manual-edit-applier.md",
       "mode": "100644",
-      "sha256": "f30cd0a70b662c21e3ebfae29f884001f1b43813c85beb7391f1917144b55b87",
+      "sha256": "7500aa6f95ba68c0e52611c839e49bb5d19586747ccb5234780c47c7f5a3945a",
       "bytes": 7685,
       "git_sha": "7f2bdb65d1c708e32c56b6dd3c2695208692a901"
     },
     {
       "relative": "reference/delight.md",
       "mode": "100644",
-      "sha256": "5cd657a62b35d07e478940894c609f38f0d1546d6875f1910856ae56d13e5861",
+      "sha256": "ddfd986e29b87a62ee3e337369c86fadb5486ee042ad123ee8e7394bf6762681",
       "bytes": 3716,
       "git_sha": "60a8e83ee48d50901acfa886d3ec4bc72b40ec6f"
     },
     {
       "relative": "reference/distill.md",
       "mode": "100644",
-      "sha256": "8f99a2eff3d7c370fe47acdf61ba571a59e64ab824a8423eeefaefac590409d8",
+      "sha256": "e56a5c8bae7da9ca6507749c81ba0cfa00561912cac043a66ae3c4b60c3fea86",
       "bytes": 5598,
       "git_sha": "2537473ced43e94d5081b61fdced2a4ff602c885"
     },
