@@ -417,6 +417,48 @@
       "sha256": "5cd657a62b35d07e478940894c609f38f0d1546d6875f1910856ae56d13e5861",
       "bytes": 3716,
       "git_sha": "60a8e83ee48d50901acfa886d3ec4bc72b40ec6f"
+    },
+    {
+      "relative": "reference/distill.md",
+      "mode": "100644",
+      "sha256": "8f99a2eff3d7c370fe47acdf61ba571a59e64ab824a8423eeefaefac590409d8",
+      "bytes": 5598,
+      "git_sha": "2537473ced43e94d5081b61fdced2a4ff602c885"
+    },
+    {
+      "relative": "reference/doctor.md",
+      "mode": "100644",
+      "sha256": "53da60c97d838ec2089c2d40e10c0c5a40c8c8f06e49d4ebad220a19192e403a",
+      "bytes": 5617,
+      "git_sha": "6d680a49f238e891fb0af054d0d1899104b3528f"
+    },
+    {
+      "relative": "reference/document.md",
+      "mode": "100644",
+      "sha256": "1e8815d1e7a54394d69c04e279c39ca6c453a2639ac92aa14bd18a46b7daceb8",
+      "bytes": 27526,
+      "git_sha": "45721a6f0aabedaa48a7b05a29c2025e6b52dbc2"
+    },
+    {
+      "relative": "reference/extract.md",
+      "mode": "100644",
+      "sha256": "a1f594ed910d5aa9e00b4d786e9b8f54987bb2445c022fd76618e0b29b7f7875",
+      "bytes": 3406,
+      "git_sha": "7c9d009c5a573dd15332b4431f6f0044374d25b7"
+    },
+    {
+      "relative": "reference/generate.md",
+      "mode": "100644",
+      "sha256": "693f9d74f105989a9a995b39b738ca22813e8c3a34a477a570466a5f91b4cf69",
+      "bytes": 13221,
+      "git_sha": "7fe7a49886003677fdecad79a528f368b13d7f0f"
+    },
+    {
+      "relative": "reference/harden.md",
+      "mode": "100644",
+      "sha256": "49da8a6532d231213e6743dacd623a3755bfc9ff91d3b4a59314c1d6b3626229",
+      "bytes": 10748,
+      "git_sha": "894f06127525ae2d802e4d73c345031e6076a68f"
     }
   ]
 }
