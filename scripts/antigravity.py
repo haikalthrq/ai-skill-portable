@@ -7,7 +7,7 @@ from pathlib import Path
 from common import link, private_path, sha, render
 
 ROOT = '.gemini/config/skills'
-DEPRECATED = {'caveman', 'officecli'}
+DEPRECATED = {'caveman', 'officecli', 'graphify'}
 
 def scalar(value):
     """Read the required YAML string fields; reject unsupported or ambiguous values."""
@@ -78,7 +78,7 @@ def materialize_snapshot(files, blobs, definitions, aliases):
     for definition in definitions:
         path = definition['path']
         name = definition['name']
-        if name in DEPRECATED or name == 'graphify' or name.startswith('ponytail'):
+        if name in DEPRECATED or name.startswith('ponytail'):
             continue
         if path.startswith(('.agents/skills/', '.config/opencode/skills/', '.opencode/skills/')):
             sources.setdefault(name, definition['canonical'].rsplit('/', 1)[0])

@@ -16,6 +16,29 @@ from antigravity import DEPRECATED, materialize_snapshot
 
 RUNTIME = '.local/share/opencode-portable/ecc-runtime'
 
+
+def retired_plugin(path):
+    """True for a native plugin file belonging to a retired skill (e.g. plugins/graphify.js)."""
+    name = path.replace('\\', '/').rsplit('/', 1)[-1]
+    return '/plugins/' in '/' + path.replace('\\', '/') and name.split('.', 1)[0] in DEPRECATED
+
+
+def strip_retired_sections(text):
+    """Drop top-level `# <retired-skill>` sections that harness installers append to CLAUDE.md."""
+    kept, skipping, separator = [], False, None
+    for line in text.splitlines(keepends=True):
+        if re.match(r'#{1,6}\s', line):
+            retired = line.strip().lower() in {'# ' + name for name in DEPRECATED}
+            if skipping and not retired and separator and kept and kept[-1].strip():
+                kept.append(separator)  # keep one blank line between the surrounding sections
+            skipping, separator = retired, None
+        if skipping:
+            if not line.strip():
+                separator = line
+        else:
+            kept.append(line)
+    return ''.join(kept)
+
 def codex_profile(home):
     """Publish only model preferences and the three reviewed MCP definitions."""
     source = home / '.codex/config.toml'
@@ -136,6 +159,9 @@ def capture(home, repo):
                 else:
                     tree(child, relative, runtime)
             elif child.is_file():
+                if retired_plugin(relative):
+                    excluded.append({'path': relative, 'reason': 'retired tool'})
+                    continue
                 add(child, relative)
             else:
                 raise ValueError('Unsupported filesystem entry: ' + relative)
@@ -169,6 +195,8 @@ def capture(home, repo):
             for plugin in config['plugin']:
                 if not isinstance(plugin, str):
                     raise ValueError('Plugin tuple requires an explicit migration mapping')
+                if retired_plugin(plugin):
+                    continue
                 if plugin.startswith('.'):
                     actual = (source.parent / plugin).resolve(strict=True)
                     relative_plugin = actual.relative_to(home).as_posix()
@@ -215,6 +243,13 @@ def capture(home, repo):
             metadata = json.loads(source.read_text())
             metadata['skills'] = {k: v for k, v in metadata['skills'].items() if k not in DEPRECATED}
             add(source, relative, (json.dumps(metadata, indent=2) + '\n').encode(), ['retired-skills-removed'])
+        elif relative == '.claude/CLAUDE.md':
+            text = source.read_text(encoding='utf-8')
+            stripped = strip_retired_sections(text)
+            if stripped == text:
+                add(source, relative)
+            else:
+                add(source, relative, stripped.encode('utf-8'), ['retired-tool-removed'])
         else:
             add(source, relative)
     add(codex_source, '.codex/portable.config.toml', profile,
@@ -318,7 +353,7 @@ def capture(home, repo):
             'codex_mcp': json.loads((home / '.local/share/codex-mcp/package.json').read_text())['dependencies'],
             'ponytail': json.loads((home / '.local/share/ponytail/package.json').read_text())['version'],
             'plugin_api': '1.17.11', 'python': '>=3.11', 'node': '>=22',
-            'optional_tools': {'dcg': '0.6.7', 'graphify': '0.9.5'}},
+            'optional_tools': {'dcg': '0.6.7'}},
         'portability_adaptations': ['home prefixes rebased at restore', 'ECC memory code/dependencies vendored without full pack registration',
             'MCP credentials replaced by environment references', 'native plugin paths resolved',
             'Linux DCG PATH delimiter corrected only in restored copy'],

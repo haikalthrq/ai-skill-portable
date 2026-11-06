@@ -2,7 +2,7 @@
 
 Back up and restore skills for Codex, OpenCode and Google Antigravity, plus the existing Codex/OpenCode plugins and MCP connections. The snapshot keeps customized instructions, scripts, datasets, licenses and routing descriptions.
 
-The snapshot contains 44 unique active core skills. Antigravity receives those 44 skills as physical directories. Codex has 51 portable skills (the core set, Graphify and six Ponytail skills); OpenCode has 51 skill names (the core set, Ponytail and one built-in). Codex supplies its own system skills and account-managed OpenAI plugins. The retired `caveman` and `officecli` skills are excluded.
+The snapshot contains 44 unique active core skills. Antigravity receives those 44 skills as physical directories. Codex has 50 portable skills (the core set and six Ponytail skills); OpenCode has 51 skill names (the core set, Ponytail and one built-in). Codex supplies its own system skills and account-managed OpenAI plugins. The retired `caveman`, `officecli` and `graphify` skills are excluded.
 
 ## Install with an agent
 
@@ -60,6 +60,19 @@ Global skills live at `~/.gemini/config/skills/<skill>/SKILL.md`. Every restored
 
 Start a new Antigravity conversation after restore. It reads skill names and descriptions from frontmatter and automatically loads relevant instructions for your prompt. You can also use `/<skill-name>`. See [Google's skill documentation](https://antigravity.google/docs/skills?tab=ide). This target covers the App/IDE global directory; the separate Antigravity CLI has a different global path.
 
+### Use Claude
+
+`scripts/claude_port.py` builds Claude-compatible copies of all 50 portable skills straight from the snapshot. It writes nothing outside the output folder:
+
+```
+python3 scripts/claude_port.py          # .work/claude/skills/<skill>/ for Claude Code
+python3 scripts/claude_port.py --zip    # also .work/claude/upload/<skill>.zip for the Claude app
+```
+
+Copy the folders from `.work/claude/skills/` into `~/.claude/skills/` for Claude Code, or upload the zips in the Claude app under Settings → Capabilities → Skills. The port moves keys Claude does not accept into `metadata`, removes angle brackets from descriptions, rewrites `~/.agents`, `~/.opencode` and `~/.config/opencode` skill paths to `~/.claude/skills`, drops Codex `agents/openai.yaml`, and adds a short Codex/OpenCode → Claude tool map to skills that still name another platform's tools. Upload zips keep only the keys the Claude app accepts; Claude Code copies keep `argument-hint` and `disable-model-invocation`.
+
+Skills that call a runtime still need it: Node.js for `impeccable`, Python 3 for `ui-ux-pro-max`, the `agent-browser`/`agent-desktop` CLIs, Context7 for `context7-mcp`/`find-docs`, and `ecc-universal` for `unified-memory`/`cross-harness-handoff`. Claude cannot generate raster images, so the image-first step of `image-to-code` and both `imagegen-frontend-*` skills reports that and falls back to written specs.
+
 ### Desktop automation
 
 Bootstrap installs the pinned Agent Desktop CLI. Put the runtime directory on PATH so Codex, OpenCode and Antigravity can call it from the shared skill. Codex prefers it for Windows desktop tasks and keeps native browser tools for browser verification. Version 1.1.0 integrates through the CLI.
@@ -111,7 +124,7 @@ Use your target's absolute path. The first command checks OpenCode discovery plu
 
 Compare the snapshot ID in the [inventory](reports/inventory.json) with each integration report. Reports from earlier snapshots, including model-driven routing evidence, are historical.
 
-ECC requires the current Git root as `workspaceRoot` and binds each MCP process to one repository. Context7 uses a remote server in OpenCode and a pinned local runtime in Codex. DCG and Graphify runtimes require separate setup. Optional RINGKAS references point to `$HOME/Projects/RINGKAS`, which you must clone separately.
+ECC requires the current Git root as `workspaceRoot` and binds each MCP process to one repository. Context7 uses a remote server in OpenCode and a pinned local runtime in Codex. The DCG runtime requires separate setup. Optional RINGKAS references point to `$HOME/Projects/RINGKAS`, which you must clone separately.
 
 ## Update and publish the backup
 

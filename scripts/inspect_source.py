@@ -44,7 +44,7 @@ for name in ['opencode-ai', 'ecc-universal', 'agent-browser', 'agent-desktop', '
         report['packages'][name] = {'version': package['version'], 'dependencies': package.get('dependencies', {}),
                                    'optionalDependencies': package.get('optionalDependencies', {})}
 for command in [['opencode', '--version'], ['node', '--version'], ['python', '--version'], ['dcg', '--version'],
-                ['graphify', '--version'], ['officecli', '--version']]:
+                ['officecli', '--version']]:
     try:
         p = subprocess.run(command, shell=os.name == 'nt', capture_output=True, text=True, encoding='utf-8', timeout=30)
         report['tools'][command[0]] = (p.stdout + p.stderr).strip()[:200]

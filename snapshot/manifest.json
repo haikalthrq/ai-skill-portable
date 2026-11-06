@@ -902,12 +902,6 @@
       "alias": true
     },
     {
-      "name": "graphify",
-      "path": ".codex/skills/graphify/SKILL.md",
-      "canonical": ".codex/skills/graphify/SKILL.md",
-      "alias": false
-    },
-    {
       "name": "grill-with-docs",
       "path": ".codex/skills/grill-with-docs/SKILL.md",
       "canonical": ".config/opencode/skills/grill-with-docs/SKILL.md",
@@ -2968,12 +2962,14 @@
     },
     {
       "path": ".claude/CLAUDE.md",
-      "blob": "a9f7439e87b1c4b0474c854707378dd3db0f300e9966d839e3ec748ed8118995",
-      "sha256": "a9f7439e87b1c4b0474c854707378dd3db0f300e9966d839e3ec748ed8118995",
+      "blob": "95f06c20248632b81bed10a5a6c989832418cee6ad84824e53f82232ce988911",
+      "sha256": "95f06c20248632b81bed10a5a6c989832418cee6ad84824e53f82232ce988911",
       "source_sha256": "a9f7439e87b1c4b0474c854707378dd3db0f300e9966d839e3ec748ed8118995",
-      "bytes": 5976,
+      "bytes": 5746,
       "executable": false,
-      "transforms": []
+      "transforms": [
+        "retired-tool-removed"
+      ]
     },
     {
       "path": ".claude/skills/impeccable/SKILL.md",
@@ -3925,96 +3921,6 @@
       ]
     },
     {
-      "path": ".codex/skills/graphify/.graphify_version",
-      "blob": "3c7b74121359a4cfb55fd08f7e6c43df45ab81b271d5423289586cccb383c78b",
-      "sha256": "3c7b74121359a4cfb55fd08f7e6c43df45ab81b271d5423289586cccb383c78b",
-      "source_sha256": "3c7b74121359a4cfb55fd08f7e6c43df45ab81b271d5423289586cccb383c78b",
-      "bytes": 5,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/SKILL.md",
-      "blob": "a03de3f3d9074427b71ccfaac79d0b2d555c31e3a1aced1cc636123ed6cdce54",
-      "sha256": "a03de3f3d9074427b71ccfaac79d0b2d555c31e3a1aced1cc636123ed6cdce54",
-      "source_sha256": "a03de3f3d9074427b71ccfaac79d0b2d555c31e3a1aced1cc636123ed6cdce54",
-      "bytes": 37112,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/references/add-watch.md",
-      "blob": "b3f67570240582689c2834b4831917550c2d1aaf042148868c39dcbf387ce3fd",
-      "sha256": "b3f67570240582689c2834b4831917550c2d1aaf042148868c39dcbf387ce3fd",
-      "source_sha256": "b3f67570240582689c2834b4831917550c2d1aaf042148868c39dcbf387ce3fd",
-      "bytes": 2486,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/references/exports.md",
-      "blob": "ee47fae477f106d8aed38798c58493b5a7f060a0d9d2581ce6132302827bc14b",
-      "sha256": "ee47fae477f106d8aed38798c58493b5a7f060a0d9d2581ce6132302827bc14b",
-      "source_sha256": "ee47fae477f106d8aed38798c58493b5a7f060a0d9d2581ce6132302827bc14b",
-      "bytes": 3362,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/references/extraction-spec.md",
-      "blob": "f30224c15e117456eca0ecc16867fa74984f0f102a33901c1d35932c761371de",
-      "sha256": "f30224c15e117456eca0ecc16867fa74984f0f102a33901c1d35932c761371de",
-      "source_sha256": "f30224c15e117456eca0ecc16867fa74984f0f102a33901c1d35932c761371de",
-      "bytes": 4399,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/references/github-and-merge.md",
-      "blob": "e5ebd90c7686f50363ff7a535556bc2f596d4c47ec1e6c8b95e11e36a0dfea2b",
-      "sha256": "e5ebd90c7686f50363ff7a535556bc2f596d4c47ec1e6c8b95e11e36a0dfea2b",
-      "source_sha256": "e5ebd90c7686f50363ff7a535556bc2f596d4c47ec1e6c8b95e11e36a0dfea2b",
-      "bytes": 2177,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/references/hooks.md",
-      "blob": "b9a4e9f66813c6fc720589f1071d1a03c95756ab7101447e14e57291fe7844e5",
-      "sha256": "b9a4e9f66813c6fc720589f1071d1a03c95756ab7101447e14e57291fe7844e5",
-      "source_sha256": "b9a4e9f66813c6fc720589f1071d1a03c95756ab7101447e14e57291fe7844e5",
-      "bytes": 1267,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/references/query.md",
-      "blob": "ebef0e56e21a6594400a1be957db4db6ac5fa036c68bc9f721ce7b6548f59b10",
-      "sha256": "ebef0e56e21a6594400a1be957db4db6ac5fa036c68bc9f721ce7b6548f59b10",
-      "source_sha256": "ebef0e56e21a6594400a1be957db4db6ac5fa036c68bc9f721ce7b6548f59b10",
-      "bytes": 13374,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/references/transcribe.md",
-      "blob": "676a1e39aa6d43cdfcc416ec56616e36f7bad74066a82bd33a9485515b9a865c",
-      "sha256": "676a1e39aa6d43cdfcc416ec56616e36f7bad74066a82bd33a9485515b9a865c",
-      "source_sha256": "676a1e39aa6d43cdfcc416ec56616e36f7bad74066a82bd33a9485515b9a865c",
-      "bytes": 3173,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".codex/skills/graphify/references/update.md",
-      "blob": "c18fa98e608797d1c9dbe71f3ae01b4132e7517d07544cccf0c04e7c8172bd76",
-      "sha256": "c18fa98e608797d1c9dbe71f3ae01b4132e7517d07544cccf0c04e7c8172bd76",
-      "source_sha256": "c18fa98e608797d1c9dbe71f3ae01b4132e7517d07544cccf0c04e7c8172bd76",
-      "bytes": 9143,
-      "executable": false,
-      "transforms": []
-    },
-    {
       "path": ".config/cross-harness-memory/runtime.json",
       "blob": "e915d4af58e708b07a9634d6cc3c62e1e20b976da0a21c2a788d394799dc8f5c",
       "sha256": "e915d4af58e708b07a9634d6cc3c62e1e20b976da0a21c2a788d394799dc8f5c",
@@ -4126,12 +4032,14 @@
     },
     {
       "path": ".config/opencode/commands/understand.md",
-      "blob": "711940c1a44ac4f5551a82c81d3d46c73637a9acc2b0c72825adc71c00da14b8",
-      "sha256": "711940c1a44ac4f5551a82c81d3d46c73637a9acc2b0c72825adc71c00da14b8",
+      "blob": "e9008c6315d87b5957aea8befe44f3b0f2e40bda002514359d04437f14aa0d35",
+      "sha256": "e9008c6315d87b5957aea8befe44f3b0f2e40bda002514359d04437f14aa0d35",
       "source_sha256": "711940c1a44ac4f5551a82c81d3d46c73637a9acc2b0c72825adc71c00da14b8",
-      "bytes": 372,
+      "bytes": 334,
       "executable": false,
-      "transforms": []
+      "transforms": [
+        "retired-tool-removed"
+      ]
     },
     {
       "path": ".config/opencode/commands/wayfinder.md",
@@ -4144,17 +4052,18 @@
     },
     {
       "path": ".config/opencode/opencode.jsonc",
-      "blob": "31a9c3f7424b4b226692c0af8c23c747ce73fd6c33ab01824f795735ccab6a03",
-      "sha256": "31a9c3f7424b4b226692c0af8c23c747ce73fd6c33ab01824f795735ccab6a03",
+      "blob": "db9882ad27aa80e18e5bdb58668c610837c8f4f4427935d4c590d68ba9c72fc7",
+      "sha256": "db9882ad27aa80e18e5bdb58668c610837c8f4f4427935d4c590d68ba9c72fc7",
       "source_sha256": "2edf4d9a9f351e5a7db3ef156b4f517c7ccb23d9f1f68886195c4755e4d77b9d",
-      "bytes": 1989,
+      "bytes": 1916,
       "executable": false,
       "transforms": [
         "explicit-global-discovery",
         "home-rebase",
         "merged-native-plugins",
         "portable-mcp-command",
-        "sanitized-config"
+        "sanitized-config",
+        "retired-tool-removed"
       ]
     },
     {
@@ -12602,15 +12511,6 @@
       "transforms": []
     },
     {
-      "path": ".opencode/.opencode/plugins/graphify.js",
-      "blob": "ab20d7bdbef9536636db5a1a62373a9a7acdc39cb0626a45f674fd19dff45175",
-      "sha256": "ab20d7bdbef9536636db5a1a62373a9a7acdc39cb0626a45f674fd19dff45175",
-      "source_sha256": "ab20d7bdbef9536636db5a1a62373a9a7acdc39cb0626a45f674fd19dff45175",
-      "bytes": 1244,
-      "executable": false,
-      "transforms": []
-    },
-    {
       "path": ".opencode/commands/no-ai-slop.md",
       "blob": "1aab9d03b6ad396f37891d20f652a4a362288b14f895ec440c51cae3acac9a3e",
       "sha256": "1aab9d03b6ad396f37891d20f652a4a362288b14f895ec440c51cae3acac9a3e",
@@ -12630,15 +12530,16 @@
     },
     {
       "path": ".opencode/opencode.json",
-      "blob": "1a1d47329b1308cf1100dad3d074a05ac1d4ab9f5d05bee4dc2706c44eae2aa8",
-      "sha256": "1a1d47329b1308cf1100dad3d074a05ac1d4ab9f5d05bee4dc2706c44eae2aa8",
+      "blob": "1f5ae4d5b400e56aa82f0787acfa6755c7c930b2439a174f4f8b0910cd815dc9",
+      "sha256": "1f5ae4d5b400e56aa82f0787acfa6755c7c930b2439a174f4f8b0910cd815dc9",
       "source_sha256": "9af88b764f4632bc945d47e4e204f81c95580f90a71e432aa51f9199b4929b55",
-      "bytes": 283,
+      "bytes": 210,
       "executable": false,
       "transforms": [
         "home-rebase",
         "portable-plugin-paths",
-        "sanitized-config"
+        "sanitized-config",
+        "retired-tool-removed"
       ]
     },
     {
@@ -12665,15 +12566,6 @@
       "sha256": "1ac79839424b610fa82c067045238ec0254b5d981d07fcfd0b44b633e47b30ce",
       "source_sha256": "1ac79839424b610fa82c067045238ec0254b5d981d07fcfd0b44b633e47b30ce",
       "bytes": 1840,
-      "executable": false,
-      "transforms": []
-    },
-    {
-      "path": ".opencode/plugins/graphify.js",
-      "blob": "105d175cfa09a61f7d0f710698fda9fb07a32af54b751ca9a66f92e22dbd4132",
-      "sha256": "105d175cfa09a61f7d0f710698fda9fb07a32af54b751ca9a66f92e22dbd4132",
-      "source_sha256": "105d175cfa09a61f7d0f710698fda9fb07a32af54b751ca9a66f92e22dbd4132",
-      "bytes": 1269,
       "executable": false,
       "transforms": []
     },
@@ -14254,8 +14146,7 @@
     "python": ">=3.11",
     "node": ">=22",
     "optional_tools": {
-      "dcg": "0.6.7",
-      "graphify": "0.9.5"
+      "dcg": "0.6.7"
     }
   },
   "portability_adaptations": [
@@ -14273,7 +14164,7 @@
       "context7",
       "playwright"
     ],
-    "expected_portable_skills": 51,
+    "expected_portable_skills": 50,
     "ponytail_skills": 6,
     "hooks_trust": "Review and trust locally in Codex /hooks; trust decisions are not backed up."
   },
@@ -14381,7 +14272,6 @@
     ".codex/skills/code-review/SKILL.md",
     ".codex/skills/domain-modeling/SKILL.md",
     ".codex/skills/doubt-driven-development/SKILL.md",
-    ".codex/skills/graphify/SKILL.md",
     ".codex/skills/grill-with-docs/SKILL.md",
     ".codex/skills/grilling/SKILL.md",
     ".codex/skills/handoff/SKILL.md",
@@ -14477,5 +14367,5 @@
   "optional_project_checkouts": {
     "ringkas": "$HOME/Projects/RINGKAS; project source/data are not included"
   },
-  "snapshot_id": "26d61c3eaa13f4bbff8f584bc4b7e77d2ac87413cfa70702e380e413af3de293"
+  "snapshot_id": "29fcedff94ea1f65f8249334f4647474b28804f1312c2f7bf5ca9f01a7762853"
 }

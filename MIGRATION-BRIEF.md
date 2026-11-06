@@ -20,7 +20,7 @@ This repository preserves the installed skill environment for Codex, OpenCode an
 
 1. Read the installed files. Preserve their descriptions, bodies, references, scripts, datasets, licenses, local adapters and custom plugins. Never replace them with current upstream downloads merely because upstream exists.
 2. Keep physical variants distinct. Deduplicate identical file content only; reconstruct original directory destinations and explicit aliases from the manifest.
-3. Keep 44 unique active core skills, including the installed reverse-engineering skill. Exclude retired `caveman` and `officecli` definitions, content and installation metadata. Codex has 51 portable skills (core, Graphify, six Ponytail skills); OpenCode has 51 names (core, Ponytail, one built-in). Antigravity receives the 44 core skills. Preserve provider variants and keep those count categories separate.
+3. Keep 44 unique active core skills, including the installed reverse-engineering skill. Exclude retired `caveman`, `officecli` and `graphify` definitions, content and installation metadata. Codex has 50 portable skills (core, six Ponytail skills); OpenCode has 51 names (core, Ponytail, one built-in). Antigravity receives the 44 core skills. Preserve provider variants and keep those count categories separate.
 4. Keep Context7/ECC integration instructions and host-identity/repository-binding behavior. Exclude all authentication, browser/session data, memory vault records and unrelated home/project content.
 5. Never change the original skill installation during backup/testing. Integration tests rehash captured source files to detect mutation. Removing a skill from this backup does not delete its live installation or user data.
 
@@ -74,6 +74,6 @@ Gitleaks scans the publishable repository including content blobs before staging
 
 ## Maintenance limits and manual setup
 
-Python 3.11+/Git/Node 22+, Codex/Antigravity application installation, provider login, Context7 key, Codex hook approval, browser binaries/OS libraries, optional DCG/Graphify and private project checkouts remain local setup. Windows and model-driven routing evidence from previous snapshots is labelled historical. Native Windows Antigravity scanner and routing checks require the installed application; filesystem checks alone do not prove them.
+Python 3.11+/Git/Node 22+, Codex/Antigravity application installation, provider login, Context7 key, Codex hook approval, browser binaries/OS libraries, optional DCG and private project checkouts remain local setup. Windows and model-driven routing evidence from previous snapshots is labelled historical. Native Windows Antigravity scanner and routing checks require the installed application; filesystem checks alone do not prove them.
 
 Capture fails if required ECC binding is missing or a discovered skill has no approved mapping. Review mappings before adding external roots. Keep third-party licenses, inspect scripts before bootstrap, and use the pinned OpenCode version for equivalent discovery. Tool and model versions can select different skills from the same snapshot.

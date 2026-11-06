@@ -1,5 +1,5 @@
 {
-  "snapshot_id": "26d61c3eaa13f4bbff8f584bc4b7e77d2ac87413cfa70702e380e413af3de293",
+  "snapshot_id": "29fcedff94ea1f65f8249334f4647474b28804f1312c2f7bf5ca9f01a7762853",
   "created_utc": "2026-11-04T08:01:32.428743+00:00",
   "codex": {
     "profile": "portable",
@@ -8,7 +8,7 @@
       "context7",
       "playwright"
     ],
-    "expected_portable_skills": 51,
+    "expected_portable_skills": 50,
     "ponytail_skills": 6,
     "hooks_trust": "Review and trust locally in Codex /hooks; trust decisions are not backed up."
   },
@@ -517,14 +517,15 @@
       ]
     }
   ],
-  "definition_paths": 137,
+  "definition_paths": 136,
   "directory_aliases": 38,
-  "logical_files": 1372,
-  "unique_content_blobs": 915,
-  "logical_bytes": 19950581,
-  "stored_blob_bytes": 9867189,
+  "logical_files": 1360,
+  "unique_content_blobs": 903,
+  "logical_bytes": 19871156,
+  "stored_blob_bytes": 9787764,
   "portability_transform_counts": {
     "retired-skills-removed": 1,
+    "retired-tool-removed": 4,
     "codex-portable-profile": 1,
     "portable-mcp-command": 2,
     "sanitized-config": 3,
@@ -559,8 +560,7 @@
     "python": ">=3.11",
     "node": ">=22",
     "optional_tools": {
-      "dcg": "0.6.7",
-      "graphify": "0.9.5"
+      "dcg": "0.6.7"
     }
   },
   "observed_prerequisites": {
