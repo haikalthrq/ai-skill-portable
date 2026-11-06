@@ -1,8 +1,8 @@
 # Portable Codex, OpenCode and Google Antigravity environment
 
-Back up and restore skills for Codex, OpenCode and Google Antigravity, plus the existing Codex/OpenCode plugins and MCP connections. The snapshot keeps customized instructions, scripts, datasets, licenses and routing descriptions.
+Back up and restore skills for Codex, OpenCode and Google Antigravity, plus the existing Codex/OpenCode plugins and MCP connections. The snapshot keeps customized instructions, scripts, datasets, licenses and routing descriptions. `scripts/claude_port.py` additionally builds Claude Code and Claude app copies of the portable skills (see [Use Claude](#use-claude)).
 
-The snapshot contains 44 unique active core skills. Antigravity receives those 44 skills as physical directories. Codex has 50 portable skills (the core set and six Ponytail skills); OpenCode has 51 skill names (the core set, Ponytail and one built-in). Codex supplies its own system skills and account-managed OpenAI plugins. The retired `caveman`, `officecli` and `graphify` skills are excluded.
+The snapshot contains 44 unique active core skills. Antigravity receives those 44 skills as physical directories. Codex has 50 portable skills (the core set and six Ponytail skills); OpenCode has 51 skill names (the core set, Ponytail and one built-in). Codex supplies its own system skills and account-managed OpenAI plugins. The retired `caveman`, `officecli` and `graphify` skills are excluded, and `backup` keeps them out of future captures.
 
 ## Install with an agent
 
@@ -62,14 +62,18 @@ Start a new Antigravity conversation after restore. It reads skill names and des
 
 ### Use Claude
 
-`scripts/claude_port.py` builds Claude-compatible copies of all 50 portable skills straight from the snapshot. It writes nothing outside the output folder:
+Restore already gives Claude Code part of this environment: it writes `~/.claude/CLAUDE.md`, a native `impeccable` copy and 18 `~/.claude/skills/<skill>` links that point at the original `~/.agents/skills/<skill>` folders. Those are the unmodified Codex/OpenCode skills.
 
-```
+`scripts/claude_port.py` builds Claude-compatible copies of all 50 portable skills straight from the snapshot. It reads only `snapshot/` and writes nothing outside the output folder:
+
+```sh
 python3 scripts/claude_port.py          # .work/claude/skills/<skill>/ for Claude Code
 python3 scripts/claude_port.py --zip    # also .work/claude/upload/<skill>.zip for the Claude app
 ```
 
-Copy the folders from `.work/claude/skills/` into `~/.claude/skills/` for Claude Code, or upload the zips in the Claude app under Settings → Capabilities → Skills. The port moves keys Claude does not accept into `metadata`, removes angle brackets from descriptions, rewrites `~/.agents`, `~/.opencode` and `~/.config/opencode` skill paths to `~/.claude/skills`, drops Codex `agents/openai.yaml`, and adds a short Codex/OpenCode → Claude tool map to skills that still name another platform's tools. Upload zips keep only the keys the Claude app accepts; Claude Code copies keep `argument-hint` and `disable-model-invocation`.
+For Claude Code, put the folders from `.work/claude/skills/` into `~/.claude/skills/`. If a name already exists there, move it aside first: copying onto one of the restore links would write into the original skill it points to. For the Claude app, upload the zips under Settings → Capabilities → Skills, choosing only the skills you use, since many design skills overlap.
+
+The port moves keys Claude does not accept into `metadata`, removes angle brackets from descriptions, rewrites `~/.agents`, `~/.opencode` and `~/.config/opencode` skill paths to `~/.claude/skills`, drops Codex `agents/openai.yaml`, and adds a short Codex/OpenCode → Claude tool map to skills that still name another platform's tools. Upload zips keep only the keys the Claude app accepts; Claude Code copies keep `argument-hint` and `disable-model-invocation`.
 
 Skills that call a runtime still need it: Node.js for `impeccable`, Python 3 for `ui-ux-pro-max`, the `agent-browser`/`agent-desktop` CLIs, Context7 for `context7-mcp`/`find-docs`, and `ecc-universal` for `unified-memory`/`cross-harness-handoff`. Claude cannot generate raster images, so the image-first step of `image-to-code` and both `imagegen-frontend-*` skills reports that and falls back to written specs.
 
@@ -122,7 +126,7 @@ python3 scripts/codex_verify.py --home "/absolute/target/home"
 
 Use your target's absolute path. The first command checks OpenCode discovery plus Antigravity's physical files, frontmatter and hashes. Antigravity checks also run automatically for snapshots that include it. The second checks the Codex profile, skills and MCP tools. These checks do not test live documentation queries, browser launch, provider login or Antigravity's native scanner and model routing.
 
-Compare the snapshot ID in the [inventory](reports/inventory.json) with each integration report. Reports from earlier snapshots, including model-driven routing evidence, are historical.
+Compare the snapshot ID in the [inventory](reports/inventory.json) with each integration report. Reports from earlier snapshots, including model-driven routing evidence, are historical. Right now that applies to `linux-integration.json`, `windows-integration.json` and `restored-routing.json`: they were produced before Graphify was retired and need a rerun on real machines to refresh. `secret-scan.json` and `inventory.json` match the current snapshot.
 
 ECC requires the current Git root as `workspaceRoot` and binds each MCP process to one repository. Context7 uses a remote server in OpenCode and a pinned local runtime in Codex. The DCG runtime requires separate setup. Optional RINGKAS references point to `$HOME/Projects/RINGKAS`, which you must clone separately.
 
