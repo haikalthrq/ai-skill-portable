@@ -1,4 +1,4 @@
-# Portable Codex, OpenCode and Google Antigravity environment
+# Portable Codex, OpenCode and Google Antigravity environment, with a Claude port
 
 Back up and restore skills for Codex, OpenCode and Google Antigravity, plus the existing Codex/OpenCode plugins and MCP connections. The snapshot keeps customized instructions, scripts, datasets, licenses and routing descriptions. `scripts/claude_port.py` additionally builds Claude Code and Claude app copies of the portable skills (see [Use Claude](#use-claude)).
 
@@ -126,7 +126,7 @@ python3 scripts/codex_verify.py --home "/absolute/target/home"
 
 Use your target's absolute path. The first command checks OpenCode discovery plus Antigravity's physical files, frontmatter and hashes. Antigravity checks also run automatically for snapshots that include it. The second checks the Codex profile, skills and MCP tools. These checks do not test live documentation queries, browser launch, provider login or Antigravity's native scanner and model routing.
 
-Compare the snapshot ID in the [inventory](reports/inventory.json) with each integration report. Reports from earlier snapshots, including model-driven routing evidence, are historical. Right now that applies to `linux-integration.json`, `windows-integration.json` and `restored-routing.json`: they were produced before Graphify was retired and need a rerun on real machines to refresh. `secret-scan.json` and `inventory.json` match the current snapshot.
+Compare the snapshot ID in the [inventory](reports/inventory.json) with each integration report. Reports from earlier snapshots, including model-driven routing evidence, are historical. Right now that applies to `linux-integration.json`, `windows-integration.json`, `restored-routing.json` and `review-summary.json`: each names an earlier snapshot, so they predate the Graphify removal and need a rerun on real machines to refresh. `secret-scan.json` and `inventory.json` match the current snapshot.
 
 ECC requires the current Git root as `workspaceRoot` and binds each MCP process to one repository. Context7 uses a remote server in OpenCode and a pinned local runtime in Codex. The DCG runtime requires separate setup. Optional RINGKAS references point to `$HOME/Projects/RINGKAS`, which you must clone separately.
 
